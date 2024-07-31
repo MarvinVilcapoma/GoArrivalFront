@@ -1,0 +1,80 @@
+<div class="container">
+    <div class="row m-0 p-0">
+
+        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12     col-12 m-0 p-0 pb-5">
+            <div class="row m-0 p-0">
+                <div class="col-12" style="padding-top: 50px;padding-bottom: 60px;text-align: center;">
+                    <span class="titulo">Compañias</span>
+                </div>
+            </div>
+            <div class="row m-0 p-0 mt-2 namelast">
+                <div class="col-xxl-7 col-xl-8 col-lg-6 col-md-6 col-sm-6 col-12 m-0 p-0">
+                    <div class="row m-0 p-0">
+                        <div class="col-12 m-0 p-0">
+                          
+                            <span class="text-bienv">Nombre</span>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-12 m-0 p-0">
+                                <input (input)="filterItems()" [(ngModel)]="name" class="form-control box-shadow" type="text">
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="row m-0 p-0 mt-5">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+                    <div class="row m-0 p-2 box-shadow">
+                        <div class="col-lg col-md col-sm col m-0 p-0 text-center">
+                            <span class="title">Nombre</span>
+                        </div>
+                        <div class="col-lg col-md col-sm col m-0 p-0 text-center ocultarTitle">
+                            <span class="title">RUC</span>
+                        </div>
+                        <div class="col-lg col-md col-sm col m-0 p-0 text-center">
+                            <span class="title">DK</span>
+                        </div>
+                        <div class="col-lg col-md col-sm col m-0 p-0 text-center">
+                            <span class="title">Seleccionar</span>
+                        </div>
+                    </div>
+                    <div *ngFor="let person of getPaginatedItems()" class="row m-0 p-2 box-shadow">
+                        <div class="col-lg col-md col-sm col m-0 p-0 m-0 p-0 text-center">
+                            <span class="title">{{person.name}}</span>
+                        </div>
+
+                        <div class="col-lg col-md col-sm col m-0 p-0 m-0 p-0 text-center ocultarTitle">
+                            <span class="title">{{person.ruc}}</span>
+                        </div>
+                        <div class="col-lg col-md col-sm col m-0 p-0 m-0 p-0 text-center">
+                            <span class="title">{{person.codeDK}}</span>
+                        </div>
+                        <div class="col-lg col-md col-sm col m-0 p-0 text-center">
+                            <img style="cursor: pointer;"  (click)="mandarDk(person)" width="30"
+                            src="assets/Images/flight/mas.png">
+                        </div>
+                    </div>
+                    <div class="row m-0 p-0 mt-4">
+                        <div class="pagination">
+                            <button class="pagination-btn" [disabled]="currentPage === 1" (click)="setPage(currentPage - 1)">
+                              Anterior
+                            </button>
+                            
+                            <ng-container *ngFor="let page of getPageArray()">
+                                <button class="pagination-btn" [class.active]="page === currentPage" (click)="setPage(page)">
+                                  {{ page }}
+                                </button>
+                              </ng-container>
+                              
+                           <!--    <span>{{currentPage}} / {{getTotalPages()}}</span> -->
+                            
+                            <button class="pagination-btn" [disabled]="currentPage === getTotalPages()" (click)="setPage(currentPage + 1)">
+                              Siguiente
+                            </button>
+                          </div>
+            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

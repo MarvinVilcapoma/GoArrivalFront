@@ -1,0 +1,245 @@
+.plane {
+    margin: 20px auto;
+    max-width: 300px;
+}
+
+.cockpit {
+    height: 250px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    border-bottom: 5px solid #d8d8d8;
+}
+
+.border-top-options {
+    border: 1px solid #cccccc;
+    line-height: 0px;
+    border-radius: 10px 0px 10px 0px;
+}
+
+
+.fuselage {
+    width: fit-content;
+    background-color: #EBEBEB;
+    border-radius: 40px 40px 0px 0px;
+}
+
+.fuselage1 {
+    width: fit-content;
+    background-size: cover;
+    background-image: url(https://domiruthuatsa.z13.web.core.windows.net/assets/Images/Union.png);
+    background-repeat: round;
+    padding: 50px;
+
+}
+
+ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.row {}
+
+.seats {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+}
+
+.seat {
+    display: flex;
+    flex: 0 0 14.28571428571429%;
+    padding: 5px;
+    position: relative;
+}
+
+.seatPhone {
+    display: flex;
+    flex: 0 0 14.28571428571429%;
+    padding: 0px;
+    position: relative;
+}
+
+
+.pass {
+    background-color: #6B253C;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    color: white;
+    border-radius: 10px 0px;
+    width: 15%;
+}
+
+.noseat {
+    cursor: pointer;
+    width: 30px;
+    margin: 10px;
+    visibility: hidden;
+}
+
+.seatsis{
+    cursor: pointer;width: 30px; margin: 10px;
+}
+
+.filaPass {
+    border: 1px solid #cccccc;
+    padding-bottom: 25px;
+    max-height: max-content;
+    height: fit-content;
+    /* margin: 0px 3px 0px 18px; */
+    border-radius: 10px 0px;
+}
+
+.classpass {
+    background-color: #F8F8F8;
+    border-left: 5px solid #6B253C !important;
+    border: 1px solid #cccccc;
+    border-radius: 10px 0px;
+    padding: 10px 25px;
+}
+
+.popover-title {
+    color: blue;
+    font-size: 15px;
+}
+
+.popover-content {
+    color: red;
+    font-size: 10px;
+}
+
+.passLeft {
+    margin-top: 50px !important;
+}
+
+.passRight {
+    margin-left: 30px;
+}
+
+.otherMoment {
+    background-color: #ED1C24;
+    height: 40px;
+    text-align: center;
+    cursor: pointer;
+    line-height: 40px;
+    padding: 10px;
+    color: white;
+    border-radius: 10px 0px;
+}
+
+.otherMoment2 {
+    background-color: #6B253C;
+    height: 50px;
+    text-align: center;
+    cursor: pointer;
+    line-height: 30px;
+    padding: 10px;
+    color: white;
+    border-radius: 10px 0px;
+}
+
+
+.asientoPhone {
+    display: none;
+}
+
+.classpass1 {
+    background-color: #F8F8F8;
+    border: 1px solid #cccccc;
+    border-radius: 10px 0px;
+    padding: 10px 25px;
+}
+
+@-webkit-keyframes rubberBand {
+    0% {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+
+    30% {
+        -webkit-transform: scale3d(1.25, 0.75, 1);
+        transform: scale3d(1.25, 0.75, 1);
+    }
+
+    40% {
+        -webkit-transform: scale3d(0.75, 1.25, 1);
+        transform: scale3d(0.75, 1.25, 1);
+    }
+
+    50% {
+        -webkit-transform: scale3d(1.15, 0.85, 1);
+        transform: scale3d(1.15, 0.85, 1);
+    }
+
+    65% {
+        -webkit-transform: scale3d(.95, 1.05, 1);
+        transform: scale3d(.95, 1.05, 1);
+    }
+
+    75% {
+        -webkit-transform: scale3d(1.05, .95, 1);
+        transform: scale3d(1.05, .95, 1);
+    }
+
+    100% {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes rubberBand {
+    0% {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+
+    30% {
+        -webkit-transform: scale3d(1.25, 0.75, 1);
+        transform: scale3d(1.25, 0.75, 1);
+    }
+
+    40% {
+        -webkit-transform: scale3d(0.75, 1.25, 1);
+        transform: scale3d(0.75, 1.25, 1);
+    }
+
+    50% {
+        -webkit-transform: scale3d(1.15, 0.85, 1);
+        transform: scale3d(1.15, 0.85, 1);
+    }
+
+    65% {
+        -webkit-transform: scale3d(.95, 1.05, 1);
+        transform: scale3d(.95, 1.05, 1);
+    }
+
+    75% {
+        -webkit-transform: scale3d(1.05, .95, 1);
+        transform: scale3d(1.05, .95, 1);
+    }
+
+    100% {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+.rubberBand {
+    -webkit-animation-name: rubberBand;
+    animation-name: rubberBand;
+}
+
+@media screen and (max-width:500px){
+    .noseat {
+        cursor: pointer;
+        width: 15px;
+        margin: 10px;
+        visibility: hidden;
+    }
+    
+    .seatsis{
+        cursor: pointer;width: 15px; margin: 10px;
+    }
+}

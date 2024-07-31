@@ -1,0 +1,132 @@
+.con-test1{
+  color: #FFFFFF;
+  font-size: 15px;
+  font-family: Omnes-med;
+}
+.con-test2{
+  color: #ED1C24;
+  font-size: 20px;
+  font-family: Omnes-med;
+}
+.con-test3{
+  color: #000000;
+  font-size: 15px;
+  font-family: Omnes-med;
+}
+
+.det-test82{
+  font-size: 18px;
+  font-family: Omnes-med;
+  font-weight: 600;
+}
+.button-section{
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+}
+.con-test4{
+  color: #3D3D3D;
+  font-size: 15px;
+  font-family: Omnes-med;
+}
+.con-test5{
+  color: #6B253C;
+  font-size: 16px;
+  font-family: Omnes-med;
+}
+.con-test6{
+  color: #40B23D;
+  font-size: 16px;
+  font-family: Omnes-med;
+}
+.con-test7{
+  color: #6B253C;
+  font-size: 20px;
+  font-family: Omnes-med;
+}
+.con-test8{
+  color: #ED1C24;
+  font-size: 14px;
+  font-family: Omnes-med;
+}
+.con-test9{
+  color: #000000;
+  font-size: 18px;
+  font-family: Omnes-med;
+}
+.con-test10{
+  color: #000000;
+  font-size: 16px;
+  font-family: Omnes-med;
+}
+.con-test11{
+  color: #000000;
+  font-size: 14px;
+  font-family: Omnes-med;
+}
+.con-test12{
+  color: #000000;
+  font-size: 33px;
+  font-family: Omnes-med;
+}
+.con-test13{
+  color: #FFFFFF;
+  font-size: 15px;
+  font-family: Omnes-med;
+  background: #ED1C24 0% 0% no-repeat padding-box;
+  border-radius: 3px;
+  opacity: 1;
+}
+.con-test14{
+  color: #ED1C24;
+  font-size: 18px;
+  font-family: Omnes-med;
+}
+
+.fondo-rojo-tri{
+  background: -webkit-linear-gradient(left, #ed1c23 0%, #b01738 36%, #3c4749 100%);
+}
+.con-test15{
+  color: #000000;
+  font-size: 17px;
+  font-family: Omnes-med;
+}
+.con-test16{
+  color: #000000;
+  font-size: 34px;
+  font-family: Omnes-med;
+}
+.con-test17{
+  color: #676767;
+  font-size: 18px;
+  font-family: Omnes-med;
+}
+.con-test18{
+  color: #000000;
+  font-size: 17px;
+  font-family: Omnes-med;
+}
+.con-test19{
+  color: #40B23D;
+  font-size: 17px;
+  font-family: Omnes-med;
+}
+.input-text-1{
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  border: 1px solid #707070;
+  border-radius: 5px;
+  opacity: 1;
+  height: 31px;
+  width: 100% !important;
+}
+.input-text-2{
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  border: 1px solid #40B23D;
+  border-radius: 5px 0 0 5px;
+  opacity: 1;
+  width: 100% !important;
+}
+.campo-invalido-vacio{
+  border: 2px solid #ED1C24 !important;
+}

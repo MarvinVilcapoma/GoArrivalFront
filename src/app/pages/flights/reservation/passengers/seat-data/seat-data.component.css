@@ -1,0 +1,9 @@
+.borrar {
+    cursor: pointer;
+    font-size: 15px;
+    color: red;
+    font-weight: 800;
+    top: 0px;
+    right: 12px;
+    position: absolute;
+}

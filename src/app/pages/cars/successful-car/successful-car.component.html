@@ -1,0 +1,860 @@
+
+        <div class="row m-0 p-0">
+            <div class="col-12 m-0 p-0 pt-5"></div>
+
+            <div class="col-12 m-0  pl-5 pr-5 pb-5">
+                <div class="row m-0 p-0">
+                    <div class="col-3 m-0 p-0"></div>
+
+                    <div class="col-6 m-0 p-0 text-center" style="
+                background: #f5fbf6 0% 0% no-repeat padding-box;
+                border: 1px solid #40b23d;
+                border-radius: 20px 0px;
+                opacity: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 51px !important;
+              ">
+                        <img class="pr-3" src="./assets/Images/cars/Ok.svg" alt="" />
+                        <span class="frc-test1 pr-1">¡Felicitaciones!</span>
+                        <span class="frc-test2">tu reserva ha sido completada con éxito.</span>
+                    </div>
+
+                    <div class="col-3 m-0 p-0"></div>
+                </div>
+            </div>
+
+            <div class="col-12 m-0 p-0 pb-5">
+                <div class="row m-0 p-0">
+                    <div class="col-4 m-0 p-0"></div>
+                    <div class="col-4 m-0 p-0" style="
+                background: #fdfdfd 0% 0% no-repeat padding-box;
+                border: 1px solid #e2e2e2;
+                border-radius: 20px 0px;
+                opacity: 1;
+              ">
+                        <div class="section">
+                            <div class="col-12 m-0 p-0 text-center frc-test3" style="
+                    background: transparent
+                      linear-gradient(
+                        97deg,
+                        #ed1c24 0%,
+                        #d51a2c 34%,
+                        #3c4749 100%
+                      )
+                      0% 0% no-repeat padding-box;
+                    opacity: 1;
+                  ">
+                                Tu reserva
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-2">
+
+                                </div>
+                                <div class="col-lg-8 m-0 p-0 pt-4 frc-test4" style="text-align: initial;">
+                                    Número de reserva:
+                                    <span class="frc-test5">{{
+                                        confirma_reserva_alq.ovoucher.pnr
+                                        }}</span>
+                                </div>
+                                <div class="col-lg-2">
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-2">
+
+                                </div>
+                                <div class="col-lg-8 m-0 p-0 pt-3 pb-3 frc-test4" style="text-align: initial;">
+                                    Titular:
+                                    <span class="frc-test5">{{ confirma_reserva_alq.opassenger.name }}
+                                        {{ confirma_reserva_alq.opassenger.lastName }}</span>
+                                </div>
+                                <div class="col-lg-2">
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-2">
+
+                                </div>
+                                <div class="col-lg-8 m-0 p-0 pb-4 frc-test4" style="text-align: initial;">
+                                    Número de voucher:
+                                    <span class="frc-test5">{{ confirma_reserva_alq.ovoucher.voucherNumber }}
+                                    </span>
+                                </div>
+                                <div class="col-lg-2">
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-12 m-0 p-0"></div>
+
+                            <div class="col-12 m-0 p-0"></div>
+
+                            <div class="col-12 m-0 p-0"></div>
+                        </div>
+                    </div>
+                    <div class="col-4 m-0 p-0"></div>
+                </div>
+            </div>
+
+            <div class="col-12 m-0 p-0 pb-5">
+                <div class="row m-0 p-0">
+                    <div class="col-1 m-0 p-0"></div>
+
+                    <div class="col-10 m-0 p-0" style="
+                background: #fdfdfd 0% 0% no-repeat padding-box;
+                border: 1px solid #e2e2e2;
+                border-radius: 20px 0px;
+                opacity: 1;
+              ">
+                        <div class="row m-0 p-0 pt-4 pb-4">
+                            <div class="col-12 m-0 p-0"></div>
+
+                            <div class="col-4 m-0 p-0 text-center frc-test3" style="
+                    background: transparent
+                      linear-gradient(
+                        99deg,
+                        #ed1c24 0%,
+                        #d51a2c 34%,
+                        #3c4749 100%
+                      )
+                      0% 0% no-repeat padding-box;
+                    border: 1px solid #e2e2e2;
+                    border-radius: 0px 23px 23px 0px;
+                    opacity: 1;
+                  ">
+                                Detalles de la reserva
+                            </div>
+
+                            <div class="col-12 m-0  pt-4 pl-5 pr-5">
+                                <div class="row m-0 p-0">
+                                    <div class="col-6 m-0 p-0">
+                                        <div class="row m-0 p-0">
+                                            <div class="col-12 m-0 p-0 frc-test6">
+                                                <img class="pr-1" src="./assets/Images/cars/calendario.svg" alt="" />
+                                                FECHA DE RECOJO:
+                                                <span class="pl-1 frc-test7">{{
+                                                    confirma_reserva_alq.otimeLocation.pickUpDate
+                                                    }}</span>
+                                            </div>
+
+                                            <div class="col-12 m-0 p-0 frc-test6">
+                                                <img class="pr-1" src="./assets/Images/cars/hora.svg" alt="" />
+                                                HORA DE RECOJO:
+                                                <span class="pl-1 frc-test7">{{
+                                                    confirma_reserva_alq.otimeLocation.pickUpHour
+                                                    }}</span>
+                                            </div>
+
+                                            <div class="col-12 m-0 p-0 frc-test6">
+                                                <img class="pr-1" src="./assets/Images/cars/marcador.svg" alt="" />
+                                                LUGAR DE RECOJO:
+                                                <span class="pl-1 frc-test7">{{
+                                                    confirma_reserva_alq.otimeLocation.pickUpAddress
+                                                    }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 m-0 p-0">
+                                        <div class="row m-0 p-0">
+                                            <div class="col-12 m-0 p-0 frc-test6">
+                                                <img class="pr-1" src="./assets/Images/cars/calendario.svg" alt="" />
+                                                FECHA DE DEVOLUCIÓN:
+                                                <span class="pl-1 frc-test7">{{
+                                                    confirma_reserva_alq.otimeLocation.dropOffDate
+                                                    }}</span>
+                                            </div>
+
+                                            <div class="col-12 m-0 p-0 frc-test6">
+                                                <img class="pr-1" src="./assets/Images/cars/hora.svg" alt="" />
+                                                HORA DE DEVOLUCIÓN:
+                                                <span class="pl-1 frc-test7">{{
+                                                    confirma_reserva_alq.otimeLocation.dropOffHour
+                                                    }}</span>
+                                            </div>
+
+                                            <div class="col-12 m-0 p-0 frc-test6">
+                                                <img class="pr-1" src="./assets/Images/cars/marcador.svg" alt="" />
+                                                LUGAR DE DEVOLUCIÓN:
+                                                <span class="pl-1 frc-test7">{{
+                                                    confirma_reserva_alq.otimeLocation.dropOffAddress
+                                                    }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 m-0 p-0 pt-4"></div>
+
+                            <div class="col-12 m-0 p-0"></div>
+
+                            <div class="col-12 m-0 p-0"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-1 m-0 p-0"></div>
+                </div>
+            </div>
+
+            <div class="col-12 m-0 p-0">
+                <div class="row m-0 p-0">
+                    <div class="col-1 m-0 p-0"></div>
+
+                    <div class="col-10 m-0 p-0">
+                        <div class="row m-0 p-0">
+                            <div class="col-8 m-0 p-0" style="
+                    background: #fdfdfd 0% 0% no-repeat padding-box;
+                    border: 1px solid #e2e2e2;
+                    border-radius: 20px 0px;
+                    opacity: 1;
+                  ">
+                                <div class="row m-0 p-0">
+                                    <div class="col-12 m-0 p-0 pt-4"></div>
+
+                                    <div class="col-5 m-0 p-0 text-center frc-test3" style="
+                        background: transparent
+                          linear-gradient(
+                            99deg,
+                            #ed1c24 0%,
+                            #d51a2c 34%,
+                            #3c4749 100%
+                          )
+                          0% 0% no-repeat padding-box;
+                        border: 1px solid #e2e2e2;
+                        border-radius: 0px 23px 23px 0px;
+                        opacity: 1;
+                      ">
+                                        Detalles del auto
+                                    </div>
+
+                                    <div class="col-12 m-0 p-0 pt-4"></div>
+
+                                    <div class="col-12 m-0 pl-3">
+                                        <div class="row m-0 p-0">
+                                            <div class="col-3 m-0 p-0">
+                                                <div class="row m-0 p-0">
+                                                    <div class="col-12 m-0 p-0 frc-test8">
+                                                        {{ confirma_reserva_alq.ocarInfo.model }}
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-3 m-0 p-0">
+                                                <div class="row m-0 p-0">
+                                                    <div class="col-12 m-0 p-0 text-center frc-test9" style="
+                                background: #ffffff 0% 0% no-repeat padding-box;
+                                border: 1px solid #0090ff;
+                                border-radius: 6px 0px;
+                                opacity: 1;
+                              ">
+                                                        {{ confirma_reserva_alq.ocarInfo.category }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 m-0  pt-2 pb-4 pl-3">
+                                        <div class="row m-0 p-0">
+                                            <div class="col-6 m-0 p-0" style="
+                            border: 1px solid #707070;
+                            opacity: 0.24;
+                            height: 2px !important;
+                          "></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 m-0 pl-3">
+                                        <div class="row m-0 p-0">
+                                            <div class="col-6 m-0 p-0">
+                                                <div class="row m-0 p-0">
+                                                    <div class="col-6 m-0 p-0">
+                                                        <div class="row m-0 p-0">
+                                                            <div *ngIf="
+                                    confirma_reserva_alq.ocarInfo.doors !== null
+                                  " class="col-12 m-0 p-0 frc-test5">
+                                                                {{ confirma_reserva_alq.ocarInfo.doors }} Doors
+                                                            </div>
+
+                                                            <div class="col-12 m-0 p-0 frc-test5">
+                                                                {{ confirma_reserva_alq.ocarInfo.passengers }}
+                                                                Pasajeros
+                                                            </div>
+
+                                                            <div class="col-12 m-0 p-0 frc-test5">
+                                                                {{
+                                                                confirma_reserva_alq.ocarInfo.bags
+                                                                
+                                                                }}
+                                                                Equipaje grande
+                                                            </div>
+
+                                                            <div class="col-12 m-0 p-0 frc-test5">
+                                                                {{
+                                                                confirma_reserva_alq.ocarInfo.bags
+                                                                | slice: 0:1
+                                                                }}
+                                                                Equipaje pequeño
+                                                            </div>
+
+                                                            <div *ngIf="
+                                    confirma_reserva_alq.ocarInfo.airConditioner
+                                  " class="col-12 m-0 p-0 frc-test5">
+                                                                Aire acondicionado
+                                                            </div>
+
+                                                            <div class="col-12 m-0 p-0 frc-test5">
+                                                                {{ confirma_reserva_alq.ocarInfo.type }}
+                                                            </div>
+
+                                                            <div class="col-12 m-0 p-0 frc-test5">
+                                                                <img class="img-fuild"
+                                                                    [src]="confirma_reserva_alq.ocompany.image"
+                                                                    pTooltip="{{confirma_reserva_alq.ocompany.name}}"
+                                                                    alt="" />
+
+                                                            </div>
+
+                                                            <div class="col-12 m-0 p-0 frc-test5"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-6 m-0 p-0 img-fluid" style="
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                              ">
+                                                        <img style="width: 100%;"
+                                                            [src]="carSelect.oselectCar.oinformation.ocarInfo.image"
+                                                            alt="" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-6 m-0  pr-3">
+                                                <div class="row m-0 p-0" style="
+                              background: #fffbfb 0% 0% no-repeat padding-box;
+                              border: 1px solid #f1f1f1;
+                              border-radius: 15px 0px;
+                              opacity: 1;
+                            ">
+                                                    <div class="col-12 m-0 p-0">
+                                                        <span class="pr-2 frc-test10">
+                                                            Tarifa seleccionada:
+                                                        </span>
+                                                        <span class="frc-test11">
+                                                            {{ confirma_reserva_alq.ocarInfo.orate.name }}
+                                                        </span>
+                                                    </div>
+
+                                                    <div class="col-12 m-0 p-0">
+                                                        <span class="pr-2 frc-test10">
+                                                            {{ confirma_reserva_alq.ocarInfo.orate.description }}
+                                                        </span>
+                                                        <!--  <span class="frc-test11">
+                                {{ confirma_reserva_alq.ocarInfo.orate.name }}
+                              </span> -->
+                                                    </div>
+
+                                                    <!-- <div
+                              *ngFor="
+                                let inclusion of confirma_reserva_alq.ocarInfo
+                                  .orate.inclusions
+                              "
+                              class="col-12 m-0 p-0"
+                            >
+                              <span class="pr-2 frc-test10">
+                                {{ inclusion }}:
+                              </span>
+                              <span class="frc-test11"> Si </span>
+                            </div> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 m-0 p-0 pt-4"></div>
+
+                                    <div class="col-12 m-0 p-0"></div>
+
+                                    <div class="col-12 m-0 p-0"></div>
+
+                                    <div class="col-12 m-0 p-0"></div>
+
+                                    <div class="col-12 m-0 p-0"></div>
+
+                                    <div class="col-12 m-0 p-0"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-4 m-0 pl-3">
+                                <div class="row m-0 p-0" style="
+                      background: #fdfdfd 0% 0% no-repeat padding-box;
+                      border: 1px solid #e2e2e2;
+                      border-radius: 20px 0px;
+                      opacity: 1;
+                    ">
+                                    <div class="col-12 m-0 p-0 pt-4"></div>
+
+                                    <div class="col-6 m-0 p-0 text-center frc-test3" style="
+                        background: transparent
+                          linear-gradient(
+                            99deg,
+                            #ed1c24 0%,
+                            #d51a2c 34%,
+                            #3c4749 100%
+                          )
+                          0% 0% no-repeat padding-box;
+                        border: 1px solid #e2e2e2;
+                        border-radius: 0px 23px 23px 0px;
+                        opacity: 1;
+                      ">
+                                        Detalles de la tarifa
+                                    </div>
+
+                                    <div class="col-lg-12 m-0 p-0 pt-3">
+                                        <div class="row m-0">
+                                            <div class="col-lg-6 frc-test11" style="text-align: initial;">TIPO DE PAGO:
+                                            </div>
+                                            <div class="col-lg-6 frc-test11">
+                                                {{ confirma_reserva_alq.oprice.paymentType }}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div *ngIf="this.ratePriceSel.lpriceByPayments != null && this.ratePriceSel.lpriceByPayments.length > 0"
+                                        class="col-12 m-0 p-0 pt-3">
+                                        <div class="row m-0">
+                                            <div class="col-lg-6  frc-test11" style="text-align: initial;">Precio Base:
+                                            </div>
+                                            <div class="col-lg-6  frc-test11">
+                                                <span class="pr-1 frc-test13">
+                                                    {{ confirma_reserva_alq.oprice.currency }}
+                                                </span>
+                                                <span class="frc-test14">
+                                                    {{
+                                                    priceBase
+                                                    }}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div *ngIf="ratePriceSel.lpriceByPayments != null && this.ratePriceSel.lpriceByPayments.length > 0"
+                                        class="col-12 m-0 p-0 pt-3">
+                                        <div class="row m-0">
+                                            <div class="col-lg-6 frc-test11" style="text-align: initial;">
+
+
+                                                Cargos Administrativos:
+
+
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <span class="pr-1 frc-test13">{{
+                                                    ratePriceSel.currency
+                                                    }}</span>
+                                                <span class="frc-test14">{{
+                                                    cargos
+                                                    }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                      
+                                    <div class="col-12 m-0 p-0 pt-3 pb-3">
+                                        <div class="row m-0 p-0">
+                                            <div class="col-12 m-0 p-0" style="
+                            border: 1px solid #707070;
+                            opacity: 0.28;
+                            height: 2px;
+                          "></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 m-0 p-0 ">
+                                        <div class="row m-0">
+                                            <div class="col-lg-6  frc-test15" style="text-align: initial;">PRECIO TOTAL:
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <span class="pr-1 frc-test16">
+                                                    {{ confirma_reserva_alq.oprice.currency }}
+                                                </span>
+                                                <span class="frc-test17">
+                                                    {{ totalAmount }}
+                                                </span>
+                                            </div>
+                                        </div>
+                             <!--            <div *ngIf="this.loginData.ocompany.ocompanyConfiguration.paymentServiceId === 1"
+                                            class="row m-0 p-0">
+                                            <div class="col-12 m-0 p-0 con-test9">La empresa se hizo cargo del monto de
+                                                la transacción.</div>
+
+                                        </div>
+                                        <div *ngIf="this.loginData.ocompany.ocompanyConfiguration.paymentServiceId === 3"
+                                            class="row m-0 p-0">
+                                            <div class="col-12 m-0 p-2 con-test9">Usted pagó el monto base , los cargos
+                                                administrativos fueron
+                                                pagados por la empresa.</div>
+
+                                        </div> -->
+
+                                        <div *ngIf="valTax" class="row m-0 p-2 mt-3">
+                                            <div class="col-lg-6 p-0 frc-test11" style="text-align: initial;">
+
+
+                                                Usted deberá pagar en el mostrador
+
+
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <span class="pr-1 frc-test13">{{
+                                                    ratePriceSel.currency
+                                                    }}</span>
+                                                <span class="frc-test14">{{
+                                                    taxAmount
+                                                    }}</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-12 m-0 p-0 pt-4"></div>
+
+                                    <div class="col-12 m-0 p-0"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-1 m-0 p-0"></div>
+                </div>
+            </div>
+
+            <div class="col-12 m-0 p-0 pt-5">
+                <div class="row m-0 p-0">
+                    <div class="col-1 m-0 p-0"></div>
+                    <div class="col-10 m-0 p-0 frc-test18">Regulaciones y Condiciones</div>
+                    <div class="col-1 m-0 p-0"></div>
+                </div>
+            </div>
+
+            <div class="col-12 m-0 p-0 pb-4">
+                <div class="row m-0 p-0">
+                    <div class="col-1 m-0 p-0"></div>
+                    <div class="col-10 m-0 p-0 fondo-rojo-tri" style="height: 2px"></div>
+                    <div class="col-1 m-0 p-0"></div>
+                </div>
+            </div>
+
+            <div class="col-12 m-0 p-0 pb-4">
+                <div class="row m-0 p-0">
+                    <div class="col-1 m-0 p-0"></div>
+                    <div class="col-10 m-0 p-0" style="
+                background: #fdfdfd 0% 0% no-repeat padding-box;
+                box-shadow: -1px 2px 6px #00000029;
+                border-radius: 20px 0px;
+                opacity: 1;
+              ">
+                        <div *ngIf="carSelect.oselectCar.termsAndConditions != null" class="row m-0 p-0">
+                            <div class="col-12 m-0  pl-3 frc-test19" style="
+                    background: #fbf6f6 0% 0% no-repeat padding-box;
+                    border-radius: 20px 0px 0px 0px;
+                    opacity: 1;
+                    height: 50px !important;
+                    display: flex;
+                    align-items: center;
+                  ">
+                                Terminos y condiciones
+                            </div>
+
+                            <div style="cursor: pointer;text-decoration: underline;color: rgb(86, 126, 212);"
+                                (click)="open(carSelect.oselectCar.termsAndConditions)"
+                                class="col-12 m-0  pl-3 pr-3 pt-3 frc-test20">
+                                {{confirma_reserva_alq.termsAndConditions}}
+                            </div>
+
+
+
+                            <div class="col-12 m-0 p-0"></div>
+
+                            <div class="col-12 m-0 p-0"></div>
+                        </div>
+                    </div>
+                    <div class="col-1 m-0 p-0"></div>
+                </div>
+            </div>
+
+            <div class="col-12 m-0 p-0 pb-4">
+                <div class="row m-0 p-0">
+                    <div class="col-1 m-0 p-0"></div>
+                    <div class="col-10 m-0 p-0" style="
+                background: #fdfdfd 0% 0% no-repeat padding-box;
+                box-shadow: -1px 2px 6px #00000029;
+                border-radius: 20px 0px;
+                opacity: 1;
+              ">
+                        <div *ngIf="confirma_reserva_alq.ocancelationPolicy != null" class="row m-0 p-0">
+                            <div class="col-12 m-0 pl-3 p-0 frc-test19" style="
+                    background: #fbf6f6 0% 0% no-repeat padding-box;
+                    border-radius: 20px 0px 0px 0px;
+                    opacity: 1;
+                    height: 50px !important;
+                    display: flex;
+                    align-items: center;
+                  ">
+                                Políticas de Cancelación
+                            </div>
+
+                            <div class="col-12 m-0 p-0 pl-3 pr-3 pt-3 frc-test20">
+                                <div class="row">
+                                    <div class="col-12" style="text-align: center;">
+                                        <span
+                                            style="font-size: 20px;text-decoration: underline;font-weight: 700;">{{confirma_reserva_alq.ocancelationPolicy.description}}</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <span
+                                            style="font-size: 18px;">{{confirma_reserva_alq.ocancelationPolicy.periodHours}}
+                                            horas
+                                            {{confirma_reserva_alq.ocancelationPolicy.periodType}}</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <span style="font-size: 17px;font-weight: 700;">Monto por cancelación: </span>
+                                        <span
+                                            style="font-size: 17px;">{{confirma_reserva_alq.ocancelationPolicy.currency}}
+                                            {{confirma_reserva_alq.ocancelationPolicy.amount}}</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <span style="font-size: 17px;font-weight: 700;">Monto por No Show: </span>
+                                        <span
+                                            style="font-size: 17px;">{{confirma_reserva_alq.ocancelationPolicy.currency}}
+                                            {{confirma_reserva_alq.ocancelationPolicy.noShowAmount}}</span>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+
+                            <div class="col-12 m-0 p-0"></div>
+
+                            <div class="col-12 m-0 p-0"></div>
+
+                            <div class="col-12 m-0 p-0"></div>
+                        </div>
+                    </div>
+                    <div class="col-1 m-0 p-0"></div>
+                </div>
+            </div>
+
+            <div class="col-12 m-0 p-0 pb-4">
+                <div class="row m-0 p-0">
+                    <div class="col-1 m-0 p-0"></div>
+                    <div class="col-10 m-0 p-0" style="
+                background: #fdfdfd 0% 0% no-repeat padding-box;
+                box-shadow: -1px 2px 6px #00000029;
+                border-radius: 20px 0px;
+                opacity: 1;
+              ">
+                        <div class="row m-0 p-0">
+                            <div class="col-12 m-0  pl-3 frc-test19" style="
+                    background: #fbf6f6 0% 0% no-repeat padding-box;
+                    border-radius: 20px 0px 0px 0px;
+                    opacity: 1;
+                    height: 50px !important;
+                    display: flex;
+                    align-items: center;
+                  ">
+                                Importante para tener en cuenta:
+                            </div>
+
+                            <div class="col-12 m-p p-0 pt-5 pb-3">
+                                <div class="row m-p p-0">
+                                    <div class="col-3">
+                                        <div class="row" style="margin-left: 20%;margin-top: 50px;">
+
+                                            <div *ngFor="let inclusion of confirma_reserva_alq.ocarInfo.orate.llistRate"
+                                                class="col-lg-12 " style="
+                            height: 40px;
+                            display: list-item;
+                            align-items: center !important;
+                            margin-top: 5%;
+                          ">
+                                                <span data-html="true"
+                                                    pTooltip="{{inclusion.description}} {{inclusion.otherInformation}}"
+                                                    class="det-test19">{{ inclusion.alias }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-9">
+                                        <div class="row m-0 p-0">
+                                            <div class="" style="
+                            width: 5%;
+                            display: flex !important;
+                            justify-content: center !important;
+                            align-items: center !important;
+                          ">
+                                            </div>
+
+                                            <div id="div_container" class="scrollmenu" style="width: 90% !important">
+                                                <div class="" style="
+                              width: 228px !important;
+                              margin-right: 20px;
+                              border-radius: 20px 0 20px 0;
+                              border: solid 1px #aaaaaa;
+                              padding-bottom: 10px;
+                              min-width: 250px !important;
+                            ">
+                                                    <div class="row m-0 p-0">
+                                                        <div class="col-12 m-0 p-0 det-test20" style="
+                                height: 50px !important;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                background-color: #ED1C24;
+                                color: white;
+                                border-radius: 20px 0 0 0;
+                              ">
+                                                            <span
+                                                                pTooltip="{{confirma_reserva_alq.ocarInfo.orate.description}}">{{
+                                                                confirma_reserva_alq.ocarInfo.orate.name }}</span>
+                                                        </div>
+                                                        <div *ngFor="
+                                  let inclusion of confirma_reserva_alq.ocarInfo.orate.llistRate;
+                                  let i = index
+                                " class="col-12" style="
+                                  height: 50px !important;
+                                  display: flex;
+                                  justify-content: center;
+                                  align-items: center;
+                                  border-bottom: solid 1px #aaaaaa;
+                                ">
+                                                            <img src="./assets/Images/cars/check_ok.svg" alt="" />
+                                                        </div>
+
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-12 m-0 p-0"></div>
+                        </div>
+                    </div>
+                    <div class="col-1 m-0 p-0"></div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-1">
+
+                    </div>
+                    <div class="col-10">
+                        <div class="row">
+                            <div class="col-12 pt-3" *ngIf="listAditionals != null && listAditionals.length > 0">
+                                <div class="row">
+                                    <div class="col-11 det-test19 text-center" style="
+                        border-radius: 20px 0 20px 0;
+                        background-color: #e5e5e5;
+                        height: 60px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                      ">
+                                        <img class="pr-3" src="./assets/Images/cars/informacion_rojo.svg" alt="" />
+                                        Los servicios adicionales están sujetos a verificación y deben
+                                        ser pagados en el mostrador al momento de retirar tu vehículo.
+                                        Precios mostrados son referenciales.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div *ngIf="listAditionals != null && listAditionals.length > 0" class="col-12 pt-3">
+                                <div class="row">
+                                    <div class="col-11 pt-3" *ngFor="let item of listAditionals">
+                                        <div class="row" style="
+                          border-radius: 20px 0 20px 0;
+                          border: solid 1px #e5e5e5;
+                          height: 60px;
+                        ">
+                                            <div class="col-4 det-test26" style="
+                            display: flex;
+                            align-items: center;
+                            border-right: solid 1px #e5e5e5;
+                          ">
+
+                                                {{ item.description }}
+
+                                            </div>
+
+                                            <div class="col-4 det-test26" style="
+                            display: flex;
+                            align-items: center;
+                            border-right: solid 1px #e5e5e5;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                          ">
+                                                Sujeto a disponibilidad en agencia
+                                            </div>
+
+                                            <div class="col-3 det-test26" style="
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                          ">
+                                                <img class="pr-3" src="./assets/Images/cars/informacion_verde.svg"
+                                                    alt="" />
+                                                {{
+                                                carSelect.oselectCar.lextraRates[0].lratePrice[0].currency
+                                                }}
+                                                {{ item.amount }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-1">
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="col-12 m-0 p-0 pb-4"></div>
+
+            <div class="col-12 m-0 p-0 pb-4"></div>
+
+            <div class="col-12 m-0 p-0"></div>
+
+            <div class="col-12 m-0 p-0"></div>
+        </div>

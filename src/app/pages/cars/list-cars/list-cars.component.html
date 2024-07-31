@@ -1,0 +1,671 @@
+
+      <div
+       
+        class="row pt-4"
+      >
+        <div class="col-3 pt-2">
+            <div class="row  ml-4 mr-4">
+                <app-search-cars [style]="true" (select)="showAgain()"></app-search-cars>
+            </div>
+        </div>
+        <div  class="col-9 pt-2 pb-3">
+          <div class="row">
+            <div class="col-12 pr-5 pb-5">
+              <div class="row m-0 p-0">
+                <div
+                  class="col-12 box-shadow"
+                  style="border-radius: 20px 0 20px 0"
+                >
+                  <div class="row m-0 p-0">
+                    <div class="m-0 p-0" style="width: 45% !important">
+                      <div class="row m-0 p-0">
+                        <div class="col-8 m-0 p-0">
+                          <div class="row">
+                            <div class="col-12 alq-text-6">Punto de recojo</div>
+  
+                            <div class="col-12 alq-text-6">
+                              {{ carsSearchRequest.selectIda.name }}
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div class="col-1">
+                            <p-divider layout="vertical"></p-divider>
+           
+                        </div>
+  
+                        <div class="col-3 m-0 p-0">
+                          <div class="row">
+                            <div class="col-12 alq-text-6">
+                              {{ cabeceraOrigenMes }}
+                            </div>
+  
+                            <div
+                              class="col-12 alq-text-6"
+                              style="color: #ff0000 !important"
+                            >
+                              {{ cabeceraOrigenFecha }}
+                              <span>/ {{ carsSearchRequest.horaIda  }}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div
+                      class="m-0 p-0"
+                      style="
+                        width: 10% !important;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                      "
+                    >
+                      <strong>
+                        <span
+                          class="m-0 p-0"
+                          style="color: #6b253c; font-size: 30px !important"
+                          >></span
+                        >
+                      </strong>
+                    </div>
+  
+                    <div class="m-0 p-0" style="width: 45% !important">
+                      <div class="row m-0 p-0">
+                        <div class="col-8 m-0 p-0">
+                          <div class="row">
+                            <div class="col-12 alq-text-6">
+                              Punto de devolución
+                            </div>
+  
+                            <div class="col-12 alq-text-6">
+                              {{ carsSearchRequest.selectVuelta != null && carsSearchRequest.selectVuelta != undefined ? carsSearchRequest.selectVuelta.name : carsSearchRequest.selectIda.name }}
+                            </div>
+                          </div>
+                        </div>
+  
+                        <div class="col-1">
+                            <p-divider layout="vertical"></p-divider>
+                        </div>
+  
+                        <div class="col-3 m-0 p-0">
+                          <div class="row">
+                            <div class="col-12 alq-text-6">
+                              {{ cabeceraDestinoMes }}
+                            </div>
+  
+                            <div
+                              class="col-12 alq-text-6"
+                              style="color: #ff0000 !important"
+                            >
+                              {{ cabeceraDestinoFecha }}
+                              <span>/ {{ carsSearchRequest.horaVuelta  }}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-12 alq-text-4">Categorías disponibles:</div>
+  
+            <div class="col-12 pr-5">
+              <div class="row">
+                <div
+                  class=""
+                  style="
+                    width: 5%;
+                    display: flex !important;
+                    justify-content: center !important;
+                    align-items: center !important;
+                  "
+                >
+                  <img
+                    style="cursor: pointer; width: 32px"
+                    (click)="moverIzq('div_container')"
+                    src="./assets/Images/cars/keyboard-left-arrow_72692.svg"
+                    alt=""
+                  />
+                </div>
+  
+                <div
+                  id="div_container"
+                  class="scrollmenu"
+                  style="width: 90% !important"
+                >
+                  <div
+                    *ngFor="let item of carsSearch.lcategories; let i = index"
+                    class="box-shadow"
+                    style="
+                      width: 230px !important;
+                      padding: 10px !important;
+                      margin: 10px !important;
+                      height: 300px !important;
+                    "
+                  >
+                    <div class="row m-0 p-0 div-row-caja" style="cursor: pointer">
+                      <div class="col-12 m-0 p-0">
+                        <div class="row m-0 p-0" style="width: 100%">
+                          <div class="col-3 m-0 p-0"></div>
+                          <div class="col-3 m-0 p-0"></div>
+                          <div class="col-3 m-0 p-0"></div>
+                          <div class="col-3 m-0 p-0">
+                            <p-radioButton name="gender" [value]="item" [(ngModel)]="ingredient" (onClick)="seleccionarCategoria(item.description, i)" [inputId]="item.description"></p-radioButton>
+                           
+        
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="col-12 p-0 m-0 text-center alq-text-1"
+                        style="
+                          text-align: center !important;
+                          justify-content: center;
+                        "
+                      >
+                        {{ item.description }}
+                      </div>
+                      <div
+                        class="col-12 m-0 p-0 text-center"
+                        style="
+                          text-align: center !important;
+                          justify-content: center;
+                          height: 130 !important;
+                        "
+                      >
+                        <img
+                          class="img-fluid"
+                          [src]="item.lrecommendations[0].image"
+                          alt=""
+                        />
+                      </div>
+                      <div class="col-12 m-0 p-0 pl-4 pb-1">
+                      
+                        <span class="alq-text-2 pr-3">Desde: </span>
+                        <span *ngIf="item.lrecommendations[0].oprice.lpriceByPayments != null && item.lrecommendations[0].oprice.lpriceByPayments.length > 0; else elseTemplate" class="alq-text-3">
+                          {{ item.lrecommendations[0].oprice.currency }}
+                          {{ item.lrecommendations[0].oprice.lpriceByPayments[0].finalAmount }}
+                        </span>
+                        <ng-template #elseTemplate>
+                          <span   class="alq-text-3">
+                            {{ item.lrecommendations[0].oprice.currency }}
+                            {{ item.lrecommendations[0].oprice.amount }}
+                          </span>
+                        </ng-template>
+                      </div>
+                      <div class="col-12 m-0 p-0 pb-2">
+                        <div class="row m-0 p-0" style="width: 100%">
+                          <div
+                            class="col-4 p-0 m-0 text-center"
+                            style="display: flex; justify-content: center"
+                          >
+                            <img
+                              src="./assets/Images/cars/pasajero_gris.svg"
+                              alt=""
+                              tooltip="pasajeros"
+                            />
+                            <span
+                              class="pl-3 alq-text-10"
+                              style="color: #3d3d3d !important"
+                            >
+                              {{ item.lrecommendations[0].numberPassengers }}
+                            </span>
+                          </div>
+                          <div
+                            class="col-4 p-0 m-0 text-center"
+                            style="display: flex; justify-content: center"
+                          >
+                            <img
+                              src="./assets/Images/cars/accessory_gris.svg"
+                              alt=""
+                              tooltip="mochila o carry on"
+                            />
+                            <span
+                              class="pl-3 alq-text-10"
+                              style="color: #3d3d3d !important"
+                            >
+                              {{
+                                item.lrecommendations[0].baggage 
+                              }}
+                            </span>
+                          </div>
+                          <div
+                            class="col-4 p-0 m-0 text-center"
+                            style="display: flex; justify-content: center"
+                          >
+                            <img
+                              src="./assets/Images/cars/suitcase_gris.svg"
+                              alt=""
+                              tooltip="maleta de 23kg"
+                            />
+                            <span
+                              class="pl-3 alq-text-10"
+                              style="color: #3d3d3d !important"
+                            >
+                              {{ item.lrecommendations[0].baggage | slice: 0:1 }}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        [id]="'diBase_' + i"
+                        class="col-12 m-0 p-0 div-base base-general"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+  
+                <div
+                  class=""
+                  style="
+                    width: 5%;
+                    display: flex !important;
+                    justify-content: center !important;
+                    align-items: center !important;
+                  "
+                >
+                  <img
+                    style="cursor: pointer; width: 32px"
+                    (click)="moverDer('div_container')"
+                    src="./assets/Images/cars/keyboard-right-arrow_72690.svg"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-12 alq-text-6 pt-5">
+              <div class="row">
+                <div class="col-2">Filtros aplicados</div>
+  
+                <div *ngIf="selCategoriaDescription.length > 0" class="col-3">
+                  <button style="cursor: default" class="btn alq-btn-buscar">
+                    {{ selCategoriaDescription }}
+                    <span
+                      class="pl-3"
+                      (click)="mostrarTodasCategorias()"
+                      style="cursor: pointer"
+                      >X</span
+                    >
+                  </button>
+                </div>
+  
+                <div class="col-3">
+                  Tipo de Caja
+                  <p-inputSwitch class="ml-2 mr-2" [(ngModel)]="checkedAutomatico" (onChange)="seleccionarTipoCaja(checkedAutomatico)"></p-inputSwitch>Automático
+
+                </div>
+  
+                <div class="col-3">
+                  Nro de pasajeros
+                  <p-inputSwitch class="ml-2 mr-2" [(ngModel)]="checkedPasajeros4" (onChange)="seleccionarMasPasajeros(checkedPasajeros4)"></p-inputSwitch>+4
+
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-12 text-center pt-5 alq-text-4">
+              {{ countResultCars }} autos encontrados
+            </div>
+  
+            <div class="col-11">
+              <div class="row">
+                <div
+                  *ngFor="let item of carsSearch.lcategories; let i = index"
+                  class="col-12"
+                >
+                  <div *ngIf="item.visible" class="row pt-5">
+                    <div class="col-12 alq-text-4">
+                      {{ item.description }}
+                    </div>
+                    <div class="col-12 p-2">
+                      <div class="row m-0 p-0">
+                        <div
+                          class="col-12 m-0 p-0 fondo-rojo-tri"
+                          style="height: 3px !important"
+                        ></div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="row">
+                        <div
+                          class=""
+                          style="
+                            width: 5% !important;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                          "
+                        >
+                          <img
+                            style="cursor: pointer; width: 32px"
+                            (click)="moverIzq('div_container_' + i)"
+                            src="./assets/Images/cars/keyboard-left-arrow_72692.svg"
+                            alt=""
+                          />
+                        </div>
+  
+                        <div
+                          id="div_container_{{ i }}"
+                          class="scrollmenu2"
+                          style="width: 90% !important"
+                        >
+                          <div
+                            *ngFor="let recomendacion of item.lrecommendations"
+                            class=""
+                          >
+                            <div
+                            *ngIf="recomendacion.visible === true"
+                              class="box-shadow mt-3"
+                              style="width: 335px !important"
+                            >
+                              <div class="row">
+                                <div
+                                  class="col-12 pb-2 text-center alq-text-5"
+                                  style="
+                                    white-space: normal !important;
+                                    line-height: 35px !important;
+                                    height: 80px !important;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                  "
+                                >
+                                  {{ recomendacion.model }}
+                                </div>
+  
+                                <div
+                                  class="col-12 m-0 p-0 text-center alq-text-16"
+                                  style="white-space: normal"
+                                >
+                                  <img
+                                    class="img-fluid"
+                                    src="./assets/Images/flight/airplane_ida.svg"
+                                    alt=""
+                                  />
+                                  {{ recomendacion.olocation.pickUpAddress }}
+                                </div>
+  
+                                <div class="col-12 text-center"></div>
+  
+                                <div class="col-12 text-center">
+                                  <hr />
+                                </div>
+  
+                                <div class="col-12 text-center">
+                                  <div class="row">
+                                    <div class="col-3"></div>
+                                    <div class="col-2 p-0 m-0">
+                                      <img
+                                        src="./assets/Images/cars/pasajero.svg"
+                                        alt=""
+                                        tooltip="pasajeros"
+                                      />
+                                      <span class="pl-2 alq-text-10">
+                                        {{ recomendacion.numberPassengers }}
+                                      </span>
+                                    </div>
+                                    <div class="col-2 p-0 m-0">
+                                      <img
+                                        src="./assets/Images/cars/accessory.svg"
+                                        alt=""
+                                        tooltip="mochila o carry on"
+                                      />
+                                      <span class="pl-2 alq-text-10">
+                                        {{
+                                          recomendacion.baggage 
+                                        }}
+                                      </span>
+                                    </div>
+                                    <div class="col-2 p-0 m-0">
+                                      <img
+                                        src="./assets/Images/cars/suitcase.svg"
+                                        alt=""
+                                        tooltip="maleta de 23kg"
+                                      />
+                                      <span class="pl-2 alq-text-10">
+                                        {{ recomendacion.baggage | slice: 0:1 }}
+                                      </span>
+                                    </div>
+                                    <div class="col-3"></div>
+                                  </div>
+                                </div>
+  
+                                <div
+                                  *ngIf="recomendacion.type === 'Automático'"
+                                  class="col-12 pt-2"
+                                >
+                                  <div class="row">
+                                    <div class="col-1"></div>
+                                    <div
+                                      class="col-1 alq-text-11 text-center"
+                                      style="
+                                        background-color: #ed1c24;
+                                        display: flex !important;
+                                        justify-content: center !important;
+                                        align-items: center !important;
+                                      "
+                                    >
+                                      A
+                                    </div>
+                                    <div class="col-9 alq-text-12">
+                                      Automático
+                                    </div>
+                                  </div>
+                                </div>
+  
+                                <div class="col-12 pt-2">
+                                  <div class="row">
+                                    <div class="col-1"></div>
+                                    <div
+                                      class="col-1 alq-text-11 text-center"
+                                      style="
+                                        background-color: #ed1c24;
+                                        display: flex !important;
+                                        justify-content: center !important;
+                                        align-items: center !important;
+                                      "
+                                    >
+                                      Km
+                                    </div>
+                                    <div
+                                      *ngIf="
+                                        recomendacion.kmIncluded ===
+                                        'Unlimited Miles'
+                                      "
+                                      class="col-9 alq-text-12"
+                                    >
+                                      Kilómetro ilimitado
+                                    </div>
+                                    <div
+                                      *ngIf="
+                                        recomendacion.kmIncluded !=
+                                        'Unlimited Miles'
+                                      "
+                                      class="col-9 alq-text-12"
+                                    >
+                                      {{ recomendacion.kmIncluded }}
+                                    </div>
+                                  </div>
+                                </div>
+  
+                                <div
+                                  *ngIf="recomendacion.airConditioner"
+                                  class="col-12 pt-2"
+                                >
+                                  <div class="row">
+                                    <div class="col-1"></div>
+                                    <div
+                                      class="col-1 alq-text-11"
+                                      style="
+                                        display: flex !important;
+                                        justify-content: center !important;
+                                        align-items: center !important;
+                                      "
+                                    >
+                                      <img
+                                        src="./assets/Images/cars/aire_Acondicionado.svg"
+                                        alt=""
+                                      />
+                                    </div>
+                                    <div class="col-9 alq-text-12">
+                                      Aire acondicionado
+                                    </div>
+                                  </div>
+                                </div>
+  
+                                <div
+                                  class="col-12 pt-3 text-right"
+                                  style="height: 45px !important"
+                                >
+                                  <img
+                                    class="img-fluid"
+                                    [src]="recomendacion.ocompany.image"
+                                    alt=""
+                                  />
+                                </div>
+  
+                                <div
+                                  class="col-12 text-center"
+                                  style="height: 135px !important"
+                                >
+                                  <img
+                                    class="img-fluid"
+                                    [src]="recomendacion.image"
+                                    alt=""
+                                  />
+                                </div>
+  
+                                <div class="col-12 pt-3">
+                                  <div class="row">
+                                    <div class="col-1"></div>
+                                    <div
+                                      class="col-md-10"
+                                      style="
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        text-align: center;
+                                      "
+                                    >
+                                      <button
+                                        (click)="
+                                          verDetalle(
+                                            recomendacion,
+                                            item.description
+                                          )
+                                        "
+                                        class="btn alq-btn-det"
+                                      >
+                                        Ver Detalle
+                                      </button>
+                                    </div>
+                                   <!--  <div class="col-5">
+                                      <div class="row">
+                                        <div class="col-12 alq-text-9">
+                                          Cancelación gratuita
+                                        </div>
+                                    
+                                      </div>
+                                    </div> -->
+                                    <div class="col-1"></div>
+                                  </div>
+                                </div>
+                                <div class="col-12 pt-3">
+                                  <div class="row" style="text-align: center;">
+                                    <div class="col-12">
+                                      <div class="row">
+                                        
+                                        <div
+                                          class="col-12 text-center alq-text-7"
+                                        >
+                                          Precio por {{ carsSearch.totalDays }} {{carsSearch.totalDays === 1 ? 'día' : 'días'}} 
+                                        </div>
+                                        <div *ngIf="recomendacion.oprice.lpriceByPayments != null && recomendacion.oprice.lpriceByPayments.length > 0; else elsePayment"
+                                          class="col-12 text-center alq-text-8"
+                                        >
+                                        <span>{{ recomendacion.oprice.currency }}
+                                          {{ recomendacion.oprice.lpriceByPayments[0].finalAmount }}</span><img width="20" pTooltip="Detalle de precio" tooltipPosition="top" style="cursor: pointer;"  (click)="op.toggle($event)" class="mb-1 ml-3" src="assets/Images/hotel/icon-info.png"><br />
+
+                                          <p-overlayPanel #op>
+                                            <div class="popRoom">
+                                                <div class="row m-0 p-0">
+                                                    <div class="col m-0 p-0">
+                                                        <span class="address">Precio Base</span>
+                                                    </div>
+                                                    <div class="col m-0 p-0 ">
+                                                        <span class="price-pop">{{recomendacion.oprice.currency}} </span> <span class="currency-pop"> {{recomendacion.oprice.base}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row m-0 p-0">
+                                                    <div class="col m-0 p-0">
+                                                        <span class="address">Cargos Admin.</span>
+                                                    </div>
+                                                    <div class="col m-0 p-0 ">
+                                                        <span class="price-pop">{{recomendacion.oprice.currency}} </span> <span class="currency-pop"> {{recomendacion.oprice.lpriceByPayments[0].chargesAmount}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row m-0 p-0">
+                                                  <div class="col m-0 p-0">
+                                                      <span class="address">Pagar en el mostrador</span>
+                                                  </div>
+                                                  <div class="col m-0 p-0 ">
+                                                      <span class="price-pop">{{recomendacion.oprice.currency}} </span> <span class="currency-pop"> {{recomendacion.oprice.tax}}</span>
+                                                  </div>
+                                              </div>
+                                            </div>
+                                            
+                                         
+                                        </p-overlayPanel>
+                                     
+         
+                                        </div>
+                                        <ng-template #elsePayment>
+                                          {{ recomendacion.oprice.currency }}
+                                          {{ recomendacion.oprice.amount }}
+                                        </ng-template>
+                                      </div>
+                                    </div>
+                                    <div class="col-1"></div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+  
+                        <div
+                          class=""
+                          style="
+                            width: 5% !important;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                          "
+                        >
+                          <img
+                            style="cursor: pointer; width: 32px"
+                            (click)="moverDer('div_container_' + i)"
+                            src="./assets/Images/cars/keyboard-right-arrow_72690.svg"
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  <!--       <div *ngIf="!flagResult" class="col-7 pt-2 pb-3">
+          <alert type="warning" class="text-center">
+            No se encontraron autos para esta búsqueda
+          </alert>
+        </div> -->
+      </div>
+
+  

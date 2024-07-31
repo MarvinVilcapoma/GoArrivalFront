@@ -1,0 +1,251 @@
+.hea{
+    background-color: #E5E7EB;
+    height: 4rem;
+}
+
+.box{
+    position: relative;
+}
+
+.inputeq {
+    padding: 10px;
+    width: 100%;
+    height: 40px;
+    background: none;
+    border: 2px solid #4B5563;
+    border-radius: 50px;
+    box-sizing: border-box;
+    font-family: Omnes-med;
+    font-size: 19px;
+    color: #4B5563;
+    outline: none;
+    transition: .5s;
+    background: white;
+}
+
+.spiner {
+  margin-left: 600px;
+}
+
+.link{
+    text-decoration: underline;
+    cursor: pointer;
+    color: #4878de
+}
+
+.box i{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(-50%,-50%);
+    font-size: 23px;
+    color: #4B5563;
+    transition: .2s;
+}
+
+.hea{
+    background-color: #E5E7EB;
+    height: 4rem;
+  }
+  
+  .box{
+    position: relative;
+  }
+  
+  .inputeq {
+    padding: 10px;
+    width: 100%;
+    height: 40px;
+    background: none;
+    border: 2px solid #4B5563;
+    border-radius: 50px;
+    box-sizing: border-box;
+    font-family: Omnes-med;
+    font-size: 19px;
+    color: #4B5563;
+    outline: none;
+    transition: .5s;
+    background: white;
+  }
+  
+  
+  
+  .box i{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(-50%,-50%);
+    font-size: 23px;
+    color: #4B5563;
+    transition: .2s;
+  }
+  
+  .txt-titulo {
+    font-family: Omnes-med;
+    letter-spacing: 0;
+    color: #828282;
+    opacity: 1;
+    font-size: 32px;
+    text-decoration: underline;
+  }
+  
+  
+  .example-container {
+  
+    height: -webkit-fill-available !important;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+  }
+  
+  .example-sidenav-content {
+  
+    margin-top: 10%;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .mat-drawer-inner-container {
+    overflow: hidden !important;
+  }
+  
+  
+  
+  .example-sidenav {
+    padding: 20px;
+    background-color: #111827;
+  }
+  
+  .btn-foot {
+    background-color: #111827;
+    width: 100%;
+  }
+  
+  .btn-foot:hover {
+    background-color: rgb(255 255 255 / 0.1)
+  }
+  
+  .btn-divFoot {
+    text-align: start;
+    cursor: pointer;
+    align-items: center;
+    display: flex;
+    letter-spacing: 0px;
+    gap: 24px;
+  }
+  
+  .btn-divFoot:hover {
+    background-color: rgb(79 70 2290 / 0.1);
+  }
+  
+  #todofootDiv:hover{
+    cursor: pointer;
+    background-color: rgb(79 70 2290 / 0.1);
+  }
+  
+  
+  
+  .sidenav-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #111827;
+    padding: 10px;
+    text-align: center;
+    border-top: 1px solid rgb(255 255 255 / 0.12)
+  }
+  
+  .divFoot {
+    text-align: start;
+  }
+  
+  .title-foot {
+    color: white;
+    font-size: 15px;
+    font-family: Omnes-med;
+  }
+  
+  .subtitle-foot {
+    white-space: nowrap;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 500;
+    color: rgb(255 255 255 / 0.5);
+  }
+  
+  .mat-mdc-list-item:hover {
+    background: rgb(99 102 241 / 15%) !important;
+    border-radius: 12px !important;
+  }
+  
+  .icono {
+    color: rgb(129 140 248 / 60%);
+  
+    height: 1.5rem;
+    margin-inline-end: 1rem;
+    padding: 2px 0px;
+  
+  }
+  
+  .mat-expansion-panel-header {
+    padding: 0px !important;
+  }
+  
+  .mat-expansion-indicator::after {
+    color: rgb(129 140 248 / 60%) !important;
+  }
+  
+  .mat-expansion-panel {
+    background: none !important;
+  }
+  
+  .full-width {
+    width: 100%;
+    color: #d1d5db;
+    font-family: Omnes-med;
+  }
+  
+  .menu-button {
+    transition: 300ms ease-in-out;
+    transform: rotate(0deg);
+    color: rgb(129 140 248 / 60%);
+  
+    height: 1.5rem;
+    margin-inline-end: 1rem;
+    padding: 2px 0px;
+  }
+  
+  .menu-button.rotated {
+    transform: rotate(180deg);
+  
+  }
+  
+  .submenu {
+    overflow-y: hidden;
+    transition: transform 300ms ease;
+    transform: scaleY(0);
+    transform-origin: top;
+    padding-left: 30px;
+  }
+  
+  .submenu.expanded {
+    transform: scaleY(1);
+  }
+  
+  .mat-toolbar.mat-primary {
+    background: #8f9297 !important;
+  }
+  
+  @media screen and (max-width:576px) {
+    .example-sidenav-content {
+      display: block;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+    }
+  }
+  
+  
+  
+  
+

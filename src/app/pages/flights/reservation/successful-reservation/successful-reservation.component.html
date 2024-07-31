@@ -1,0 +1,114 @@
+<div class="seccion">
+    <div  class="row m-0 p-0 mt-5">
+        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+            <p-stepper [activeStep]="3" [linear]="true">
+                <p-stepperPanel header="Selecciona tu vuelo">
+                    <ng-template pTemplate="content" let-nextCallback="nextCallback" let-index="index">
+
+                    </ng-template>
+                </p-stepperPanel>
+                <p-stepperPanel header="Completa tus datos">
+                    <ng-template pTemplate="content" let-prevCallback="prevCallback" let-index="index">
+                     
+                    </ng-template>
+                </p-stepperPanel>
+                <p-stepperPanel header="Confirma tu vuelo">
+                    <ng-template pTemplate="content" let-prevCallback="prevCallback"
+                        let-nextCallback="nextCallback" let-index="index">
+
+                    </ng-template>
+                </p-stepperPanel>
+                <p-stepperPanel header="Reserva finalizada">
+                    <ng-template pTemplate="content" let-prevCallback="prevCallback" let-index="index">
+                     
+                    </ng-template>
+                </p-stepperPanel>
+            </p-stepper>
+        </div>
+    </div>
+    <div class="row m-0 p-0 mt-1">
+        <div *ngIf="data.lapprover?.length === 0"
+            class="col-xxl-12 col-md-12 col-sm-12 col-12 m-0 p-0 txtSolicitud text-center">
+            <span class="txtSolicitud">!Felicidades¡</span><br />
+            <span class="txtSolicitud">Tu reserva ha sido generada</span>
+        </div>
+        <div *ngIf="data.lapprover?.length > 0"
+            class="col-xxl-12 col-md-12 col-sm-12 col-12 m-0 p-0 txtSolicitud text-center">
+            <span class="txtSolicitud">!Felicidades¡</span><br />
+            <span class="txtSolicitud">La solicitud ha sido enviada satisfactoriamente</span>
+        </div>
+    </div>
+    <div class="row m-0 p-0">
+        <div class="col-lg-8 col-md-12 col-sm-12 col-12 m-0 p-0">
+            <div class="row m-0 p-0 mt-4">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 banner">
+                    <div class="row m-0 p-0 justify-content-center">
+                        <div *ngIf="data.pnr != '' && data.pnr != null" class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 pt-4 text-center">
+                            <span class="textCodigo">Código Reserva</span><br />
+                            <span class="divCodigo">{{data.pnr}}</span>
+                        </div>
+                        <div *ngIf="data.orderCode != '' && data.orderCode != null"  class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 pt-4 text-center text-truncate">
+                            <span class="textCodigo">Número Orden</span><br />
+                            <span *ngIf="data.orderCode.length >= 26" pTooltip="{{data.orderCode}}" tooltipPosition="bottom" class="divCodigo">{{data.orderCode}}</span>
+                            <span *ngIf="data.orderCode.length < 26" class="divCodigo">{{data.orderCode}}</span>
+                        </div>
+                        <div *ngIf="data.checkInCode != '' && data.checkInCode != null" class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 pt-4 text-center">
+                            <span class="textCodigo">Código Check-in</span><br />
+                            <span class="divCodigo">{{data.checkInCode}}</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row m-0 p-0 mt-4">
+                <!-- <span class="txtSolicitud"><img class="mr-2" width="30" src="/assets/Images/flight/airplane_ida.svg"> Mi vuelo</span><br/> -->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0  mb-4 banner3">
+                    <app-modal-section [tipo]="2" *ngFor="let section of data.lsection"
+                        [section]="section"></app-modal-section>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mb-4 banner-data">
+                    <app-approvers-policies *ngIf="data.lpolicy?.length > 0 || data.lapprover?.length > 0"
+                        [aproverValid]="true" [data]="company" [tipo]="1" [borrar]="false"
+                        [updateAproval]="updateAproval" [currency]="data.oprice.currency" [lpolicies]="data.lpolicy"
+                        [lapprovers]="data.lapprover"></app-approvers-policies>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-12 col-sm-12 col-12">
+            <div class="row m-0 p-0 mt-4 desliz">
+                <div *ngIf="data.timeLimit != null" class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-3 banner2">
+                    <span class="txtGestion"><img class="mr-2" width="30" src="/assets/Images/flight/time.svg"> Los
+                        aprobadores solo tienen hasta:</span><br />
+                    <span class="txtSolicitudHas">{{data.timeLimitShow}}</span>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mt-4 banner3">
+                    <app-detail-price [flight]="data"></app-detail-price>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mt-4 banner3">
+                    <app-detail-passengers [users]="data.lpassenger"></app-detail-passengers>
+                </div>
+                <div *ngIf="data.opaymentInfo != null" class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mt-4 banner3">
+                    <div class="row m-0 p-0">
+                        <div class="col text-center clickable" (click)="showCIP()">
+                 
+                            <img class="mr-2 mt-3" width="150" src="/assets/Images/flight/pe.png">
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row m-0 p-0">
+        <div class="col-lg col-md col-sm col m-0 p-0 mt-3 mb-3 text-center">
+            <span (click)="goInit()" class="next">Cerrar</span>
+        </div>
+
+    </div>
+</div>
+
+<p-dialog header="PagoEfectivo" [(visible)]="visible" [modal]="true" [breakpoints]="{ '500px': '95vw' }" [style]="{ width: '50vw', height: '-webkit-fill-available' }" [draggable]="false" [resizable]="false">
+    <iframe *ngIf="visible" [src]="urlPagoEfectivo" class="frame">
+    </iframe>
+</p-dialog>

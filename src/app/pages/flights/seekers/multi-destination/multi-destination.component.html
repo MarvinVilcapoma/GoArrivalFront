@@ -1,0 +1,82 @@
+
+
+<div *ngFor="let item of lstMultidestino; let i=index;" class="row m-0 p-0 mt-4 mb-2 align-items-center">
+    <div class="row m-0 p-0">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mt-2 mb-2">
+            <span class="textramo">Tramo {{i+1}}</span>
+        </div>
+    </div>
+    <div [ngClass]="{'col-12 p-0 ': style, 'col-xxl col-xl col-lg col-md col-sm col-12': !style}">
+        <label for="disabled-input">Origen</label><br />
+        <p-autoComplete [showClear]="true" [(ngModel)]="item.selectedItem"
+            [ngClass]="{'ng-invalid': item.agregarClase, 'ng-dirty': item.agregarClase}" id="searchOriginInit"
+            [suggestions]="filteredItems"  emptyMessage="No se encontraron resultados" [virtualScroll]="true"
+            [virtualScrollItemSize]="59" (onSelect)="item.agregarClase = false" [panelStyleClass]="'items-panel'"
+            (completeMethod)="filterItems($event)" field="name">
+
+            <ng-template let-country pTemplate="item">
+                <div class="row m-0 p-0">
+                    <div class="col-1 m-0 p-0">
+                        <img
+                            src="assets/Images/seeker/{{country.categoryName === 'A' ? 'Aeropuerto' : 'Ciudad'}}.png" />
+                    </div>
+                    <div class="col text-truncate">
+                        <span>{{ country.name }}</span>
+                    </div>
+
+
+                </div>
+            </ng-template>
+
+
+        </p-autoComplete>
+    </div>
+
+
+    <div [ngClass]="{'col-12 p-0 mt-3': style, 'col-xxl col-xl col-lg col-md col-sm col-12': !style}">
+        <label class="textFlight">Destino</label><br />
+        <p-autoComplete [showClear]="true" [(ngModel)]="item.selectedItemRetorno"
+            [ngClass]="{'ng-invalid':item.agregarClaseRet, 'ng-dirty': item.agregarClaseRet}" id="searchDestinoInit"
+            [suggestions]="filteredItems" emptyMessage="No se encontraron resultados" [virtualScroll]="true"
+            [virtualScrollItemSize]="59" (onSelect)="selectItem(i,item)" [panelStyleClass]="'items-panel'"
+            (completeMethod)="filterItems($event)" field="name">
+
+            <ng-template let-country pTemplate="item">
+                <div class="row m-0 p-0">
+                    <div class="col-1 m-0 p-0">
+                        <img
+                            src="assets/Images/seeker/{{country.categoryName === 'A' ? 'Aeropuerto' : 'Ciudad'}}.png" />
+                    </div>
+                    <div class="col text-truncate">
+                        <span>{{ country.name }}</span>
+                    </div>
+
+
+                </div>
+            </ng-template>
+
+
+        </p-autoComplete>
+    </div>
+
+
+    <div [ngClass]="{'col-12 p-0 mt-3': style, 'col-xxl col-xl col-lg col-md col-sm col-12': !style}">
+        <label for="disabled-input">Fecha</label><br />
+        <p-calendar [ngClass]="{'ng-invalid': item.agregarClaseFecha, 'ng-dirty': item.agregarClaseFecha}" #dateFilter
+            inputId="txtFechaDestino" [minDate]="item.minDate" dateFormat="dd/mm/yy" [defaultDate]="item.defaultDate"
+            (onSelect)="selectDates(i,item)" selectionMode="single" [disabled]="item.disabled" [(ngModel)]="item.bsValue"
+            [readonlyInput]="true" [numberOfMonths]="1"></p-calendar>
+    </div>
+
+    <div [ngClass]="{'col-12 p-0 mt-3': style, 'col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm col-12': !style}">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mt-2 mb-2">
+            <span (click)="deleteTramo()" *ngIf="i >= 2 && i+1 === lstMultidestino.length" class="textDelTramo">-
+                Eliminar tramo</span><br *ngIf="i >= 2 && i+1 === lstMultidestino.length" />
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mt-2 mb-2">
+            <span (click)="addObject()" *ngIf="i+1 === lstMultidestino.length && lstMultidestino.length != 6"
+                class="textAddTramo">+ Agregar tramo</span>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,240 @@
+<div class="container webDropDown webInformation">
+    <form [formGroup]="form">
+
+
+
+        <h2 *ngIf="!isRegister" style="padding: 10px;">
+            Actualizar Empresa
+        </h2>
+        <h2 *ngIf="isRegister" style="padding: 10px;">
+            Nueva Empresa
+        </h2>
+        <mat-divider class="text-border"></mat-divider>
+        <div class="row m-0 p-0 mt-5">
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12">
+
+
+                <p-floatLabel>
+                    <input pInputText id="username" autocomplete="off" formControlName="name" />
+                    <label for="username">Nombre(s)</label>
+                </p-floatLabel>
+
+
+                <!--  <mat-form-field appearance="outline" class="mat-mar">
+                    <mat-label>Nombre</mat-label>
+                    <input cdkFocusInitial formControlName="name" matInput />
+                    <mat-error *ngIf="form.controls.name.errors?.required">Nombre es obligatorio</mat-error>
+
+                </mat-form-field> -->
+
+
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12">
+
+                <p-floatLabel>
+                    <input pInputText id="ruc" autocomplete="off" formControlName="ruc" />
+                    <label for="ruc">RUC</label>
+                </p-floatLabel>
+
+
+                <!--    <mat-form-field appearance="outline" class="mat-mar">
+                    <mat-label>RUC</mat-label>
+                    <input cdkFocusInitial formControlName="ruc" matInput />
+                    <mat-error *ngIf="form.controls.ruc.errors?.required">Ruc es obligatorio</mat-error>
+
+                </mat-form-field> -->
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12">
+
+                <p-floatLabel>
+                    <p-dropdown [options]="typeCompany" [scrollHeight]="'150px'" inputId="typeCompany"
+                        formControlName="typeCompanyID" optionLabel="name" optionValue="code"></p-dropdown>
+                    <label for="typeCompany">Tipo Compañia</label>
+                </p-floatLabel>
+
+            </div>
+        </div>
+        <div class="row m-0 p-0 mt-4">
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12">
+
+                <p-floatLabel>
+                    <input pInputText id="email" autocomplete="off" formControlName="email" />
+                    <label for="email">Correo Electronico</label>
+                </p-floatLabel>
+
+
+                <!--        <mat-form-field appearance="outline" class="mat-mar">
+                    <mat-label>Correo Electronico</mat-label>
+                    <input cdkFocusInitial formControlName="email" matInput />
+                    <mat-error *ngIf="form.controls.email.errors?.required">Correo es obligatorio</mat-error>
+                </mat-form-field> -->
+
+
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12">
+
+                <p-floatLabel>
+                    <input pInputText id="address" autocomplete="off" formControlName="address" />
+                    <label for="address">Dirección</label>
+                </p-floatLabel>
+
+
+                <!--   <mat-form-field appearance="outline" class="mat-mar">
+                    <mat-label>Dirección</mat-label>
+                    <input cdkFocusInitial formControlName="address" matInput />
+                </mat-form-field> -->
+
+
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12">
+
+                <p-floatLabel>
+                    <input pInputText id="codeDK" autocomplete="off" formControlName="codeDK" />
+                    <label for="codeDK">Código</label>
+                </p-floatLabel>
+
+
+                <!--         <mat-form-field appearance="outline" class="mat-mar">
+                    <mat-label>Código</mat-label>
+                    <input cdkFocusInitial formControlName="codeDK" matInput />
+                </mat-form-field> -->
+            </div>
+        </div>
+
+        <div class="row m-0 p-0 mt-4">
+
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12">
+
+                <p-floatLabel>
+                <p-dropdown [options]="lstCountries" [scrollHeight]="'150px'" [filter]="true" filterBy="name"
+                    formControlName="countryOrigin" inputId="country" optionLabel="name" optionValue="iataCode"></p-dropdown>
+                    <label for="country">País</label>
+                </p-floatLabel>
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12">
+
+                <p-floatLabel>
+                    <input pInputText id="phone" autocomplete="off" formControlName="phone" />
+                    <label for="phone">Teléfono</label>
+                </p-floatLabel>
+
+                <!-- 
+                <mat-form-field appearance="outline" class="mat-mar">
+                    <mat-label>Teléfono</mat-label>
+                    <input cdkFocusInitial formControlName="phone" matInput />
+                </mat-form-field> -->
+
+
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12">
+
+                <p-floatLabel>
+                <p-dropdown [options]="lstApprovar" [scrollHeight]="'150px'" inputId="typeAprovver" formControlName="approvalTypeID"
+                     optionLabel="name" optionValue="id"></p-dropdown>
+
+                    <label for="typeAprovver">Tipo Aprobador</label>
+                </p-floatLabel>
+
+
+            </div>
+        </div>
+
+        <div *ngIf="isRegister" class="row m-0 p-0 mt-4">
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12">
+
+                <p-floatLabel>
+                    <input pInputText id="nameContact" autocomplete="off" formControlName="nameContact" />
+                    <label for="nameContact">Nombre Contacto</label>
+                </p-floatLabel>
+
+
+                <!--   <mat-form-field appearance="outline" class="mat-mar">
+                    <mat-label>Nombre Contacto</mat-label>
+                    <input cdkFocusInitial formControlName="nameContact" matInput />
+                    <mat-error *ngIf="form.controls.nameContact.errors?.required">Contacto es obligatorio</mat-error>
+                </mat-form-field> -->
+
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12">
+
+                <p-floatLabel>
+                    <input pInputText id="lastNameContact" autocomplete="off" formControlName="lastNameContact" />
+                    <label for="lastNameContact">Apellido Contacto</label>
+                </p-floatLabel>
+
+                <!--       <mat-form-field appearance="outline" class="mat-mar">
+                    <mat-label>Apellido Contacto</mat-label>
+                    <input cdkFocusInitial formControlName="lastNameContact" matInput />
+                    <mat-error *ngIf="form.controls.lastNameContact.errors?.required">Contacto es
+                        obligatorio</mat-error>
+                </mat-form-field> -->
+
+
+            </div>
+
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12">
+                <p-floatLabel>
+                <p-dropdown [options]="lstDocument" [scrollHeight]="'150px'" inputId="typeDocument" formControlName="documentID"  optionLabel="name" optionValue="id"></p-dropdown>
+                    <label for="typeDocument">Tipo Documento</label>
+                </p-floatLabel>
+            </div>
+
+
+
+
+        </div>
+
+        <div class="row m-0 p-0 mt-4">
+            <div *ngIf="isRegister" class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12">
+
+                <p-floatLabel>
+                    <input pInputText id="numberDocument" autocomplete="off" formControlName="numberDocument" />
+                    <label for="numberDocument">Número Documento</label>
+                </p-floatLabel>
+
+
+                <!--      <mat-form-field appearance="outline" class="mat-mar">
+                    <mat-label>Número Documento</mat-label>
+                    <input cdkFocusInitial formControlName="numberDocument" matInput />
+                    <mat-error *ngIf="form.controls.numberDocument.errors?.required">Número Doc. es
+                        obligatorio</mat-error>
+                </mat-form-field> -->
+            </div>
+
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12">
+
+
+                <p-floatLabel>
+                <p-dropdown [options]="lstGroup" [scrollHeight]="'150px'" inputId="group" [filter]="true" filterBy="name"
+                    formControlName="groupID"  optionLabel="name" optionValue="id"></p-dropdown>
+                    <label for="group">Grupo</label>
+                </p-floatLabel>
+            </div>
+
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12">
+
+                <p-checkbox formControlName="companyActive" [binary]="true" inputId="binary"></p-checkbox>
+                <span for="binary" class="pl-2">Activar Empresa</span>
+            </div>
+        </div>
+
+        <div class="row m-0 p-0 ">
+            <div class="col mt-4 mb-2 text-center">
+                <mat-dialog-actions align="end">
+                    <button color="primary" (click)="createUpdateEmpresa()" [disabled]="form.invalid" mat-flat-button
+                        type="submit">
+                        {{textbtn}}
+                    </button>
+                </mat-dialog-actions>
+            </div>
+        </div>
+
+
+
+
+    </form>
+
+
+
+
+</div>

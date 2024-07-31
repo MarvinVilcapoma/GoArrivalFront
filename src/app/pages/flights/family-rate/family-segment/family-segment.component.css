@@ -1,0 +1,27 @@
+.departShow{
+    font-family: Omnes-med;
+    font-size: 15px;
+    color: #898989;
+}
+
+.time-show{
+    font-family: Omnes-med;
+    font-size: 19px;
+    color: #676767;
+}
+
+.text-city{
+    color: #676767;
+    font-size: 20px;
+    font-family: Omnes-med;
+}
+
+.text-airport{
+    color: #898989;
+    font-size: 17px;
+    font-family: Omnes-med;
+}
+
+.sobre-sal{
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+}

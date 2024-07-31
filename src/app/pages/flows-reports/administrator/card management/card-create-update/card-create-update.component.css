@@ -1,0 +1,59 @@
+.card-management-container {
+    width: 80%;
+    margin: auto;
+    box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+    padding: 16px;
+}
+
+.card-management-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.confirm-section{
+    display: flex;
+    flex-direction: column;
+    margin: 8px;
+    border: 1px solid #78909c;
+    border-radius: 8px;
+    padding: 8px;
+    text-align: center;
+}
+
+.card-management-title {
+    font-family: Omnes-med;
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    margin: 24px;
+}
+
+.error{
+    color: #f44336;
+    font-family: Omnes-med;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 8px;
+}
+ 
+.confirm-section-button{
+    width: 64px;
+    margin: auto;
+}
+
+.confirm-button{
+    width: 240px;
+    margin: 16px auto;
+    padding: 16px;
+    color: white;
+    font-family: Omnes-med;
+    font-size: 18px;
+}
+
+.show-card{
+    width: 120px;
+    height: 50px;
+    margin: 8px;
+}
+

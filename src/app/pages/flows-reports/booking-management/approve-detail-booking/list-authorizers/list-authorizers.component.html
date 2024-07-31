@@ -1,0 +1,83 @@
+<div *ngIf="lpolicies?.length > 0" class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+    <div class="row m-0 p-0">
+        <div class="col-lg-4 col-md-7 col-sm-7 col-8 mt-4 r-div-pxa text-center">
+            <span class="">Políticas Infringidas</span>
+        </div>
+    </div>
+    <div class="row  mt-4 ml-3 mr-3" *ngFor="let item of lpolicies">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+            <img class="m-0 p-0 " width="40" src="assets/Images/flight/calendario.svg">
+            <span class="txtDias ml-4">{{item.name}}</span>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12 mt-4">
+            <div class="row m-0 p-0">
+                <div class="col-lg-8 col-md-8 col-sm-7 col-12 m-0 p-0">
+                    <span class="txtInfraccion">Infracción</span><br />
+                    <div class="banner-data">
+                        <span class="txtDescripcion">{{item.message}}</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-5 col-12">
+                    <span class="txtInfraccion">Impacto</span><br />
+                    <div class="banner-data">
+                        <span *ngIf="item.impact != 0" class="txtAmount">{{currency}} {{item.impact}}</span>
+                        <span *ngIf="item.impact === 0" class="txtAmount">No hay impacto</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div *ngIf="lapprovers?.length > 0" class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+    <div class="row m-0 p-0">
+        
+        <div class="col-lg-5 col-md-5 col-sm-5 col-7 mt-5 r-div-pxa text-center">
+            <span class="">Autorizadores</span>
+        </div>
+
+    </div>
+    <div class="row  mt-4 ml-3 mr-3">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-3">
+            <p-messages [(value)]="messages" [enableService]="false" [closable]="false"></p-messages>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-4">
+            <div *ngFor="let user of lapprovers" class="row m-0 p-0 mb-3">
+                <div class="col-lg-4 col-md col-sm col-12">
+                    <span class="txtDescripcion">Nombre:</span><br />
+                    <input disabled="" class="input-pasajero" type="text" value="{{user.name}}  {{user.lastName}}">
+
+                </div>
+                <div class="col-lg-4 col-md col-sm col-12">
+                    <span class="txtDescripcion">Email:</span><br />
+                    <input disabled="" class="input-pasajero" type="text" [(ngModel)]="user.email">
+                </div>
+
+                <div class="col-lg-4 col-md col-sm col-12">
+                    <div class="row m-0 p-0">
+                       
+                        <div class="col m-0 p-0">
+                            <span class="txtDescripcion">Estado:</span><br />
+                            <input disabled="" class="input-pasajero" type="text" [(ngModel)]="user.ostatus.name">
+                        </div>
+                        <div class="col-1" style="line-height: 4;">
+                            <img class="pt-3" *ngIf="user.ostatus.id === 1" src="assets/Images/flows-reports/pendiente.svg">
+                            <img class="pt-3" *ngIf="user.ostatus.id === 2" src="assets/Images/flows-reports/aprobado.svg">
+                            <img class="pt-3" *ngIf="user.ostatus.id === 3" src="assets/Images/flows-reports/rechazado.svg">
+                            <img class="pt-3" *ngIf="user.ostatus.id === 4" width="25" src="assets/Images/flows-reports/expire.png">
+                            <img class="pt-3" *ngIf="user.ostatus.id === 5" width="25" src="assets/Images/flows-reports/not-gestion.png">
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>

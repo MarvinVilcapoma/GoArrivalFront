@@ -1,0 +1,48 @@
+.img-airplane{
+  width: 32px;
+}
+
+.title-form{
+  color: #676767;
+  background: #FBF6F6 0% 0% no-repeat padding-box;
+  font-family: Omnes-med;
+  border-radius: 20px 20px;
+}
+
+.text-date{
+ font-size: 12px;
+}
+
+.txt-detalle{
+ color: #ED1C24;
+ font-size: 14px;
+}
+
+.div-section-trip{
+ width: 70%;
+}
+  
+.text-city{
+ font-family: Omnes-med;
+ color: #676767;
+ font-size: 18px;
+}
+
+.text-airport{
+ font-family: Omnes-med;
+ color: #898989;
+ font-size: 12px;
+}
+
+.nombrefamilia{
+  background: #FFCD01;
+  color: #FFFFFF;
+  font-size: 17px;
+  font-family: Omnes-med;
+  padding: 0 16px;
+  border-radius: 5px;
+  border: 1px solid #8A7979;
+  width: 250px;
+  display: block;
+  text-align: center;
+}

@@ -1,0 +1,18 @@
+<div class="row m-0 p-0">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+        <div class="section m-0 p-0">
+            <div *ngIf="flagCentralizador" class="row m-0 p-0">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                    <app-role-centralizer (flagCentralizado)="updateCentralizador($event)"></app-role-centralizer>
+                </div>
+            </div>
+            <div *ngIf="!flagCentralizador" class="row m-0 p-0 view-phone">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                    <app-search-flight [passCentra]="pasajeros" [dataRQ]="null"></app-search-flight>
+                </div>
+            </div>
+
+           
+        </div>
+    </div>
+</div>

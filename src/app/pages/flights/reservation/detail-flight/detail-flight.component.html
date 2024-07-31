@@ -1,0 +1,11 @@
+<div class="m-0 p-0 pl-2 pt-5 pb-5">
+    <div class="col-12 m-0 p-0 contenedor-form">
+        <div class="row m-0 p-0">
+            <div class="col-12 m-0 p-0">
+                <app-detail-section  [LSection]="LSection" *ngFor="let section of LSection; let i = index"
+                 [index]="i" [section]="section" [sectionLength]="LSection.length" [tipoVuelo]="tipovuelo" [posicion]="i + 1">
+                </app-detail-section>
+            </div>
+        </div>
+    </div>
+</div>

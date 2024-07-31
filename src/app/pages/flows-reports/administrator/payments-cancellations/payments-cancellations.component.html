@@ -1,0 +1,89 @@
+<mat-toolbar *ngIf="headService.validPhone()" color="primary" class="example-toolbar">
+  <button mat-icon-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
+  <h1 class="example-app-name">Menus</h1>
+</mat-toolbar>
+
+
+<mat-sidenav-container class="example-container" autosize>
+
+
+  <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" [disableClose]="true"
+    (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
+    <app-sidenav></app-sidenav>
+  </mat-sidenav>
+
+  <ng-container>
+    <div class="card-management-container">
+      <div>
+        <h3>Cobros y Cancelaciones</h3>
+      </div>
+      <mat-progress-bar *ngIf="loading" mode="query"></mat-progress-bar>
+      <div class="card-management-form">
+        <mat-progress-bar *ngIf="loading" mode="query"></mat-progress-bar>
+        <form [formGroup]="form" class="card-management-form">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Empresa</mat-label>
+            <input type="text" matInput formControlName="company" [matAutocomplete]="auto"
+              placeholder="Ingrese el nombre de una empresa">
+            <div *ngIf="selected" style="cursor: pointer; display: flex; justify-content: flex-end; margin-top: -22px"
+              (click)="cleanInput()"><mat-icon>close</mat-icon>
+            </div>
+
+
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="getCards()"
+              [displayWith]="displayFn">
+              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option.name}}
+              </mat-option>
+            </mat-autocomplete>
+            <mat-error *ngIf="form.get('company').invalid">Campo obligatorio</mat-error>
+          </mat-form-field>
+
+
+
+          <mat-form-field appearance="outline">
+            <mat-label>Tarjeta</mat-label>
+            <mat-select formControlName="card">
+
+              <mat-option *ngFor="let card of cards" value="{{card.id}}">{{card.number}} - {{card.alias}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.get('card').invalid">Campo obligatorio</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Monto</mat-label>
+            <input matInput formControlName="amount" autocomplete="off">
+            <mat-error *ngIf="form.get('amount').invalid">Valor incorrecto</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Detalle</mat-label>
+            <textarea matInput formControlName="detail"></textarea>
+            <mat-error *ngIf="form.get('detail').invalid">Campo obligatorio</mat-error>
+          </mat-form-field>
+
+          <div class="confirm-section" *ngIf="errorForm">
+            <span class="error">{{errorMessage}}</span>
+            <button class="confirm-section-button" mat-stroked-button (click)="errorForm = false">Ok</button>
+          </div>
+
+          <div class="confirm-section" *ngIf="successPayment">
+            <span class="success">Pago exitoso</span>
+
+            <button class="confirm-section-button" mat-stroked-button (click)="successPayment = false">Ok</button>
+          </div>
+
+          <button color="primary" (click)="onSubmit()" [disabled]="!form.valid || loading" mat-flat-button
+            type="submit">
+            Realizar operación
+          </button>
+
+          <!-- <button class="confirm-button" mat-raised-button (click)="onSubmit()" [disabled]="!form.valid || loading">Realizar operación</button> -->
+        </form>
+      </div>
+    </div>
+  </ng-container>
+
+
+</mat-sidenav-container>

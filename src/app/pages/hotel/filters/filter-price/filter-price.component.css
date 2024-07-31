@@ -1,0 +1,25 @@
+.main-card {
+    box-shadow: 0px 4px 4px 0px #00000040;
+    border-radius: 20px 0px;
+}
+
+
+.text-filtros {
+    font-family: Omnes-med;
+    font-size: 18px;
+    color: #3D3D3D;
+}
+
+.price {
+    color: #6B253C;
+    font-family: Omnes-med;
+}
+
+.txt-min {
+    font-family: Omnes-med;
+    color: #898989;
+}
+
+mat-slider {
+    width: 100%;
+  }

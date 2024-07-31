@@ -1,0 +1,161 @@
+<div class="row m-0 p-0">
+    <div class="col-12 m-0 p-0">
+        <div *ngIf="segmentGroup.familyName != ''" class="row m-0 p-0">
+            <div class="col-12 m-0 p-3">
+                <span [ngClass]="{'nombrefamilia': tipo == 1, 'nombrefamilia2': tipo == 2}"
+                    class="nombrefamilia">{{segmentGroup.familyName}}</span>
+            </div>
+        </div>
+        <div class="row m-0 p-0 pt-3 pb-3 div-air">
+            <div *ngIf="tipo==1" class="col-6 m-0 p-0 text-center">
+                <span *ngIf="tipo == 1" class="pr-5"><img class="img-airlane"
+                        src="/assets/Images/airlines/{{marketingCarrier}}"></span>
+                <span [ngClass]="{
+                    'text-airlane': tipo == 1,
+                    'text-airlane-2': tipo == 2
+                }">Aerolinea: {{segmentGroup.ocarrier.marketingName}}<br>{{segmentGroup.ocarrier.operatingCode}}
+                </span>
+            </div>
+            <div *ngIf="tipo==1" class="col-6 m-0 p-0 text-center">
+                <div class="row m-0 p-0 text-plane">
+                    <div class="col-12 m-0 p-0">
+                        Vuelo {{segmentGroup.flightNumber}}
+                    </div>
+                    <div class="col-12 m-0 p-0">
+                        Tipo de avión - {{segmentGroup.typePlane}}
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="tipo==2" class="col-12 m-0 p-0 text-center text-airlane-2">
+                Aerolinea: {{segmentGroup.ocarrier.marketingName}}
+            </div>
+            <div *ngIf="tipo==2" class="col-12 m-0 p-0 text-center text-plane">
+                <div class="row m-0 p-0">
+                    <div class="col-12 m-0 p-0">
+                        {{segmentGroup.ocarrier.operatingCode}}
+                    </div>
+                    <div class="col-12 m-0 p-0">
+                        Vuelo {{segmentGroup.flightNumber}}
+                    </div>
+                    <div class="col-12 m-0 p-0">
+                        Tipo de avión - {{segmentGroup.typePlane}}
+                    </div>
+                    <div class="col-12 m-0 p-0">
+                        <img class="img-airlane" src="/assets/Images/airlines/{{marketingCarrier}}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row m-0 p-0 pt-4">
+    <div class="col-4 m-0 p-0">
+        <div class="row m-0 p-0 div-city1 pl-1">
+            <div class="col-12 m-0 p-0 text-center" [ngClass]="{'texto-1': tipo == 1,
+            'texto1-1': tipo == 2}">{{segmentGroup.departureDateShow}}</div>
+            <div class="col-12 m-0 p-0 text-center" [ngClass]="{'texto-2': tipo == 1,
+            'texto2-1': tipo == 2}">{{segmentGroup.departureTimeShow}}</div>
+            <div class="col-12 m-0 p-0 text-center" [ngClass]="{'texto-3': tipo == 1,
+            'texto3-1': tipo == 2}">{{segmentGroup.oorigin.iataCode}}</div>
+            <div class="col-12 m-0 p-0 text-center" [ngClass]="{'texto-4': tipo == 1, 
+            'texto4-1': tipo == 2}">{{segmentGroup.oorigin.cityName}}</div>
+            <div class="col-12 m-0 p-0 text-center" [ngClass]="{'texto-5': tipo == 1,
+            'texto5-1': tipo == 2}">{{segmentGroup.oorigin.airportName}}</div>
+        </div>
+    </div>
+    <div class="col-4 m-0 p-0">
+        <div class="row m-0 p-0 pt-1">
+            <div class="col-12 m-0 p-0 text-center">
+                <div class="row m-0 p-0">
+                    <!--    <div class="col-3 m-0 p-0"></div> -->
+                    <div class="col-lg-3 col-md-3 col-1 m-0 p-0">
+                        <hr style="opacity: inherit;background: transparent linear-gradient(99deg, #ED1C24 0%, #D51A2C 34%, #3C4749 100%) 0% 0% no-repeat padding-box"
+                            class="div-separator1">
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-10 m-0 p-0">
+                        <div class="row m-0 p-0">
+                            <div class="col-12 m-0 p-0" [ngClass]="{'text-duracion': tipo == 1,
+                             'text-duracion1': tipo == 2}">
+                                Duración
+                            </div>
+                            <div class="col-12 m-0 p-0" [ngClass]="{'text-timetotal': tipo == 1,
+                            'text-timetotal1': tipo == 2}">
+                                {{segmentGroup.typePlane}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-1 m-0 p-0">
+                        <hr style="opacity: inherit;background: transparent linear-gradient(99deg, #ED1C24 0%, #D51A2C 34%, #3C4749 100%) 0% 0% no-repeat padding-box"
+                            class="div-separator2">
+                    </div>
+                    <!--  <div class="col-3 m-0 p-0"></div> -->
+                </div>
+                <div class="row m-0 p-0">
+                    <div class="col-12 m-0 p-0">
+                        <span class="pr-2" [ngClass]="{'txt-clase': tipo == 1, 'txt-clase1': tipo == 2}">Clase:</span>
+                        <span
+                            [ngClass]="{'txt-desclase': tipo == 1, 'txt-desclase1': tipo == 2}">{{segmentGroup.cabinDescription}}
+                            - {{segmentGroup.classID}}</span>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="segmentGroup.obaggage != null" class="col-lg-12 col-md-12 col-12 m-0 p-0 text-center mt-2">
+                <span pTooltip="Permite mochila" class="pr-3"><img
+                        style="width: 30px;margin-top: 7px;margin-bottom: 7px;" src="assets/Images/flight/mochila.svg"
+                        alt=""></span>
+                <span *ngIf="segmentGroup.obaggage.hasCarryOn" pTooltip="Incluye maleta en cabina." class="pr-3"><img
+                        style="width: 30px;" src="/assets/Images/flight/bolsodemano-1.svg" alt=""></span>
+                <span *ngIf="!segmentGroup.obaggage.hasCarryOn" pTooltip="No incluye maleta en cabina."
+                    class="pr-3"><img style="width: 30px;" src="/assets/Images/flight/sinmaleta.png" alt=""></span>
+                <span> <img style="width: 30px;"
+                    pTooltip="Incluye equipaje para documentar. {{segmentGroup.obaggage.bagquantity}} maleta(s) por adulto."
+                        *ngIf="segmentGroup.obaggage.hasBagagge" src="/assets/Images/flight/maleta-si.svg" alt="">
+                    <img style="width: 30px;" pTooltip="No incluye maleta." *ngIf="!segmentGroup.obaggage.hasBagagge"
+                        src="/assets/Images/flight/maleta-no.svg" alt=""></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-4 m-0 p-0">
+        <div class="row m-0 p-0 div-city1 pr-1">
+            <div *ngIf="segmentGroup.dateVariation === 0" class="col-12 m-0 p-0 text-center" [ngClass]="{'texto-1': tipo == 1,
+            'texto1-1': tipo == 2}">{{segmentGroup.arrivalDateShow}}</div>
+            <div *ngIf="segmentGroup.dateVariation > 0" style="color: #ED1C24 !important;"
+                class="col-12 m-0 p-0 text-center" [ngClass]="{'texto-1': tipo == 1,
+            'texto1-1': tipo == 2}"> <span
+                    style="padding-right: 5px !important;">(+{{segmentGroup.dateVariation}})</span>
+                {{segmentGroup.arrivalDateShow}}</div>
+            <div class="col-12 m-0 p-0 text-center" [ngClass]="{'texto-2': tipo == 1,
+            'texto2-1': tipo == 2}">{{segmentGroup.arrivalTimeShow}}</div>
+            <div class="col-12 m-0 p-0 text-center" [ngClass]="{'texto-3': tipo == 1,
+            'texto3-1': tipo == 2}">{{segmentGroup.odestination.iataCode}}</div>
+            <div class="col-12 m-0 p-0 text-center" [ngClass]="{'texto-4': tipo == 1, 
+            'texto4-1': tipo == 2}">{{segmentGroup.odestination.cityName}}</div>
+            <div class="col-12 m-0 p-0 text-center" [ngClass]="{'texto-5': tipo == 1,
+            'texto5-1': tipo == 2}">{{segmentGroup.odestination.airportName}}</div>
+        </div>
+    </div>
+
+</div>
+<div class="row m-0 p-0">
+    <div class="col-12 m-0 p-0 pt-3 text-center g-text-5">
+        <div class="row m-0 p-0" style="display: flex !important;
+        justify-content: center !important;
+        align-items: center;">
+
+            <div class="col-lg-4 col-md-4 col-2 m-0 p-0">
+                <hr
+                    style="opacity: inherit;height: 7px; border-radius: 20px 0 0 20px; background: transparent linear-gradient(99deg, #ED1C24 0%, #D51A2C 34%, #3C4749 100%) 0% 0% no-repeat padding-box">
+            </div>
+            <div class="col-lg-4 col-md-4 col-8 m-0 p-0 g-text-5 d-flex justify-content-center align-items-center"
+                style="border-radius: 20px 20px 20px 20px; background: transparent linear-gradient(99deg, #ED1C24 0%, #D51A2C 34%, #3C4749 100%) 0% 0% no-repeat padding-box; height: 32px">
+                {{textFlightTimeShow}}
+            </div>
+            <div class="col-lg-4 col-md-4 col-2 m-0 p-0">
+                <hr
+                    style="opacity: inherit;height: 7px; border-radius: 0 20px 20px 0;background: transparent linear-gradient(99deg, #ED1C24 0%, #D51A2C 34%, #3C4749 100%) 0% 0% no-repeat padding-box">
+            </div>
+        </div>
+    </div>
+
+</div>

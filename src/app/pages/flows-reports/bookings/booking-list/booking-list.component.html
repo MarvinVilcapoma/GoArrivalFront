@@ -1,0 +1,148 @@
+<!-- <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 text-center">
+    <span class="txt-titulo">{{textTitle}}</span>
+</div>
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3 ">
+    <div class="row">
+
+        <p-table  [value]="listBooking" [tableStyle]="{ 'min-width': '50rem' }">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let field of listBooking[0] | keyvalue" style="min-width:100px">{{field.key}}</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr *ngFor="let item of listBooking">
+                    <td *ngFor="let field of item | keyvalue">{{field.value}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+
+    </div>
+
+</div>
+
+<div class="row justify-content-center mt-3">
+    <div class="col-xl-1 col-lg-2 col-md-4 col-sm-5 col-6 m-0 p-0 text-center">
+        <button (click)="exportAsXLSX()" class="btn btn-secondary mb-3">Exportar</button>
+    </div>
+</div> -->
+
+
+<div class="row m-0 p-0 view-phone">
+
+    <div  class="col-12 m-0 p-2">
+
+
+        <div class="row m-0 p-0">
+            <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mb-3">
+                <span class="title">{{textTitle}}</span>
+            </div>
+        </div>
+
+        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 btn-back">
+            <span (click)="goBack()" class="text-name-menu">Retroceder</span>
+        </div>
+
+
+
+        <div class="row m-0 p-0 mt-5 namelast">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-12 m-0 p-0">
+
+                <span class="text-bienv">Código de reserva</span><br />
+                <input (input)="filterCodReser()" [(ngModel)]="reserva" class="input-pasajero" type="text">
+
+
+
+            </div>
+
+        </div>
+
+        <div class="row m-0 p-0 mt-5">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 ">
+                <div class="row m-0 p-2  cabecera-tabla">
+
+                    <div *ngFor="let item of lstTitleFlight" class="col m-0 p-0 text-center">
+                        <span class="text-table-head">{{item}}</span>
+                    </div>
+               
+                </div>
+                <div *ngFor="let person of getPaginatedItems()" class="row m-0 p-2" style="border: 1px solid #cccccc;">
+                    <div class="col m-0 p-0 text-center">
+                        <span class="text-table">{{person.pnr}}</span>
+                    </div>
+                    <div class="col m-0 p-0 text-center text-truncate">
+                        <span class="text-table">{{person.order}}</span>
+                    </div>
+                    <div class="col m-0 p-0 text-center ocultarTitle">
+                        <span class="text-table">{{person.creationDateShow}}</span>
+                    </div>
+                    <div class="col m-0 p-0 text-center ocultarTitle">
+                        <span class="text-table">{{person.timeLimitShow}}</span>
+                    </div>
+                    <div class="col m-0 p-0 text-center ocultarTitle">
+                        <span class="text-table">{{person.travelRoute}}</span>
+                    </div>
+                    <div class="col m-0 p-0 text-center ocultarTitle">
+                        <span class="text-table">{{person.creatorUser}}</span>
+                    </div>
+                    <div class="col m-0 p-0 text-center">
+                        <span class="text-table pasajero-pointer" (click)="op.toggle($event)">Ver pasajeros</span>
+                        <p-overlayPanel #op>
+                            <div class="popRoom">
+                                <h5 *ngFor="let pass of person.lpassenger">• {{pass}}</h5>
+                            </div>
+                            
+                         
+                        </p-overlayPanel>
+                    </div>
+                    <div class="col m-0 p-0 text-center" pTooltip="{{person.ostatus.description}}">
+                        <span class="text-table mr-1">{{person.ostatus.name}}</span>
+                        <img *ngIf="person.ostatus.id === 1 || person.ostatus.id === 2"
+                        src="assets/Images/flows-reports/pendiente.svg">
+                    <img *ngIf="person.ostatus.id === 3" src="assets/Images/flows-reports/rechazado.svg">
+                    <img width="30" *ngIf="person.ostatus.id === 4"
+                        src="assets/Images/flows-reports/process.png">
+                    <img width="25" *ngIf="person.ostatus.id === 5"
+                        src="assets/Images/flows-reports/anulado.png">
+                    <img width="25" *ngIf="person.ostatus.id === 6"
+                        src="assets/Images/flows-reports/aprobado.svg">
+                    <img width="25" *ngIf="person.ostatus.id === 7"
+                        src="assets/Images/flows-reports/expire.png">
+                    </div>
+                
+                  
+                    <div class="col m-0 p-0 text-center">
+                        <span (click)="manageBooking(person)" class="title-option">Ver reserva > </span>
+                    </div>
+                </div>
+                <div class="row m-0 p-0 mt-4">
+                    <div class="pagination">
+                        <button class="pagination-btn" [disabled]="currentPage === 1"
+                            (click)="setPage(currentPage - 1)">
+                            Anterior
+                        </button>
+
+                        <ng-container *ngFor="let page of getPageArray()">
+                            <button class="pagination-btn" [class.active]="page === currentPage"
+                                (click)="setPage(page)">
+                                {{ page }}
+                            </button>
+                        </ng-container>
+
+                        <button class="pagination-btn" [disabled]="currentPage === getTotalPages()"
+                            (click)="setPage(currentPage + 1)">
+                            Siguiente
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
+

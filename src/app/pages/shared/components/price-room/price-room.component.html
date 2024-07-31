@@ -1,0 +1,85 @@
+<div class="row m-0 p-0">
+    <div class="col-xxl-8 col-xl-8 col-lg-9 col-md-9 col-sm-12 col-12 m-0 p-0">
+        <div class="row m-0 p-0 mb-3" style="border: 1px solid #cccccc;">
+            <div class="col m-0 p-0" style="border-right: 1px solid #cccccc;">
+                <div class="row m-0 p-0">
+                    <div class="col-12 title" >
+                        <span class="">Tipo de Habitación</span>
+                        
+                    </div>
+                    <div class="col-12 body-title" >
+                        <span>{{room.name}}</span><br/>
+                        <span>{{room.description}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col m-0 p-0" style="border-right: 1px solid #cccccc;">
+                <div class="row m-0 p-0">
+                    <div class="col-12 title" >
+                        <span class="">Opciones</span>
+                        
+                    </div>
+                    <div class="col-12 body-title" >
+                        <img *ngIf="room.breakFast" width="15" src="assets/Images/flight/cafe.svg">
+                        <span *ngIf="room.breakFast">Desayuno disponible</span><br/>
+                        <img *ngIf="room.breakFast"  style="width: 15px;" src="assets/Images/flight/bien.svg">
+                        <span *ngIf="room.breakFast" style="font-size: 14px;">Desayuno incluido</span><br/>
+                        <img *ngIf="!room.possiblyNonRefundable" style="width: 15px;" src="assets/Images/flight/mal.svg">
+                        <span *ngIf="!room.possiblyNonRefundable" style="font-size: 14px;">No reembolsable</span><br/>
+                    </div>
+                </div>
+            </div>
+            <div class="col m-0 p-0">
+                <div class="row m-0 p-0">
+                    <div class="col-12 title">
+                        <span class="">Precio promedio por noche</span>
+                        
+                    </div>
+                    <div class="col-12 body-title">
+                        <div class="row m-0 p-0" style="display: flex;max-width: 100%;overflow: auto;max-height: 120px;">
+                            <div class="col-12" style="margin-bottom: 6%;" *ngFor="let habi of room.lpricePerDay">
+                                <div class="row" style="background-color: #F8F8F8;border: 1px solid #cccccc;border-radius: 10px 0px 0px 0px;">
+                                  <div class="col bor-dates text-center" >
+                                    <span style="font-size: 14px;">{{habi.startDate}}</span>
+                                  </div>
+                                  <div class="col text-center" style="padding: 5px 0px;margin: 5px 0px;">
+                                    <span style="font-size: 14px;">{{habi.endDate}}</span>
+                                  </div>
+                                </div>
+                                <div class="row" style="border-bottom: 1px solid #cccccc;border-left: 1px solid #cccccc;border-right: 1px solid #cccccc;border-radius: 0px 0px 10px;">
+                                  <div class="col" style="padding: 15px;text-align: center;">
+                                    <span style="font-size: 14px;font-weight: 800"> USD  </span><span style="font-size: 17px;color: #ED1C24;font-weight: 800;">{{habi.price}}</span>
+                                  </div>
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xxl-4 col-xl-4 col-lg-3 col-md-3 col-sm-12 col-12">
+        <div class="row m-0 p-0 mb-3" style="border: 1px solid #cccccc;">
+            <div class="col m-0 p-0">
+                <div class="row m-0 p-0">
+                    <div class="col-12 body-title" style="padding: 30px !important;">
+                        <div class="text-center subtitles">Precio total</div>
+                        <div class="text-center subtitles1"><label class="subtitles">USD </label>  {{room.oprice.opriceNewPrice.finalAmount}}</div>
+                        <div class="text-center subtitles">por {{hotel.ohotel.numberNights}} noches, {{hotel.ohotel.numberPassenger}} persona(s)</div>
+                        <div class="text-center subtitles" *ngIf="!room.oprice.includeTax">Precio con impuestos incluidos</div>
+                        <div class="text-center subtitles" *ngIf="room.oprice.includeTax">Precio con impuestos incluidos</div>
+                        <div *ngFor="let pago of room.guaranteeType;let i=index;" class="col text-center subtitles">
+                            
+                            <div *ngIf="pago === 'GuaranteeRequired'"><img style="width: 15px;" src="assets/Images/flight/plata.svg">Pago en destino</div>
+                            <div *ngIf="pago === 'Deposit'"><img style="width: 15px;" src="assets/Images/flight/plata.svg">Pago en origen</div>
+                        </div>
+                        
+                        <div class="col text-center m-0 mt-3">
+                            <div class="btn-ver" (click)="onload(room)">Reservar ahora</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,315 @@
+.barra {
+    border-radius: 0px 0px 50px 50px;
+    height: 180px;
+    background: -webkit-linear-gradient(left, rgba(237, 28, 35, .9) 10%, #b01738 40%, rgba(60, 71, 73, .9) 100%);
+}
+
+.subBarra {
+    height: 180px;
+    border-radius: 0px 0px 50px 50px;
+    background: url('src/assets/Images/login/login_body_2.png');
+}
+
+.datos {
+    line-height: 6;
+}
+
+
+
+.point {
+    cursor: pointer;
+}
+
+.text-bienv {
+    text-align: center;
+    color: white;
+    font-size: 12px;
+    font-family: Omnes-med;
+}
+
+.text-panel {
+    color: #767676;
+    font-size: 19px;
+    margin-left: 10px;
+    font-family: Omnes-med;
+}
+
+.text-panel-active {
+    color: #e2231a;
+    font-size: 19px;
+    margin-left: 10px;
+    font-family: Omnes-med;
+}
+
+.carrito {
+    background: #e2231a;
+    position: relative;
+    padding: 2px 5px 3px 2px;
+    top: 10px;
+    color: white;
+    border-radius: 10px;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.navbar {
+    /* otros estilos */
+    display: none;
+    /* ocultar navbar por defecto */
+}
+
+.hide-navbar {
+    display: none;
+    /* ocultar navbar */
+}
+
+.linear {
+    text-align: center;
+    line-height: 4;
+    cursor: pointer;
+    height: 100px;
+}
+
+.blanco {
+    background-color: #FDFDFD;
+    border-radius: 20px 0px 0px 0px;
+    height: 100px;
+    border-bottom: 1px solid #707070;
+}
+
+.ocultar {
+    visibility: hidden;
+}
+
+#textVuelos {
+    color: #ED1C24;
+}
+
+.none {
+    display: none;
+}
+
+
+.rayasRojas {
+    width: 70px;
+    border-radius: 15px 0px 0px 0px;
+    position: relative;
+    top: 29px;
+}
+
+.imgLine {
+    right: 0px;
+    position: relative;
+    height: 6px;
+    bottom: 30px;
+    width: 135px;
+}
+
+.popRoom {
+    width: 250px;
+}
+
+.btn-sidenav:hover {
+    cursor: pointer;
+    background-color: #e1696d;
+    .text-name-menu{
+        color: white;
+    }
+}
+
+
+
+.navbar a {
+    color: #212529;
+    text-decoration: none;
+    padding: 10px;
+    margin: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar a:hover {
+    background-color: #e9ecef;
+}
+
+.phone {
+    display: none !important;
+}
+
+.text-name-menu {
+    font-family: Omnes-med;
+    font-size: 15px;
+    color: #828282;
+    cursor: pointer;
+}
+
+.collapsible-content {
+    display: none;
+}
+
+.box-shadow-nav {
+    background: #fff;
+    padding: 1em;
+    cursor: pointer;
+    z-index: 999;
+    border: 1px solid rgba(219, 223, 227, .303017);
+    box-shadow: 0 10px 10px rgba(214, 201, 233, 6.5);
+}
+
+.logoblan {
+    width: 135px;
+}
+
+.optionRayas {
+    height: 84px;
+    position: relative;
+    top: 11px;
+    cursor: pointer;
+}
+
+.optionsPhone {
+    padding-top: 20px;
+}
+
+.user-box {
+    display: none;
+    position: absolute;
+    top: 85%;
+    left: 0;
+    width: 225px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    text-align: center;
+    line-height: 25px;
+    border: 2px solid rgb(237, 28, 36);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.name {
+    font-size: 16px;
+    font-weight: 600;
+    font-family: Omnes-med;
+    color: #212529;
+}
+
+.job {
+    font-size: 13px;
+    font-family: Omnes-med;
+    color: #212529;
+}
+
+.user-box h2 {
+    font-size: 1.5rem;
+    margin-top: 0;
+}
+
+.btn {
+    display: block;
+    margin: 0 auto 10px auto;
+    background: none;
+    border: 1px solid brown;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 600;
+    box-sizing: border-box;
+    transition: all .3s ease-in-out;
+    color: brown;
+}
+
+
+
+@media screen and (max-width:1024px) {
+    .text-panel {
+        color: #767676;
+        font-size: 19px;
+        display: none !important;
+        margin-left: 10px;
+        font-family: Omnes-med;
+    }
+
+    .borrar {
+        display: none;
+    }
+
+    .imgLine {
+        right: 0px;
+        position: relative;
+        height: 6px;
+        bottom: 30px;
+        width: 110px;
+    }
+}
+
+@media screen and (max-width: 840px) {
+    .delete-img {
+        display: none;
+    }
+}
+
+@media screen and (max-width:760px) {
+    .imgLine {
+        right: 0px;
+        position: relative;
+        height: 6px;
+        bottom: 30px;
+        width: 90px;
+    }
+
+    .user-box {
+        width: 240px;
+        left: auto;
+        right: 0;
+        text-align: left;
+    }
+
+    .user-box p {
+        margin: 0.5rem 0;
+    }
+
+    .optionRayas {
+        width: 100px;
+        top: 21px;
+        position: relative;
+    }
+}
+
+@media screen and (max-width:576px) {
+    .web {
+        display: none;
+    }
+
+    .logoblan {
+        width: 155px;
+    }
+
+    .subBarra {
+        height: 90px;
+        border-radius: 0px;
+        background: none;
+    }
+
+    .barra {
+        border-radius: 0px;
+        height: 90px;
+    }
+
+    .phone {
+        display: flex !important;
+        line-height: 5;
+        border-bottom: 1px solid #D3D3D3;
+        padding-bottom: 12px !important;
+        z-index: 1;
+        position: relative;
+    }
+}

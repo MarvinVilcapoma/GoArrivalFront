@@ -1,0 +1,134 @@
+<div class="container" style="padding: 0">
+
+
+ <!--  <label for="" style="padding: 0px; margin: 0px;"
+    class=" d-inline-flex justify-content-center align-items-center box-shadow">
+    <img src="./assets/images/home/pasajero.svg" alt="" style="height: 20px;" class="pl-2">
+    <input (focus)="onFocus()" readonly type="text" class="text-center v-texto-3"
+      style="width: 60px; outline: none; border: 0" [value]="totalPassengers">
+  </label> -->
+
+
+    <span class="desc" *ngIf="errorMessage !== ''">*{{ errorMessage }}</span>
+    <div [formGroup]="form">
+      <span class="title">Adultos</span>
+      <div class="counter-panel">
+        <button class="sign-btn" mat-stroked-button (click)="removePassenger('adults')">
+          <span class="">-</span>
+        </button>
+        <input class="sign-input" type="text" formControlName="adults" />
+        <button class="sign-btn" mat-stroked-button (click)="addPassenger('adults')">
+
+          <span class="">+</span>
+        </button>
+        <span style="margin: 15px;">{{this.form.controls['adults'].value}}</span>
+      </div>
+
+      <span class="title">Niños</span><span class="desc">(2 a 11 años)</span>
+      <div class="counter-panel">
+        <button class="sign-btn" mat-stroked-button (click)="removePassenger('children')">
+          <span class="">-</span>
+        </button>
+        <input class="sign-input" type="text" formControlName="children" />
+        <button class="sign-btn" mat-stroked-button (click)="addPassenger('children')">
+          <span class="">+</span>
+        </button>
+        <span style="margin: 15px;">{{this.form.controls['children'].value}}</span>
+      </div>
+
+      <span class="title">Infantes</span><span class="desc">(0 a 23 meses)</span>
+      <div class="counter-panel">
+        <button class="sign-btn" mat-stroked-button (click)="removePassenger('infants')">
+          <span class="">-</span>
+        </button>
+        <input class="sign-input" type="text" formControlName="infants" />
+        <button class="sign-btn" mat-stroked-button (click)="addPassenger('infants')">
+          <span class="">+</span>
+        </button>
+        <span style="margin: 15px;">{{this.form.controls['infants'].value}}</span>
+      </div>
+    </div>
+  </div>
+
+<style>
+  .container {
+    display: inline-block;
+  }
+
+  .panel {
+    width: 190px;
+    padding: 16px;
+    position: absolute;
+    z-index: 100;
+    background: white;
+    margin-top: 5px;
+    /* margin-left: 23px; */
+    border-radius: 4px;
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+      0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  }
+
+  .dm-input {
+    height: 60px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    background: no-repeat padding-box #fff;
+    box-shadow: 0 3px 6px #00000029;
+    border-radius: 5px;
+    opacity: 1;
+    margin: 10px 0;
+  }
+
+  .dm-input-text {
+    width: 100%;
+    height: 100%;
+    padding: 16px;
+  }
+
+  .sign-btn {
+    min-width: 0 !important;
+    padding: 7px 15px !important;
+    background: #e0e0e0 !important;
+    border: 0 !important;
+  }
+
+  .sign-input {
+    border: 0;
+    width: 20px;
+    text-align: center;
+    padding: 0 10px;
+    font-size: 16px;
+    background: #ffffff;
+  }
+
+  .counter-panel {
+    text-align: center;
+    border: 1px solid #eeeeee;
+    padding: 10px;
+  }
+
+  .dm-form-field-filter {
+    width: 200px;
+    height: 50px;
+    font-size: 14px;
+    margin: 8px;
+  }
+
+  .title {
+    text-align: center;
+    font: 15px/16px medium;
+    letter-spacing: 0;
+    color: #e82d56;
+    opacity: 1;
+  }
+
+  .desc {
+    text-align: center;
+    font: 12px/12px medium;
+    letter-spacing: 0;
+    color: #757575;
+    opacity: 1;
+    margin: 0 4px;
+  }
+</style>

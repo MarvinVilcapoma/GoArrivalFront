@@ -1,0 +1,72 @@
+.hea{
+    background-color: #E5E7EB;
+    height: 4rem;
+}
+
+.box{
+    position: relative;
+}
+
+.mat-mdc-chip-set {
+    max-width: 200px;
+  }
+
+.mos{
+    display: flex;
+}
+
+.mat-mar{
+    margin-left: 15px !important;
+}
+
+
+
+
+.example-section {
+    margin: 12px 0;
+  }
+  
+  .example-margin {
+    margin: 0 12px;
+  }
+  
+  ul {
+    list-style-type: none;
+    margin-top: 4px;
+  }
+
+.mdc-checkbox{
+    pointer-events: all !important;
+}
+
+/* .mat-mdc-option.mdc-list-item{
+    pointer-events: none !important;
+} */
+
+.inputeq {
+    padding: 10px;
+    width: 100%;
+    height: 40px;
+    background: none;
+    border: 2px solid #4B5563;
+    border-radius: 50px;
+    box-sizing: border-box;
+    font-family: Omnes-med;
+    font-size: 19px;
+    color: #4B5563;
+    outline: none;
+    transition: .5s;
+    background: white;
+}
+
+.box i{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(-50%,-50%);
+    font-size: 23px;
+    color: #4B5563;
+    transition: .2s;
+}
+
+

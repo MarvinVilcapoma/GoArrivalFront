@@ -1,0 +1,161 @@
+<mat-toolbar *ngIf="head.validPhone()" color="primary" class="example-toolbar">
+    <button mat-icon-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
+    <h1 class="example-app-name">Menus</h1>
+</mat-toolbar>
+
+
+<mat-sidenav-container class="example-container" autosize>
+
+
+    <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" [disableClose]="true" (mouseenter)="mouseenter()"
+        (mouseleave)="mouseleave()">
+        <app-sidenav ></app-sidenav>
+    </mat-sidenav>
+
+    <div class="example-sidenav-content p-6 container">
+        <div class="flex flex-col sm:flex-row gap-4">
+            <div class="row m-0 p-0 align-items-center hea">
+                <div class="col">
+                    <h3>Gestión de Cargos</h3>
+                </div>
+                <div class="col">
+                    <div class="box">
+                        <form name="search">
+                            <input (keyup)="applyFilter($event)" type="text" class="inputeq" name="txt">
+                        </form>
+
+                        <i class="fas fa-search"></i>
+
+                    </div>
+                </div>
+
+
+                <div class="col" style="text-align: end;">
+       
+                    <button (click)="exportAsXLSX()" class="" color="warn" mat-mini-fab matTooltip="Descargar datos"
+                        type="button">
+                        <mat-icon>file_download</mat-icon>
+                    </button>
+                    <button [matMenuTriggerFor]="columnFilterMenu" class="flex-none" mat-icon-button
+                        matTooltip="Filtrar columnas" type="button">
+                        <mat-icon>filter_list</mat-icon>
+                    </button>
+                    <button (click)="createChargue()" class="" color="primary" mat-mini-fab
+                        matTooltip="Agregar Centro Costo" type="button">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+            </div>
+
+            <mat-menu #columnFilterMenu="matMenu">
+                <button (click)="toggleColumnVisibility(column, $event)" *ngFor="let column of columns" mat-menu-item
+                    class="">
+                    <mat-checkbox (click)="$event.stopPropagation()" [(ngModel)]="column.visible" color="primary">
+                        {{ column.label }}
+                    </mat-checkbox>
+
+                </button>
+            </mat-menu>
+
+
+            <table id="table-chargues" [dataSource]="dataSource" class="w-full" mat-table matSort>
+
+                <ng-container matColumnDef="typeSearch" sticky>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Orden por nombre">
+                        Tipo Busqueda </th>
+                    <td mat-cell *matCellDef="let element"> 
+                        <span *ngIf="element.typeSearch === 'P'">Partner Club</span>
+                        <span *ngIf="element.typeSearch === 'V'">Vacacional</span>
+                        <span *ngIf="element.typeSearch === 'C'">Corporativo</span>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="serviceName" sticky>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Orden por nombre">
+                        Servicio </th>
+                    <td mat-cell *matCellDef="let element"> {{element.serviceName}} </td>
+                </ng-container> 
+
+                <ng-container matColumnDef="amount" sticky>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Orden por nombre">
+                        Monto </th>
+                    <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="isPercentage">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Orden por estado">
+                        Es Porcentaje </th>
+                    <td mat-cell *matCellDef="let element">
+                        <span *ngIf="element.isPercentage">Si</span>
+                        <span *ngIf="!element.isPercentage">No</span>
+                    </td>
+                </ng-container>
+              
+                <ng-container matColumnDef="perPassenger">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Orden por estado">
+                        Por Pasajero </th>
+                    <td mat-cell *matCellDef="let element">
+                        <span *ngIf="element.perPassenger">Si</span>
+                        <span *ngIf="!element.perPassenger">No</span>
+                    </td>
+                </ng-container>
+     
+
+
+                <ng-container matColumnDef="isActive">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Orden por estado">
+                        Estado </th>
+                    <td mat-cell *matCellDef="let element">
+                        <span *ngIf="element.isActive">Activado</span>
+                        <span *ngIf="!element.isActive">Desactivado</span>
+
+
+
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="acciones" stickyEnd>
+                    <th mat-header-cell *matHeaderCellDef>Acciones </th>
+                    <td mat-cell *matCellDef="let element">
+                        <button [matMenuTriggerFor]="menu" mat-icon-button aria-label="">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu">
+                            <button (click)="updateChargue(element)" mat-menu-item>
+                                <mat-icon>edit</mat-icon>
+                                Editar
+                            </button>
+
+                        </mat-menu>
+                    </td>
+                </ng-container>
+
+
+
+                <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+                <tr *matRowDef="let row; columns: visibleColumns" mat-row></tr>
+
+
+            </table>
+
+            <div class="text-center">
+                <p-progressSpinner *ngIf="loading" class="spiner" styleClass="w-4rem h-4rem;" strokeWidth="8" fill="var(--surface-ground)" animationDuration=".5s"></p-progressSpinner>
+            </div>
+            
+            <mat-paginator [pageSizeOptions]="pageSizeOptions" [pageSize]="pageSize"
+                class="sticky left-0"></mat-paginator>
+        </div>
+    </div>
+</mat-sidenav-container>
+
+<p-dialog header="{{textHeader}}" [(visible)]="visible" [blockScroll]="true" [closeOnEscape]="false" [modal]="true" [style]="{ width: 'auto', height: '900px' }" [maximizable]="true"
+    [draggable]="false" [resizable]="false">
+    <div class="container">
+        <app-create-update-charge *ngIf="visible" (select)="validManage($event)" [data]="data" [lstServices]="lstServices" [isRegister]="isRegister" [textbtn]="textHeader" ></app-create-update-charge>
+    </div>
+</p-dialog>
+
+
+
+<p-toast position="top-center" key="tc"></p-toast>

@@ -1,0 +1,39 @@
+<div class="row m-0 p-0">
+    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+        <img src="assets/Images/hotel/camita.png"> 
+        <span class="text-1 ml-3">Detalle de la reserva </span>
+    </div>
+    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+        <div class="row m-0 p-0 mt-3">
+            <div class="col m-0 p-0">
+                <span class="text-detail-price">{{data.ohotel.name}}</span><br/>
+                <span *ngFor="let star of data.ohotel.lstStar" class="spaceStar">
+                    <img *ngIf="star" class="mr-1 ml-1" src="assets/Images/flight/conStar.svg">
+                    <img *ngIf="!star" class="mr-1 ml-1" src="assets/Images/flight/sinStar.svg">
+                </span>
+            </div>
+            <div *ngIf="data.ohotel.oposition != null" class="col m-0 p-0">
+                <span class="viewMap" (click)="Mostrarmapa()">Ver Mapa</span>
+            </div>
+        </div>
+        <div class="row m-0 p-0 mt-3">
+            <div class="col m-0 p-0">
+                <span>Check-in</span><br/>
+                <span class="text-detail-price">{{data.oroom.startDateShow}}</span><br/>
+                <span class="text-detail-price">{{data.oroom.checkIn === null ? 'Sin información' : data.oroom.checkIn}}</span>
+            </div>
+            <div class="col m-0 p-0">
+                <span>Check-out</span><br/>
+                <span class="text-detail-price">{{data.oroom.endDateShow}}</span><br/>
+                <span class="text-detail-price">{{data.oroom.checkOut === null ? 'Sin información' : data.oroom.checkOut}}</span>
+            </div>
+        </div>
+        <div class="row m-0 p-0 mt-3">
+            <div class="col m-0 p-0">
+                <img  class="mr-1 ml-1" src="assets/Images/hotel/luna.svg">
+                <span class="text-detail-price">Descripción: {{data.oroom.name}} , {{data.oroom.description}}</span><br/>
+            </div>
+
+        </div>
+    </div>
+</div>

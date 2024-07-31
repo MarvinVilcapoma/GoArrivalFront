@@ -1,0 +1,66 @@
+<div class="row m-0 p-0">
+    <div class="col-12 m-0 p-0 text-center">
+        <span class="text-airlane">Aerolínea: {{section.marketingName}}</span><br />
+        <span class="text-plane">Vuelo: {{section.flightNumber}}</span><br />
+        <span class="text-plane">Tipo de avión - {{section.typePlane}} </span><br />
+        <span> <img width="80" src="assets/Images/airlines/{{section.carrierCode}}.png"></span>
+    </div>
+    <p-divider></p-divider>
+    <div class="col-12 m-0 p-0">
+        <div class="row m-0 p-0">
+            <div class="col m-0 p-0 text-center">
+                <span class="texto-1">{{section.departureDateShow}}</span><br />
+                <span class="texto-3">{{section.origin}}</span><br />
+                <span class="texto-4">{{section.cityOrigin}}</span><br />
+                <span class="texto-5">{{section.airportOrigin}}</span>
+            </div>
+            <div class="col m-0 p-0 text-center">
+
+                <span class="text-duracion" *ngIf="section.duration != ''">Duración</span><br />
+                <span class="text-duracion" *ngIf="section.duration != ''">{{section.duration}}</span><br />
+                <span class="text-duracion">Clase: {{section.cabinDescription}}</span><br />
+                <span tooltip="Permite mochila" class="pr-3"><img
+                        style="width: 30px;margin-top: 7px;margin-bottom: 7px;" src="assets/Images/flight/mochila.svg"
+                        alt=""></span>
+                <span *ngIf="section.hasCarryOn" tooltip="Incluye maleta en cabina." class="pr-3"><img
+                        style="width: 30px;" src="/assets/Images/flight/bolsodemano-1.svg" alt=""></span>
+                <span *ngIf="!section.hasCarryOn" tooltip="No incluye maleta en cabina."
+                    class="pr-3"><img style="width: 30px;" src="/assets/Images/flight/sinmaleta.png" alt=""></span>
+                <span> <img style="width: 30px;"
+                    pTooltip="Incluye equipaje para documentar"
+                        *ngIf="section.hasBaggage" src="/assets/Images/flight/maleta-si.svg" alt="">
+                    <img style="width: 30px;" tooltip="No incluye maleta." *ngIf="!section.hasBaggage"
+                        src="/assets/Images/flight/maleta-no.svg" alt=""></span>
+
+            </div>
+            <div class="col m-0 p-0 text-center">
+                <span class="texto-1">{{section.arrivalDateShow}}</span><br />
+                <span class="texto-3">{{section.destination}}</span><br />
+                <span class="texto-4">{{section.cityDestination}}</span><br />
+                <span class="texto-5">{{section.airportDestination}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="section.duration != ''" class="row m-0 p-0">
+    <div class="col-12 m-0 p-0 pt-3 text-center g-text-5">
+        <div class="row m-0 p-0" style="display: flex !important;
+        justify-content: center !important;
+        align-items: center;">
+
+            <div class="col-lg-4 col-md-4 col-2 m-0 p-0">
+                <hr
+                    style="opacity: inherit;height: 7px; border-radius: 20px 0 0 20px; background: transparent linear-gradient(99deg, #ED1C24 0%, #D51A2C 34%, #3C4749 100%) 0% 0% no-repeat padding-box">
+            </div>
+            <div class="col-lg-4 col-md-4 col-8 m-0 p-0 g-text-5 d-flex justify-content-center align-items-center"
+                style="border-radius: 20px 20px 20px 20px; background: transparent linear-gradient(99deg, #ED1C24 0%, #D51A2C 34%, #3C4749 100%) 0% 0% no-repeat padding-box; height: 32px">
+                Duracion total: {{section.duration}}
+            </div>
+            <div class="col-lg-4 col-md-4 col-2 m-0 p-0">
+                <hr
+                    style="opacity: inherit;height: 7px; border-radius: 0 20px 20px 0;background: transparent linear-gradient(99deg, #ED1C24 0%, #D51A2C 34%, #3C4749 100%) 0% 0% no-repeat padding-box">
+            </div>
+        </div>
+    </div>
+
+</div>

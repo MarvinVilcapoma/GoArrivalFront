@@ -1,0 +1,120 @@
+.textFlight {
+    font-size: 14px !important;
+    font-family: Omnes-med;
+}
+
+.txt-titulo {
+    font-family: Omnes-med;
+    color: #676767;
+    font-size: 23px;
+    margin-left: 8px;
+}
+
+.radio-item {
+    display: inline-block;
+    position: relative;
+    padding: 0 6px;
+}
+
+
+.radio-item input[type='radio'] {
+    display: none;
+}
+
+.radio-item label {
+    color: #898989;
+    font-family: Omnes-med;
+    font-size: 16px;
+}
+
+th,
+td {
+    padding: 15px;
+    text-align: left;
+}
+
+.table-reservas {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.txt-titulo{
+    font-family: Omnes-med;
+    letter-spacing: 0;
+    color: #828282;
+    opacity: 1;
+    font-size: 32px;
+    text-decoration: underline;
+}
+
+
+.table-reservas,
+td,
+th {
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.cabecera-tabla {
+    font-family: Omnes-med;
+    color: #3D3D3D;
+    background: #FBF6F6 0% 0% no-repeat padding-box;
+    font-size: 14px;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination-btn {
+    background-color: white;
+    color: #ED1C24;
+    border-radius: 5px;
+    font-family: Omnes-med;
+    border: 1px solid #ED1C24 !important;
+    padding: 8px 12px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.pagination-btn.active {
+    background-color: #ED1C24;
+    color: white;
+}
+
+.body-table {
+    font-family: Omnes-med;
+    color: #3D3D3D;
+    font-size: 14px;
+}
+
+
+
+.radio-item label:before {
+    content: " ";
+    display: inline-block;
+    position: relative;
+    top: 5px;
+    margin: 0 5px 0 0;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    border-radius: 11px;
+    border: 1px solid #b1aeae;
+    background-color: #eee;
+}
+
+.radio-item input[type=radio]:checked+label:after {
+    border-radius: 11px;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    top: 9px;
+    left: 10px;
+    content: " ";
+    display: block;
+    background: linear-gradient(56.22deg, #ED1C24 6.17%, #D51A2C 31.99%, #3C4749 90.82%);
+}

@@ -1,0 +1,137 @@
+<div class="row m-0 p-0">
+
+    <div *ngIf="!validBooking" class="col-12 m-0 p-5">
+
+
+        <div class="row m-0 p-0">
+            <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+                <span class="title">Gestión de reservas</span>
+            </div>
+
+        </div>
+
+        
+
+        <div class="row m-0 p-0 mb-4 mtop">
+            <div class="col m-0 p-0  mt-3 mb-3 ">
+                <p-radioButton name="pago" value="Pendiente" [(ngModel)]="ingredient" (onClick)="filterAproval()"
+                    inputId="ingredient1"></p-radioButton>
+                <label style="line-height: 1px;" for="ingredient1" class="ml-2">Pendientes</label>
+            </div>
+            <div class="col m-0 p-0  mt-3 mb-3 ">
+                <p-radioButton name="pago" value="Aprobado" [(ngModel)]="ingredient" (onClick)="filterAproval()"
+                    inputId="ingredient2"></p-radioButton>
+                <label style="line-height: 1px;" for="ingredient2" class="ml-2">Aprobados</label>
+            </div>
+            <div class="col m-0 p-0  mt-3 mb-3">
+                <p-radioButton name="pago" value="T" [(ngModel)]="ingredient" (onClick)="filterAproval()"
+                    inputId="ingredient2"></p-radioButton>
+                <label style="line-height: 1px;" for="ingredient2" class="ml-2">Todos</label>
+            </div>
+        </div>
+
+        <div class="row m-0 p-0">
+            <div class="col-xxl-2 col-xl-2 col-lg-4 col-md-4 col-sm-5 col-12 m-0 p-0">
+                <span class="title">Código de reserva</span>
+                <input (input)="filterItems()" [(ngModel)]="pnr" class="input-search-pnr" type="text">
+            </div>
+        </div>
+
+        <div class="row m-0 p-0 mt-5">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 ">
+                <div class="row m-0 p-2  cabecera-tabla">
+                    <div class="col-1 m-0 p-0">
+
+                    </div>
+                    <div class="col m-0 p-0 text-center">
+                        <span class="text-table-head">Fecha de Creación</span>
+                    </div>
+                    <div class="col m-0 p-0 text-center ocultarTitle">
+                        <span class="text-table-head">Reserva</span>
+                    </div>
+                    <div class="col m-0 p-0 text-center ocultarTitle">
+                        <span class="text-table-head">Expira</span>
+                    </div>
+                    <div class="col m-0 p-0 text-center">
+                        <span class="text-table-head">Ruta</span>
+                    </div>
+                    <div class="col m-0 p-0 text-center">
+                        <span class="text-table-head">Solicitante</span>
+                    </div>
+                    <div class="col m-0 p-0 text-center">
+                        <span class="text-table-head">Estado</span>
+                    </div>
+                    <div class="col-1 m-0 p-0 text-center">
+
+                    </div>
+                    <div class="col m-0 p-0 text-center">
+
+                    </div>
+                </div>
+                <div *ngFor="let person of getPaginatedItems()" class="row m-0 p-2" style="border: 1px solid #cccccc;">
+                    <div class="col-1 m-0 p-0 text-center">
+                        <img *ngIf="person.ostate.stateId === 1" width="20"
+                            src="assets/Images/flows-reports/iconpendiente.png">
+                    </div>
+                    <div class="col m-0 p-0 text-center">
+
+                        <span class="text-table">{{person.createdDate | dateFormatBooking}}</span>
+                    </div>
+                    <div class="col m-0 p-0 text-center ocultarTitle">
+                        <span class="text-table">{{person.pnr}}</span>
+                    </div>
+                    <div class="col m-0 p-0 text-center ocultarTitle">
+                        <span class="text-table">{{person.timeLimit | dateFormatBooking}}</span>
+                    </div>
+                    <div class="col m-0 p-0 text-center">
+                        <span class="text-table">{{person.travelRoute}}</span>
+                    </div>
+                    <div class="col m-0 p-0 text-center">
+                        <span class="text-table">{{person.userName}}</span>
+                    </div>
+                    <div class="col m-0 p-0 text-center">
+                        <span class="text-table">{{person.ostate.stateDescription}}</span>
+                    </div>
+                    <div class="col-1 m-0 p-0 text-center">
+                        <img *ngIf="person.ostate.stateId === 1" src="assets/Images/flows-reports/pendiente.svg">
+                        <img *ngIf="person.ostate.stateId === 2" src="assets/Images/flows-reports/aprobado.svg">
+                        <img *ngIf="person.ostate.stateId === 3" src="assets/Images/flows-reports/rechazado.svg">
+                        <img width="30" *ngIf="person.ostate.stateId === 4"
+                            src="assets/Images/flows-reports/expire.png">
+                        <img width="25" *ngIf="person.ostate.stateId === 5"
+                            src="assets/Images/flows-reports/not-gestion.png">
+                    </div>
+                    <div class="col m-0 p-0 text-center">
+                        <span (click)="manageBooking(person)" class="title-option">Ver reserva > </span>
+                    </div>
+                </div>
+                <div class="row m-0 p-0 mt-4">
+                    <div class="pagination">
+                        <button class="pagination-btn" [disabled]="currentPage === 1"
+                            (click)="setPage(currentPage - 1)">
+                            Anterior
+                        </button>
+
+                        <ng-container *ngFor="let page of getPageArray()">
+                            <button class="pagination-btn" [class.active]="page === currentPage"
+                                (click)="setPage(page)">
+                                {{ page }}
+                            </button>
+                        </ng-container>
+
+                        <button class="pagination-btn" [disabled]="currentPage === getTotalPages()"
+                            (click)="setPage(currentPage + 1)">
+                            Siguiente
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div *ngIf="validBooking" class="col-12 m-0 p-0">
+        <app-approve-detail-booking [data]="dataPnr" (select)="hideComponent()"></app-approve-detail-booking>
+    </div>
+</div>

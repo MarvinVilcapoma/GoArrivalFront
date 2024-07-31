@@ -1,0 +1,68 @@
+<div class="row m-0 p-0 mt-3 box-shadow-important">
+    <div class="col-lg-12 col-md-12 col-sm-12 pt-3">
+        <div class="row m-0 p-0">
+            <div class="col-lg-4 col-md-4 col-sm-4 text-center">
+                <img width="100" class="img-fluid vertical-center pl-4" src="assets/Images/airlines/{{marketingCarrier}}" alt="">
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 text-center">
+                <span class="g-text-airlane">{{segmentGroup.ocarrier.marketingName}}</span><br/>
+                <span class="g-text-2">El vuelo es operado por : {{segmentGroup.ocarrier.operatingName}}</span>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 text-center">
+                <span class="g-text-2">Vuelo {{segmentGroup.flightNumber}}</span><br/>
+                <span class="g-text-2">  Tipo de avión - {{segmentGroup.typePlane}}</span>
+            </div>
+        </div>
+        <div class="row m-0 p-0">
+            <div class="col-lg-1 col-md-1 col-sm-1 m-0 p-0"></div>
+            <div class="col-lg-10 col-md-10 col-sm-10 m-0 p-0">
+                <hr>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-1 m-0 p-0"></div>
+        </div>
+        <div class="row m-0 p-0 pb-2">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-4 m-0 text-center textosairports">
+                <span class="g-text-date"> {{segmentGroup.departureDateShow}}</span><br/>
+                <span class="g-text-3"> {{segmentGroup.departureTimeShow}}</span><br/>
+                <span class="g-text-4"> {{segmentGroup.oorigin.iataCode}}</span><br/>
+                <span class="g-text-6"> {{segmentGroup.oorigin.cityName}}</span><br/>
+                <span class="g-text-6"> {{segmentGroup.oorigin.airportName}}</span>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-4 m-0 text-center textosairports">
+
+              <!--   <hr class="rayahr"> -->
+                <span class="g-text-6"> Duración: {{segmentGroup.durationShow}}</span>
+              <!--   <hr class="rayahr"> --> <br/>
+                <span class="g-text-6">Cabina: {{segmentGroup.cabinDescription}} - {{segmentGroup.classID}}</span><br/>
+                <span id="avlStatus" class="g-text-6">  Disponibilidad: {{segmentGroup.availableSeats}}</span>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-4 m-0 text-center textosairports">
+                <span *ngIf="segmentGroup.dateVariation===0" class="g-text-date"> {{segmentGroup.arrivalDateShow}}</span>
+                <span *ngIf="segmentGroup.dateVariation>0" style="color: #ED1C24 !important;" class="g-text-2"><label class="g-text-2" style="color: #ED1C24 !important;">(+{{segmentGroup.dateVariation}})</label> {{segmentGroup.arrivalDateShow}}</span><br/>
+                <span class="g-text-3"> {{segmentGroup.arrivalTimeShow}}</span><br/>
+                <span class="g-text-4"> {{segmentGroup.odestination.iataCode}}</span><br/>
+                <span class="g-text-6"> {{segmentGroup.odestination.cityName}}</span><br/>
+                <span class="g-text-6"> {{segmentGroup.odestination.airportName}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row m-0 p-0">
+
+    <div class="col-lg-12 col-md-12 col-sm-12 m-0 p-0 pt-3 text-center g-text-5">
+        <div class="row m-0 p-0">
+
+            <div class="col-lg-2 col-md-2 col-sm col-1 m-0 p-0">
+                <hr style="height: 5px; border-radius: 20px 0 0 20px;opacity: inherit;" color="#FF0000">
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-7 col-10 m-0 p-0 g-text-5 d-flex justify-content-center align-items-center gruesa">
+                {{textFlightTimeShow}}
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm col-1 m-0 p-0">
+                <hr style="height: 5px; border-radius: 0 20px 20px 0;opacity: inherit;" color="#FF0000">
+            </div>
+        </div>
+    </div>
+
+</div>

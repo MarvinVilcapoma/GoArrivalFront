@@ -1,0 +1,32 @@
+<div class="row m-0 p-0">
+    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+        <img src="assets/Images/hotel/persona.png"> 
+        <span class="text-2 ml-3">Tarjeta de  </span>
+        <span class="text-1"> garantía</span>
+    </div>
+    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+        <p-messages [(value)]="messages" [enableService]="false" [closable]="false"></p-messages>
+    </div>
+    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 webDropDown webInformation">
+        <div class="row m-0 p-0 mt-4 mb-4">
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                <input  type="text"  autocomplete="off" placeholder="Numero de tarjeta" pInputText [(ngModel)]="number" maxlength="16" />
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-3 col-md-6 col-sm-12 col-12">
+                <p-calendar [(ngModel)]="dateExpired" view="month"  dateFormat="mm/yy" placeholder="mm/yy" [readonlyInput]="true"></p-calendar>
+            </div>
+            <div class="col-xxl-2 col-xl-2 col-lg-3 col-md-6 col-sm-12 col-12">
+                <input  type="password"  autocomplete="off" placeholder="xxx"  pInputText [(ngModel)]="cvv" maxlength="3"/>
+            </div>
+         
+        </div>
+        <div class="row m-0 p-0 mt-4 mb-4">
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                <input  type="text"  autocomplete="off" placeholder="Nombre del titular" pInputText [(ngModel)]="name"  />
+            </div>
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                <input  type="text"  autocomplete="off" placeholder="Apellido del titular" pInputText [(ngModel)]="lastName"  />
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,226 @@
+<div [formGroup]="form" class="webDropDown webInformation">
+
+    <div (click)="$event.stopPropagation()" class="row p-0 mt-4 mb-4">
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+
+            <p-floatLabel >
+                <input pInputText id="username"  formControlName="name" autocomplete="off"/>
+                <label  for="username">Nombres</label>
+                <div *ngIf="form.get('name')?.touched && form.get('name')?.invalid">
+                    <small class="text-danger" *ngIf="form.get('name')?.errors?.required">Nombre es requerido</small>
+                    <small class="text-danger" *ngIf="form.get('name')?.errors?.lengthError">Nombre debe tener entre 2 y
+                        150 caracteres</small>
+                    <small class="text-danger" *ngIf="form.get('name')?.errors?.invalidCharacters">Nombre no puede
+                        contener caracteres especiales</small>
+                </div>
+            </p-floatLabel>
+
+        </div>
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+
+            <p-floatLabel>
+                <input pInputText id="lastname" formControlName="lastName" autocomplete="off"/>
+                <label for="lastname">Apellidos</label>
+                <div *ngIf="form.get('lastName')?.touched && form.get('lastName')?.invalid">
+                    <small class="text-danger" *ngIf="form.get('lastName')?.errors?.required">Apellido es
+                        requerido</small>
+                    <small class="text-danger" *ngIf="form.get('lastName')?.errors?.lengthError">Apellido debe tener
+                        entre 2 y 150 caracteres</small>
+                    <small class="text-danger" *ngIf="form.get('lastName')?.errors?.invalidCharacters">Apellido no puede
+                        contener caracteres especiales</small>
+                </div>
+            </p-floatLabel>
+
+        </div>
+
+    </div>
+    <div *ngIf="!isRegister" class="row p-0 mt-4 mb-4">
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <p-floatLabel>
+
+                <p-dropdown [options]="airlines" [filter]="true" [scrollHeight]="'150px'" filterBy="name"
+                    formControlName="airline" inputId="airline" optionLabel="name"
+                    optionValue="code"></p-dropdown>
+
+                <label for="airline">Aerolinea</label>
+             
+            </p-floatLabel>
+
+        </div>
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+
+
+            <p-floatLabel>
+                <input pInputText id="frequentFlyer" formControlName="frequentFlyer" autocomplete="off" />
+                <label for="frequentFlyer">Pasajero Frecuente</label>
+            </p-floatLabel>
+
+
+        </div>
+    </div>
+    <div class="row p-0 mt-4 mb-4">
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <p-floatLabel>
+
+                <p-dropdown [options]="lstCountries" [filter]="true" [scrollHeight]="'150px'" filterBy="fullName"
+                    formControlName="countryOrigin" inputId="pais" optionLabel="fullName"
+                    optionValue="iataCode"></p-dropdown>
+
+                <label for="pais">Código País</label>
+                <div *ngIf="form.get('countryOrigin')?.touched && form.get('countryOrigin')?.invalid">
+                    <small class="text-danger" *ngIf="form.get('countryOrigin')?.errors?.required">Código País es requerido</small>
+    
+                </div>
+            </p-floatLabel>
+
+        </div>
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+
+
+            <p-floatLabel>
+                <input pInputText id="telefono" formControlName="phone"autocomplete="off" />
+                <label for="telefono">Teléfono</label>
+            </p-floatLabel>
+
+
+        </div>
+    </div>
+
+    <div class="row p-0 mt-4 mb-4">
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+
+            <p-floatLabel>
+                <p-calendar formControlName="birthDate" dateFormat="dd/mm/yy" inputId="fecha_naci"
+                    [minDate]="adultMinDate" [maxDate]="adultMaxDate" [defaultDate]="defaultDate"></p-calendar>
+                <label for="fecha_naci">Fecha de Nacimiento</label>
+                <div *ngIf="form.get('birthDate')?.touched && form.get('birthDate')?.invalid">
+                    <small class="text-danger" *ngIf="form.get('birthDate')?.errors?.required">Fecha de Nacimiento es requerido</small>
+    
+                </div>
+            </p-floatLabel>
+
+        </div>
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+
+            <p-floatLabel>
+                <input pInputText id="correo" formControlName="email" autocomplete="off"/>
+                <label for="correo">Correo Electronico</label>
+                <div *ngIf="form.get('email')?.touched && form.get('email')?.invalid">
+                    <small class="text-danger" *ngIf="form.get('email')?.errors?.required">Correo electrónico es
+                        requerido</small>
+                    <small class="text-danger" *ngIf="form.get('email')?.errors?.emailFormat">Formato de correo
+                        electrónico inválido</small>
+                    <small class="text-danger" *ngIf="form.get('email')?.errors?.lengthError">Correo electrónico debe
+                        tener entre 6 y 150 caracteres</small>
+                </div>
+            </p-floatLabel>
+        </div>
+
+    </div>
+
+    <div class="row p-0 mt-4 mb-4">
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <p-floatLabel>
+
+                <p-dropdown [options]="lstDocument" [scrollHeight]="'150px'" formControlName="documentType"
+                    inputId="typeDocument" optionLabel="name" optionValue="id"></p-dropdown>
+
+                <label for="typeDocument">Tipo Documento</label>
+                <div *ngIf="form.get('documentType')?.touched && form.get('documentType')?.invalid">
+                    <small class="text-danger" *ngIf="form.get('documentType')?.errors?.required">Tipo Documento es requerido</small>
+    
+                </div>
+            </p-floatLabel>
+
+        </div>
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+
+
+            <p-floatLabel>
+                <input pInputText id="numberDocument" formControlName="numberDocument" autocomplete="off"/>
+                <label for="numberDocument">Número documento</label>
+            </p-floatLabel>
+            <div *ngIf="form.get('numberDocument')?.errors">
+                <small class="text-error" *ngIf="form.get('numberDocument')?.hasError('required')">Número de documento
+                    es obligatorio.</small>
+                <small class="text-error" *ngIf="form.get('numberDocument')?.hasError('dni')">DNI debe tener 8
+                    caracteres numéricos.</small>
+                <small class="text-error" *ngIf="form.get('numberDocument')?.hasError('passport')">Pasaporte debe ser
+                    alfanumérico y tener entre 6 y 20 caracteres.</small>
+                <small class="text-error" *ngIf="form.get('numberDocument')?.hasError('foreignCard')">Carné de
+                    extranjería debe ser alfanumérico y tener entre 6 y 20 caracteres.</small>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row p-0 mt-4 mb-4">
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <p-checkbox formControlName="isActive" [binary]="true" inputId="userActive"></p-checkbox>
+            <span for="userActive" class="pl-2">Usuario activo</span>
+
+        </div>
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <p-floatLabel>
+                <p-dropdown [options]="genders" [scrollHeight]="'150px'" formControlName="gender" inputId="genero"
+                    optionLabel="name" optionValue="id"></p-dropdown>
+                <label for="genero">Género</label>
+            </p-floatLabel>
+        </div>
+
+    </div>
+
+
+  
+
+
+</div>
+
+<div class="row m-0 p-0 mt-1 mb-4">
+
+
+
+    <!--    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 text-center">
+        <button (click)="manageDocument()" mat-raised-button color="primary">Documentos</button>
+    </div> -->
+
+</div>
+
+
+
+
+
+
+
+
+<div class="row m-0 p-0 mt-5 mb-2">
+    <div class="col text-center">
+        <mat-dialog-actions align="end">
+
+
+
+
+            <button [disabled]="form.invalid" (click)="createUser();" color="primary" mat-flat-button type="submit">
+                {{isRegister ? 'Registrar usuario' : 'Modificar usuario'}}
+            </button>
+
+        </mat-dialog-actions>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<!-- <p-dialog header="Gestionar documentos" [(visible)]="visible" [blockScroll]="true" [closeOnEscape]="false"
+    [modal]="true" [style]="{ width: 'auto', height: '900px' }" [maximizable]="true" [draggable]="false"
+    [resizable]="false">
+    <div class="container">
+        <app-manage-document *ngIf="visible" (select)="validDocument($event)" [defaults]="data"></app-manage-document>
+    </div>
+</p-dialog> -->

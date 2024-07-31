@@ -1,0 +1,52 @@
+
+    <div (click)="bloquear()" class="row">
+        <div class="col">
+            <img width="140" style="cursor: pointer;" src="assets/Images/login/logoblanco.png">
+        </div>
+    </div>
+
+    <ng-container *ngIf="isSidenavExpanded">
+
+    
+        <mat-expansion-panel *ngFor="let item of lstMenu" [class.mat-elevation-z0]="false" [expanded]="true">
+            <mat-expansion-panel-header >
+                <mat-icon  class="icono" mat-list-icon>assignment</mat-icon>
+                <span class="full-width" (click)="routeMenu(item)" *ngIf="isExpanded || isShowing">{{item.name}}</span>
+            </mat-expansion-panel-header>
+            <mat-nav-list *ngIf="item.lsubMenu?.length > 0">
+                <a *ngFor="let sub of item.lsubMenu" (click)="routeMenu(sub)" mat-list-item>
+                    <span class="full-width">{{sub.name}}</span>
+                </a>
+
+            </mat-nav-list>
+        </mat-expansion-panel>
+
+
+        <div class="sidenav-footer">
+            <mat-divider></mat-divider>
+            <ng-template #popTemplate id="todofootDiv">
+                <div (click)="profileRout()" class="btn-divFoot">
+                    <mat-icon>account_circle</mat-icon>
+                    <span>Mi Perfil</span>
+
+                </div><br />
+                <div (click)="flight()" class="btn-divFoot">
+                    <mat-icon>menu</mat-icon>
+                    <span>Pantalla Principal</span>
+                </div><br />
+                <div (click)="closed()" class="btn-divFoot">
+                    <mat-icon>logout</mat-icon>
+                    <span>Cerrar Sesión</span>
+                </div>
+            </ng-template>
+            <button type="button" [outsideClick]="true" class="btn btn-foot" [popover]="popTemplate"
+                popoverTitle="Escoge la opcion deseada" placement="top">
+                <div class="divFoot">
+
+                    <span class="title-foot">{{cookieValue.name}} {{cookieValue.lastName}}</span><br>
+                    <span class="subtitle-foot">{{cookieValue.orole.name}}</span>
+                </div>
+
+            </button>
+        </div>
+    </ng-container>

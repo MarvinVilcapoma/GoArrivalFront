@@ -1,0 +1,194 @@
+<div class="row m-0 p-0 mt-5">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 rolescr">
+        <span class="add">Agregue los pasajeros del vuelo</span>
+    </div>
+</div>
+<div class="row m-0 p-0 mt-2 namelast">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-12 m-0 p-0">
+        <div class="row m-0 p-0">
+            <div class="col-lg-5 col-md-6 col-sm-6 col-12 m-0 p-0">
+              
+                <span class="text-bienv">Nombre/Apellido</span>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-12 m-0 p-0">
+                <input (input)="filterItems()" [(ngModel)]="name" class="form-control box-shadow" type="text">
+            </div>
+        </div>
+
+
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-12 m-0 p-0">
+        <div class="row m-0 p-0">
+            <div class="col-lg-4 col-md-5 col-sm-5 col-12 m-0 p-0">
+              
+                <span class="text-bienv">DNI/Matrícula</span>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-5 col-12 m-0 p-0">
+                <input (input)="filterItemsDoc()" [(ngModel)]="document" class="form-control box-shadow" type="text">
+            </div>
+            <div class="col-lg-3 col-md-2 col-sm-2 col-12">
+              
+                <div class="buscar" (click)="search()"><img src="assets/Images/seeker/buscador-musical.svg" alt="" style="width: 15px">Buscar</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row m-0 p-0 mt-5"  translate="no">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+        <div class="row m-0 p-2 box-shadow" >
+            <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-0 p-0">
+
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col m-0 p-0 text-center">
+                <span class="title">Nombre</span>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 m-0 p-0 text-center ocultarTitle">
+                <span class="title">Apellidos</span>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 m-0 p-0 text-center ocultarTitle">
+                <span class="title">Tipo Doc</span>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col m-0 p-0 text-center">
+                <span class="title">Documento</span>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col m-0 p-0 text-center">
+                <span class="title">Perfil</span>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-1 col-1">
+
+            </div>
+        </div>
+        <div *ngFor="let person of getPaginatedItems()" class="row m-0 p-2 box-shadow" >
+            <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-0 p-0 text-center">
+                <img *ngIf="person.isVIP === true"
+                width="30" src="assets/Images/seeker/vip.png">
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col m-0 p-0 m-0 p-0 text-center">
+                <span class="title">{{person.firstName}}</span>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 m-0 p-0 m-0 p-0 text-center ocultarTitle">
+                <span class="title">{{person.lastName}}</span>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 m-0 p-0 m-0 p-0 text-center ocultarTitle">
+                <span class="title">{{person.lpersonDocuments[0].docName}}</span>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col m-0 p-0 m-0 p-0 text-center">
+                <span class="title">{{person.lpersonDocuments[0].docNumber}}</span>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col m-0 p-0 m-0 p-0 text-center">
+                <span class="title">{{person.orole.name}}</span>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-0 p-0 text-center">
+                <img class="point"  (click)="agregarPasajero(person)" width="30"
+                src="assets/Images/seeker/mas.png">
+            </div>
+        </div>
+        <div class="row m-0 p-0 mt-4">
+            <div class="pagination">
+                <button class="pagination-btn" [disabled]="currentPage === 1" (click)="setPage(currentPage - 1)">
+                  Anterior
+                </button>
+                
+                <ng-container *ngFor="let page of getPageArray()">
+                    <button class="pagination-btn" [class.active]="page === currentPage" (click)="setPage(page)">
+                      {{ page }}
+                    </button>
+                  </ng-container>
+                  
+               <!--    <span>{{currentPage}} / {{getTotalPages()}}</span> -->
+                
+                <button class="pagination-btn" [disabled]="currentPage === getTotalPages()" (click)="setPage(currentPage + 1)">
+                  Siguiente
+                </button>
+              </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row m-0 p-0 mt-5" >
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+        <span class="add">Pasajeros agregados</span>
+    </div>
+</div>
+<div class="row m-0 p-0 mt-3 mb-5" translate="no">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+        <div class="row m-0 p-2 box-shadow">
+            <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-0 p-0">
+
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col m-0 p-0 text-center">
+                <span class="title">Nombre</span>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 m-0 p-0 text-center ocultarTitle">
+                <span class="title">Apellidos</span>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 m-0 p-0 text-center ocultarTitle">
+                <span class="title">Tipo Doc</span>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col m-0 p-0 text-center">
+                <span class="title">Documento</span>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col m-0 p-0 text-center">
+                <span class="title">Perfil</span>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-1 col-1">
+
+            </div>
+        </div>
+        <div *ngFor="let pass of lstPasajeros | paginate: { itemsPerPage: 10, currentPage: p}" class="row m-0 p-2 box-shadow">
+            <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-0 p-0 text-center">
+                <img *ngIf="pass.isVIP === true"
+                width="30" src="assets/Images/seeker/vip.png">
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col m-0 p-0 text-center">
+                <span class="title">{{pass.firstName}}</span>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 m-0 p-0 text-center ocultarTitle">
+                <span class="title">{{pass.lastName}}</span>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 m-0 p-0 text-center ocultarTitle">
+                <span class="title">{{pass.lpersonDocuments[0].docName}}</span>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col m-0 p-0 text-center">
+                <span class="title">{{pass.lpersonDocuments[0].docNumber}}</span>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col m-0 p-0 text-center">
+                <span class="title">{{pass.orole.name}}</span>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-0 p-0 text-center">
+                <img class="point" (click)="eliminarPasajero(pass)" width="15"
+                src="assets/Images/seeker/papelera_reciclaje.svg">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row m-0 p-0 mb-4">
+    <div class="col-lg-12 m-0 p-0 text-center">
+        <span (click)="continuar(modalvalidacion)" class="next">Continuar</span>
+    </div>
+</div>
+
+
+<ng-template #modalvalidacion let-c="close" let-d="dismiss">
+    <div class="modal-header m-0 p-0" style="border: none;">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+    </div>
+    <div class="modal-body m-0 p-0">
+        <div class="row m-0 p-0">
+            <div class="col-12 m-0 p-0 text-1 text-center pt-2 pb-2">
+                Debe elegir al menos un pasajero
+            </div>
+        </div>
+    </div>
+    <div class="row m-0 p-0">
+        <div class="col-12 m-0 p-0 text-center pb-3">
+            <button (click)="modalRef.hide()" class="btn btn-ok">Ok</button>
+        </div>
+    </div>
+  </ng-template>
+  

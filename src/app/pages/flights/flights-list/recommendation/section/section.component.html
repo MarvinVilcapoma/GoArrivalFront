@@ -1,0 +1,52 @@
+<div *ngIf="section.isVisible" class="row m-0 p-0 scet">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 pt-4 border-b">
+        <div *ngIf="pseudoRepeat?.length > 0 && index === 0" class="row m-0 pl-3 pb-2">
+            <div *ngFor="let pseudo of pseudoRepeat" class="col-xxl-1 col-xl-1 col-lg-3 col-md-3 col-sm-3 col-3 m-0 p-0 pl-3">
+                <img src="https://domiruthgeneral.z13.web.core.windows.net/images/Country/{{pseudo.countryCode}}.png" alt="" pTooltip="{{pseudo.countryName}}"
+            style="width: 40px;">
+            </div>
+        </div>
+        <div class="row m-0 p-0">
+            <div class="col-lg-3 col-md-3 col-sm-12 col-12 text-center">
+                <div class="row m-0 p-0">
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-4 m-0 p-0 text-center lineh">
+                        <img src="assets/Images/flight/{{imgIdaVuelta}}" alt="">
+                        <span id="textPho" class="text-vuelo ml-3">{{textType}}</span><br />
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-8 col-8 m-0 p-0 text-center">
+                        <span id="textWeb" class="text-vuelo">{{textType}}</span><br />
+                        <span class="s-date">{{section.departureDateShow}}</span>
+                    </div>
+                </div>
+
+
+            </div>
+            <div id="deletePhone" class="col-lg-6 col-md-6 col-sm-4 m-0 p-0">
+                <div class="row m-0 p-0">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                        <span class="s-iata">{{section.oorigin.cityName}}</span><br />
+                        <span class="s-airport"> {{section.oorigin.airportName}}</span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                        <span class="s-iata">{{section.odestination.cityName}}</span><br />
+                        <span class="s-airport"> {{section.odestination.airportName}}</span>
+                    </div>
+                </div>
+            </div>
+            <div id="deletePhone" class="col-lg-3 col-md-3 col-sm-4 text-center lineh">
+                <span class="s-text-3">Equipaje</span>
+            </div>
+        </div>
+        <div class="row m-0 p-0 mt-3">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+                <app-segment [section]="section" [segment]="segment" [bagAllowed]="segment.obaggage.hasBagagge"
+                    [hasCarryOn]="segment.obaggage.hasCarryOn"
+                    [bagQuantity]="segment.obaggage.quantity" [indexSegment]="i+1"
+                    [recommendationIndex]="recommendationIndex" [recommendationId]="recommendationId"
+                    [sectionId]="section.id" [lSectionGroups]="section.lschedule"
+                    (outSegmentCheck)="setSegmentCheck($event)" *ngFor="let segment of section.lschedule; let i=index">
+                </app-segment>
+            </div>
+        </div>
+    </div>
+</div>

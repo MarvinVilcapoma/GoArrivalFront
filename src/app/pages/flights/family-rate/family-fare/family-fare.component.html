@@ -1,0 +1,42 @@
+
+<div  class="row m-0 p-0 scroll-family" >
+    <div *ngFor="let fareFamily of segment.lfareFamilies; let i = index" style="width: 280px !important;" >
+        <div class="row m-0 p-2 align-items-center bord" id="{{idSection}}_{{idSegment}}_{{i}}_{{fareFamily.fareBasis}}_div">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 text-center bord-bot">
+                <span class="name-family">{{fareFamily.familyName}} - {{fareFamily.fareBasis}}</span>
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mt-2 text-center">
+                <input  type="radio" (click)="changeColorHtml(i,fareFamily.fareBasis,segment.lfareFamilies);changeFamily(fareFamily.fareBasis,fareFamily.familyName)" id="{{idSection}}_{{idSegment}}_{{i}}_{{fareFamily.fareBasis}}" name="drone_{{idSection}}_{{idSegment}}" value="{{idSection}}_{{idSegment}}_{{i}}_{{fareFamily.fareBasis}}">
+                <span class="currency">{{fareFamily.oprice.currency}}</span><span class="text-amount">{{fareFamily.oprice.totalAmount}}</span><br/>
+                <span class="text-impues">No incluye impuestos</span>
+            </div>
+            <div *ngIf="validShow" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mt-2 text-center">
+                <div class="row m-0 p-0 bord-bot">
+                    <div class="col-xl-2 col-lg-3 col-md-3 col-sm-3 col-3 m-0 p-0 paral">
+                        <span>INCLUYE</span>
+                    </div>
+                    <div class="col-xl-10 col-lg-9 col-md-9 col-sm-9 col-9 pt-2 contex">
+                        <p class="services" *ngFor="let inc of fareFamily.incluye;let i = index">{{i+1}}. {{inc}}</p>
+                    </div>
+                </div>
+                <div class="row m-0 p-0 bord-bot">
+                    <div class="col-xl-2 col-lg-3 col-md-3 col-sm-3 col-3 m-0 p-0 paral-1">
+                        <span>NO INCLUYE</span>
+                    </div>
+                    <div class="col-xl-10 col-lg-9 col-md-9 col-sm-9 col-9 pt-2 contex-1">
+                        <p class="services" *ngFor="let noi of fareFamily.noIncluye;let i = index">{{i+1}}. {{noi}}</p>
+                    </div>
+                </div>
+                <div class="row m-0 p-0">
+                    <div class="col-xl-2 col-lg-3 col-md-3 col-sm-3 col-3 m-0 p-0 paral">
+                        <span>PAGA POR</span>
+                    </div>
+                    <div class="col-xl-10 col-lg-9 col-md-9 col-sm-9 col-9 pt-2 contex" style="border-radius: 0px 0px 20px 0px;">
+                        <p class="services" *ngFor="let pp of fareFamily.pagaPor;let i = index">{{i+1}}. {{pp}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

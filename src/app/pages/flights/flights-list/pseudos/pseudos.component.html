@@ -1,0 +1,26 @@
+<div class="row m-0 p-0">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 pt-4 pb-1">
+        <div class="row m-0 p-0">
+            <div class="col-lg-3 col-md-3 col-sm-4 col-5 m-0 p-0">
+                <div class="r-div-pxa"><img class="pr-2" src="assets/Images/flight/mundo.svg">Multipaises</div>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-8 col-12 mt-2">
+                    <div class="row m-0 p-0">
+                        <div *ngFor="let item of pseudoRepeat" class="m-0 p-0" style="width: 150px !important;">
+                            <div class="row m-0 p-0">
+                                <div class="col-12 m-0 p-0 text-center">
+                                    <img pTooltip="{{item.countryName}}" src="https://domiruthgeneral.z13.web.core.windows.net/images/Country/{{item.pseudoCountry}}.png"
+                                     style="width: 50px !important;" alt="">
+                                </div>
+                                <div class="col-12 m-0 p-0 text-center">
+                                    <span class="pr-1 mp-text-2">{{item.oprice.currency}}</span>
+                                    <span class="mp-text-3">{{item.oprice.totalAmount}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+    </div>
+</div>

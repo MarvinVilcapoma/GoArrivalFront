@@ -1,0 +1,189 @@
+<!-- <div class="row m-0 p-0">
+    <div *ngIf="data != null" class="col">
+        <div class="row m-0 p-0">
+            <div class="col-1">
+                <img src="assets/Images/flight/asiento-info.svg" alt="">
+            </div>
+            <div class="col-10">
+                <div style="margin-left: 17px;margin-bottom: 15px;">
+                    <span style="color: #ED1C24;"> Mis asientos <label style="color: #000000;">seleccionados</label>
+                    </span>
+                    <div
+                        style="background-image:linear-gradient(to left,#3E484B 50%, #EB1E26  50%);width: 80%;height: 3px;">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div *ngFor="let pass of data; let i = index;" class="row m-0 p-0 ">
+            <div *ngIf="pass.pasajeros?.length > 0" class="col mb-5">
+                <div class="row m-0 p-0">
+                    <div class="col text-center" style="background: #F1F1F1;">
+                        <span style="font-weight: 600;">{{pass.tramo}}</span><br />
+                        <div style="text-align: -webkit-center;">
+                            <span class=""> Tramo {{pass.pasajeros[0].tramo}} </span>
+                            <div
+                                style="background-image:linear-gradient(to left,#3E484B 50%, #EB1E26  50%);width: 30%;height: 3px;">
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row m-0 p-0" style="background-color: #F8F8F8;font-weight: 600;">
+                    <div class="col text-center">
+                        <span style="font-size: 12px;">Pasajero</span>
+                    </div>
+                    <div class="col text-center" style="border-right: 1px solid #ccc;border-left: 1px solid #ccc;">
+                        <span style="font-size: 12px;">Asiento</span>
+                    </div>
+                    <div class="col text-center">
+                        <span style="font-size: 12px;">Precio</span>
+                    </div>
+                </div>
+                <div *ngFor="let qwe of pass.pasajeros; let j = index;" class="row m-0 p-0"
+                    style="border-bottom: 1px solid #ccc;">
+                    <div class="col text-center">
+                        <span style="font-size: 12px;">{{qwe.numAdulto}}</span>
+                    </div>
+                    <div class="col text-center" style="border-right: 1px solid #ccc;border-left: 1px solid #ccc;">
+                        <span style="font-size: 12px;">{{qwe.asiento}}</span>
+                    </div>
+                    <div class="col text-center">
+                        <span style="font-size: 12px;">{{qwe.precio}}</span>
+                        <span *ngIf="!borrar" class="borrar" (click)="eliminarPasajero(i,pass,qwe);"
+                            tooltip="Borrar asiento {{qwe.asiento}}">X</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="row  m-0 p-0">
+    <div *ngIf="data != null" class="col-6  p-0">
+        <div class="row  m-0 p-0">
+            <div class="col-1">
+                <img src="assets/Images/flight/asiento-info.svg" alt="">
+            </div>
+            <div class="col-10">
+                <div style="margin-left: 17px;margin-bottom: 15px;">
+                    <span style="color: #ED1C24;"> Mis asientos <label
+                            style="color: #000000;">seleccionados</label> </span>
+                    <div
+                        style="background-image:linear-gradient(to left,#3E484B 50%, #EB1E26  50%);width: 80%;height: 3px;">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div *ngFor="let pass of data; let i = index;" class="row m-0 p-0 mb-5">
+            <div class="col">
+                <div class="row m-0 p-0">
+                    <div class="col text-center" style="background: #F1F1F1;">
+                        <span style="font-weight: 600;">{{pass.tramo}}</span><br />
+                        <div style="text-align: -webkit-center;">
+                            <span class=""> Tramo {{pass.pasajeros[0].tramo}} </span>
+                            <div
+                                style="background-image:linear-gradient(to left,#3E484B 50%, #EB1E26  50%);width: 30%;height: 3px;">
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row m-0 p-0" style="background-color: #F8F8F8;font-weight: 600;">
+                    <div class="col text-center">
+                        <span style="font-size: 12px;">Pasajero</span>
+                    </div>
+                    <div class="col text-center"
+                        style="border-right: 1px solid #ccc;border-left: 1px solid #ccc;">
+                        <span style="font-size: 12px;">Asiento</span>
+                    </div>
+                    <div class="col text-center">
+                        <span style="font-size: 12px;">Precio</span>
+                    </div>
+                </div>
+                <div *ngFor="let qwe of pass.pasajeros; let j = index;" class="row m-0 p-0"
+                    style="border-bottom: 1px solid #ccc;">
+                    <div class="col text-center">
+                        <span style="font-size: 12px;">{{qwe.numAdulto}}</span>
+                    </div>
+                    <div class="col text-center"
+                        style="border-right: 1px solid #ccc;border-left: 1px solid #ccc;">
+                        <span style="font-size: 12px;">{{qwe.asiento}}</span>
+                    </div>
+                    <div class="col text-center">
+                        <span style="font-size: 12px;">{{qwe.precio}}</span>
+                        <span *ngIf="borrar === false" class="borrar" (click)="eliminarPasajero(i,pass,qwe);"  pTooltip="Borrar asiento {{qwe.asiento}}">X</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="maletas != null" class="col-6  p-0">
+        <div class="row m-0 p-0">
+            <div class="col-1">
+                <img src="assets/Images/flight/asiento-info.svg" alt="">
+            </div>
+            <div class="col-10">
+                <div style="margin-left: 17px;margin-bottom: 15px;">
+                    <span style="color: #ED1C24;"> Mi equipaje <label
+                            style="color: #000000;">seleccionado</label> </span>
+                    <div
+                        style="background-image:linear-gradient(to left,#3E484B 50%, #EB1E26  50%);width: 80%;height: 3px;">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngFor="let bag of maletas.LpassengerInfo; let i = index;" class="row m-0 p-0 mb-5">
+            <div class="col">
+                <div class="row m-0 p-0">
+                    <div class="col text-center" style="background: #F1F1F1;">
+                        <!-- <span style="font-weight: 600;">{{pass.tramo}}</span><br /> -->
+                        <div style="text-align: -webkit-center;">
+                            <span class=""> Pasajero {{bag.PassengerID}} </span>
+                            <div
+                                style="background-image:linear-gradient(to left,#3E484B 50%, #EB1E26  50%);width: 30%;height: 3px;">
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row m-0 p-0" style="background-color: #F8F8F8;font-weight: 600;">
+                    <div class="col text-center">
+                        <span style="font-size: 12px;">Tramo</span>
+                    </div>
+                    <div class="col text-center"
+                        style="border-right: 1px solid #ccc;border-left: 1px solid #ccc;">
+                        <span style="font-size: 12px;">Equipaje</span>
+                    </div>
+                    <div class="col text-center">
+                        <span style="font-size: 12px;">Precio</span>
+                    </div>
+                </div>
+                <div *ngFor="let qwe of bag.Lsegment; let j = index;" class="row m-0 p-0"
+                    style="border-bottom: 1px solid #ccc;">
+                    <div class="col text-center">
+                        <span style="font-size: 12px;">{{qwe.SectionID}}</span>
+                    </div>
+                    <div class="col text-center"
+                        style="border-right: 1px solid #ccc;border-left: 1px solid #ccc;">
+                        <span style="font-size: 12px;">{{qwe.Lbag[0].description}}</span>
+                    </div>
+                    <div class="col text-center">
+                        <span style="font-size: 12px;">{{qwe.Lbag[0].amount}}</span>
+                        <span *ngIf="borrar === false" class="borrar" (click)="eliminarMaleta(qwe,bag,qwe.Lbag[0]);"  pTooltip="Borrar asiento {{qwe.Lbag[0].description}}">X</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

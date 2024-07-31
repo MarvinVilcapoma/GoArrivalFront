@@ -1,0 +1,35 @@
+<div class="row m-0 p-0">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mt-3 pb-3">
+        <div class="row m-0 p-0">
+            <div class="col align-self-center">
+                <div class="row m-0 p-0 align-items-center sobre-sal">
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 m-0 p-0 text-center">
+                        <img width="115" src="assets/Images/airlines/{{segment.ocarrier.marketingCode}}.png"><br/>
+                        <span class="departShow">{{segment.departureDateShow}}</span><br/>
+                        <span class="time-show">{{segment.departureTimeShow}}</span><br/>
+                        <span class="text-city">{{segment.oorigin.cityName}}</span><br/>
+                        <span class="text-airport">{{segment.oorigin.airportName}}</span>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 m-0 p-0 text-center">
+                        <span class="text-airport">{{segment.ocarrier.marketingName}}</span><br/>
+                        <span class="text-airport">Duración</span><br/>
+                        <span class="text-airport">{{segment.durationShow}}</span><br/>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 m-0 p-0 text-center">
+                        <span class="text-airport">Vuelo {{segment.flightNumber}} - {{segment.typePlane}}</span><br/>
+                        <span class="departShow">{{segment.arrivalDateShow}}</span><br/>
+                        <span class="time-show">{{segment.arrivalTimeShow}}</span><br/>
+                        <span class="text-city">{{segment.odestination.cityName}}</span><br/>
+                        <span class="text-airport">{{segment.odestination.airportName}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mt-3 pb-3">
+        <div class="row m-0 p-0">
+            <app-family-fare [idSection]="indexSec" [lstComi]="lstComi" [lfamilyCombinations]="lfamilyCombinations" [idSegment]="indexSegment"  (change)="changeFamiliy($event)"  (select)="enviarFamiliy($event)" [sectionId]="sectionId" [segment]="segment"></app-family-fare>
+        </div>
+        
+    </div>
+</div>

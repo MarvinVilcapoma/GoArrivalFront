@@ -1,0 +1,42 @@
+.title{
+    background-color: #F8F8F8;
+    padding: 21px;
+    text-align: center;
+    font-family: Omnes-med;
+    font-size: 17px;
+}
+
+.body-title{
+    padding: 30px;
+    font-size: 16px;
+}
+
+.bor-dates{
+    border-right: 1px solid #cccccc;
+    padding: 5px 0px;
+    margin: 5px 0px;
+    text-align: center;
+}
+
+.subtitles{
+    color: #3e3636;
+    text-align: center;
+    font-family: Omnes-med;
+    font-size: 17px;
+}
+
+.subtitles1{
+    color: #ED1C24;
+    text-align: center;
+    font-family: Omnes-med;
+    font-size: 19px;
+}
+
+
+.btn-ver{
+    color: whitesmoke;
+    background-color: #ED1C24;
+    padding: 4px 11px !important;
+    font-family: Omnes-med;
+    cursor: pointer;
+}

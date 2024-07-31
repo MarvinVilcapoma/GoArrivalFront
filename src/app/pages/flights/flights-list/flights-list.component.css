@@ -1,0 +1,14 @@
+@media screen and (max-width:500px) {
+    #calendar{
+        display: none;
+    }
+
+    .paddphone{
+        padding: 0px !important;
+    }
+
+    .todoLower {
+        margin-top: 7.5rem !important;
+      }
+}
+

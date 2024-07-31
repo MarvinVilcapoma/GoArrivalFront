@@ -1,0 +1,57 @@
+<div id="todoqweee" class="m-0 p-0 ">
+    <div class="col-12 ">
+        <div class="row m-0 p-0">
+            <div *ngIf="users.length > 1" class="col-12 m-0 p-0 txt-pasajero text-center pb-3 pt-2">
+                PASAJEROS 
+            </div>
+            <div *ngIf="users.length === 1" class="col-12 m-0 p-0 txt-pasajero text-center pb-3 pt-2">
+                PASAJERO 
+            </div>
+        </div>
+        <div class="row m-0 p-0 pt-3 pb-3" *ngFor="let item of users; let i = index;">
+            <div *ngIf="users.length > 1" class="col-12 m-0 p-0 pl-3 ">
+                <span class="lbl-title">Pasajero {{i+1}}</span>
+            </div>
+            <div class="ml-2 mt-2">
+                <div class="col-12 m-0 p-0 {{padding}}">
+                    <div class="row m-0 p-0">
+                        <div class="col-12 m-0 p-0 lbl-nombre pb-2">
+                            Nombre Pasajero:
+                        </div>
+                    </div>
+                    <div class="row m-0 p-0">
+                        <div class="col-12 m-0 p-0 txt-nombre">
+                            {{item.name}} {{item.lastName}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 m-0 p-0 {{padding}} mt-2">
+                    <div class="row m-0 p-0">
+                        <div class="col-12 m-0 p-0 lbl-nombre pb-2">
+                            Correo:
+                        </div>
+                    </div>
+                    <div class="row m-0 p-0">
+                        <div class="col-12 m-0 p-0 txt-nombre">
+                            {{item.email}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 m-0 p-0 {{padding}} mt-2">
+                    <div class="row m-0 p-0">
+                        <div class="col-12 m-0 p-0 lbl-nombre pb-2">
+                            Teléfono:
+                        </div>
+                    </div>
+                    <div class="row m-0 p-0">
+                        <div class="col-12 m-0 p-0 txt-nombre">
+                            {{item.phone}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>

@@ -1,0 +1,164 @@
+<div class="row m-0 p-0">
+    <div class="col-lg-6 col-md-6 col-sm-5 col-6 mt-4 r-div-pxa text-center">
+        <span class="">Precio Final</span>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-7 col-6 pt-4" style="text-align: end !important;">
+        <img (click)="visibleDescuento = true" class="medal pr-2" tooltip="Vuelo con descuento corporativo."
+            *ngIf="flight.lsection[0].oschedule.lsegment[0].fareType==='RB'"
+            src="assets/Images/flight/medalla.svg" alt="">
+
+        <span tooltip="Vuelo con infracción de políticas." (click)="modalPolitica = true"
+            *ngIf="flight.lpolicy != null && flight.lpolicy?.length>0"
+            class="circulo-politica pl-1 r-span-1"></span>
+        <span tooltip="El vuelo cumple las políticas de viaje de la empresa."
+            *ngIf="flight.lpolicy != null && flight.lpolicy?.length===0"
+            class="circulo-politica1 pl-1 r-span-2"></span>
+    </div>
+</div>
+<div  class="section">
+    <div class="row m-0 p-0">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-6 text-end">
+
+             <img *ngIf="flight.oprice.oconvertionPrice != null" class="aster"
+                tooltip="Todos los precios están sujetos a posibles modificaciones."
+                src="assets/Images/flight/asterisco.svg">
+            <span 
+                class="text-currency pr-1">{{flight.oprice.currency}}</span>
+            <span  class="text-currency-monto"
+                style="color: #898989">{{flight.oprice.totalAmountWithCharges}}</span>
+
+
+        </div>
+    </div>
+
+    <div *ngFor="let price of flight.oprice.lpassengerPrice" class="row m-0 p-0">
+        <div class="col-lg-7 col-md-7 col-sm-7 col-6 text-end">
+            <span class="text-per-person pr-4">Precio por {{price.type === 'ADT' ? 'adulto' : price.type === 'INF' ? 'infante' : 'niño'}} ({{price.quantity}})</span>
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-5 col-6 text-end">
+            
+            <span 
+                class="text-currency-2 pr-1">{{flight.oprice.currency}}</span>
+            <span 
+                class="text-currency-monto-2">{{price.individualPrice}}</span>
+
+        </div>
+    </div>
+
+    <div *ngIf="flight.oprice.totalCharges > 0" class="row m-0 p-0">
+        <div class="col-lg-7 col-md-7 col-sm-7 col-6 text-end">
+            <span class="text-per-person pr-4">Cargos Admin.</span>
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-5 col-6 text-end">
+           
+            <span class="text-currency-2 pr-1">{{flight.oprice.currency}}</span>
+            <span class="text-currency-monto-2">{{flight.oprice.totalCharges}}</span>
+        </div>
+    </div>
+
+
+
+    <div *ngIf="priceSeat != null && priceSeat != 0" class="row m-0 p-0">
+        <div class="col-lg-7 col-md-7 col-sm-7 col-6 text-end">
+            <span class="text-per-person pr-4">Precio Total Ancilliares</span>
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-5 col-6 text-end">
+           
+            <span class="text-currency-2 pr-1">USD</span>
+            <span class="text-currency-monto-2">{{priceSeat}}</span>
+        </div><br/>
+        
+    </div>
+
+    <div *ngIf="priceHotel != null && priceHotel != 0" class="row m-0 p-0">
+        <div class="col-lg-7 col-md-7 col-sm-7 col-6 text-end">
+            <span class="text-per-person pr-4">Precio Total Alojamiento</span>
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-5 col-6 text-end">
+           
+            <span class="text-currency-2 pr-1">USD</span>
+            <span class="text-currency-monto-2">{{priceHotel}}</span>
+        </div><br/>
+        
+    </div>
+    <div *ngIf="priceSeat != null && priceSeat != 0" class="row m-0 p-0 mt-2">
+        <div class="col text-end">
+            <span class="text-pol">El cobro de Ancilliares deberá ser pagado con una tarjeta de crédito/debito personal del pasajero.</span>
+        </div>
+  
+        
+    </div>
+
+
+
+    <div *ngIf="flight.oprice.ocorporateDiscount != null" class="row m-0 p-0">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12 text-end">
+            <div class="row">
+                <div class="col-lg-7 col-md-7 col-sm-7 col-6 text-end">
+                    <span class="text-per-person pr-4">Monto de descuento</span>
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-5 col-6 text-end">
+                    <span class="text-currency-2 pr-1">{{flight.oprice.currency}}</span>
+                    <span class="text-currency-monto-2">{{flight.oprice.ocorporateDiscount.amount}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-7 col-md-7 col-sm-7 col-6 text-end">
+                    <span class="text-per-person pr-4">Porcentaje de descuento</span>
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-5 col-6 text-end">
+                    <span class="text-currency-monto-2">% {{flight.oprice.ocorporateDiscount.percentage}}</span>
+                </div>
+            </div>
+          
+        </div>
+      
+    </div>
+</div>
+
+<p-dialog header="Alerta" [(visible)]="modalPolitica" [modal]="true" position="top"
+  [breakpoints]="{ '960px': '75vw','500px' : '95vw' }" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+
+    <div class="row m-0 p-0 pb-3">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12 text-center textModalPol">
+            <u>Infracción de Políticas de Viaje</u>
+        </div>
+    </div>
+
+    <div class="row m-0 p-0">
+
+          <app-policies [politica]="politica" [politicaIndex]="i+1"
+              [politicaslength]="flight.lpolicy.length"
+              *ngFor="let politica of flight.lpolicy; let i=index"></app-policies>
+
+    </div>
+
+</p-dialog>
+
+
+
+<p-dialog header="Información" [(visible)]="visibleDescuento" [modal]="true" position="top"
+  [breakpoints]="{ '960px': '75vw','500px' : '95vw' }" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+
+    <div class="row m-0 p-0 pb-3">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12 text-center textModalPol">
+            <u>Convenio Corporativo</u>
+        </div>
+    </div>
+
+    <div class="row m-0 p-0">
+
+      <p>
+        La medalla indica que el vuelo tiene un descuento especial para su empresa, el cual no encontrará en vuelos
+        publicados.
+      </p>
+  
+      <p>
+        Comunmente son los acuerdos iniciales que se realizan con cada aerolínea.
+      </p>
+
+    </div>
+
+</p-dialog>
+
+

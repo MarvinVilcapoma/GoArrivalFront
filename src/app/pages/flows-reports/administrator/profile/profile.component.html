@@ -1,0 +1,211 @@
+<mat-toolbar *ngIf="head.validPhone()" color="primary" class="example-toolbar">
+    <button mat-icon-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
+    <h1 class="example-app-name">Menus</h1>
+</mat-toolbar>
+
+
+<mat-sidenav-container class="example-container" autosize>
+
+    <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" [disableClose]="true" (mouseenter)="mouseenter()"
+        (mouseleave)="mouseleave()">
+        <app-sidenav ></app-sidenav>
+    </mat-sidenav>
+
+
+    <div class="example-sidenav-content p-6 container">
+
+        <form [formGroup]="form">
+            <div class="flex flex-col sm:flex-row gap-4 webInformation webDropDown">
+                <div class="card flex-auto">
+                    <div class="row m-0 mt-5 mb-5 p-0">
+                        <div class="col mt-2 text-center">
+                            <h2 class="title m-0">Mi Perfil</h2>
+                        </div>
+                    </div>
+                    <div class="row m-0 p-0  mt-3 mb-3">
+                        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 mt-2">
+
+                            <span class="title-input">Nombre(s)</span><br/>
+                            <p-iconField iconPosition="right">
+                                <p-inputIcon styleClass="pi pi-user" />
+                                <input type="text" formControlName="name" pInputText placeholder="Nombre" />
+                            </p-iconField>
+
+
+                          <!--   <mat-form-field appearance="outline" color="primary">
+                                <mat-label>Nombre</mat-label>
+                                <input formControlName="name" matInput required />
+                                <mat-icon matSuffix>person</mat-icon>
+                            </mat-form-field> -->
+
+
+                        </div>
+                        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 mt-2">
+                            <span class="title-input">Apellidos</span><br/>
+                            <p-iconField iconPosition="right">
+                                <p-inputIcon styleClass="pi pi-user" />
+                                <input type="text" formControlName="lastName" pInputText  />
+                            </p-iconField>
+
+
+                   <!--          <mat-form-field appearance="outline" color="primary">
+                                <mat-label>Apellidos</mat-label>
+                                <input formControlName="lastName" matInput required />
+                                <mat-icon matSuffix>person</mat-icon>
+                            </mat-form-field> -->
+                        </div>
+                        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 mt-2">
+
+                            <span class="title-input">Teléfono</span><br/>
+                            <p-iconField iconPosition="right">
+                                <p-inputIcon styleClass="pi pi-phone" />
+                                <input type="text" formControlName="phone" pInputText  />
+                            </p-iconField>
+
+
+                          <!--   <mat-form-field appearance="outline" color="primary">
+                                <mat-label>Teléfono</mat-label>
+                                <input formControlName="phone" matInput required />
+                                <mat-icon matSuffix>smartphone</mat-icon>
+                            </mat-form-field> -->
+                        </div>
+                        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 mt-2">
+
+                            <span class="title-input">Correo Electrónico</span><br/>
+                            <p-iconField iconPosition="right">
+                                <p-inputIcon styleClass="pi pi-envelope" />
+                                <input type="text" formControlName="email" pInputText  />
+                            </p-iconField>
+
+
+                          <!--   <mat-form-field appearance="outline" color="primary">
+                                <mat-label>Correo Electrónico</mat-label>
+                                <input formControlName="email" matInput required />
+                                <mat-icon matSuffix>email</mat-icon>
+                            </mat-form-field> -->
+                        </div>
+                        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 mt-2">
+
+                            <span class="title-input">Fecha de Nacimiento</span><br/>
+                            
+                            <p-calendar formControlName="birthDate" dateFormat="dd/mm/yy" [iconDisplay]="'input'" [showIcon]="true"  [minDate]="adultMinDate"
+                            [maxDate]="adultMaxDate" [readonlyInput]="true" />
+
+<!-- 
+                            <mat-form-field appearance="outline" class="mat-mar">
+                                <mat-label>Fecha de Nacimiento</mat-label>
+                                <input formControlName="birthDate" matInput [min]="adultMinDate" [max]="adultMaxDate"
+                                    [matDatepicker]="picker" readonly="true" required>
+
+                                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+
+                            </mat-form-field> -->
+
+
+                        </div>
+                        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 mt-2">
+
+                            <span class="title-input">Género</span><br/>
+                            <p-dropdown [options]="genders"  
+                    formControlName="genero"  optionLabel="name"
+                    optionValue="id"></p-dropdown>
+
+
+                         <!--    <mat-form-field appearance="outline" class="mat-mar">
+                                <mat-label>Género</mat-label>
+                                <mat-select formControlName="genero">
+                                    <mat-option [value]="'M'">Masculino</mat-option>
+                                    <mat-option [value]="'F'">Femenino</mat-option>
+                                </mat-select>
+
+                            </mat-form-field> -->
+
+
+
+                        </div>
+                    </div>
+
+
+                    <div class="row m-0 p-0 mt-3 mb-3 justify-content-end">
+                        <div class="col-4 text-center">
+                            <button (click)="updateUser()" color="warn" mat-raised-button type="button">
+                                Actualizar Perfil
+                            </button>
+                        </div>
+                        <div class="col-4 text-end">
+                            <button (click)="visible = true" color="warn" mat-raised-button type="button">
+                                Cambiar Contraseña
+                            </button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+</mat-sidenav-container>
+
+<p-dialog header="Header" [(visible)]="visible" [modal]="true" [closeOnEscape]="false" [closable]="true" 
+[breakpoints]="{ '2600px': '25vw','1440px': '40vw', '960px': '75vw','500px': '85vw' }"  [draggable]="false" [resizable]="false">
+
+    <ng-template pTemplate="header">
+        <div class="inline-flex align-items-center justify-content-center gap-2">
+            <h4>Cambia tu contraseña</h4>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="content">
+        <div class="row m-0 p-0">
+            <div class="col-lg col-md col-sm col m-0 p-0 text-center" id="password-login-change">
+                <span>Nueva Contraseña</span><br />
+
+     
+
+                <p-password class="{{classError}}"  [feedback]="true" (focusout)="onInputChange1()" [(ngModel)]="password"
+                 [toggleMask]="true" promptLabel="Nueva contraseña" weakLabel="Demasiado simple" mediumLabel="Complejidad media" strongLabel="Contraseña compleja">
+                   
+                    <ng-template pTemplate="footer">
+                        <p-divider></p-divider>
+                        <p class="mt-2">Sugerencias</p>
+                        <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+                            <li>Al menos una minúscula</li>
+                            <li>Al menos una mayuscula</li>
+                            <li>Al menos un número</li>
+                            <li>Minimo 8 caracteres</li>
+                        </ul>
+                    </ng-template>
+                </p-password>
+            </div>
+
+
+        </div>
+        <div class="row m-0 p-0 mt-5">
+            <div class="col-lg col-md col-sm col m-0 p-0 text-center" id="password-login-change">
+                <span>Confirmar Contraseña</span><br />
+                <span class="p-float-label">
+                    <p-password class="{{classError}}" (focusout)="onInputChange1()" promptLabel="Confirma tu contraseña" [(ngModel)]="confirmPassword" [toggleMask]="true" weakLabel="Demasiado simple" mediumLabel="Complejidad media" strongLabel="Contraseña compleja"></p-password>
+
+                </span>
+            </div>
+
+
+        </div>
+        <div *ngIf="validErrorPassword" class="row m-0 p-0">
+            <div class="col-lg col-md col-sm col m-0 p-0 text-center">
+                <span class="texto-error">{{textError}}</span>
+            </div>
+        </div>
+        <div class="row m-0 p-0 mt-3 pt-5">
+            <div class="col-lg col-md col-sm col m-0 p-0 mt-5 text-center">
+                <span (click)="updatePassword()" class="btnEmit">Cambiar Contraseña</span>
+            </div>
+
+        </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+
+    </ng-template>
+</p-dialog>

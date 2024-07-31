@@ -1,0 +1,30 @@
+<div class="dm-image-gallery-container">
+    <div class="dm-image-gallery-content">
+        <div class="dm-image-gallery-button">
+            <div class="divnuevo" (click)="close()" matRipple>
+                <img src="assets/Images/flight/cerrar.png" width="12" class="" style="cursor: pointer;">
+            </div>
+        </div>
+         <carousel>
+            <slide *ngFor="let img of this.data">
+                <img  [src]="img.url" alt="first slide"
+                    style="width: 100%;height: 600px;">
+               
+            </slide>
+        </carousel>
+
+      <!--   <p-galleria [value]="data" [responsiveOptions]="responsiveOptions" [containerStyle]="{ 'max-width': '640px' }" [numVisible]="5">
+            <ng-template pTemplate="item" let-item>
+                <img [src]="item.url" style="width: 100%;" />
+            </ng-template>
+            <ng-template pTemplate="thumbnail" let-item>
+                <div class="grid grid-nogutter justify-content-center">
+                    <img [src]="item.url" />
+                </div>
+            </ng-template>
+        </p-galleria> -->
+
+        
+
+    </div>
+</div>

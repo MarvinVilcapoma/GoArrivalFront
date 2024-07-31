@@ -1,0 +1,153 @@
+.title{
+    font-family: Omnes-med;
+    color: #676767;
+    font-size: 20px;
+}
+
+.add {
+    color: #6B2542;
+    font-size: 20px;
+    font-family: Omnes-med;
+}
+
+.text-bienv {
+    text-align: center;
+    color: #767676;
+    font-size: 18px;
+    font-family: Omnes-med;
+    margin-left: 10px;
+}
+
+.input-search-pnr{
+    outline: none;
+    width: 100%;
+    padding: 5px;
+    border: 2px solid #DFD9D8;
+    border-radius: 5px;
+    font-family: Omnes-med;
+    color: #676767;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+
+.text-table {
+    text-align: center;
+    color: #767676;
+    font-size: 14px;
+    font-family: Omnes-med;
+}
+
+
+.text-table-head {
+    text-align: center;
+    color: #767676;
+    font-size: 18px;
+    font-family: Omnes-med;
+}
+
+.cabecera-tabla{
+  font-family: Omnes-med;
+  color: #3D3D3D;
+  background: #FBF6F6 0% 0% no-repeat padding-box;
+  font-size: 14px;
+  border: 1px solid #cccccc;
+}
+
+.title-option{
+    text-decoration: underline;
+    cursor: pointer;
+    font-family: Omnes-med;
+    color: #176FC7;
+}
+
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination-btn {
+    background-color: white;
+    color: #ED1C24;
+    border-radius: 5px;
+    font-family: Omnes-med;
+    border: 1px solid #ED1C24 !important;
+    padding: 8px 12px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.pagination-btn.active {
+    background-color: #ED1C24;
+    color: white;
+}
+
+.buscar {
+    color: white;
+    background-color: #ED1C24;
+    font-family: Omnes-med;
+    font-size: 16px;
+    height: 35px;
+    text-align: center;
+    cursor: pointer;
+    line-height: 30px;
+    border-radius: 10px;
+}
+
+.next {
+    color: white;
+    background-color: #ED1C24;
+    padding: 10px 10px 10px 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-family: Omnes-med;
+    cursor: pointer;
+}
+
+.point {
+    cursor: pointer;
+}
+
+.apc-btn-buscar {
+    color: white;
+    background-color: #ED1C24;
+    font-family: Omnes-med;
+    font-size: 15px;
+}
+
+button {
+    border: none !important;
+    background: none;
+}
+
+.btn-ok {
+    background-color: #ED1C24;
+    color: white;
+    font-family: Omnes-med;
+    font-size: 20px;
+}
+
+.text-1 {
+    font-family: Omnes-med;
+    font-size: 23px;
+}
+
+@media screen and (max-width:576px) {
+    .rolescr {
+        padding-top: 85px !important;
+    }
+
+    .namelast {
+        line-height: 35px;
+    }
+
+    .buscar {
+        margin-top: 15px !important;
+    }
+
+    .ocultarTitle {
+        display: none;
+    }
+}

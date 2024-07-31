@@ -1,0 +1,151 @@
+<div class="container">
+    <div *ngIf="validRoom" class="row m-0 p-0 mt-5">
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mt-3 mb-3">
+            <span (click)="goBack()" class="back">Volver</span>
+        </div>
+
+        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+            <p-stepper [activeStep]="1" [linear]="true">
+                <p-stepperPanel header="Selecciona tu hotel">
+                    <ng-template pTemplate="content" let-nextCallback="nextCallback" let-index="index">
+
+                    </ng-template>
+                </p-stepperPanel>
+                <p-stepperPanel header="Selecciona tu habitación">
+                    <ng-template pTemplate="content" let-prevCallback="prevCallback"
+                        let-nextCallback="nextCallback" let-index="index">
+
+                    </ng-template>
+                </p-stepperPanel>
+                <p-stepperPanel header="Completa tus datos">
+                    <ng-template pTemplate="content" let-prevCallback="prevCallback" let-index="index">
+                     
+                    </ng-template>
+                </p-stepperPanel>
+                <p-stepperPanel header="Reserva finalizada">
+                    <ng-template pTemplate="content" let-prevCallback="prevCallback" let-index="index">
+                     
+                    </ng-template>
+                </p-stepperPanel>
+            </p-stepper>
+        </div>
+
+        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+            <span class="hotelnamePhone">{{data.ohotel.hotelName}}</span>
+            <span *ngFor="let star of data.ohotel.lstStar" class="spaceStar">
+                <img *ngIf="star === true" src="assets/Images/flight/conStar.svg">
+                <img *ngIf="star === false" src="assets/Images/flight/sinStar.svg">
+            </span>
+        </div>
+        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mt-3">
+            <span class="cities">{{data.ohotel.address}} , {{data.ohotel.cityName}}</span>
+            <span class="viewMap" (click)="Mostrarmapa()">Ver Mapa</span>
+        </div>
+        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mt-4">
+            <div class="row m-0 p-0">
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 p-0 mt-4" style="height: 550px;">
+                    <img class="img-class-1" *ngIf="data.ohotel.limagens != null && data.ohotel.limagens?.length > 0"
+                        src="{{data.ohotel.limagens[0].url}}" (click)="selectPhotos(data.ohotel.limagens)">
+                    <img class="img-class-1" *ngIf="data.ohotel.limagens === null || data.ohotel.limagens?.length === 0"
+                        src="https://domiruthgeneral.blob.core.windows.net/domiruth/Images/Hoteles%20Default/DefaultHotel_1.png">
+                </div>
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12  mt-4" style="height: 550px;">
+                    <div class="row">
+                        <div class="col">
+                            <img class="img-class"
+                                *ngIf="data.ohotel.limagens != null && data.ohotel.limagens?.length > 1"
+                                src="{{data.ohotel.limagens[1].url}}" (click)="selectPhotos(data.ohotel.limagens)">
+                            <img class="img-class"
+                                *ngIf="data.ohotel.limagens === null || data.ohotel.limagens?.length <= 1"
+                                src="https://domiruthgeneral.blob.core.windows.net/domiruth/Images/Hoteles%20Default/DefaultHotel_2.png">
+                        </div>
+                        <div class="col">
+                            <img class="img-class"
+                                *ngIf="data.ohotel.limagens != null && data.ohotel.limagens.length > 2"
+                                src="{{data.ohotel.limagens[2].url}}" (click)="selectPhotos(data.ohotel.limagens)">
+                            <img class="img-class"
+                                *ngIf="data.ohotel.limagens === null || data.ohotel.limagens?.length <= 2"
+                                src="https://domiruthgeneral.blob.core.windows.net/domiruth/Images/Hoteles%20Default/DefaultHotel_3.png">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col">
+                            <img class="img-class-2"
+                                *ngIf="data.ohotel.limagens != null && data.ohotel.limagens.length > 3"
+                                src="{{data.ohotel.limagens[3].url}}" (click)="selectPhotos(data.ohotel.limagens)">
+                            <img class="img-class-2"
+                                *ngIf="data.ohotel.limagens === null || data.ohotel.limagens?.length <= 3"
+                                src="https://domiruthgeneral.blob.core.windows.net/domiruth/Images/Hoteles%20Default/DefaultHotel_4.png">
+                        </div>
+
+                    </div>
+                    <div class="section-price">
+                        <div class="row m-0 p-0" style="border-bottom: 1px solid #cccccc;">
+                            <div class="col" style="border-right: 1px solid #cccccc;">
+                                <span class="cities">Precio Total</span><br />
+                                <span class="cities">{{data.ohotel.numberNights}} noche(s) ,
+                                    {{data.ohotel.numberPassenger}} persona(s)</span>
+                            </div>
+                            <div class="col" style="text-align: end;">
+                                <span class="cities"> USD</span><span
+                                    class="total-price">{{data.ohotel.oprice.pricePerAllNights}}</span><br />
+                                <span class="cities">Precio por noche USD {{data.ohotel.oprice.pricePerNight}}</span>
+                            </div>
+                        </div>
+                        <div class="row m-0 p-0 mt-3">
+                            <div class="col text-center">
+                                <div class="btn-ver">Ver habitaciones</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mt-4">
+            <div class="row m-0 p-0">
+                <div class="col-xxl-8 col-xl-10 col-lg-10 col-md-10 col-sm-8 col-12 m-0 p-0 border-div">
+                    <img class="img-hour" src="assets/Images/flight/clock.png">
+                    <span class="cities">Horarios</span>
+                    <span>
+                        <span class="text-check">• Check-in:</span>
+                        <span>{{data.ohotel?.checkIn}}</span>
+                    </span>
+                    <span>
+                        <span class="text-check">• Check-out:</span>
+                        <span class="">{{data.ohotel?.checkOut}}</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row m-0 p-0 mt-3">
+            <div class="col-xxl-8 col-xl-8 col-lg-10 col-md-10 col-sm-12 col-12 m-0 p-0">
+                <span style="font-weight: 700;">Filtrar por</span>
+                <div class="row m-0 p-0">
+                    <div class="col m-0 p-0">
+                        <label class="">
+                            <input type="checkbox" class="radio" id="destino" (change)="ShowGarantia(1,$event)">Pago en
+                            destino
+                            <span class="check"></span>
+                        </label>
+                    </div>
+                    <div class="col m-0 p-0">
+                        <label class="">
+                            <input type="checkbox" class="radio" id="origen" (change)="ShowGarantia(2,$event)">Pago en
+                            origen
+                            <span class="check"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mt-4">
+            <app-price-room *ngFor="let habitacion of data.lroom; let i = index;" [room]="habitacion" [hotel]="data"
+                (select)="selectRoom($event)"></app-price-room>
+        </div>
+    </div>
+</div>

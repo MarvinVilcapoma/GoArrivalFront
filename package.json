@@ -1,0 +1,91 @@
+{
+  "name": "go-arrival",
+  "version": "0.0.0",
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "browser": true,
+      "es2021": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 12,
+      "sourceType": "module"
+    },
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "rules": {
+      "no-console": "error",
+      "no-undef": "error",
+      "no-unused-vars": "warn",
+      "no-extra-semi": "warn"
+    }
+  },
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^17.3.11",
+    "@angular/cdk": "^16.2.10",
+    "@angular/common": "^17.3.11",
+    "@angular/compiler": "^17.3.11",
+    "@angular/core": "^17.3.11",
+    "@angular/forms": "^17.3.11",
+    "@angular/google-maps": "^16.2.10",
+    "@angular/material": "^16.2.10",
+    "@angular/platform-browser": "^17.3.11",
+    "@angular/platform-browser-dynamic": "^17.3.11",
+    "@angular/router": "^17.3.11",
+    "@azure/identity": "^4.0.1",
+    "@azure/keyvault-secrets": "^4.7.0",
+    "@ngrx/effects": "^16.3.0",
+    "@ngrx/entity": "^16.3.0",
+    "@ngrx/store": "^16.3.0",
+    "@ngrx/store-devtools": "^16.3.0",
+    "@syncfusion/ej2-angular-calendars": "^23.1.41",
+    "angular-ng-autocomplete": "^2.0.12",
+    "bootstrap": "^5.3.1",
+    "crypto-js": "^4.1.1",
+    "dexie": "^3.2.4",
+    "file-server": "^2.2.1",
+    "idb": "^7.1.1",
+    "igniteui-angular": "^16.1.13",
+    "luxon": "^3.4.3",
+    "ngx-bootstrap": "^11.0.2",
+    "ngx-cookie-service": "^16.0.1",
+    "ngx-gallery": "^5.10.0",
+    "ngx-pagination": "^6.0.3",
+    "ngx-spinner": "^16.0.2",
+    "ngx-toastr": "^17.0.2",
+    "primeicons": "^6.0.1",
+    "primeng": "^17.18.0",
+    "rxjs": "^7.8.1",
+    "showdown": "^2.1.0",
+    "tslib": "^2.6.1",
+    "xlsx": "^0.18.5",
+    "zone.js": "^0.14.6"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^17.3.8",
+    "@angular/cli": "^17.3.8",
+    "@angular/compiler-cli": "^17.3.11",
+    "@types/crypto-js": "^4.1.1",
+    "@types/jasmine": "~4.0.0",
+    "jasmine-core": "~4.3.0",
+    "karma": "^6.4.2",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage": "^2.2.1",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.0.0",
+    "typescript": "~5.4.5"
+  }
+}

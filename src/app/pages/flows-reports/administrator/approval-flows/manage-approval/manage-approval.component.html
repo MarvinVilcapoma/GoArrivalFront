@@ -1,0 +1,149 @@
+<div class="container">
+    <form (ngSubmit)="save()" [formGroup]="form">
+
+
+
+        <h2 *ngIf="defaults != null" style="padding: 10px;">
+            Actualizar Aprobación
+        </h2>
+        <h2 *ngIf="defaults === null" style="padding: 10px;">
+            Nueva Aprobación
+        </h2>
+        <mat-divider class="text-border"></mat-divider>
+        <div class="row m-0 p-0 mt-4">
+            <div class="col">
+                <h4>Configura tu flujo de Aprobación</h4>
+            </div>
+        </div>
+        <div class="row mt-5 justify-content-center">
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12">
+                <mat-form-field appearance="outline" class="mat-mar">
+                    <mat-label>Jefe</mat-label>
+                    <input formControlName="boss" [matAutocomplete]="autoUser" matInput />
+                    <mat-autocomplete #autoUser="matAutocomplete">
+                        <mat-option *ngFor="let state of filteredOptionsUser | async" (click)="saveBoss(state)"  [value]="state.fullName">
+        
+                            <span class="body-1">{{ state.fullName }}</span>
+        
+        
+                        </mat-option>
+                    </mat-autocomplete>
+              
+                </mat-form-field>
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12">
+                <mat-form-field appearance="outline" class="mat-mar">
+                    <mat-label>Servicio</mat-label>
+                    <input formControlName="service" [matAutocomplete]="autoService" matInput />
+                    <mat-autocomplete #autoService="matAutocomplete">
+                        <mat-option *ngFor="let state of filteredOptionsService | async" (click)="saveService(state)"  [value]="state.name">
+        
+                            <span class="body-1">{{ state.name }}</span>
+        
+        
+                        </mat-option>
+                    </mat-autocomplete>
+              
+                </mat-form-field>
+            </div>
+            <div *ngIf="validCostCenter" class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12">
+                <mat-form-field appearance="outline" class="mat-mar">
+                    <mat-label>Centro de Costo</mat-label>
+                    <input formControlName="costCenter" [matAutocomplete]="autoCenCost" matInput />
+                    <mat-autocomplete #autoCenCost="matAutocomplete">
+                        <mat-option *ngFor="let state of filteredOptionsCostCenter | async" (click)="saveCost(state)"  [value]="state.description">
+        
+                            <span class="body-1">{{ state.description }}</span>
+        
+        
+                        </mat-option>
+                    </mat-autocomplete>
+              
+                </mat-form-field>
+            </div>
+            <div *ngIf="validUser" class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12">
+                <mat-form-field appearance="outline" class="mat-mar">
+                    <mat-label>Usuario</mat-label>
+                    <input formControlName="usuario" [matAutocomplete]="autousuario" matInput />
+                    <mat-autocomplete #autousuario="matAutocomplete">
+                        <mat-option *ngFor="let state of filteredOptionsUsuario | async" (click)="saveUser(state)"  [value]="state.fullName">
+        
+                            <span class="body-1">{{ state.fullName }}</span>
+        
+        
+                        </mat-option>
+                    </mat-autocomplete>
+              
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row mt-5 justify-content-center">
+           
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12">
+                <mat-form-field appearance="outline" class="mat-mar">
+                    <mat-label>Rango Inicial</mat-label>
+                    <input cdkFocusInitial formControlName="rangeInitial" matInput />
+                    
+
+                </mat-form-field>
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12">
+                <mat-form-field appearance="outline" class="mat-mar">
+                    <mat-label>Rango Final</mat-label>
+                    <input cdkFocusInitial formControlName="rangeFinal" matInput />
+               
+
+                </mat-form-field>
+            </div>
+            
+        </div>
+        <div class="row m-0 p-0 mt-4">
+            <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-5 col-12 text-center" >
+                <mat-chip-option [selected]="national" pTooltip="Configuración para reservas nacionales" tooltipPosition="top" (click)="changeChip(1)">Nacionales</mat-chip-option>
+            </div>
+            <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-5 col-12 text-center">
+                <mat-chip-option [selected]="international" pTooltip="Configuración para reservas Internacionales" tooltipPosition="top" (click)="changeChip(2)">Internacionales</mat-chip-option>
+            </div>
+            <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-5 col-12 text-center">
+                <mat-chip-option [selected]="hasException" pTooltip="Configuración para reservas con Infracción de políticas" tooltipPosition="top"  (click)="changeChip(3)">Con Excepción</mat-chip-option>
+            </div>
+            <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-5 col-12 text-center">
+                <mat-chip-option [selected]="isReservation" pTooltip="Configuración para reservas sin Infracción de políticas" tooltipPosition="top" (click)="changeChip(4)">Sin Excepción</mat-chip-option>
+            </div>
+        </div>
+        <div class="row m-0 p-0 mt-4">
+            <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-5 col-12 text-center">
+                <mat-chip-option [selected]="canIssue" pTooltip="Autorizador puede emitir de manera directa" tooltipPosition="top"   (click)="changeChip(5)">Puede Emitir</mat-chip-option>
+            </div>
+            <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-5 col-12 text-center">
+                <mat-chip-option [selected]="hasApprovalRange" pTooltip="Configuración de montos por el valor de la reserva" tooltipPosition="top"   (click)="changeChip(6)">Rango de Aprobación</mat-chip-option>
+            </div>
+            <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-5 col-12 text-center">
+                <mat-chip-option [selected]="hasInfractionRange" pTooltip="Configuración de montos para impactos de infracciones de politicas" tooltipPosition="top"  (click)="changeChip(7)">Rango de Infracción</mat-chip-option>
+            </div>
+            <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-5 col-12 text-center">
+                <mat-chip-option [selected]="isActive" pTooltip="Estado de Aprobación" tooltipPosition="top"   (click)="changeChip(8)">Aprobación Activa</mat-chip-option>
+            </div>
+        </div>
+    
+
+  
+
+    <div class="row m-0 p-0 mt-5 mb-2">
+        <div class="col text-center">
+            <mat-dialog-actions align="end">
+
+                <button mat-raised-button type="button" (click)="retroceder()">Cancelar</button>
+
+
+                <button *ngIf="isCreateMode()" (click)="createApproval()" color="primary" mat-flat-button type="submit">
+                    Crear Aprobación
+                </button>
+                <button *ngIf="isUpdateMode()" (click)="createApproval()" color="primary" mat-flat-button type="submit">
+                    Actualizar Aprobación
+                </button>
+            </mat-dialog-actions>
+        </div>
+    </div>
+</form>
+</div>

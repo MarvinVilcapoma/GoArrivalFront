@@ -1,0 +1,443 @@
+<div class="section">
+
+    <div  class="container">
+
+        <div *ngIf="!showHabitacion" class="row m-0 p-0">
+            <div class="col m-0 p-0">
+                <div class="row m-0 p-0 mt-5">
+                    <div class="col-10 m-0 p-0">
+                        <span class="texto1" style="font-size: 20px !important;">Agrega todo lo que </span>
+                        <span style="font-size: 20px !important;" class="texto2"> necesitas para tu
+                            viaje</span>
+                    </div>
+                    <div class="col m-0 p-0 text-center">
+                        <span (click)="other()" class="otherMoment">En otro momento</span>
+                    </div>
+                </div>
+                <div class="row m-0 p-0 mt-2">
+                    <div class="col m-0 p-0">
+                        <img style="cursor: pointer;" src="assets/Images/flight/flightadd.png">
+                    </div>
+                    <div class="col m-0 p-0">
+                        <img *ngIf="!addHotel" style="cursor: pointer;"
+                            src="assets/Images/flight/anadirAloja.png">
+                        <img *ngIf="addHotel" (click)="getHabitacioens()" style="cursor: pointer;"
+                            src="assets/Images/flight/editAloja.png">
+                    </div>
+                    <div class="col m-0 p-0">
+
+                    </div>
+                    <div class="col m-0 p-0">
+
+                    </div>
+                    <div class="col m-0 p-0">
+
+                    </div>
+                </div>
+                <div class="row m-0 p-0 mt-3">
+                    <div class="col-10 m-0 p-0">
+                        <span class="texto3 border-gradient border-gradient-purple"> Los <label class="texto4">
+                                mejores alojamientos </label> de Booking.com </span>
+                    </div>
+                    <div *ngIf="addHotel" class="col m-0 p-0 text-center">
+                        <span (click)="continu()" class="otherMoment">Continuar</span>
+                    </div>
+                </div>
+                <div class="row m-0 p-0 mt-5 mb-5">
+                    <div class="col m-0 p-0">
+                        <div *ngIf="addHotel === true" class="row m-0 p-0">
+                            <div class="col p-0 m-0">
+
+                            </div>
+                            <div class="col p-0 m-0">
+
+                            </div>
+                            <div class="col p-3 m-0 addAloja">
+                                <img class="mr-2" src="assets/Images/flight/checkGo.png">
+                                <span>Alojamiento agregado</span>
+                            </div>
+                        </div>
+                        <mat-progress-bar *ngIf="loadingHotel" mode="query"></mat-progress-bar>
+
+                        <carousel id="hotelSlide" *ngIf="!loadingHotel">
+                            <slide *ngFor="let item of hoteles">
+                                <div class="row m-0 p-0">
+                                    <div class="col-12 m-0 p-0">
+
+                                        <div class="row m-0 p-0 base">
+                                            <div class="col m-0 p-0">
+                                                <div class="row m-0 p-0">
+                                                    <div class="col m-0 p-0">
+
+                                                        <img *ngIf="item.limagens.length > 0"
+                                                            style="display: block; width: 100%;"
+                                                            (click)="getImages(item)" class="img"
+                                                            [src]="item.limagens[0].url">
+
+                                                        <ng-template #template>
+
+                                                            <div class="modal-content" style="width: 100%;">
+                                                                <div class="modal-body" style="width: 100%;">
+                                                                    <carousel [(activeSlide)]="activeSlideIndex">
+                                                                        <slide
+                                                                            *ngFor="let imga of item.limagens; let index=index">
+                                                                            <img style="width: 1000px; height: 600px;"
+                                                                                src="{{imga.url}}">
+                                                                            <div class="carousel-caption">
+                                                                                <h4 *ngIf="imga.caption != null">
+                                                                                    {{imga.caption}}</h4>
+                                                                            </div>
+                                                                        </slide>
+                                                                    </carousel>
+                                                                </div>
+                                                            </div>
+                                                        </ng-template>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col m-2 p-2" style="border-right: 1px solid #c4c4c4;">
+                                                <div class="row m-0 p-0">
+                                                    <div class="col m-0 p-0">
+                                                        <span class="texto1">{{item.name}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row m-0 p-0">
+                                                    <div class="col m-0 p-0">
+                                                        <span *ngIf="item.stars === 5">
+                                                            <img class="mr-2" src="assets/Images/flight/stare.svg">
+                                                            <img class="mr-2" src="assets/Images/flight/stare.svg">
+                                                            <img class="mr-2" src="assets/Images/flight/stare.svg">
+                                                            <img class="mr-2" src="assets/Images/flight/stare.svg">
+                                                            <img class="mr-2" src="assets/Images/flight/stare.svg">
+                                                        </span>
+                                                        <span *ngIf="item.stars === 4">
+                                                            <img class="mr-2" src="assets/Images/flight/stare.svg">
+                                                            <img class="mr-2" src="assets/Images/flight/stare.svg">
+                                                            <img class="mr-2" src="assets/Images/flight/stare.svg">
+                                                            <img class="mr-2" src="assets/Images/flight/stare.svg">
+                                                        </span>
+                                                        <span *ngIf="item.stars === 3">
+                                                            <img class="mr-2" src="assets/Images/flight/stare.svg">
+                                                            <img class="mr-2" src="assets/Images/flight/stare.svg">
+                                                            <img class="mr-2" src="assets/Images/flight/stare.svg">
+                                                        </span>
+                                                        <span *ngIf="item.stars === 2">
+                                                            <img class="mr-2" src="assets/Images/flight/stare.svg">
+                                                            <img class="mr-2" src="assets/Images/flight/stare.svg">
+                                                        </span>
+                                                        <span *ngIf="item.stars === 1">
+                                                            <img class="mr-2" src="assets/Images/flight/stare.svg">
+                                                        </span>
+
+                                                        <span *ngIf="item.oairportDistance != null"
+                                                            class="subText">{{item.oairportDistance.distance}}
+                                                            {{item.oairportDistance.type}} al aeropuerto</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row m-0 p-0">
+                                                    <div class="col-1 m-0 p-0">
+                                                        <img class="mr-2" style="width: 12px;"
+                                                            src="assets/Images/flight/ubicross.png">
+                                                    </div>
+                                                    <div class="col m-0 p-0">
+                                                        <span class="subText">{{item.address}} ,
+                                                            {{item.cityName}}</span>
+                                                    </div>
+                                                </div>
+                                                <div *ngIf="item.oposition != null" class="row m-0 p-0 mt-2 mb-2">
+                                                    <div class="col-1 m-0 p-0">
+
+                                                    </div>
+                                                    <div class="col m-0 p-0">
+                                                        <span class="viewMap" (click)="Mostrarmapa(item)">Ver
+                                                            Mapa</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row m-0 p-0">
+                                                    <div class="col m-0 p-0" style="line-height: 15px;">
+                                                        <span class="texto1">{{item.oroomHotel.name}} , </span>
+                                                        <span class="texto1">{{item.oroomHotel.description}}</span>
+                                                    </div>
+                                                </div>
+                                                <div *ngIf="item.oroomHotel.includeBreakfast === true"
+                                                    class="row m-0 p-0">
+                                                    <div class="col m-0 p-0">
+                                                        <span class="subText1">Incluye desayuno</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col m-2 p-2 ">
+                                                <div class="row m-0 p-0">
+                                                    <div class="col m-0 p-0 text-center priceColor">
+                                                        <span class="textoTotal">Precio por noche</span><br />
+                                                        <span class="texto1">{{item.oprice.currency}} </span>
+                                                        <span class="subText2">
+                                                            {{item.oprice.pricePerNight}}</span><br />
+
+
+                                                        <span class="subText">Total por {{item.numberNights}} noches,
+                                                            {{item.numberPassenger}} persona(s) </span><br />
+                                                        <span class="texto1"
+                                                            style="font-size: 12px !important;">{{item.oprice.currency}}
+                                                        </span>
+                                                        <span class="subText2" style="font-size: 15px !important;">
+                                                            {{item.oprice.pricePerAllNights}}</span><br />
+                                                    </div>
+                                                </div>
+
+                                                <div class="row m-0 p-0 mt-1 mb-1">
+                                                    <div class="col m-0 p-0" style="line-height: 20px;">
+                                                        <span style="font-size: 15px;color: #454545;">El cobro de este
+                                                            servicio deberá ser pagado con una tarjeta de crédito/debito
+                                                            personal del pasajero.</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row m-0 p-0">
+                                                    <div class="col m-0 p-0" style="text-align: initial;">
+                                                        <div *ngIf="item.guaranteeType.length > 0"
+                                                            style="line-height: 10px;margin-top: 15px;">
+                                                            <span *ngFor="let pago of item.guaranteeType"
+                                                                style="display: flex;">
+                                                                <label class="subText"
+                                                                    *ngIf="pago === 'GuaranteeRequired'">
+                                                                    <img class="mr-2"
+                                                                        src="assets/Images/flight/checkcross.svg">
+                                                                    Pago al llegar al alojamiento</label><br />
+                                                                <label class="subText" *ngIf="pago === 'Deposit'">
+                                                                    <img class="mr-2"
+                                                                        src="assets/Images/flight/checkcross.svg">
+                                                                    Pago con deposito</label>
+                                                            </span><br />
+                                                        </div>
+
+                                                        <span *ngIf="item.oprice.includeTax === false"
+                                                            class="subText">Precio
+                                                            sin impuestos incluidos</span>
+                                                        <span *ngIf="item.oprice.includeTax === true"
+                                                            class="subText">Precio
+                                                            con impuestos incluidos</span>
+                                                        <br />
+                                                        <span *ngIf="item.oroomHotel.lcancelPenalties.length > 0"
+                                                            class="subText">Cancelación sin costo hasta el
+                                                            {{item.oroomHotel.lcancelPenalties[0].deadline}} a
+                                                            las {{item.oroomHotel.lcancelPenalties[0].hoursline
+                                                            }}</span><br />
+                                                    </div>
+                                                </div>
+                                                <div class="row m-0 p-0 pt-3">
+                                                    <div class="col m-0 p-0 text-center">
+                                                        <div *ngIf="addHotel === false">
+                                                            <span class="viewMap" (click)="anadirHotel(item.id,item)">
+                                                                Agregar alojamiento</span>
+                                                        </div><br *ngIf="addHotel === false" />
+
+                                                        <span *ngIf="addHotel === true" class="editAloja"
+                                                            (click)="getHotel(item)">Editar
+                                                            alojamiento</span><br />
+                                                        <span *ngIf="addHotel === true" class="deleteAloja"
+                                                            (click)="deleteHotel()">Eliminar alojamiento</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </slide>
+
+
+                        </carousel>
+
+                        <div *ngIf="!loadingHotel" id="escogido" class="row m-0 p-0">
+                            <div class="col-12 m-0 p-0">
+
+                                <div *ngIf="onlyOne === true" class="row m-0 p-0 base">
+
+
+                                    <div class="col m-0 p-0">
+                                        <div class="row m-0 p-0">
+                                            <div class="col m-0 p-0">
+
+                                               
+
+                                                <img *ngIf="hotelCross.limagens.length > 0"
+                                                    style="display: block; width: 100%;" (click)="getImages(hotelCross)"
+                                                    class="img" [src]="hotelCross.limagens[0].url">
+
+                                                <ng-template #template>
+
+                                                    <div class="modal-content" style="width: 100%;">
+                                                        <div class="modal-body" style="width: 100%;">
+                                                            <carousel [(activeSlide)]="activeSlideIndex">
+                                                                <slide
+                                                                    *ngFor="let imga of hotelCross.limagens; let index=index">
+                                                                    <img style="width: 1000px; height: 600px;"
+                                                                        src="{{imga.url}}">
+                                                                    <div class="carousel-caption">
+                                                                        <h4 *ngIf="imga.caption != null">
+                                                                            {{imga.caption}}</h4>
+                                                                    </div>
+                                                                </slide>
+                                                            </carousel>
+                                                        </div>
+                                                    </div>
+                                                </ng-template>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col m-2 p-2" style="border-right: 1px solid #c4c4c4;">
+                                        <div class="row m-0 p-0">
+                                            <div class="col m-0 p-0">
+                                                <span class="texto1">{{hotelCross.name}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="row m-0 p-0">
+                                            <div class="col m-0 p-0">
+                                                <span *ngIf="hotelCross.stars === 5">
+                                                    <img class="mr-2" src="assets/Images/flight/stare.svg">
+                                                    <img class="mr-2" src="assets/Images/flight/stare.svg">
+                                                    <img class="mr-2" src="assets/Images/flight/stare.svg">
+                                                    <img class="mr-2" src="assets/Images/flight/stare.svg">
+                                                    <img class="mr-2" src="assets/Images/flight/stare.svg">
+                                                </span>
+                                                <span *ngIf="hotelCross.stars === 4">
+                                                    <img class="mr-2" src="assets/Images/flight/stare.svg">
+                                                    <img class="mr-2" src="assets/Images/flight/stare.svg">
+                                                    <img class="mr-2" src="assets/Images/flight/stare.svg">
+                                                    <img class="mr-2" src="assets/Images/flight/stare.svg">
+                                                </span>
+                                                <span *ngIf="hotelCross.stars === 3">
+                                                    <img class="mr-2" src="assets/Images/flight/stare.svg">
+                                                    <img class="mr-2" src="assets/Images/flight/stare.svg">
+                                                    <img class="mr-2" src="assets/Images/flight/stare.svg">
+                                                </span>
+                                                <span *ngIf="hotelCross.stars === 2">
+                                                    <img class="mr-2" src="assets/Images/flight/stare.svg">
+                                                    <img class="mr-2" src="assets/Images/flight/stare.svg">
+                                                </span>
+                                                <span *ngIf="hotelCross.stars === 1">
+                                                    <img class="mr-2" src="assets/Images/flight/stare.svg">
+                                                </span>
+
+                                                <span *ngIf="hotelCross.oairportDistance != null"
+                                                    class="subText">{{hotelCross.oairportDistance.distance}}
+                                                    {{hotelCross.oairportDistance.type}} al aeropuerto</span>
+                                            </div>
+                                        </div>
+                                        <div class="row m-0 p-0">
+                                            <div class="col-1 m-0 p-0">
+                                                <img class="mr-2" style="width: 12px;"
+                                                    src="assets/Images/flight/ubicross.png">
+                                            </div>
+                                            <div class="col m-0 p-0">
+                                                <span class="subText">{{hotelCross.address}} ,
+                                                    {{hotelCross.cityName}}</span>
+                                            </div>
+                                        </div>
+                                        <div *ngIf="hotelCross.oposition != null" class="row m-0 p-0 mt-2 mb-2">
+                                            <div class="col-1 m-0 p-0">
+
+                                            </div>
+                                            <div class="col m-0 p-0">
+                                                <span class="viewMap" (click)="Mostrarmapa(hotelCross)">Ver Mapa</span>
+                                            </div>
+                                        </div>
+                                        <div class="row m-0 p-0">
+                                            <div class="col m-0 p-0">
+                                                <span class="texto1">{{hotelCross.oroomHotel.name}} , </span>
+                                                <span class="texto1">{{hotelCross.oroomHotel.description}}</span>
+                                            </div>
+                                        </div>
+                                        <div *ngIf="hotelCross.oroomHotel.includeBreakfast === true"
+                                            class="row m-0 p-0">
+                                            <div class="col m-0 p-0">
+                                                <span class="subText1">Incluye desayuno</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col m-2 p-2 ">
+                                        <div class="row m-0 p-0">
+                                            <div class="col m-0 p-0 text-center priceColor">
+                                                <span class="textoTotal">Precio por noche</span><br />
+                                                <span class="texto1">{{hotelCross.oprice.currency}} </span>
+                                                <span class="subText2">
+                                                    {{hotelCross.oprice.pricePerNight}}</span><br />
+
+
+                                                <span class="subText">por {{hotelCross.numberNights}} noches,
+                                                    {{hotelCross.numberPassenger}} persona(s) </span><br />
+                                                <span class="texto1"
+                                                    style="font-size: 12px !important;">{{hotelCross.oprice.currency}}
+                                                </span>
+                                                <span class="subText2" style="font-size: 15px !important;">
+                                                    {{hotelCross.oprice.pricePerAllNights}}</span><br />
+                                            </div>
+                                        </div>
+                                        <div class="row m-0 p-0 mt-1 mb-1">
+                                            <div class="col m-0 p-0" style="line-height: 20px;">
+                                                <span style="font-size: 15px;color: #454545;">El cobro de este servicio
+                                                    deberá ser pagado con una tarjeta de crédito/debito personal del
+                                                    pasajero.</span>
+                                            </div>
+                                        </div>
+                                        <div class="row m-0 p-0">
+                                            <div class="col m-0 p-0" style="text-align: initial;">
+                                                <div *ngIf="hotelCross.guaranteeType.length > 0"
+                                                    style="line-height: 10px;margin-top: 15px;">
+                                                    <span *ngFor="let pago of hotelCross.guaranteeType"
+                                                        style="display: flex;">
+                                                        <label class="subText" *ngIf="pago === 'GuaranteeRequired'">
+                                                            <img class="mr-2" src="assets/Images/flight/checkcross.svg">
+                                                            Pago al llegar al alojamiento</label><br />
+                                                        <label class="subText" *ngIf="pago === 'Deposit'">
+                                                            <img class="mr-2" src="assets/Images/flight/checkcross.svg">
+                                                            Pago con deposito</label>
+                                                    </span><br />
+                                                </div>
+
+                                                <span *ngIf="hotelCross.oprice.includeTax === false"
+                                                    class="subText">Precio
+                                                    sin impuestos incluidos</span>
+                                                <span *ngIf="hotelCross.oprice.includeTax === true"
+                                                    class="subText">Precio
+                                                    con impuestos incluidos</span>
+                                                <br />
+
+                                                <span *ngIf="hotelCross.oroomHotel.lcancelPenalties.length > 0"
+                                                    class="subText">Cancelación sin costo hasta el
+                                                    {{hotelCross.oroomHotel.lcancelPenalties[0].deadline}} a las
+                                                    {{hotelCross.oroomHotel.lcancelPenalties[0].hoursline
+                                                    }}</span><br />
+                                            </div>
+                                        </div>
+                                        <div class="row m-0 p-0 pt-3">
+                                            <div class="col m-0 p-0 text-center">
+                                                <div *ngIf="addHotel === false">
+                                                    <span [ngClass]="{'bloqueado': hotelCross.disabled === true}"
+                                                        class="viewMap" (click)="anadirHotel(hotelCross.id,hotelCross)">
+                                                        Agregar alojamiento</span>
+                                                </div><br *ngIf="addHotel === false" />
+
+                                                <span *ngIf="addHotel === true" class="editAloja"
+                                                    (click)="getHotel(hotelCross)">Editar
+                                                    alojamiento</span><br />
+                                                <span *ngIf="addHotel === true" class="deleteAloja"
+                                                    (click)="deleteHotel()">Eliminar alojamiento</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <app-crosselling-room  *ngIf="showHabitacion" [data]="dataHotel" (select)="confirmRoom($event)"></app-crosselling-room>
+    </div>
+</div>

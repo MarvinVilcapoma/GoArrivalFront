@@ -1,0 +1,115 @@
+.hotelnamePhone {
+    font-family: Omnes-med;
+    font-size: 20px;
+    letter-spacing: 0;
+    color: #443f40;
+    opacity: 1;
+    margin-right: 15px !important;
+}
+
+.back{
+    font-family: Omnes-med;
+    letter-spacing: 0;
+    color: #ED1C24;
+    opacity: 1;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.total-price {
+    font-family: Omnes-med;
+    font-size: 22px;
+    letter-spacing: 0;
+    color: #ED1C24;
+    opacity: 1;
+    margin-left: 10px !important;
+}
+
+.border-div{
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+}
+
+.img-hour{
+    padding: 12px 0px;
+    margin: 1px 18px;
+    width: 20px;
+}
+
+.spaceStar {
+    margin-right: 5px;
+}
+
+.img-class {
+    width: 100%;
+    cursor: pointer;
+    height: 170px !important;
+    border-radius: 15px 0px 15px 0px;
+}
+
+.img-class-1 {
+    width: 100%;
+    height: 400px !important;
+    cursor: pointer;
+    border-radius: 15px 0px 15px 0px;
+}
+
+.img-class-2 {
+    width: 100%;
+    height: 220px !important;
+    cursor: pointer;
+    border-radius: 15px 0px 15px 0px;
+}
+
+.radio{
+    margin-right: 10px !important;
+    font-family: Omnes-med;
+    font-size: 17px;
+}
+
+.viewMap {
+    color: white;
+    cursor: pointer;
+    font-family: Omnes-med;
+    background: #E2231A;
+    padding: 1px 30px 1px 30px;
+    border-radius: 5px 0px;
+    margin-left: 15px !important;
+}
+
+.cities {
+    font-family: Omnes-med;
+    font-size: 17px;
+    letter-spacing: 0;
+    color: #443f40;
+    opacity: 1;
+}
+
+.text-check {
+    font-family: Omnes-med;
+    font-size: 18px;
+    letter-spacing: 0;
+    color: #ED1C24;
+    opacity: 1;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.btn-ver{
+    color: whitesmoke;
+    background-color: #ED1C24;
+    padding: 4px 11px !important;
+    font-family: Omnes-med;
+}
+
+.section-price{
+    border: 1px solid #ccc;
+    padding: 12px 0;
+    border-radius: 15px 0;
+    /* text-align: center; */
+    position: relative;
+    background-color: #f8f8f8;
+    bottom: 17%;
+    width: 350px;
+    left: 21%;
+}

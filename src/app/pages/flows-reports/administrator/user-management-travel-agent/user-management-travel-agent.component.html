@@ -1,0 +1,144 @@
+<mat-toolbar *ngIf="head.validPhone()" color="primary" class="example-toolbar">
+    <button mat-icon-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
+    <h1 class="example-app-name">Menus</h1>
+</mat-toolbar>
+
+<mat-sidenav-container class="example-container" autosize>
+    <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" [disableClose]="true"
+        (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
+        <app-sidenav></app-sidenav>
+    </mat-sidenav>
+
+    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-3">
+        <div class="row m-0 p-0">
+            <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center">
+                <h4>Registro de Pasajeros para Agente de Viajes</h4>
+            </div>
+        </div>
+
+        <div class="row p-0 mt-4 webDropDown">
+            <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 text-center">
+                <p-floatLabel>
+                    <p-dropdown [options]="types" [scrollHeight]="'150px'" (onChange)="validTypeCompany()"
+                        [(ngModel)]="selectType" inputId="genero" optionLabel="name" optionValue="id"></p-dropdown>
+                    <label for="genero">Tipo</label>
+                </p-floatLabel>
+            </div>
+            <div *ngIf="showCorporativo" class="col-xxl-3 col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 text-center">
+                <p-floatLabel>
+                    <p-dropdown [options]="lstAgencys" [scrollHeight]="'300px'" filterBy="name" [filter]="true"
+                        (onChange)="validShowPassengers()" [(ngModel)]="selectCompany" inputId="company"
+                        optionLabel="name" optionValue="id"></p-dropdown>
+                    <label for="company">Compañia</label>
+                </p-floatLabel>
+            </div>
+        </div>
+    </div>
+
+
+    <div *ngIf="showPassengers" class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-3">
+
+        <p-table [value]="lstPassengers" #dt1 [paginator]="true" [rows]="5" [tableStyle]="{ 'min-width': '50rem' }"
+            [rowsPerPageOptions]="[5, 10, 20]" styleClass="p-datatable-sm"
+            [globalFilterFields]="['name', 'lastName', 'email','profileGds','documentNumber','orole.roleName']">
+            <ng-template pTemplate="caption">
+
+                <div class="row m-0 p-0 ">
+                    <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12 m-0 p-0">
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text"
+                                (input)="dt1.filterGlobal($any($event.target).value, 'contains')" placeholder="Busqueda"
+                                pTooltip="Filtro de busqueda" />
+                        </span>
+                    </div>
+
+
+                    
+
+
+                    <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12 m-0 p-0">
+                        <p-button label="Agregar usuario" icon="pi pi-plus" text
+                            (onClick)="visible = true;isRegister = true" />
+                    </div>
+                    <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12 m-0 p-0">
+                        <p-button label="Carga masiva" icon="pi pi-plus" text
+                            (onClick)="visibleExcel = true;" />
+                    </div>
+                </div>
+
+
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="name">
+                        Nombre <p-sortIcon field="name" />
+                    <th pSortableColumn="lastName">
+                        Apellido <p-sortIcon field="lastName" />
+                    <th pSortableColumn="email">
+                        Correo <p-sortIcon field="email" />
+                    <th pSortableColumn="profileGds">
+                        Perfil Amadeus <p-sortIcon field="profileGds" />
+                    <th pSortableColumn="documentNumber">
+                        Numero Documento <p-sortIcon field="documentNumber" />
+                    <th pSortableColumn="roleName">
+                        Rol <p-sortIcon field="roleName" />
+                    <th pSortableColumn="isActive">
+                        Estado <p-sortIcon field="isActive" />
+                    <th></th>
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-customer>
+                <tr>
+                    <td>{{ customer.name }}</td>
+                    <td>{{ customer.lastName }}</td>
+                    <td>{{ customer.email }}</td>
+                    <td>{{ customer.profileGds }}</td>
+                    <td>{{ customer.documentNumber}}</td>
+                    <td>{{ customer.orole.roleName }}</td>
+                    <td>{{ customer.isActive ? 'Activado' : 'Desactivado' }}</td>
+                    <td>
+                        <button type="button" (click)="getDetail(customer.userID)" pButton pRipple
+                            icon="pi pi-user-edit">
+                        </button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+
+    </div>
+
+
+</mat-sidenav-container>
+
+<p-dialog header="{{isRegister ? 'Registrar usuario' : 'Modificar usuario'}}" [(visible)]="visible" [blockScroll]="true"
+    [modal]="true" [closeOnEscape]="false" [focusOnShow]="true" [style]="{ width: '50vw', height: '900px' }"
+    [breakpoints]="{ '960px': '75vw','500px' : '95vw' }" [maximizable]="true">
+    <div class="container">
+        <app-create-update-user-agent *ngIf="visible" (select)="validManage($event)" [selectType]="selectType"
+            [selectCompany]="selectCompany" [lstCountries]="lstCountries" [airlines]="lstAirline" [isRegister]="isRegister"
+            [dataLoad]="dataUpdate" [lstDocument]="lstDocument"></app-create-update-user-agent>
+    </div>
+</p-dialog>
+
+<p-dialog header="Carga tu archivo" [(visible)]="visibleExcel" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false"
+[resizable]="false">
+<p-fileUpload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" cancelStyleClass="btnUploadCancel"
+    chooseLabel="Seleccionar" uploadLabel="Cargar Archivo" cancelLabel="Cancelar" (onUpload)="onUpload($event)"
+    [multiple]="false" accept=".xlsx" mode="advanced">
+
+    <ng-template pTemplate="toolbar">
+        <div class="py-3">Click aquí para descargar el modelo</div>
+<span class="link"><a href="https://domiruthgeneral.blob.core.windows.net/general/ManageByExcel/CargaPersonas.xlsx"> https://domiruthgeneral.blob.core.windows.net/general/ManageByExcel/CargaPersonas.xlsx</a></span>
+    </ng-template>
+
+        
+   
+    <ng-template pTemplate="content">
+        <ul *ngIf="uploadedFiles.length">
+            <li *ngFor="let file of uploadedFiles">{{ file.name }} - {{ file.size }} bytes</li>
+        </ul>
+    </ng-template>
+</p-fileUpload>
+</p-dialog>

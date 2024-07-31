@@ -1,0 +1,20 @@
+<div class="row m-0 p-4 main-card">
+    <div class="col-12 m-0 p-0 pt-1 pl-4 text-filtros">
+        Filtro por precio
+    </div>
+    <div class="col-12 m-0 p-0 mt-4">
+        <div class="row m-0 p-0">
+            <div class="col">
+                <span class="txt-min">Min: </span>
+                <span>{{rangeValues[0]}}</span>
+            </div>
+            <div class="col text-end">
+                <span class="txt-min">Max: </span>
+                <span>{{rangeValues[1]}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 m-0 p-0 mt-2">
+        <p-slider [(ngModel)]="rangeValues"  (onSlideEnd)="filtPrice($event)" (onChange)="filtPrice($event)" [step]="step" styleClass="range-slide" [min]="minPrice" [max]="maxPrice"  [range]="true"></p-slider>
+    </div>
+</div>

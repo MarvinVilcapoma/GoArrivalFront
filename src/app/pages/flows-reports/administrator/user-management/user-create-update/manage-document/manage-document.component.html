@@ -1,0 +1,89 @@
+
+
+    <mat-divider class="text-border"></mat-divider>
+    <div mat-dialog-content>
+        <div class="mos">
+            <mat-slide-toggle [(ngModel)]="checked1">Activar</mat-slide-toggle>
+            <mat-form-field  class="mat-mar">
+                <mat-label>Tipo Documento</mat-label>
+                <mat-select [disabled]="true" [(ngModel)]="nameTip" >
+                    <mat-option *ngFor="let item of defaults.document" [value]="item.id">{{item.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+     
+        
+        
+            <mat-form-field class="mat-mar">
+                <mat-label>Número de Documento</mat-label>
+                <input [disabled]="!checked1" [(ngModel)]="value1" cdkFocusInitial  matInput />
+            </mat-form-field>
+        </div>
+
+        <div class="mos">
+            <mat-slide-toggle [(ngModel)]="checked2">Activar</mat-slide-toggle>
+            <mat-form-field class="mat-mar">
+                <mat-label>Tipo Documento</mat-label>
+                <mat-select [disabled]="true" [(ngModel)]="nameTip1">
+                    <mat-option *ngFor="let item of defaults.document" [value]="item.id">{{item.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+     
+        
+        
+            <mat-form-field class="mat-mar">
+                <mat-label>Número de Pasaporte</mat-label>
+                <input  [disabled]="!checked2" [(ngModel)]="value2" cdkFocusInitial  matInput />
+            </mat-form-field>
+        </div>
+               
+            
+        <div class="mos">
+            <mat-slide-toggle [(ngModel)]="checked3">Activar</mat-slide-toggle>
+            <mat-form-field class="mat-mar">
+                <mat-label>Tipo Documento</mat-label>
+                <mat-select [disabled]="true" [(ngModel)]="nameTip2">
+                    <mat-option *ngFor="let item of defaults.document" [value]="item.id">{{item.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+     
+        
+        
+            <mat-form-field class="mat-mar">
+                <mat-label>Carné de extranjeria</mat-label>
+                <input [disabled]="!checked3" [(ngModel)]="value3" cdkFocusInitial  matInput />
+            </mat-form-field>
+        </div>
+        <div class="mos">
+            <mat-slide-toggle [(ngModel)]="checked4">Activar</mat-slide-toggle>
+            <mat-form-field class="mat-mar">
+                <mat-label>Tipo Documento</mat-label>
+                <mat-select [disabled]="true" [(ngModel)]="nameTip3" >
+                    <mat-option *ngFor="let item of defaults.document" [value]="item.id">{{item.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+     
+        
+        
+            <mat-form-field class="mat-mar">
+                <mat-label>RUC</mat-label>
+                <input [disabled]="!checked4" [(ngModel)]="value4" cdkFocusInitial  matInput />
+            </mat-form-field>
+        </div>
+
+    </div>
+
+    <div class="row m-0 p-0">
+        <div class="col m-0 p-0 text-center">
+            <mat-dialog-actions align="center">
+          
+                <button *ngIf="isCreateMode()" (click)="save()" color="primary" mat-flat-button type="submit">
+                    Crear Documento
+                </button>
+                <button *ngIf="isUpdateMode()" (click)="save()" color="primary" mat-flat-button type="submit">
+                    Actualizar Documento
+                </button>
+            </mat-dialog-actions>
+        </div>
+    </div>
+
+    

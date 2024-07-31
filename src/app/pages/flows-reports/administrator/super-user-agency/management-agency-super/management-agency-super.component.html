@@ -1,0 +1,97 @@
+<div [formGroup]="form" >
+    <div class="row m-0 p-0 mb-3">
+        <div class="col m-0 p-0 text-center">
+            <h4>{{textbtn}}</h4>
+        </div>
+    </div>
+    <div class="row m-0 p-0">
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-2">
+            <mat-form-field appearance="outline">
+                <mat-label>Nombre</mat-label>
+                <input cdkFocusInitial formControlName="name" matInput />
+            </mat-form-field>
+        </div>
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-2">
+            <mat-form-field appearance="outline">
+                <mat-label>RUC</mat-label>
+                <input cdkFocusInitial formControlName="ruc" matInput />
+            </mat-form-field>
+
+        </div>
+
+
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-2">
+            <p-dropdown [options]="lstCountries" [filter]="true" [scrollHeight]="'150px'" filterBy="name" formControlName="pais" placeholder="País"
+              optionLabel="name" optionValue="id"></p-dropdown>
+        </div>
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-2">
+            <mat-form-field appearance="outline">
+                <mat-label>Dirección</mat-label>
+                <input cdkFocusInitial formControlName="address" matInput />
+            </mat-form-field>
+        </div>
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-2">
+            <mat-form-field appearance="outline">
+                <mat-label>Correo Electrónico</mat-label>
+                <input cdkFocusInitial formControlName="email" matInput />
+            </mat-form-field>
+        </div>
+
+        <div *ngIf="isRegister" class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-2">
+            <mat-form-field appearance="outline">
+                <mat-label>Nombre Contacto</mat-label>
+                <input cdkFocusInitial formControlName="nameContact" matInput />
+            </mat-form-field>
+        </div>
+
+        <div *ngIf="isRegister" class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-2">
+            <mat-form-field appearance="outline">
+                <mat-label>Apellido Contacto</mat-label>
+                <input cdkFocusInitial formControlName="lastNameContact" matInput />
+            </mat-form-field>
+        </div>
+
+        <div *ngIf="isRegister" class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-2">
+            <p-dropdown [options]="lstDocument"  formControlName="documentId" placeholder="Tipo Documento"
+              optionLabel="name" optionValue="id"></p-dropdown>
+        </div>
+
+        <div *ngIf="isRegister" class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-2">
+            <mat-form-field appearance="outline">
+                <mat-label>Número de Documento</mat-label>
+                <input cdkFocusInitial formControlName="documentNumber" matInput />
+            </mat-form-field>
+        </div>
+
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-2">
+            <mat-label>Estado :</mat-label>
+            <p-selectButton [options]="stateOptions" formControlName="isActive" optionLabel="label"
+                optionValue="value"></p-selectButton>
+        </div>
+
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-2">
+            <mat-form-field appearance="outline">
+                <mat-label>Teléfono</mat-label>
+                <input cdkFocusInitial formControlName="phone" matInput />
+            </mat-form-field>
+        </div>
+
+   
+    </div>
+
+    <div class="row m-0 p-0 ">
+        <div class="col mt-5 mb-2 text-center">
+            <mat-dialog-actions align="end">
+                <button color="primary" (click)="manageAgenc()"  mat-flat-button type="submit">
+                    {{textbtn}}
+                </button>
+            </mat-dialog-actions>
+        </div>
+    </div>
+</div>

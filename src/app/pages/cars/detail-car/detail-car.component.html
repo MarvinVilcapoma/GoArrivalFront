@@ -1,0 +1,961 @@
+   <div  class="row pt-4">
+        <div class="col-3  pt-2 pl-5 pr-5">
+          <div class="row box-shadow">
+            <div class="col-12 det-test1">Datos de tu reserva</div>
+  
+            <div class="col-12">
+              <div class="row m-0 p-0">
+                <div
+                  class="col-12 m-0 p-0 fondo-rojo-tri"
+                  style="height: 2px"
+                ></div>
+              </div>
+            </div>
+  
+            <div class="col-12 pt-3 det-test2">Recogida</div>
+  
+            <div class="col-12">
+              <div class="row">
+                <div class="col-12 det-test3">
+                  {{ carSelect.oselectCar.oinformation.oitineraryInfo.pickUpAddress }}
+                  <img src="./assets/Images/cars/marcador.svg" alt="" />
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-12">
+              <div class="row">
+                <div class="col-1"></div>
+                <div class="col-11 det-test4">Oficinas alquiler de autos</div>
+              </div>
+            </div>
+  
+            <div class="col-12">
+              <div class="row">
+                <div class="col-1"></div>
+                <div class="col-11 det-test3">
+                  {{ carSelect.oselectCar.oinformation.oitineraryInfo.pickUpDateShow }}
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-12">
+              <div class="row">
+                <div class="col-1"></div>
+                <div class="col-11 det-test3">
+                    {{ carSelect.oselectCar.oinformation.oitineraryInfo.pickUpHourShow }}
+                  <img
+                    class=""
+                    src="./assets/Images/cars/calendario.svg"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-12 det-test2">Devolución</div>
+  
+            <div class="col-12">
+              <div class="row">
+                <div class="col-1"></div>
+                <div class="col-11 det-test3">
+                    {{ carSelect.oselectCar.oinformation.oitineraryInfo.dropOffAddress }}
+                  <img src="./assets/Images/cars/marcador.svg" alt="" />
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-12">
+              <div class="row">
+                <div class="col-1"></div>
+                <div class="col-11 det-test4">Oficinas alquiler de autos</div>
+              </div>
+            </div>
+  
+            <div class="col-12">
+              <div class="row">
+                <div class="col-1"></div>
+                <div class="col-11 det-test3">
+                    {{ carSelect.oselectCar.oinformation.oitineraryInfo.dropOffDateShow }}
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-12">
+              <div class="row">
+                <div class="col-1"></div>
+                <div class="col-11 det-test3">
+                    {{ carSelect.oselectCar.oinformation.oitineraryInfo.dropOffHourShow }}
+                  <img
+                    class="img-fluid"
+                    src="./assets/Images/cars/calendario.svg"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+  
+        <div class="col-9 pt-2">
+          <div class="row">
+            <div class="col-12 m-0 p-0 pt-3">
+              <a style="color: #ED1C24; font-family: Omnes-med;" (click)="back()" routerLink="/auto-search">Volver</a>
+            </div>
+          </div>
+          <div class="row">
+ 
+            <div
+              class="col-8 mt-4"
+              style="
+                border-radius: 20px 0 20px 0;
+                border-color: #e2e2e2 !important;
+                border: solid 1px;
+                height: fit-content;
+              "
+            >
+            
+              <div class="row p-3">
+                <div class="col-12">
+                  <div class="row">
+                    <div class="col-3 det-test12">
+                      <img
+                        class="img-fluid pr-2"
+                        src="./assets/Images/cars/vehiculo.svg"
+                        alt=""
+                      />
+                      Datos
+                    </div>
+                    <div class="col-6 det-test12">
+                      <img
+                        class="img-fluid pr-2"
+                        src="./assets/Images/cars/informacion.svg"
+                        alt=""
+                      />
+                      Información importante
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 pt-2">
+                  <div class="row">
+                    <div class="col-3 fondo-rojo-tri" style="height: 2px"></div>
+                    <div class="col-3"></div>
+                    <div class="col-6"></div>
+                  </div>
+                </div>
+                <div class="col-12 pt-5">
+                  <div class="row">
+                    <div class="col-3">
+                      <div class="row">
+                        <div class="col-12 text-right">
+                          <img
+                            class="img-fluid"
+                            [src]="carRecomendacion.ocompany.image"
+                            alt=""
+                          />
+                        </div>
+  
+                        <div class="col-12 text-center">
+                          <img
+                            class="img-fluid"
+                            [src]="
+                              carSelect.oselectCar.oinformation.ocarInfo.image
+                            "
+                            alt=""
+                          />
+                        </div>
+                    
+                        <div class="col-12">
+                          <span class="det-test13 pr-2">
+                            {{
+                              carSelect.oselectCar.oinformation.ocarInfo
+                                .companyName
+                            }}
+                          </span>
+  
+                          <span
+                            *ngIf="
+                              carSelect.oselectCar.termsAndConditions != null
+                            "
+                            class="det-test14"
+                            style="cursor: pointer"
+                            (click)="open(carSelect.oselectCar.termsAndConditions)"
+                          >
+                            <u>Términos y condiciones</u>
+                          </span>
+                          
+                        </div>
+                        <div class="col-12 pt-4">
+                          <span
+                            *ngIf="
+                              carSelect.oselectCar.ocancelationPolicy != null
+                            "
+                            class="det-test14"
+                            style="cursor: pointer"
+                            (click)="MostrarMapa(lgModals)"
+                          >
+                            <u>Políticas de Cancelación</u>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-9 pl-3">
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="row">
+                            <div class="det-test15 col m-0 p-0">
+                              {{
+                                carSelect.oselectCar.oinformation.ocarInfo.model
+                              }}
+                            </div>
+                            <div
+                              class="col-1"
+                             
+                            ><p-divider layout="vertical"></p-divider></div>
+                            <div class="pl-3 col m-0 p-0">
+                              <div class="row">
+                                <div class="col-12 det-test16">
+                                  <img
+                                    class="img-fluid"
+                                    src="./assets/Images/cars/airplane.svg"
+                                    alt=""
+                                  />
+                                  {{
+                                    carSelect.oselectCar.oinformation
+                                      .oitineraryInfo.pickUpAddress
+                                  }}
+                                </div>
+                                <div
+                                  class="col-12 det-test8"
+                                  style="padding-left: 55px"
+                                >
+                                  Oficina alquiler de autos
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+  
+                        <div class="col-12 pt-4 pb-4">
+                          <div class="row">
+                            <div
+                              class="col m-0 p-0 text-center det-test17"
+                              style="
+                                border-radius: 20px 0 20px 0;
+                                border: solid 1px;
+                                border-color: #ed1c24;
+                                min-width: 200px;
+                              "
+                            >
+                              {{ categoriaDescription }}
+                            </div>
+  
+                            <div class="col m-0 p-0 text-center">
+                              <img
+                                src="./assets/Images/cars/pasajero.svg"
+                                alt=""
+                                tooltip="pasajeros"
+                              />
+                              <span class="pl-2 det-test3">
+                                {{
+                                  carSelect.oselectCar.oinformation.ocarInfo
+                                    .numberPassengers
+                                }}
+                              </span>
+                            </div>
+  
+                            <div class="col m-0 p-0 text-center">
+                              <img
+                                src="./assets/Images/cars/accessory.svg"
+                                alt=""
+                                tooltip="mochila o carry on"
+                              />
+                              <span class="pl-2 det-test3">
+                                {{
+                                  carSelect.oselectCar.oinformation.ocarInfo
+                                    .baggage 
+                                }}
+                              </span>
+                            </div>
+  
+                            <div class="col m-0 p-0 text-center">
+                              <img
+                                src="./assets/Images/cars/suitcase.svg"
+                                alt=""
+                                tooltip="maleta de 23kg"
+                              />
+                              <span class="pl-2 det-test3">
+                                {{
+                                  carSelect.oselectCar.oinformation.ocarInfo
+                                    .baggage | slice: 0:1
+                                }}
+                              </span>
+                            </div>
+  
+                            <div
+                              *ngIf="
+                                carSelect.oselectCar.oinformation.ocarInfo
+                                  .airConditioner
+                              "
+                              class="col m-0 p-0 text-center"
+                            >
+                              <img
+                                src="./assets/Images/cars/aire_Acondicionado.svg"
+                                alt=""
+                                tooltip=""
+                              />
+                              <span class="pl-2 det-test3">
+                                Aire acondicionado
+                              </span>
+                            </div>
+  
+                            <div
+                              *ngIf="carRecomendacion.type === 'Automático'"
+                              class="col m-0 p-0 text-center">
+                            
+                              <span
+                                style="
+                                  background-color: #ed1c24;
+                                  justify-content: center !important;
+                                  align-items: center !important;
+                                  padding-left: 8px;
+                                  padding-right: 8px;
+                                  padding-top: 5px;
+                                  padding-bottom: 5px;
+                                  color: #ffffff;
+                                  font-family: Omnes-med;
+                                  font-size: 11px;
+                                  border-radius: 4px;
+                                "
+                                >A</span
+                              >
+                              <span class="pl-2 det-test3">
+                                {{
+                                  carSelect.oselectCar.oinformation.ocarInfo.type
+                                }}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+  
+                        <div
+                          class="col-12"
+                          style="height: 1px; background-color: #707070"
+                        ></div>
+  
+                        <div class="col-12 pt-4">
+                          <div class="row">
+                            <div
+                              *ngIf="
+                                carSelect.oselectCar.oinformation.ocarInfo
+                                  .type === 'Automático'
+                              "
+                              class=""
+                            >
+                              <span
+                                style="
+                                  background-color: #ed1c24;
+                                  justify-content: center !important;
+                                  align-items: center !important;
+                                  padding-left: 8px;
+                                  padding-right: 8px;
+                                  padding-top: 5px;
+                                  padding-bottom: 5px;
+                                  color: #ffffff;
+                                  font-family: Omnes-med;
+                                  font-size: 11px;
+                                  border-radius: 4px;
+                                "
+                                >Km</span
+                              >
+                              <span class="pl-2 det-test13">
+                                {{ carRecomendacion.kmIncluded }}
+                              </span>
+                            </div>
+  
+                          </div>
+                        </div>
+  
+                        <div class="col-12"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12"></div>
+              </div>
+            </div>
+  
+            <div class="col-lg-4 mt-4 pl-3">
+              <div
+                class="row m-o p-0 ml-3 mr-5"
+                style="
+                  border-radius: 20px 0 20px 0;
+                  border-color: #e2e2e2 !important;
+                  border: solid 1px;
+                "
+              >
+                <div class="col-lg-12" style="height: 30px !important"></div>
+                <div
+                  class="col-4 pl-3 fondo-rojo-tri det-test7"
+                  style="
+                    background-color: red;
+                    color: white;
+                    border-radius: 0 20px 20px 0;
+                  "
+                >
+                  Total
+                </div>
+                <div class="col-lg-12 pt-3">
+                  <div
+                    class="container pt-3 pb-3"
+                    style="
+                      background-color: #f9f2f2;
+                      border-radius: 20px 0 20px 0;
+                    "
+                  >
+                    <div class="col-lg-12 det-test8">
+                      Precio por {{ cantDiasAlquiler }} dias:
+                    </div>
+  
+                    <div class="col-lg-12 pt-2">
+                      <span class="det-test9 pr-1">{{ currency }}</span>
+                      <span class="det-test10">{{ amount }}</span>
+                      <img width="20" pTooltip="Detalle de precio" tooltipPosition="top" style="cursor: pointer;"  (click)="op.toggle($event)" class="mb-1 ml-3" src="assets/Images/hotel/icon-info.png">
+                    </div>
+
+                    <p-overlayPanel #op>
+                        <div class="popRoom">
+                            <div class="row m-0 p-0">
+                                <div class="col m-0 p-0">
+                                    <span class="address">Precio Base</span>
+                                </div>
+                                <div class="col m-0 p-0 ">
+                                    <span class="price-pop">{{currency}} </span> <span class="currency-pop"> {{priceBase}}</span>
+                                </div>
+                            </div>
+                            <div class="row m-0 p-0">
+                                <div class="col m-0 p-0">
+                                    <span class="address">Cargos Admin.</span>
+                                </div>
+                                <div class="col m-0 p-0 ">
+                                    <span class="price-pop">{{currency}} </span> <span class="currency-pop"> {{lpayment[0].chargesAmount}}</span>
+                                </div>
+                            </div>
+                            <div class="row m-0 p-0">
+                              <div class="col m-0 p-0">
+                                  <span class="address">Pagar en el mostrador</span>
+                              </div>
+                              <div class="col m-0 p-0 ">
+                                  <span class="price-pop">{{currency}} </span> <span class="currency-pop"> {{taxAmount}}</span>
+                              </div>
+                          </div>
+                        </div>
+                        
+                     
+                    </p-overlayPanel>
+               <!--      <mat-accordion
+                      class="col-lg-12 pt-2"
+                      *ngIf="lpayment != null && lpayment.length > 0"
+                    >
+                      <mat-expansion-panel
+                        style="width: 190px !important; border-bottom: 1px solid"
+                      >
+                        <mat-expansion-panel-header>
+                          <mat-panel-title>
+                            <span class="det-test4"> Ver detalle de precio</span>
+                          </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div>
+                          <div class="row">
+                            <div class="col-lg-7 p-0" style="text-align: initial;">
+                              <span class="det-cargos">Precio Base</span>
+                            </div>
+                            <div class="col-lg-5 p-0" style="text-align: initial">
+                              <span
+                                class="text-currency-2 pr-1"
+                                style="
+                                  color: #6b253c;
+                                  font-size: 10px;
+                                "
+                                >{{ currency }}</span
+                              >
+                              <span
+                                class="text-currency-monto-2"
+                                
+                              >
+                                {{ priceBase }}</span
+                              >
+                              
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row mt-2">
+                            <div class="col-lg-7 p-0" style="text-align: initial;">
+                              <span class="det-cargos"
+                                >Cargos Administrativos</span
+                              >
+                            </div>
+                            <div class="col-lg-5 p-0" style="text-align: initial;">
+                              <span
+                                class="text-currency-2 pr-1"
+                                style="
+                                  color: #6b253c;
+                                  font-size: 10px;
+                                "
+                                >{{ currency }} </span
+                              >
+                              <span
+                                class="text-currency-monto-2"
+                               
+                              >
+                                {{ lpayment[0].chargesAmount }}</span
+                              >
+                              
+                            </div>
+                          </div>
+                          <div *ngIf="valTaxAmout" class="row mt-2" >
+                            <div class="col-lg-7 p-0" style="text-align: initial;">
+                              <span  class="det-cargos">Pagar en el mostrador</span>
+                            </div>
+                            <div class="col-lg-5 p-0" style="text-align: initial;">
+                              <span class="text-currency-2 pr-1" style="color: #6B253C;font-size: 10px;">{{currency}}</span>
+                              <span class="text-currency-monto-2" > {{taxAmount}}</span>
+                              
+                            </div>
+                             
+                              
+                              
+                          </div>
+                        </div>
+  
+                   
+                      </mat-expansion-panel>
+                    </mat-accordion>
+                    -->
+                  </div>
+                </div>
+                
+                <div class="col-12">
+                  <div class="row m-0 p-0">
+                    <div class="col-1">
+                      <img class="" src="./assets/Images/cars/Ok.svg" alt="" />
+                    </div>
+                    <div class="col-10 det-test8">{{ infoAuto1 }}</div>
+                  </div>
+                </div>
+                <div class="col-12 pt-3">
+                  <div class="row m-0 p-0">
+                    <div class="col-1">
+                      <img class="" src="./assets/Images/cars/Ok.svg" alt="" />
+                    </div>
+                    <div class="col-10 det-test8">{{ infoAuto2 }}</div>
+                  </div>
+                </div>
+                <div class="col-12 pt-3">
+                  <!--  <div class="row m-0 p-0">
+                      <div
+                        class="col-12 det-test11 text-center"
+                        style="
+                          border-radius: 20px;
+                          color: white;
+                          background-color: #40b23d;
+                        "
+                      >
+                        Cancelación gratiuta
+                      </div>
+                    </div> -->
+                </div>
+                <div class="col-12" style="height: 30px !important"></div>
+              </div>
+            </div>
+  
+            <div class="col-12 pt-4">
+              <div class="row">
+                <div class="col-12 det-test18">
+                  Selecciona la tarifa de tu preferencia
+                </div>
+                <div class="col-12 fondo-rojo-tri" style="height: 2px"></div>
+              </div>
+            </div>
+  
+            <div class="col-12 m-p p-0 pt-5 pb-3">
+              <div class="row m-p p-0">
+                <div class="col-2 m-p p-0">
+                  <div class="row" style="margin-top: 50px;">
+                  
+                    <div
+                      *ngFor="let inclusion of lstInclusions"
+                      class="col-lg-12 "
+                      style="
+                        height: 40px;
+                        display: list-item;
+                        align-items: center !important;
+                        margin-top: 5%;
+                      "
+                    >
+                      <span data-html="true" pTooltip="{{inclusion.description}} {{inclusion.otherInformation}}" class="det-test19">{{ inclusion.alias }}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-9 m-p p-0">
+                  <div class="row m-0 p-0">
+                    <div
+                      class=""
+                      style="
+                        width: 5%;
+                        display: flex !important;
+                        justify-content: center !important;
+                        align-items: center !important;
+                      "
+                    >
+                      <img
+                        style="cursor: pointer; width: 32px"
+                        (click)="moverIzq('div_container')"
+                        src="./assets/Images/cars/keyboard-left-arrow_72692.svg"
+                        alt=""
+                      />
+                    </div>
+  
+                    <div
+                      id="div_container"
+                      class="scrollmenu"
+                      style="width: 90% !important"
+                    >
+                      <div
+                        *ngFor="let extraRates of lstExtraRates"
+                        class=""
+                        style="
+                          width: 228px !important;
+                          margin-right: 20px;
+                          border-radius: 20px 0 20px 0;
+                          border: solid 1px #aaaaaa;
+                          padding-bottom: 10px;
+                          min-width: 250px !important;
+                        "
+                      >
+                        <div class="row m-0 p-0">
+                          <div
+                            class="col-12 m-0 p-0 det-test20"
+                            [id]="idDivCabecera + '_' + extraRates.rateId"
+                            style="
+                              height: 50px !important;
+                              display: flex;
+                              justify-content: center;
+                              align-items: center;
+                              background-color: #aaaaaa;
+                              border-radius: 20px 0 0 0;
+                            "
+                          >
+                            {{ extraRates.name }}
+                          </div>
+  
+                          <div
+                            *ngFor="
+                              let inclusion of extraRates.linclusions;
+                              let i = index
+                            "
+                            class="col-12"
+                            style="
+                              height: 50px !important;
+                              display: flex;
+                              justify-content: center;
+                              align-items: center;
+                              border-bottom: solid 1px #aaaaaa;
+                            "
+                          >
+                            <img
+                              *ngIf="inclusion.alias === lstInclusions[i].alias"
+                              src="./assets/Images/cars/check_ok.svg"
+                              alt=""
+                            />
+                          </div>
+  
+                          <div
+                          *ngFor="
+                          let item of lstDivParaCompletar
+                            | createDivVacio
+                              : lstInclusions.length -
+                                  extraRates.linclusions.length
+                        "
+                            class="col-12"
+                            style="
+                              height: 50px !important;
+                              display: flex;
+                              justify-content: center;
+                              align-items: center;
+                              border-bottom: solid 1px #aaaaaa;
+                            "
+                          ></div>
+                        </div>
+  
+                        <div class="row m-0 p-0 pt-2 pb-2">
+                          <div
+                            class="col-12 m-0 p-0 pt-2"
+                            *ngFor="
+                              let ratePrice of extraRates.lratePrice;
+                              let indexPrice = index
+                            "
+                          >
+                            <div class="row m-0 p-0 p-3">
+                              <div
+                                class="col-12 m-0 p-0 det-test21"
+                                style="
+                                  display: flex !important;
+                                  justify-content: center !important;
+                                  align-items: center !important;
+                                  border: 1px solid #818181;
+                                "
+                                [id]="
+                                  idDivRatePrice1 +
+                                  '_' +
+                                  extraRates.rateId +
+                                  '_' +
+                                  indexPrice
+                                "
+                              >
+                                {{ ratePrice.paymentType }}
+                              </div>
+  
+                              <div
+                                class="col-12 m-0 p-0"
+                                style="
+                                  border: 1px solid #818181;
+                                  height: 45px;
+                                  display: flex;
+                                  justify-content: center;
+                                  align-items: center;
+                                "
+                                [id]="
+                                  idDivRatePrice2 +
+                                  '_' +
+                                  extraRates.rateId +
+                                  '_' +
+                                  indexPrice
+                                "
+                              >
+                                <input
+                                  type="radio"
+                                  [id]="
+                                    idRadioBtn +
+                                    '_' +
+                                    extraRates.rateId +
+                                    '_' +
+                                    indexPrice
+                                  "
+                                  (click)="
+                                    selectRadioBtnRatePrice(
+                                      idRadioBtn +
+                                        '_' +
+                                        extraRates.rateId +
+                                        '_' +
+                                        indexPrice,
+                                      ratePrice,
+                                      extraRates
+                                    )
+                                  "
+                                />
+                                <span
+                                  [id]="
+                                    idSpanRatePrice1 +
+                                    '_' +
+                                    extraRates.rateId +
+                                    '_' +
+                                    indexPrice
+                                  "
+                                  class="pr-2 pl-2 det-test22"
+                                  >{{ ratePrice.currency }}</span
+                                >
+                                <span
+                                  [id]="
+                                    idSpanRatePrice2 +
+                                    '_' +
+                                    extraRates.rateId +
+                                    '_' +
+                                    indexPrice
+                                  "
+                                  class="det-test23"
+                                  >{{ ratePrice.totalAmount }}</span
+                                >
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+  
+                    <div
+                      class=""
+                      style="
+                        width: 5%;
+                        display: flex !important;
+                        justify-content: center !important;
+                        align-items: center !important;
+                      "
+                    >
+                      <img
+                        style="cursor: pointer; width: 32px"
+                        (click)="moverDer('div_container')"
+                        src="./assets/Images/cars/keyboard-right-arrow_72690.svg"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+  
+            <div class="col-12 pt-4" *ngIf="listAditionals.length > 0">
+              <div class="row">
+                <div class="col-12 det-test18">Precios referenciales</div>
+                <div class="col-12 fondo-rojo-tri" style="height: 2px"></div>
+              </div>
+            </div>
+  
+            <div class="col-12 pt-3" *ngIf="listAditionals.length > 0">
+              <div class="row">
+                <div
+                  class="col-11 det-test19 text-center"
+                  style="
+                    border-radius: 20px 0 20px 0;
+                    background-color: #e5e5e5;
+                    height: 60px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                  "
+                >
+                  <img
+                    class="pr-3"
+                    src="./assets/Images/cars/informacion_rojo.svg"
+                    alt=""
+                  />
+                  Los servicios adicionales están sujetos a verificación y deben
+                  ser pagados en el mostrador al momento de retirar tu vehículo.
+                  Precios mostrados son referenciales.
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-12 pt-3">
+              <div class="row">
+                <div class="col-11 pt-3" *ngFor="let item of listAditionals;let i = index;">
+                  <div
+                    class="row"
+                    style="
+                      border-radius: 20px 0 20px 0;
+                      border: solid 1px #e5e5e5;
+                      height: 60px;
+                    "
+                  >
+                    <div
+                      class="col-4 det-test26"
+                      style="
+                        display: flex;
+                        align-items: center;
+                        border-right: solid 1px #e5e5e5;
+                      "
+                    >
+               
+                      <mat-checkbox
+                        color="warn"
+                        (change)="checkAditional($event.checked, item)"
+                      >
+                        {{ item.description }}
+                      </mat-checkbox>
+                    </div>
+  
+                    <div
+                      class="col-4 det-test26"
+                      style="
+                        display: flex;
+                        align-items: center;
+                        border-right: solid 1px #e5e5e5;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                      "
+                    >
+                      Sujeto a disponibilidad en agencia
+                    </div>
+  
+                    <div
+                      class="col-3 det-test26"
+                      style="
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                      "
+                    >
+                      <img
+                        class="pr-3"
+                        src="./assets/Images/cars/informacion_verde.svg"
+                        alt=""
+                      />
+                      {{
+                        carSelect.oselectCar.lextraRates[0].lratePrice[0].currency
+                      }}
+                      {{ item.amount }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-12 m-0 p-0 pt-5">
+              <button (click)="reservarAuto()" class="btn det-test27">
+                Reservar
+              </button>
+            </div>
+  
+            <div class="col-12"></div>
+  
+            <div class="col-12" style="height: 50px !important"></div>
+          </div>
+        </div>
+      </div>
+
+  
+  <ng-template #lgModals class="modal fade">
+    <div>
+      <div class="modal-header pb-0" style="border: none;">
+        <button type="button" class="close pull-right" aria-label="Close"
+         >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body m-0 p-0">
+        <div class="section" style="display: flex;">
+          <div class="col-12 p-0">
+            <div class="section">
+              <div class="col-12" style="text-align: center;">
+                  <span style="font-size: 20px;text-decoration: underline;font-weight: 700;">{{carSelect.oselectCar.ocancelationPolicy.description}}</span>
+              </div>
+            </div>
+            <div class="section mt-4">
+              <div class="col-12">
+                  <span style="font-size: 17px;">{{carSelect.oselectCar.ocancelationPolicy.periodHours}} horas {{carSelect.oselectCar.ocancelationPolicy.periodType}}</span>
+              </div>
+            </div>
+            <div class="section pt-2">
+              <div class="col-12">
+                  <span style="font-size: 17px;font-weight: 700;">Monto por cancelación:     </span>
+                  <span style="font-size: 17px;">{{carSelect.oselectCar.ocancelationPolicy.currency}}  {{carSelect.oselectCar.ocancelationPolicy.amount}}</span>
+              </div>
+            </div>
+            <div class="section pt-1">
+              <div class="col-12">
+                <span style="font-size: 17px;font-weight: 700;">Monto por No Show:    </span>
+                  <span style="font-size: 17px;">{{carSelect.oselectCar.ocancelationPolicy.currency}}  {{carSelect.oselectCar.ocancelationPolicy.noShowAmount}}</span>
+              </div>
+            </div>
+  
+          </div>
+      
+        </div>
+  
+      </div>
+    </div>
+  

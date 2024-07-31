@@ -1,0 +1,73 @@
+<div [formGroup]="form">
+
+    <div class="row m-0 p-0 mt-3 webInformation webDropDown">
+
+       
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-2">
+        
+            <p-floatLabel>
+            <p-dropdown [options]="lstAccess" [scrollHeight]="'150px'" 
+             formControlName="parent" inputId="parent"
+            optionLabel="description" optionValue="id" />
+            <label for="parent">Lista</label>
+        </p-floatLabel>
+            
+        </div>
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-2">
+
+
+            <p-floatLabel>
+                <input pInputText id="code" formControlName="code" />
+                <label for="code">Código</label>
+            </p-floatLabel>
+
+
+          <!--   <mat-form-field appearance="outline">
+                <mat-label>Código</mat-label>
+                <input cdkFocusInitial formControlName="code" matInput />
+            </mat-form-field> -->
+
+        </div>
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+            <p-floatLabel>
+                <input pInputText id="description" formControlName="description" />
+                <label for="description">Descripción</label>
+            </p-floatLabel>
+
+         <!--    <mat-form-field appearance="outline">
+                <mat-label>Descripción</mat-label>
+                <input (click)="$event.stopPropagation()" cdkFocusInitial formControlName="description" matInput />
+            </mat-form-field> -->
+
+        </div>
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+            <p-checkbox formControlName="isActive" [binary]="true" inputId="isActive"></p-checkbox>
+            <span for="isActive" class="pl-2">Estado</span>
+        </div>
+
+       
+        
+
+        
+    </div>
+
+  
+
+
+
+
+    <div class="row m-0 p-0 ">
+        <div class="col mt-4 mb-2 text-center">
+            <mat-dialog-actions align="end">
+                <button color="primary" (click)="manageChargue()" [disabled]="form.invalid"  mat-flat-button type="submit">
+                    {{textbtn}}
+                </button>
+            </mat-dialog-actions>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,177 @@
+.r-div-pxa {
+    background: -webkit-linear-gradient(left, rgba(237, 28, 35, 1) 0%, rgba(176, 23, 56, 1) 36%, rgba(60, 71, 73, 1) 100%);
+    color: white;
+    font-family: Omnes-med;
+    font-size: 13px;
+    border-radius: 0 20px 20px 0;
+    line-height: 30px;
+}
+
+.txtPoliticas {
+    font-family: Omnes-med;
+    background: transparent linear-gradient(99deg, #ED1C24 0%, #D51A2C 34%, #3C4749 100%) 0% 0% no-repeat padding-box;
+    border-radius: 0px 23px 23px 0px;
+    color: #FFFFFF;
+    padding: 7px 90px 7px 30px;
+}
+
+.spanAutorizador {
+    font-family: Omnes-med;
+    background: transparent linear-gradient(99deg, #ED1C24 0%, #D51A2C 34%, #3C4749 100%) 0% 0% no-repeat padding-box;
+    border-radius: 0px 23px 23px 0px;
+    color: #FFFFFF;
+    padding: 7px 90px 7px 30px;
+}
+
+.txtDias {
+    text-align: left;
+    font-family: Omnes-med;
+    letter-spacing: 0;
+    color: #555555;
+    opacity: 1;
+    font-size: 17px;
+}
+
+.input-pasajero{
+    outline: none;
+    width: 100%;
+    padding: 5px;
+    border: 2px solid #DFD9D8;
+    border-radius: 5px;
+    font-family: Omnes-med;
+    color: #676767;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+
+.txtAlertAprrover {
+    text-align: left;
+    font-family: Omnes-med;
+    letter-spacing: 0;
+    color: #0c5460;
+    opacity: 1;
+    font-size: 17px;
+}
+
+.txtInfraccion {
+    font-family: Omnes-med;
+    letter-spacing: 0;
+    color: #4A4A4A;
+    font-size: 17px;
+}
+
+.txtCurrency {
+    text-align: center;
+    font-family: Omnes-med;
+    letter-spacing: 0;
+    color: #3D3D3D;
+    font-size: 25px;
+}
+
+.txtAmount {
+    text-align: center;
+    font-family: Omnes-med;
+    letter-spacing: 0;
+    color: #3D3D3D;
+    font-size: 38px;
+}
+
+.txtImpacto {
+    font-family: Omnes-med;
+    color: #3D3D3D;
+}
+
+.banner-data{
+    border-radius: 8px 8px 8px 8px;
+    background: #FDFDFD 0% 0% no-repeat padding-box;
+    box-shadow: 1px 1px 6px 1PX #00000029;
+    padding: 7px 20px 20px 20px;
+    margin-top: 20px;
+    height: 90px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.txtDescripcion {
+    font-family: Omnes-med;
+    letter-spacing: 0;
+    color: #676767;
+    font-size: 15;
+}
+
+.txtAmount {
+    font-family: Omnes-med;
+    letter-spacing: 0;
+    color: #676767;
+    font-size: 20px;
+}
+
+.txtInput {
+    width: 100% !important;
+    padding: 5px;
+    border: 1px solid #bdb6b6;
+    border-radius: 3px;
+    opacity: 1;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+}
+
+.txtLabel {
+    outline: none;
+    border: 0;
+}
+
+.txtArea {
+    background: #FDFDFD 0% 0% no-repeat padding-box;
+    box-shadow: -1px 2px 6px #00000029;
+    opacity: 1;
+    width: 100%;
+}
+
+.area {
+    width: 100%;
+    height: 70px;
+    outline: none;
+    border: 0;
+    resize: none;
+}
+
+.txtAnti {
+    text-align: center;
+    font-family: Omnes-med;
+    letter-spacing: 0;
+    color: #6B253C;
+    font-size: 20px;
+}
+
+.txtApro {
+    text-align: left;
+    font-family: Omnes-med;
+    letter-spacing: 0;
+    color: #3D3D3D;
+    font-size: 15px;
+}
+
+.btnEnviar {
+    font-family: Omnes-med;
+    font-size: 15px;
+    color: white;
+    background-color: #ED1C24;
+}
+
+.btnVolver {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 2px solid #ED1C24;
+    color: #ED1C24;
+    font-family: Omnes-med;
+    font-size: 15px;
+    width: 146px;
+}
+
+.input-pasajero {
+    width: 100% !important;
+    padding: 5px;
+    border: 1px solid #707070;
+    border-radius: 5px;
+    font-family: Omnes-med;
+    color: #898989;
+}

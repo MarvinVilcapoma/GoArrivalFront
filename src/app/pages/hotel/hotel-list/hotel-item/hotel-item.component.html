@@ -1,0 +1,77 @@
+<div class="col m-0 p-0" style="background-color: #F8F8F8;">
+    <div class="row m-0 p-0 mt-4" >
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 m-0 p-0">
+            <img [src]="url" class="img-hotel">
+        </div>
+        <div class="col-xxl col-xl col-lg col-md-4 col-sm-4 col-12 m-0 p-3" style="line-height: 2em;">
+            <span class="name-hotel">{{hotel.name}}</span><br />
+            <span *ngFor="let star of hotel.lstStar" class="spaceStar">
+                <img *ngIf="star === true" src="assets/Images/hotel/conStar.svg">
+                <img *ngIf="star === false" src="assets/Images/hotel/sinStar.svg">
+            </span><br />
+            <span *ngIf="hotel.oairportDistance != null && hotel.oairportDistance?.distance != null">
+                <img src="assets/Images/hotel/ubicacion.png">
+                <span class="distance">{{hotel.oairportDistance.distance}} Km. al Aeropuerto</span>
+            </span><br />
+            <span *ngIf="hotel.contactPhones?.length > 0">
+                <img width="23" src="assets/Images/hotel/telefono.png">
+                <span *ngFor="let phone of hotel.contactPhones" class="distance">{{phone}}</span>
+            </span><br />
+            <span class="text-map" (click)="mostrarmapa()">Ver mapa</span><br />
+            <span class="address">{{hotel.address}}</span><br />
+            <span *ngIf="hotel.guaranteeType?.length > 0">
+                <span *ngFor="let pago of hotel.guaranteeType;let i=index;" class="payment-text">
+                    <span *ngIf="pago === 'Deposit'" class="distance" style="color: white;">Pago en origen</span>
+                    <span *ngIf="pago === 'GuaranteeRequired'" class="distance" style="color: white;">Pago en
+                        destino</span>
+                </span>
+            </span>
+
+
+        </div>
+        <div class="col-xxl col-xl col-lg col-md-4 col-sm-4 col-12 m-0 p-3 text-center">
+            <span>
+                <span class="currency">Precio Total</span>
+            </span><br />
+            <span class="currency">{{hotel.oprice.currency}}</span><span
+                class="price">{{hotel.oprice.pricePerAllNights}}</span><img width="20" pTooltip="Detalle de precio" tooltipPosition="top" style="cursor: pointer;"  (click)="op.toggle($event)" class="mb-1" src="assets/Images/hotel/icon-info.png"><br />
+            <span class="address">por {{hotel.numberNights}} noche(s), {{hotel.numberPassenger}} persona(s)</span><br/>
+            <span>
+                <span *ngIf="hotel.oprice?.includeTax === false" class="address">Precio sin
+                    impuestos
+                    incluidos</span>
+                <span *ngIf="hotel.oprice?.includeTax === true" class="address">Precio con impuestos
+                    incluidos</span>
+            </span>
+            <p-divider></p-divider>
+            <span>Precio por noche: </span><span class="currency">{{hotel.oprice.pricePerNight}}</span>
+            
+            <div class="select mt-2" (click)="selectRoom(hotel)">
+                <span>Elegir habitación</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p-overlayPanel #op>
+    <div class="popRoom">
+        <div class="row m-0 p-0">
+            <div class="col m-0 p-0">
+                <span class="address">Precio Base</span>
+            </div>
+            <div class="col m-0 p-0">
+                <span class="currency-pop">{{hotel.oprice.currency}}</span> <span class="price-pop">{{hotel.oprice.baseAmount}}</span>
+            </div>
+        </div>
+        <div class="row m-0 p-0">
+            <div class="col m-0 p-0">
+                <span class="address">Cargos Admin.</span>
+            </div>
+            <div class="col m-0 p-0">
+                <span class="currency-pop">{{hotel.oprice.currency}}</span> <span class="price-pop">{{hotel.oprice.chargesAmount}}</span>
+            </div>
+        </div>
+    </div>
+    
+ 
+</p-overlayPanel>

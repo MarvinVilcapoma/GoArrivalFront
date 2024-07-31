@@ -1,0 +1,36 @@
+.text-departure {
+    font-family: Omnes-med;
+    color: #898989;
+    font-size: 18px;
+    text-align: center;
+}
+
+
+.text-tipovuelo {
+    font-family: Omnes-med;
+    color: #898989;
+    font-size: 11px;
+}
+
+.text-arrival {
+    font-family: Omnes-med;
+    color: #898989;
+    font-size: 18px;
+    text-align: center;
+}
+
+.text-totaltime {
+    font-family: Omnes-med;
+    color: #676767;
+    font-size: 13px;
+}
+
+.img-tipovuelo img {
+    position: relative;
+    bottom: 10px;
+}
+
+.div-bag {
+    position: relative;
+    bottom: 10px;
+}

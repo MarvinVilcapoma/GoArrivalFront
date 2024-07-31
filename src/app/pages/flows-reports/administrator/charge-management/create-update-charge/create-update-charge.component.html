@@ -1,0 +1,206 @@
+<form [formGroup]="form" class="webInformation webDropDown">
+
+    <div class="row m-0 p-0 mt-3">
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+            <p-floatLabel>
+
+                <p-dropdown [options]="types" inputId="TypeSearch" formControlName="TypeSearch" optionLabel="name"
+                    optionValue="code"></p-dropdown>
+
+                <label for="TypeSearch">Tipo busqueda</label>
+            </p-floatLabel>
+        </div>
+
+
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+            <p-floatLabel>
+                <input pInputText id="Amount" formControlName="Amount" />
+                <label for="Amount">Monto</label>
+            </p-floatLabel>
+
+
+            <!--    <mat-form-field appearance="outline">
+                <mat-label>Monto</mat-label>
+                <input matInput type="number" formControlName="Amount" class="example-right-align" placeholder="0">
+            </mat-form-field> -->
+        </div>
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+            <p-floatLabel>
+                <input pTooltip="Este valor será tomado como porcentaje" tooltipPosition="left" pInputText id="Igv"
+                    formControlName="Igv" />
+                <label for="Igv">Igv</label>
+            </p-floatLabel>
+
+
+            <!--     <mat-form-field appearance="outline" pTooltip="Este valor será tomado como porcentaje" tooltipPosition="left">
+                <mat-label>Igv</mat-label>
+                <input matInput  type="number" formControlName="Igv" class="example-right-align" placeholder="0">
+            </mat-form-field> -->
+        </div>
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+            <p-floatLabel>
+                <input pInputText id="InitialRange" formControlName="InitialRange" />
+
+                <label for="InitialRange">Rango Inicial</label>
+            </p-floatLabel>
+
+
+            <!--            <mat-form-field appearance="outline">
+                <mat-label>InitialRange</mat-label>
+                <input matInput type="number" formControlName="InitialRange" class="example-right-align"
+                    placeholder="0">
+
+            </mat-form-field> -->
+        </div>
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+            <p-floatLabel>
+                <input pInputText id="FinalRange" formControlName="FinalRange" />
+                <label for="FinalRange">Rango Final</label>
+            </p-floatLabel>
+
+
+            <!--   <mat-form-field appearance="outline">
+                <mat-label>FinalRange</mat-label>
+                <input matInput type="number" formControlName="FinalRange" class="example-right-align" placeholder="0">
+            </mat-form-field> -->
+        </div>
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+            <p-floatLabel>
+                <p-dropdown [options]="lstServices" [scrollHeight]="'150px'" inputId="ServiceID"
+                    formControlName="ServiceID" optionLabel="name"
+                    optionValue="id"></p-dropdown>
+                <label for="ServiceID">Servicios</label>
+            </p-floatLabel>
+
+        </div>
+
+        <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+            <p-checkbox formControlName="IsPercentage" [binary]="true" inputId="binary"></p-checkbox>
+            <span for="binary" class="pl-2">Es porcentaje</span>
+        </div>
+
+        <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+            <p-checkbox formControlName="PerPassenger" [binary]="true" inputId="binary"></p-checkbox>
+            <span for="binary" class="pl-2">Es pasajero</span>
+        </div>
+
+
+        <div *ngIf="isRegister" class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+            <p-checkbox formControlName="cargoAdd" [binary]="true" (onChange)="validChargue($event)"
+                inputId="binary"></p-checkbox>
+            <span for="binary" class="pl-2">Cargo Adicional</span>
+        </div>
+
+        <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+            <p-checkbox formControlName="isActive" [binary]="true" 
+            inputId="binary"></p-checkbox>
+        <span for="binary" class="pl-2">Cargo Activo</span>
+
+
+         <!--    <mat-label>Estado :</mat-label>
+            <p-selectButton [options]="stateOptions" formControlName="isActive" optionLabel="label"
+                optionValue="value"></p-selectButton> -->
+        </div>
+
+
+    </div>
+
+    <p-blockUI [target]="pnl" [blocked]="blockedPanel">
+        <i class="pi pi-lock" style="font-size: 3rem"></i>
+    </p-blockUI>
+
+    <p-panel #pnl header="Cargo Adicional" styleClass="mt-4">
+        <div class="row m-0 p-0">
+
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+                <p-floatLabel>
+
+                <p-dropdown [options]="payment" formControlName="FormOfPayment" inputId="FormOfPayment" optionLabel="name" optionValue="code"
+                     placeholder="Tipo pago"></p-dropdown>
+
+                    <label for="FormOfPayment">Tipo pago</label>
+                </p-floatLabel>
+            </div>
+
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+                <p-floatLabel>
+                    <input pInputText id="IgvPayment" formControlName="IgvPayment" />
+    
+                    <label for="IgvPayment">Igv</label>
+                </p-floatLabel>
+
+
+              <!--   <mat-form-field appearance="outline">
+                    <mat-label>Igv</mat-label>
+                    <input matInput type="number" formControlName="IgvPayment" class="example-right-align"
+                        placeholder="0">
+                </mat-form-field> -->
+
+
+            </div>
+
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+                <p-floatLabel>
+                    <input pInputText id="AmountPayment" formControlName="AmountPayment" />
+    
+                    <label for="AmountPayment">Monto</label>
+                </p-floatLabel>
+
+
+           <!--      <mat-form-field appearance="outline">
+                    <mat-label>Monto</mat-label>
+                    <input matInput type="number" formControlName="AmountPayment" class="example-right-align"
+                        placeholder="0">
+                </mat-form-field> -->
+            </div>
+
+            <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+                <p-checkbox formControlName="IsPercentagePayment" [binary]="true" inputId="binary"></p-checkbox>
+                <span for="binary" class="pl-2">Es porcentaje</span>
+            </div>
+
+            <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+                <p-checkbox formControlName="isActivePayment" [binary]="true" inputId="isActivePayment"></p-checkbox>
+                <span for="isActivePayment" class="pl-2">Cargo adicional activo</span>
+
+
+       <!--          <mat-label>Estado :</mat-label>
+                <p-selectButton [options]="stateOptions" formControlName="isActivePayment" optionLabel="label"
+                    optionValue="value"></p-selectButton> -->
+            </div>
+
+        </div>
+    </p-panel>
+
+
+
+    <div class="row m-0 p-0 ">
+        <div class="col mt-5 mb-2 text-center">
+            <mat-dialog-actions align="end">
+                <button color="primary" (click)="manageChargue()" [disabled]="form.invalid" mat-flat-button
+                    type="submit">
+                    {{textbtn}}
+                </button>
+            </mat-dialog-actions>
+        </div>
+    </div>
+</form>

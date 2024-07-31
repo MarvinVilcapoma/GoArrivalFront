@@ -1,0 +1,73 @@
+<div class="container mt-4">
+
+
+    <p-messages [(value)]="messages1" [enableService]="false" [closable]="false"></p-messages>
+
+
+
+    <div *ngFor="let item of lstInsurance" class="card flex justify-content-center mt-4">
+
+
+        <p-panel header="{{item.rateDescription}}">
+            <div class="row m-0 p-0 ">
+                <div class="col-xxl-7 col-xl-7 col-lg-7 col-md-6 col-sm-6 col-12 searchInsurance">
+                    <p *ngFor="let desc of item.rateName">
+                        <i class="pi pi-check" style="font-size: 1rem"></i> {{desc}}
+                    </p>
+                    <p-divider></p-divider>
+                    <p-button label="Ver detalle de cobertura" (onClick)="validBenefits(item)" [outlined]="true"
+                        severity="danger"></p-button>
+                </div>
+                <div class="col-xxl-1 col-xl-1 col-lg-1 col-md-1 col-sm-1 col-12">
+                    <p-divider layout="vertical"></p-divider>
+                </div>
+
+                <div
+                    class="col-xxl-4 col-xl-4 col-lg-4 col-md-5 col-sm-5 col-12 searchInsurance text-center align-content-center">
+                    <span>Precio final para {{item.lclientsInsurances[0].quantity}} pasajero(s)</span><br />
+                    <span class="price">{{item.currency}} {{item.totalAmount}}</span><br />
+                    <p-button label="Seleccionar" (onClick)="next(item)" [raised]="true" severity="danger"></p-button>
+                </div>
+            </div>
+
+        </p-panel>
+
+
+
+
+    </div>
+</div>
+
+<p-dialog header="Detalle de cobertura" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }"
+    [draggable]="false" [resizable]="false">
+    <div *ngIf="visible" class="main">
+        <div class="section">
+            <div class="row">
+                <div class="col-12">
+                    <span style="color: black ;font-weight: 600;">{{card.rateName}}</span>
+                </div>
+
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-12">
+                    <span style="color: black ;font-weight: 600;">Beneficios extra:</span>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12" style="max-height: 400px;overflow: auto;">
+                    <div *ngFor="let item of card.lbenefits" class="row" style="border-bottom: 1px solid #cccccc;">
+                        <div *ngIf="item.title != '' && item.description != ''" class="col-8">
+                            <span style="font-size: 13px;">{{item.title}}</span>
+                        </div>
+                        <div *ngIf="item.title != '' && item.description != ''" class="col-4">
+                            <span style="font-size: 13px;">{{item.description}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</p-dialog>

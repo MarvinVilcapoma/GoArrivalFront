@@ -1,0 +1,64 @@
+
+<!-- <button mat-raised-button color="primary" mat-button [matMenuTriggerFor]="animals" >Gestionar Menú</button>
+<mat-menu  #animals="matMenu">
+    <button (click)="$event.stopPropagation();" *ngFor="let item of lstMenu" mat-menu-item disableRipple
+        [matMenuTriggerFor]="vertebrates">
+        <mat-checkbox #checkBox [(ngModel)]="item.isChecked"
+            (change)="toggleSelectionMenu(item,$event,null)">
+            {{item.name}}
+
+        </mat-checkbox>
+
+        <mat-menu  #vertebrates="matMenu">
+
+            <button  (click)="$event.stopPropagation();" *ngFor="let sub of item.lsubMenu" mat-menu-item
+                disableRipple [matMenuTriggerFor]="invertebrates">
+                <mat-checkbox #checkBox [(ngModel)]="sub.isChecked"
+                    (change)="toggleSelectionMenu(sub,$event,item)">
+                    {{sub.name}}
+
+
+                </mat-checkbox>
+                <mat-menu #invertebrates="matMenu">
+
+                    <button (click)="$event.stopPropagation();" *ngFor="let subItem of sub.lsubMenu"
+                        disableRipple mat-menu-item>
+                        <mat-checkbox #checkBox [(ngModel)]="subItem.isChecked"
+                            (change)="toggleSelectionMenuSub(subItem,$event,sub,item)">
+                            {{subItem.name}}
+                            <br />
+                        </mat-checkbox>
+                    </button>
+
+                </mat-menu>
+            </button>
+
+        </mat-menu>
+    </button>
+
+</mat-menu> -->
+
+<!-- <section class="example-section">
+    <span class="example-list-section">
+      <mat-checkbox class="example-margin"
+                    [checked]="allComplete"
+                    [color]="task.color"
+                    [indeterminate]="someComplete()"
+                    (change)="setAll($event.checked)">
+        {{task.name}}
+      </mat-checkbox>
+    </span>
+    <span class="example-list-section">
+      <ul>
+        @for (subtask of task.subtasks; track subtask) {
+          <li>
+            <mat-checkbox [(ngModel)]="subtask.completed"
+                          [color]="subtask.color"
+                          (ngModelChange)="updateAllComplete()">
+              {{subtask.name}}
+            </mat-checkbox>
+          </li>
+        }
+      </ul>
+    </span>
+  </section> -->

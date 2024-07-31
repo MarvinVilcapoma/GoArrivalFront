@@ -1,0 +1,204 @@
+<div  class="container">
+    <div class="row m-0 p-0 pt-5">
+        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+            <span  class="back">Volver</span>
+        </div>
+    </div>
+    <div class="row pt-5 pb-5 mt-4 border-top-options">
+        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+            <div class="row m-0 p-0">
+                <div *ngFor="let colum of destinos; let i = index" class="col-xxl col-xl col-lg col-md col-sm col-12 text-center"
+                    (click)="changeFlight(i)" style="cursor: pointer;line-height: 20px;">
+                    <span style="font-size: 20px;color:#000000;">{{colum.oorigin.cityName}} -
+                        {{colum.odestination.cityName}}</span><br />
+                    <span style="font-size: 15px;font-weight: 400;color: 898989;">Tramo {{i+1}} </span><br>
+                    <div id="imgFlight_{{i}}"
+                        style="background: -webkit-linear-gradient(left, #ed1c23 0%, #b01738 36%, #3c4749 100%)">
+                    </div>
+                </div>
+
+                <div class="col-xxl col-xl col-lg col-md col-sm col-12 text-center">
+                    <span (click)="other()" class="otherMoment">En otro momento</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="mostrar" class="row mt-4">
+        <div class="col-xxl-8 col-xl-7 col-lg-8 col-md-12 col-sm-12 col-12 mr-2 p-0 mb-3 pb-3" style="border: 1px solid #cccccc;justify-content: center;">
+
+            <div class="container" style="padding: 30px;">
+                <div class="row" style="background-color: #F1F1F1;line-height: 55px;">
+                    <div class="col text-center">
+                        <img style="width: 20px;" src="assets/Images/flight/disponible.svg" alt=""> Tu seleccion
+                    </div>
+                    <div class="col text-center">
+                        <img style="width: 20px;" src="assets/Images/flight/libre.svg" alt=""> Libre
+                    </div>
+                    <div class="col text-center">
+                        <img style="width: 20px;" src="assets/Images/flight/ocupado.svg" alt=""> Ocupado
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col" style="display: flex;justify-content: center;">
+                    <ol class="cabin fuselage1">
+                        <div class="container">
+                            <div class="row mt-4">
+                                <div class="col text-center">
+                                    <img  src="assets/Images/flight/banio.svg" alt="">
+                                </div>
+                                <div class="col text-center">
+                                    <img  src="assets/Images/flight/azafa.svg" alt="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center;margin: 20px;font-weight: 600;">
+                            <span style="width: 30px; margin: 10px;">Tipo de Avión {{lista.equipmentType}}</span>
+                        </div>
+
+                        <li *ngIf="lista.lcabins != null" class="row row--1" style="padding: 20px;flex-wrap: nowrap !important;display: contents;">
+                            <div *ngFor="let cabin of lista.lcabins;let j = index;" class="col" style="display: flex;">
+                                <div style="margin: 0 auto;display: flex;">
+                                    <ol *ngFor="let colum of cabin.numSillas;let n = index;" class="seats" type="A">
+                               
+                                        <li style="margin-left: 15px;line-height: 45px;"><span style="cursor: pointer;width: 30px; margin: 10px;">{{colum.letra}}</span></li>
+                                        
+                                       
+                                        <li *ngFor="let asiento of colum.lstSillas;let i = index;" class="seat" >
+                                    
+                                            <div class="seatPopover" *ngIf="!asiento.noSeat">
+
+                                                <img 
+                                              
+                                                triggers="mouseenter:mouseleave"
+                                                popover="{{asiento.moneda}} {{asiento.precio}}"
+                                                popoverTitle="{{asiento.seatRow}}{{asiento.seatColumn}}  {{asiento.characteristics[0]}}"
+                                                id="img_{{asiento.seatRow}}{{asiento.seatColumn}}"
+                                                src="assets/Images/flight/{{asiento.img}}.svg" alt=""
+                                                style="cursor: pointer;width: 30px; margin: 10px;"
+                                                (click)="setSrc(asiento,asiento.seatRow,asiento.seatColumn,j,i,asiento.segment,n)"
+                                                >
+                                                
+                                                
+                                            </div>
+                                            
+                                            <div *ngIf="asiento.noSeat">
+                                               
+                                                <img 
+                                            
+                                                src="assets/Images/flight/asiento.svg" alt=""
+                                                style="cursor: pointer;width: 30px; margin: 10px;visibility: hidden;"
+                                                >
+                                                <span *ngIf="asiento.showAisle"> {{asiento.seatRow}} </span>
+                                            </div>
+                                            <span style="margin-left: 15px;line-height: 40px;" *ngIf="asiento.showAisle"> {{asiento.seatRow}} </span> 
+                                        </li>
+                                    </ol>
+                                </div>
+                               
+                            </div>
+                            
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-xxl col-xl col-lg-3 col-md-12 col-sm-12 col-12 m-0 p-3 {{textOrder}} filaPass">
+            <div class="row">
+                <div class="col">
+                    <img style="width: 14px;margin: 14px;" src="assets/Images/flight/personita.svg"
+                        alt=""><span>Pasajeros</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <span style="font-size: 17px;color: #454545;">El cobro de este servicio deberá ser pagado con una tarjeta de crédito/debito personal del pasajero.</span>
+                </div>
+            </div>
+            <div *ngFor="let pass of lstPass;let m = index" class="row mt-4">
+                <div class="container">
+                    <div *ngIf="!pass.stilo" class="col classpass1" id="fila{{m}}">
+                        <div *ngIf="pass.delete != 'Eliminar o cambiar asiento';else elseValid" class="row"
+                            (click)="selectAsiento(m)" style="cursor: pointer;">
+                            <div class="pass">
+                                <span id="pasajero{{m}}"> {{pass.val}}</span>
+                            </div>
+                            <div class="col" style="line-height: 38px;">
+                                <span style="font-size: 20px;color: #454545;">Adulto {{m+1}}</span>
+
+                            </div>
+
+                            <div class="col" style="line-height: 38px;">
+                                <span style="font-size: 20px;color: #454545;">{{pass.amount}}</span>
+
+                            </div>
+                        </div>
+                        <ng-template #elseValid>
+                            <div class="row">
+                                <div class="pass">
+                                    <span id="pasajero{{m}}"> {{pass.val}}</span>
+                                </div>
+                                <div class="col" style="line-height: 38px;">
+                                    <span style="font-size: 20px;color: #454545;">Adulto {{m+1}}</span>
+
+                                </div>
+                                <div class="col" style="line-height: 38px;">
+                                    <span style="font-size: 20px;color: #454545;">{{pass.amount}}</span>
+
+                                </div>
+                            </div>
+                        </ng-template>
+
+                        <div class="row">
+                            <div class="col p-0">
+                                <span (click)="eliminarAsiento(m,pass.val,pass)"
+                                    style="cursor: pointer;font-size: 14px;color: #FF0000;"
+                                    id="delete{{m}}">{{pass.delete}}</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div *ngIf="pass.stilo" class="col classpass" id="fila{{m}}">
+                        <div class="row">
+                            <div class="pass">
+                                <span id="pasajero{{m}}"> {{pass.val}}</span>
+                            </div>
+                            <div class="col" style="line-height: 38px;">
+                                <span style="font-size: 20px;color: #454545;">Adulto {{m+1}}</span>
+
+                            </div>
+                            <div class="col" style="line-height: 38px;">
+                                <span style="font-size: 20px;color: #454545;">{{pass.amount}}</span>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col p-0">
+                                <span (click)="eliminarAsiento(m,pass.val,pass)"
+                                    style="cursor: pointer;font-size: 14px;color: #FF0000;"
+                                    id="delete{{m}}">{{pass.delete}}</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="container">
+                    <div (click)="changeFlightConf(numSegment)" class="col otherMoment2">
+                        {{textNext}}
+                    </div>
+                  
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

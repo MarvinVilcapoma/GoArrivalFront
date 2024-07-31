@@ -1,0 +1,25 @@
+<!-- <span *ngIf="headerService.showCounter" style="font-size: 17px;color: black;"   class="clock" >
+    {{headerService.cunt}}<img src="assets/Images/header/cronometro.png"  alt="" width="35px"></span> -->
+
+
+<app-header *ngIf="headerService.showHeader" [validcunt]="headerService.validCount">
+
+</app-header>
+
+<router-outlet>
+</router-outlet>
+
+
+
+
+
+<!--   <p-confirmDialog [acceptVisible]="false" [rejectVisible]="false" /> -->
+
+
+
+<p-toast position="bottom-center" [showTransformOptions]="'translateY(100%)'" [showTransitionOptions]="'300ms'"
+    [hideTransitionOptions]="'300ms'" [showTransformOptions]="'translateX(100%)'" />
+
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true"
+    template="<div style='position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: white; z-index: 9999; display: flex; justify-content: center; align-items: center;'> 
+    <img #spinner src='https://domiruthgeneral.blob.core.windows.net/domiruth/domiruth/carga.gif' /> </div>"></ngx-spinner>

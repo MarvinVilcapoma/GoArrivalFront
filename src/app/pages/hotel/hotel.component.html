@@ -1,0 +1,15 @@
+
+<div class="row m-0 p-0">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+        <div class="section m-0 p-0">
+            <div  class="row m-0 p-0">
+                <div  class="col-lg-12 col-md-12 col-sm-12 col-12">
+                    <app-search-hotel [style]="false" (select)="validShow()"></app-search-hotel>
+                </div>
+                <div *ngIf="!showHotel" class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+                    <p-messages [(value)]="messages" [enableService]="false" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

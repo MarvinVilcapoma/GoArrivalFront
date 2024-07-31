@@ -1,0 +1,16 @@
+.r-div-pxa {
+    background: -webkit-linear-gradient(left, rgba(237, 28, 35, 1) 0%, rgba(176, 23, 56, 1) 36%, rgba(60, 71, 73, 1) 100%);
+    color: white;
+    font-family: Omnes-med;
+    font-size: 20px;
+    border-radius: 0 20px 20px 0;
+    line-height: 50px;
+    height: 50px;
+    text-align: center;
+}
+
+.text-pol {
+    font-family: Omnes-med;
+    font-size: 18px;
+    text-align: justify
+}

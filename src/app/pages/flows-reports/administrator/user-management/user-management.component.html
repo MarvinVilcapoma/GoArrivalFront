@@ -1,0 +1,187 @@
+<mat-toolbar *ngIf="head.validPhone()" color="primary" class="example-toolbar">
+    <button mat-icon-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
+    <h1 class="example-app-name">Menus</h1>
+</mat-toolbar>
+
+
+<mat-sidenav-container class="example-container" autosize>
+
+
+    <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" [disableClose]="true"
+        (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
+        <app-sidenav></app-sidenav>
+    </mat-sidenav>
+
+    <div class="example-sidenav-content p-6 container">
+        <div class="flex flex-col sm:flex-row gap-4">
+            <div class="row m-0 p-0 align-items-center hea">
+                <div class="col">
+                    <h3>Usuarios</h3>
+                </div>
+                <div class="col">
+                    <div class="box">
+                        <form name="search">
+                            <input (keyup)="applyFilter($event)" type="text" class="inputeq" name="txt">
+                        </form>
+
+                        <i class="fas fa-search">
+
+                        </i>
+
+                    </div>
+                </div>
+
+
+                <div class="col" style="text-align: end;">
+                    <button (click)="showDialog()" class="" color="primary" style="margin-right: 10px;" mat-mini-fab
+                        matTooltip="Cargar datos" type="button">
+                        <mat-icon>folder</mat-icon>
+                    </button>
+                    <button (click)="exportAsXLSX()" class="" color="warn" mat-mini-fab matTooltip="Descargar datos"
+                        type="button">
+                        <mat-icon>file_download</mat-icon>
+                    </button>
+                    <button [matMenuTriggerFor]="columnFilterMenu" class="flex-none" mat-icon-button
+                        matTooltip="Filtrar columnas" type="button">
+                        <mat-icon>filter_list</mat-icon>
+                    </button>
+                    <button (click)="createUser()" class="" color="primary" mat-mini-fab matTooltip="Agregar usuario"
+                        type="button">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+            </div>
+
+            <mat-menu #columnFilterMenu="matMenu">
+                <button (click)="toggleColumnVisibility(column, $event)" *ngFor="let column of columns" mat-menu-item
+                    class="">
+                    <mat-checkbox (click)="$event.stopPropagation()" [(ngModel)]="column.visible" color="primary">
+                        {{ column.label }}
+                    </mat-checkbox>
+
+                </button>
+            </mat-menu>
+
+
+            <table id="table-user" [dataSource]="dataSource" class="w-full" mat-table matSort>
+
+                <ng-container matColumnDef="name" sticky>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Orden por nombre">
+                        Nombre </th>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="lastName" sticky>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Orden por nombre">
+                        Apellido
+                    </th>
+                    <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="phone">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Orden por nombre">
+                        Teléfono
+                    </th>
+                    <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Orden por nombre">
+                        Correo </th>
+                    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="roleName">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Orden por nombre"> Rol
+                    </th>
+                    <td mat-cell *matCellDef="let element"> {{element.orole.roleName}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="documentNumber">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Orden por nombre"> Num.
+                        Documento </th>
+                    <td mat-cell *matCellDef="let element"> {{element.lpersonDocument[0]?.documentNumber}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="isActive" stickyEnd>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Orden por estado">
+                        Estado </th>
+                    <td mat-cell *matCellDef="let element">
+                        <span *ngIf="element.isActive">Activado</span>
+                        <span *ngIf="!element.isActive">Desactivado</span>
+
+
+
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="acciones">
+                    <th mat-header-cell *matHeaderCellDef>Acciones </th>
+                    <td mat-cell *matCellDef="let element">
+                        <button [matMenuTriggerFor]="menu" mat-icon-button aria-label="">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu">
+                            <button (click)="updateRol(element)" mat-menu-item>
+                                <mat-icon>edit</mat-icon>
+                                Editar
+                            </button>
+
+                        </mat-menu>
+                    </td>
+                </ng-container>
+
+
+                <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
+                <tr *matRowDef="let row; columns: visibleColumns" mat-row></tr>
+
+
+            </table>
+
+            <p-progressSpinner *ngIf="loading" class="spiner" styleClass="w-4rem h-4rem;" strokeWidth="8"
+                fill="var(--surface-ground)" animationDuration=".5s"></p-progressSpinner>
+            <mat-paginator [pageSizeOptions]="pageSizeOptions" [pageSize]="pageSize"
+                class="sticky left-0"></mat-paginator>
+        </div>
+
+    </div>
+</mat-sidenav-container>
+<div class="user-content">
+    <p-dialog header="{{isRegister ? 'Registrar usuario' : 'Modificar usuario'}}" [(visible)]="visible"
+        [blockScroll]="true" [modal]="true" [closeOnEscape]="false" [focusOnShow]="false"
+        [style]="{ width: '50vw', height: '900px' }" [breakpoints]="{ '960px': '75vw','500px' : '95vw' }"
+        [maximizable]="true">
+        <div class="container">
+            <app-user-create-update *ngIf="visible" (select)="validManage($event)" [lstMenu]="lstMenu"
+                [lstCountries]="lstCountries" [lstRoles]="lstRoles" [lstCostCenter]="lstCostCenter"
+                [lstProfile]="lstProfile" [lstDocument]="lstDocument" [dataLoad]="data"
+                [isRegister]="isRegister"></app-user-create-update>
+        </div>
+    </p-dialog>
+
+    
+<p-dialog header="Carga tu archivo" [(visible)]="visibleExcel" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false"
+[resizable]="false">
+<p-fileUpload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" cancelStyleClass="btnUploadCancel"
+    chooseLabel="Seleccionar" uploadLabel="Cargar Archivo" cancelLabel="Cancelar" (onUpload)="onUpload($event)"
+    [multiple]="false" accept=".xlsx" mode="advanced">
+
+    <ng-template pTemplate="toolbar">
+        <div class="py-3">Click aquí para descargar el modelo</div>
+<span class="link"><a href="https://domiruthgeneral.blob.core.windows.net/general/ManageByExcel/CargaPersonas.xlsx"> https://domiruthgeneral.blob.core.windows.net/general/ManageByExcel/CargaPersonas.xlsx</a></span>
+    </ng-template>
+
+        
+   
+    <ng-template pTemplate="content">
+        <ul *ngIf="uploadedFiles.length">
+            <li *ngFor="let file of uploadedFiles">{{ file.name }} - {{ file.size }} bytes</li>
+        </ul>
+    </ng-template>
+</p-fileUpload>
+</p-dialog>
+
+
+
+</div>

@@ -1,0 +1,88 @@
+.bord{
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+    background: rgb(198, 198, 198);
+    border-radius: 28px 0px;
+}
+
+.bord-bot{
+    border-bottom: 2px solid rgb(235 232 232);
+}
+
+.scroll-family{
+    width: 100%;
+    display: flex; 
+    flex-wrap: nowrap; 
+    overflow-x: auto
+}
+
+.services{
+    color: #898989;
+    font-family: Omnes-med;
+    font-size: 11px;
+}
+
+
+
+.name-family{
+    color: white;
+    font-family: Omnes-med;
+    font-size: 16px;
+}
+
+.paral{
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    text-align: center;
+    background: 0% 0% no-repeat padding-box padding-box rgb(242, 242, 242);
+    font-family: Omnes-med;
+    color: rgb(97, 97, 97);
+    height: 200px;
+    font-size: 15px;
+}
+
+.paral-1{
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    text-align: center;
+    background: 0% 0% no-repeat padding-box padding-box rgb(242, 242, 242);
+    font-family: Omnes-med;
+    color: rgb(97, 97, 97);
+    height: 140px;
+    font-size: 15px;
+}
+
+.contex{
+    height: 200px;
+    overflow: auto;
+    line-height: 9px;
+    text-align: initial;
+    background: white;
+}
+
+.contex-1{
+    height: 140px;
+    overflow: auto;
+    line-height: 6px;
+    text-align: initial;
+    background: white;
+}
+
+.text-amount{
+    color: white;
+    font-family: Omnes-med;
+    font-size: 24px;
+    margin-left: 5px;
+}
+
+.currency{
+    color: white;
+    font-family: Omnes-med;
+    font-size: 19px;
+    margin-left: 5px;
+}
+
+.text-impues{
+    color: white;
+    font-family: Omnes-med;
+    font-size: 16px;
+}

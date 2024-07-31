@@ -1,0 +1,77 @@
+
+
+
+
+
+<p-card header="Asistencia al viajero">
+    
+    <div class="row m-0 p-0"> 
+        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 webDropDown webInformation">
+            <div class="row m-0 p-0 align-items-center ">
+                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 ">
+                    <label for="disabled-input">Origen</label><br />
+                    <input id="disabled-input" type="text" pInputText [disabled]="true" [(ngModel)]="value" />
+                </div>
+                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                    <label for="disabled-input">Destino</label><br />
+                    <p-dropdown [options]="cities" id="destination-insurance" [(ngModel)]="selectedCity" optionLabel="name"  
+                     placeholder="Selecciona un destino"></p-dropdown>
+
+                     
+                </div>
+                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+                    <label for="disabled-input">Fechas</label><br />
+                    <p-calendar #myStartCalendarInsurance (onSelect)="selectDates()" #dateFilter
+                        inputId="dateDestination" [minDate]="minDateSalida" dateFormat="dd/mm/yy" selectionMode="range"
+                        [(ngModel)]="bsValue" [readonlyInput]="true" [numberOfMonths]="2"></p-calendar>
+                </div>
+                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 mt-2" (click)="op.toggle($event)">
+                    <label for="disabled-input">Pasajeros</label><br />
+                    <label for="" class="d-inline-flex box-shadow dates">
+                        <input readonly type="image" src="assets/Images/seeker/pasajero.svg" width="8" value="1">
+
+                        <input readonly type="text" id="txtpersonas" class="input-text2" [(ngModel)]="passenger">
+                        <span class="text-number"> {{lstPassengers.length}}</span>
+                    </label>
+                </div>
+                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 mt-4 btn-search-module">
+                    <p-button label="Cotizar" (onClick)="getInsurance()" [raised]="true" severity="danger"></p-button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</p-card>
+
+<p-overlayPanel #op>
+    <div class="popRoom">
+        <div class="row m-0 p-0">
+
+            <div class="row m-0 p-0 align-items-center">
+                <div class="col-5">
+                    <h6>Pasajeros</h6>
+                </div>
+                <div class="col-7">
+                    <span (click)="delPassenger()" class="input-group-btn">
+                        <button class="btn btn-danger" data-dir="dwn"><i class="fas fa-minus"></i></button>
+                    </span>
+                    <input type="text" [disabled]="true" id="valuePass" pInputText [(ngModel)]="lstPassengers.length" />
+                    <span (click)="addPassenger()" class="input-group-btn">
+                        <button class="btn btn-danger" id="btnUp_1" data-dir="up"><i class="fas fa-plus"></i></button>
+                    </span>
+                </div>
+            </div>
+            <p-divider></p-divider>
+            <div *ngFor="let item of lstPassengers;let i = index" class="row m-0 p-0 mt-3 align-items-center">
+                <div class="col-8">
+                    <span>Edad del pasajero {{i+1}}</span>
+                </div>
+                <div class="col-4">
+                    <input type="text" id="valuePass" pInputText [(ngModel)]="item.edad" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</p-overlayPanel>

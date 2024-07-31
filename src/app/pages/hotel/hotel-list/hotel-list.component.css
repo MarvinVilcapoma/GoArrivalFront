@@ -1,0 +1,28 @@
+.title {
+    font-size: 22px;
+    font-family: Omnes-med;
+    color: #ED1C24;
+    padding: 0px 7px;
+}
+
+.main-card {
+    box-shadow: 0px 4px 4px 0px #00000040;
+    border-radius: 20px 0px;
+}
+
+.title-1 {
+    font-size: 19px;
+    font-family: Omnes-med;
+    color: black;
+}
+
+
+.footer{
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    padding: 10px;
+    text-align: center;
+    z-index: 1000;
+}

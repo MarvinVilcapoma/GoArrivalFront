@@ -1,0 +1,321 @@
+.reset {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border-radius: 5px;
+    border: 1px solid;
+    text-align: left;
+    width: 35px;
+    margin-left: 10px;
+    font: 12px / 16px medium;
+    letter-spacing: 0px;
+    opacity: 1;
+    padding: 5px 8px;
+}
+
+.animationhotels {
+    animation: fadeIn 1s ease;
+
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.result {
+    width: 100%;
+    display: flex;
+    padding-top: 30px !important;
+}
+
+.filter-content {
+    width: 80% !important;
+}
+
+.order {
+    padding: 16px 16px 0 16px;
+    margin: 0 16px;
+    box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+    background: #fafafa;
+}
+
+.error {
+    display: flex;
+    width: 70%;
+    margin: 16px auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.padreDiv-price-days{
+    display: flex; 
+    text-align: center; 
+    align-items: baseline; 
+    justify-content: center; 
+    flex-direction: column;
+}
+
+.central-day{
+    background: transparent linear-gradient(91deg, #ED1C24 0%, #6A243B 50%, #000000 50%) 0% 0% no-repeat padding-box;
+    width: 100%;
+    height: 5px;
+}
+
+.div-horizontal-days{
+    height: 35px; 
+    width: 14.3%; 
+    border: 1px solid; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: column; 
+    background-color: #6A243B; 
+    margin: 0px 1px 0px 0px;
+}
+
+.div-ida-vuelta{
+    display: flex; 
+    flex-direction: column; 
+    width: 13%;  
+    margin: 0px 1px 0px 0px;
+}
+
+.padreDiv-ida-vuelta{
+    display: flex; 
+    text-align: center; 
+    align-items: center; 
+    justify-content: center; 
+    flex-direction: row;
+}
+
+.div-matrix{
+    width: 14.3%;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 1px 0px 0px;
+}
+
+.div-vertical-days{
+    height: 35px; 
+    border: 1px solid; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: column; 
+    background-color: #6A243B;
+}
+
+.div-price-days {
+    display: flex;
+    flex-direction: row;
+    width: 35%;
+    border-radius: 15px 0 0 0;
+    border: 1px solid;
+    align-items: center;
+    font-family: 'Nunito-Bold';
+    font-size: 20px;
+    justify-content: center;
+    height: 35px;
+    font-size: 15px;
+    color: #6A243B;
+    font-family: Omnes-med;
+}
+
+.trianglediv {
+    height: 35px;
+    border: 1px solid;
+    border-left: 0px solid transparent;
+    border-right: 170px solid transparent;
+    border-bottom: 34px solid #6A243B;
+}
+
+
+
+.triangletext {
+    position: relative;
+    left: 100px;
+    font-size: 14px;
+    color: #6A243B;
+    font-family: Omnes-med;
+}
+
+.triangletext2 {
+    position: relative;
+    top: 10px;
+    left: -40px;
+    font-size: 14px;
+    font-family: Omnes-med;
+    color: white;
+}
+
+.calendarvoid {
+    font-size: 14px;
+    font-family: Omnes-med;
+    color: red;
+}
+
+.pricecalendar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8px;
+}
+
+.icon-calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 33px;
+}
+
+.textday {
+    font-family: Omnes-med;
+    color: white;
+    font-size: 13px;
+    text-transform: capitalize;
+}
+
+.textmonth {
+    font-family: Omnes-med;
+    color: white;
+    font-size: 16px;
+    margin-top: -8px;
+    text-transform: capitalize;
+}
+
+.imgcalendar {
+    width: 35px;
+    margin-left: 3px;
+}
+
+.viewcalendar {
+    display: flex;
+    justify-content: end;
+}
+
+.usd {
+    font-size: 11px;
+}
+
+.precio {
+    font-size: 14px;
+    margin-left: 3px;
+}
+
+@media only screen and (max-width: 1400px) {
+    .trianglediv {
+        border-right: 145px solid transparent;
+    }
+
+    .triangletext {
+        left: 89px;
+        font-size: 13px;
+    }
+
+    .triangletext2 {
+        font-size: 13px;
+    }
+
+    .pricecalendar {
+        margin-left: 2px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .trianglediv {
+        border-right: 122px solid transparent;
+    }
+
+    .triangletext {
+        left: 74px;
+        font-size: 11px;
+    }
+
+    .triangletext2 {
+        font-size: 11px;
+        left: -30px;
+    }
+
+    .pricecalendar {
+        margin-left: 2px;
+    }
+
+    .icon-calendar {
+        width: 23px;
+    }
+
+    .imgcalendar {
+        width: 28px;
+        margin-left: 2px;
+    }
+
+    .usd {
+        font-size: 9px;
+    }
+
+    .precio {
+        font-size: 12px;
+        margin-left: 2px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .trianglediv {
+        border-right: 90px solid transparent;
+    }
+
+    .triangletext {
+        left: 52px;
+        font-size: 9px;
+        font-family: 'Nunito';
+        font-weight: bold;
+    }
+
+    .triangletext2 {
+        left: -30px;
+        font-size: 9px;
+        font-family: 'Nunito';
+        font-weight: bold;
+    }
+
+    .textday {
+        font-size: 11px;
+    }
+
+    .textmonth {
+        font-size: 14px;
+    }
+
+    .imgcalendar {
+        width: 20px;
+        margin-left: 1px;
+    }
+
+    .pricecalendar {
+        margin-left: 1px;
+    }
+
+    .icon-calendar {
+        width: 18px;
+    }
+
+    .precio {
+        margin-left: 1px;
+    }
+
+}
+
+@media only screen and (max-width: 768px) {
+    .viewcalendar {
+        display: none;
+    }
+}

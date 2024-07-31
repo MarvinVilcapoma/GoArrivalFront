@@ -1,0 +1,129 @@
+<div class="row m-0 p-0">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 pb-4 webDropDown webInformation">
+        <div class="row m-0 p-0 mt-4">
+            <div class="col-lg-3 col-md-5 col-sm-6 col-6 divecolors m-0 p-0 text-center">
+
+                <span *ngIf="user.type === 'ADT' || user.type === undefined || user.type === null">Adulto {{user.indice
+                    === undefined ? index :user.indice + 1}}</span>
+                <span *ngIf="user.type === 'CHD'">Niño {{user.indice === undefined ? index :user.indice + 1}}</span>
+                <span *ngIf="user.type === 'INF'">Infante {{user.indice === undefined ? index :user.indice + 1}}</span>
+
+            </div>
+        </div>
+        <div class="row m-0 p-0 mt-3">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                <span class="label-pasajero">Tratamiento</span><br />
+                <p-dropdown [options]="lstTratamiento" [(ngModel)]="user.tratamiento" optionLabel="name"
+                    autocomplete="off" optionValue="code" />
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                <span class="label-pasajero">Nombre(s):</span><br />
+
+                <input [disabled]="!validWrite" type="text" id="txtnombre_{{index}}" autocomplete="off"
+                    (focusout)="onInputChange1('txtnombre_',index)" pInputText [(ngModel)]="user.firstName" />
+
+            </div>
+        </div>
+        <div class="row m-0 p-0 mt-3">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                <span class="label-pasajero">Apellidos:</span><br />
+                <input [disabled]="!validWrite" type="text" pInputText id="txtapellidos_{{index}}"
+                    (focusout)="onInputChange1('txtapellidos_',index)" autocomplete="off" [(ngModel)]="user.lastName" />
+
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                <span class="label-pasajero">Tipo de Documento:</span><br />
+
+                <p-dropdown [options]="lstDocument" id="cbo_tipodocumento_{{index}}" autocomplete="off"
+                    (focusout)="onInputChange1('cbo_tipodocumento_',index)"
+                    [(ngModel)]="user.lpersonDocuments[0].docTypeId" optionLabel="name" optionValue="id" />
+            </div>
+        </div>
+        <div class="row m-0 p-0 mt-3">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                <span class="label-pasajero">Numero de Documento:</span><br />
+                <input [disabled]="!validWrite" type="text" id="txtnrodocumento_{{index}}"
+                    (focusout)="onInputChange1('txtnrodocumento_',index)" pInputText autocomplete="off"
+                    [(ngModel)]="user.lpersonDocuments[0].docNumber"/>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-12 ">
+                <span class="label-pasajero">Nacionalidad:</span><br />
+
+                <p-dropdown [options]="lstpaises" id="cbo_nacionalidad_{{index}}" autocomplete="off"
+                    (focusout)="onInputChange1('cbo_nacionalidad_',index)" [filter]="true" filterBy="name"
+                    [(ngModel)]="user.countryIataCode" optionLabel="name" optionValue="iataCode" />
+            </div>
+        </div>
+        <div class="row m-0 p-0 mt-3">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                <span class="label-pasajero">Correo:</span><br />
+
+                <input type="text" (focusout)="onInputChange1('txtcorreo_',index)" pInputText id="txtcorreo_{{index}}"
+                    autocomplete="off" [(ngModel)]="user.email" />
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                <span class="label-pasajero">Fecha de Nacimiento:</span><br />
+
+                <p-calendar [(ngModel)]="user.birthDate" [readonlyInput]="true"
+                    (focusout)="onInputChange1('txtfecha_',index)" autocomplete="off" inputId="txtfecha_{{index}}"
+                    [minDate]="minDate" [maxDate]="maxDate"></p-calendar>
+            </div>
+        </div>
+        <div class="row m-0 p-0 mt-3">
+            <div *ngIf="gds != 'NDC-LATAM'" class="col-lg-6 col-md-6 col-sm-6 col-12">
+                <span class="label-pasajero">Pasajero frecuente:</span><br />
+
+                <input type="text" id="txtpasajerofrecuente_{{index}}" autocomplete="off" pInputText
+                    [(ngModel)]="user.frequentFlyer" maxlength="20" />
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                <span class="label-pasajero">Telefono:</span><br />
+                <div class="row m-0 p-0">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-12 pl-0">
+                        <p-dropdown [options]="lstpaises" [filter]="true" filterBy="fullName" autocomplete="off"
+                            [(ngModel)]="user.prefixPhone" optionLabel="fullName" optionValue="phonePrefix" />
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-12 m-0 p-0">
+                        <input type="text" pInputText [(ngModel)]="user.phone"
+                            (focusout)="onInputChange1('txttelefono_',index)" autocomplete="off"
+                            id="txttelefono_{{index}}" maxlength="20" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row m-0 p-0 mt-3">
+            <div *ngFor="let item of lstSelects;" class="col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-2">
+                <span class="label-pasajero">{{item.title}}:</span><br />
+                <div id="select_{{item.code}}_{{index}}">
+
+                    <p-dropdown *ngIf="item.code === 'U5'" id="select_value_{{item.code}}_{{index}}"
+                        (onChange)="setSelectUID(item,index,$event)" [options]="item.lcompanyUidList" [filter]="true"
+                        filterBy="description" autocomplete="off" placeholder="Seleccionar" [(ngModel)]="costCenterCode" optionLabel="description"
+                        optionValue="code" />
+
+                    <p-dropdown *ngIf="item.code === 'U9'" (onChange)="setSelectUID(item,index,$event)"
+                        id="select_value_{{item.code}}_{{index}}" placeholder="Seleccionar" [options]="item.lcompanyUidList" [filter]="true"
+                        autocomplete="off" filterBy="description" [(ngModel)]="travelCode" optionLabel="description"
+                        optionValue="code" />
+
+                    <p-dropdown *ngIf="item.code != 'U5' && item.code != 'U9'"
+                        (onChange)="setSelectUID(item,index,$event)" id="select_value_{{item.code}}_{{index}}"
+                        [options]="item.lcompanyUidList" [(ngModel)]="item.value" autocomplete="off"
+                        placeholder="Seleccionar" [filter]="true" filterBy="description" optionLabel="description"
+                        optionValue="code" />
+
+                    <input *ngIf="item.showInput" type="text" pInputText id="otros_{{item.code}}_{{index}}"
+                        autocomplete="off" (focusout)="onInputChangeOther(item.code,index,$event)" maxlength="50" />
+                </div>
+
+            </div>
+            <div *ngFor="let inputUi of lstInputs;" class="col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-2">
+                <span class="label-pasajero">{{inputUi.title}}:</span><br />
+
+                <input (focusout)="onInputChange(inputUi.code,index,$event)" autocomplete="off" type="text" pInputText
+                    id="input_{{inputUi.code}}_{{index}}" maxlength="50" />
+            </div>
+        </div>
+    </div>
+</div>

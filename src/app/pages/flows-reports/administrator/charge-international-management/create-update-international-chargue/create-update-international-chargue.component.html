@@ -1,0 +1,155 @@
+<form [formGroup]="form">
+
+    <div class="row m-0 p-0 mt-3 webInformation webDropDown">
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+            <p-floatLabel *ngIf="isRegister">
+                <p-dropdown [options]="lstCompany" inputId="companyID" formControlName="companyID" optionLabel="name"
+                    optionValue="id"  filterBy="name" [filter]="true" [virtualScroll]="true"
+                    [virtualScrollItemSize]="38"
+                    placeholder="Compañia"></p-dropdown>
+                <label for="companyID">Compañia</label>
+            </p-floatLabel>
+
+
+            <p-floatLabel *ngIf="!isRegister">
+                <input pInputText id="companyName" formControlName="companyName" />
+                <label for="companyName">Compañia</label>
+            </p-floatLabel>
+
+            <!--      <mat-form-field *ngIf="!isRegister" appearance="outline">
+                <mat-label>Compañia</mat-label>
+                <input readonly cdkFocusInitial formControlName="companyName" matInput />
+            </mat-form-field> -->
+        </div>
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+            <p-checkbox formControlName="isActive" [binary]="true" inputId="binary"></p-checkbox>
+            <span for="binary" class="pl-2">Cargo Activo</span>
+        </div>
+
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+            <p-floatLabel>
+                <input pInputText id="commission" formControlName="commission" />
+                <label for="commission">Comisión</label>
+            </p-floatLabel>
+
+
+            <!--    <mat-form-field appearance="outline">
+                <mat-label>Comisión</mat-label>
+                <input matInput type="number" formControlName="commission" class="example-right-align" placeholder="0">
+            </mat-form-field> -->
+        </div>
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3 ">
+
+            <p-checkbox formControlName="isCommissionPercentage" [binary]="true" inputId="binary"></p-checkbox>
+            <span for="binary" class="pl-2">Es porcentaje</span>
+        </div>
+
+
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+            <p-floatLabel>
+                <input pInputText id="interExpenses" formControlName="interExpenses" />
+                <label for="interExpenses">Gastos Inter.</label>
+            </p-floatLabel>
+
+
+            <!--    <mat-form-field appearance="outline">
+                <mat-label>Gastos Inter.</mat-label>
+                <input matInput type="number" formControlName="interExpenses" class="example-right-align"
+                    placeholder="0">
+            </mat-form-field> -->
+        </div>
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3 ">
+
+            <p-checkbox formControlName="isInterExpensesPercentage" [binary]="true" inputId="binary"></p-checkbox>
+            <span for="binary" class="pl-2">Es porcentaje</span>
+        </div>
+
+
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+            <p-floatLabel>
+                <input pInputText id="adminExpenses" formControlName="adminExpenses" />
+                <label for="adminExpenses">Gastos Admin.</label>
+            </p-floatLabel>
+
+
+            <!--     <mat-form-field appearance="outline">
+                <mat-label>Gastos Admin.</mat-label>
+                <input matInput type="number" formControlName="adminExpenses" class="example-right-align"
+                    placeholder="0">
+            </mat-form-field> -->
+        </div>
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3 ">
+
+            <p-checkbox formControlName="isAdminExpensesPercentage" [binary]="true" inputId="binary"></p-checkbox>
+            <span for="binary" class="pl-2">Es porcentaje</span>
+        </div>
+
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+            <p-floatLabel>
+                <input pInputText id="fee" formControlName="fee" />
+                <label for="fee">Fee</label>
+            </p-floatLabel>
+
+
+            <!--     <mat-form-field appearance="outline">
+                <mat-label>Fee</mat-label>
+                <input matInput type="number" formControlName="fee" class="example-right-align" placeholder="0">
+
+            </mat-form-field> -->
+        </div>
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3 ">
+
+            <p-checkbox formControlName="isFeePercentage" [binary]="true" inputId="binary"></p-checkbox>
+            <span for="binary" class="pl-2">Es porcentaje</span>
+        </div>
+
+
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+            <p-floatLabel>
+                <input pInputText id="interPax" formControlName="interPax" />
+                <label for="interPax">Pasajero Inter.</label>
+            </p-floatLabel>
+
+
+            <!--      <mat-form-field appearance="outline">
+                <mat-label>Pasajero Inter.</mat-label>
+                <input matInput type="number" formControlName="interPax" class="example-right-align" placeholder="0">
+            </mat-form-field> -->
+        </div>
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+            <p-checkbox formControlName="isInterPaxPercentage" [binary]="true" inputId="binary"></p-checkbox>
+            <span for="binary" class="pl-2">Es porcentaje</span>
+        </div>
+
+
+
+       
+    </div>
+
+
+    <div class="row m-0 p-0 ">
+        <div class="col mt-5 mb-2 text-center">
+            <mat-dialog-actions align="end">
+                <button color="primary" (click)="manageChargue()" [disabled]="form.invalid" mat-flat-button
+                    type="submit">
+                    {{textbtn}}
+                </button>
+            </mat-dialog-actions>
+        </div>
+    </div>
+
+
+</form>

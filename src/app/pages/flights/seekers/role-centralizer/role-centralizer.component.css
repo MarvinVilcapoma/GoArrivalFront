@@ -1,0 +1,111 @@
+.add {
+    color: #6B2542;
+    font-size: 25px;
+    font-family: Omnes-med;
+}
+
+.text-bienv {
+    text-align: center;
+    color: #767676;
+    font-size: 18px;
+    font-family: Omnes-med;
+    margin-left: 10px;
+}
+
+.title {
+    text-align: center;
+    color: #767676;
+    font-size: 16px;
+    font-family: Omnes-med;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination-btn {
+    background-color: white;
+    color: #ED1C24;
+    border-radius: 5px;
+    font-family: Omnes-med;
+    border: 1px solid #ED1C24 !important;
+    padding: 8px 12px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.pagination-btn.active {
+    background-color: #ED1C24;
+    color: white;
+}
+
+.buscar {
+    color: white;
+    background-color: #ED1C24;
+    font-family: Omnes-med;
+    font-size: 16px;
+    height: 35px;
+    text-align: center;
+    cursor: pointer;
+    line-height: 30px;
+    border-radius: 10px;
+}
+
+.next {
+    color: white;
+    background-color: #ED1C24;
+    padding: 10px 10px 10px 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-family: Omnes-med;
+    cursor: pointer;
+}
+
+.point {
+    cursor: pointer;
+}
+
+.apc-btn-buscar {
+    color: white;
+    background-color: #ED1C24;
+    font-family: Omnes-med;
+    font-size: 15px;
+}
+
+button {
+    border: none !important;
+    background: none;
+}
+
+.btn-ok {
+    background-color: #ED1C24;
+    color: white;
+    font-family: Omnes-med;
+    font-size: 20px;
+}
+
+.text-1 {
+    font-family: Omnes-med;
+    font-size: 23px;
+}
+
+@media screen and (max-width:576px) {
+    .rolescr {
+        padding-top: 85px !important;
+    }
+
+    .namelast {
+        line-height: 35px;
+    }
+
+    .buscar {
+        margin-top: 15px !important;
+    }
+
+    .ocultarTitle {
+        display: none;
+    }
+}

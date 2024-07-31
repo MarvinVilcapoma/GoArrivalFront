@@ -1,0 +1,57 @@
+.divecolors {
+    background: -webkit-linear-gradient(left, rgba(237, 28, 35, 1) 0%, rgba(176, 23, 56, 1) 36%, rgba(60, 71, 73, 1) 100%);
+    color: white;
+    font-family: Omnes-med;
+    font-size: 13px;
+    border-radius: 0 20px 20px 0;
+    line-height: 30px;
+}
+
+.input-pasajero{
+  outline: none;
+  width: 100%;
+  padding: 5px;
+  border: 2px solid #DFD9D8;
+  border-radius: 5px;
+  font-family: Omnes-med;
+  color: #676767;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+
+
+.input-pasajero-phone{
+  outline: none;
+  width: 79%;
+  padding: 5px;
+  border: 2px solid #DFD9D8;
+  border-radius: 5px;
+  font-family: Omnes-med;
+  color: #676767;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.label-pasajero{
+  font-family: Omnes-med;
+  color: #676767;
+}
+
+.cbo-pasajero{
+  outline: none;
+  padding: 5px;
+  border: 1px solid #707070;
+  border-radius: 5px;
+  font-family: Omnes-med;
+  color: #676767;
+  width: 99px;
+}
+
+
+
+@media screen and (max-width:500px) {
+  .input-pasajero-phone{
+    width: 100%;
+  }
+}

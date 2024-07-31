@@ -1,0 +1,53 @@
+<div class="row m-0 p-0">
+    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+        <img src="assets/Images/hotel/persona.png"> 
+        <span class="text-2 ml-3">¿Quiénes serán los </span>
+        <span class="text-1"> titulares de la reserva?</span>
+    </div>
+    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+        <p-messages [(value)]="messages" [enableService]="false" [closable]="false"></p-messages>
+    </div>
+    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 webDropDown webInformation">
+        <div *ngFor="let item of lstPerson; let i = index" class="row m-0 p-0 mt-4">
+            
+            <span class="text-3"><img src="assets/Images/hotel/camita.png" class="img"> Titular: Habitación {{i+1}}</span><br/>
+            <div *ngFor="let pass of item.passenger; let m = index" class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12  p-0 ml-3 mt-2">
+                <span class="text-3">Huesped {{m+1}}</span>
+                <div class="row m-0 p-0 mt-4 mb-4">
+                    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <input  type="text" id="txtName_{{m}}{{i}}" autocomplete="off" placeholder="Nombre(s)" pInputText [(ngModel)]="pass.firstName" />
+                    </div>
+                    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <input  type="text" id="txtLastName_{{m}}{{i}}" autocomplete="off" placeholder="Apellidos"  pInputText [(ngModel)]="pass.lastName" />
+                    </div>
+                </div>
+                <div class="row m-0 p-0 mt-4 mb-4">
+                    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <input  type="text" id="txtEmail_{{m}}{{i}}" autocomplete="off" placeholder="Correo electrónico" pInputText [(ngModel)]="pass.email" />
+                    </div>
+                    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <input  type="text" id="txtPhone_{{m}}{{i}}" autocomplete="off" placeholder="Teléfono"  pInputText [(ngModel)]="pass.phone" />
+                    </div>
+                </div>
+                <div class="row m-0 p-0 mt-4 mb-4">
+                    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <p-dropdown [options]="lstDocument" id="drowType{{m}}{{i}}" [(ngModel)]="pass.typeDocument" placeholder="Tipo Documento" optionValue="code" optionLabel="name"></p-dropdown>
+                    </div>
+                    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <input  type="text" id="txtnumber{{m}}{{i}}" autocomplete="off"  pInputText placeholder="Número Documento" [(ngModel)]="pass.number" />
+                    </div>
+ 
+                </div>
+                <div class="row m-0 p-0 mt-4 mb-4">
+                    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <p-dropdown [options]="lstGender" id="drow_gender{{m}}{{i}}" [(ngModel)]="pass.gender" placeholder="Género" optionValue="code" optionLabel="name"></p-dropdown>
+                    </div>
+                    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <p-calendar [(ngModel)]="pass.birthDate" autocomplete="off" inputId="txtfecha_{{m}}{{i}}" placeholder="Fecha Nacimiento" [minDate]="minDate" [maxDate]="maxDate"></p-calendar>
+                    </div>
+ 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

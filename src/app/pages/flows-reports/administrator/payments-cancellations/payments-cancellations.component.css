@@ -1,0 +1,76 @@
+.card-management-container {
+    margin-top: 10%;
+    margin-left: 170px;
+    width: 80%;
+    box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+    padding: 16px;
+}
+
+.card-management-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.confirm-button {
+    width: 160px;
+    padding: 8px;
+    background: #E2231A;
+    color: #FFFFFF;
+    font-family: Omnes-med;
+    font-size: 18px;
+}
+
+table {
+  width: 100%;
+}
+  
+.info-name {
+  font-family: Omnes-med;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.info {
+  font-family: Omnes-med;
+    font-size: 18px;
+}
+
+.button-section {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.example-container {
+  
+    height: -webkit-fill-available !important;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+  }
+  
+  .example-sidenav-content {
+  
+    margin-top: 10%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .example-sidenav {
+    padding: 20px;
+    background-color: #111827;
+  }
+
+  .hea{
+    background-color: #E5E7EB;
+    height: 4rem;
+    }
+
+  @media screen and (max-width:576px) {
+    .example-sidenav-content {
+      display: block;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+    }
+  }

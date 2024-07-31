@@ -1,0 +1,18 @@
+<div class="dm-image-gallery-container">
+    <div class="dm-image-gallery-button">
+        <div class="divnuevo" (click)="close()" matRipple>
+
+            <img src="assets/Images/flight/cerrar.png" width="12" class="" style="cursor: pointer;">
+        </div>
+    </div>
+    <div class="dm-image-gallery-map">
+        <google-map height="500px" width="100%" [zoom]="zoom" [center]="center" [options]="mapOptions">
+            <map-marker
+           
+            [position]="marker.position"
+       
+          >
+          </map-marker>
+        </google-map>
+    </div>
+</div>

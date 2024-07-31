@@ -1,0 +1,81 @@
+<div class="container mt-5">
+    <p-card header="Información de tu reserva" class="card">
+        <div class="row m-0 p-0">
+            <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+                <p-messages [(value)]="messages" [enableService]="false" [closable]="false"></p-messages>
+            </div>
+        </div>
+        <div class="header">
+            <div class="hotel-details">
+                <span>{{dataHotel.hotelName}}</span>
+                 <span *ngFor="let star of dataHotel.lstStar" class="ml-2">
+                    <img *ngIf="star === true" src="assets/Images/flight/conStar.svg">
+                    <img *ngIf="star === false" src="assets/Images/flight/sinStar.svg">
+                </span><br/>
+                <p>{{dataHotel.address}}</p>
+            </div>
+        </div>
+        <div class="content">
+            <h3>Resumen de la Reserva</h3>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <span class="label">Código de Reserva:</span>
+                    <span class="value">{{dataReservation.pnr}}</span>
+                </div>
+                <div class="grid-item">
+                    <span class="label">Check-in:</span>
+                    <span class="value">{{dataHotel.startDateShow}} {{dataHotel.checkIn}}</span>
+                </div>
+                <div class="grid-item">
+                    <span class="label">Check-out:</span>
+                    <span class="value">{{dataHotel.endDateShow}} {{dataHotel.checkOut}}</span>
+                </div>
+                <div class="grid-item">
+                    <span class="label">Cantidad de Noches:</span>
+                    <span class="value">{{dataHotel.numberNights}}</span>
+                </div>
+                <div class="grid-item">
+                    <span class="label">Cantidad de Personas:</span>
+                    <span class="value">{{dataHotel.numberPassenger}}</span>
+                </div>
+                <div class="grid-item">
+                    <span class="label">Titulares de Habitación:</span>
+                    <span class="value"> <label *ngFor="let item of dataReservation.lpassengers;let i=index">{{item.name}} <label *ngIf="dataReservation.lpassengers[i+1] != undefined">,</label></label>   </span>
+                </div>
+                <div class="grid-item">
+                    <span class="label">Precio Total:</span>
+                    <span class="value">{{dataHotel.oprice.currency}}  {{dataHotel.oprice.pricePerAllNights}}</span>
+                </div>
+            </div>
+            <div class="cancellation-policy">
+                <h4>Políticas de Cancelación</h4>
+                <p>{{dataReservation.oitineraryInfos.penality}}</p>
+            </div>
+            <div class="room-details">
+                <h4>Detalles de la Habitación</h4>
+                <p>{{dataReservation.oitineraryInfos.descriptionRoom}}</p>
+            </div>
+            <div class="room-details">
+                <h4>Imágenes del hotel</h4>
+
+                <p-carousel [value]="dataHotel.limagens" [numVisible]="3" [numScroll]="1" orientation="vertical" verticalViewPortHeight="360px" [responsiveOptions]="responsiveOptions">
+                    <ng-template let-product pTemplate="item">
+                        <div class="product-item">
+                            <div class="product-item-content">
+                                <div class="mb-3">
+                                    <img src="{{product.url}}" [alt]="product.caption" class="w-6 shadow-2" />
+                                </div>
+
+                            </div>
+                        </div>
+                    </ng-template>
+                </p-carousel>
+
+
+             
+
+
+            </div>
+        </div>
+    </p-card>
+</div>

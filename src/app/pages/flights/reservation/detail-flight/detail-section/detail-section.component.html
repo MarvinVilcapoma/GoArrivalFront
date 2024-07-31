@@ -1,0 +1,95 @@
+<div class="m-0 p-0">
+    <div class="col-12 m-0 p-0 contenedor-form">
+        <div class="row m-0 p-0">
+            <div class="col-12  title-form pt-2 pb-2">
+                <div class="row m-0 p-0">
+                    <div class="col-6 m-0 p-0">
+                        <div class="row m-0 p-0 div-section-trip">
+                            <div class="col-6 m-0 p-0 pt-2 pl-3">
+                                <span><img class="img-airplane" src="/assets/Images/flight/{{imgIdaVuelta}}" alt=""></span>
+                            </div>
+                            <div class="col-6 m-0 p-0">
+                                <div class="row m-0 p-0">
+                                    <div class="col-12 m-0 p-0 text-tipoviaje">
+                                        {{textType}}
+                                    </div>
+                                </div>
+                                <div class="row m-0 p-0">
+                                    <div class="col-12 m-0 p-0 text-date">
+                                        {{section.departureDateShow}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="posicion === 1" class="col-6 m-0 p-0 text-right txt-detalle pr-4 pt-2">
+                        <span (click)="visibleResumen=true" class="pr-3" style="cursor: pointer">Ver detalle</span>
+                        <span (click)="visibleResumen=true"><img src="/assets/Images/flight/info-button.svg" alt=""></span>
+                    </div>
+     <!--                <ng-template #modalresumen let-c="close" let-d="dismiss">
+                        <div class="modal-header m-0 p-0" style="border: none;">
+                            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                                  <span aria-hidden="true" class="pr-4 pt-3">&times;</span>
+                                </button>
+                        </div>
+                        <div class="modal-body m-0 p-0">
+                            <app-modal-detail-flight [sect]="section"  [LSection]="LSection"></app-modal-detail-flight>
+                        </div>
+                    </ng-template> -->
+                </div>
+            </div>
+            <div *ngIf="section.oschedule.lsegment[0].familyName != ''" class="col-12 pt-2 ">
+                <span class="nombrefamilia">{{section.oschedule.lsegment[0].familyName}}</span>
+            </div>
+            <div *ngIf="validAirline" class="col-12 pt-4">
+                <span><img src="/assets/Images/airlines/{{marketingcarrier}}" style="width: 73px;"></span>
+            </div>
+            <div class="col-12 pt-4">
+                <div class="row p-0 m-0">
+                    <div class="col-6 m-0 p-0">
+                        <div class="row m-0 p-0">
+                            <div class="col-12 m-0 p-0 text-city">
+                                {{section.oorigin.iataCode}}
+                            </div>
+                        </div>
+                        <div class="row m-0 p-0">
+                            <div class="col-12 m-0 p-0 text-airport">
+                                {{section.oorigin.airportName}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 m-0 p-0">
+                        <div class="row m-0 p-0">
+                            <div class="col-12 m-0 p-0 text-city">
+                                {{section.odestination.iataCode}}
+                            </div>
+                        </div>
+                        <div class="row m-0 p-0">
+                            <div class="col-12 m-0 p-0 text-airport">
+                                {{section.odestination.airportName}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 m-0 p-0 pb-2">
+                <app-detail-segment (msjairline)="ObtenerAirline($event)" [section]="section" [lengthSegments]="section.oschedule.lsegment.length" >
+
+                </app-detail-segment>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p-dialog header="Resumen vuelo" [(visible)]="visibleResumen" [modal]="true" position="top"
+  [breakpoints]="{ '960px': '75vw','500px' : '95vw' }" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+
+
+
+    <div class="row m-0 p-0">
+
+        <app-modal-detail-flight [sect]="section"  [LSection]="LSection"></app-modal-detail-flight>
+
+    </div>
+
+</p-dialog>

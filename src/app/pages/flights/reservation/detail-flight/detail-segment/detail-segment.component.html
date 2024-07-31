@@ -1,0 +1,46 @@
+<div class="row m-0 p-0">
+    <div class="col-12 m-0 p-0 pl-4 pt-4">
+        <div class="row m-0 p-0">
+            <div class="col-lg-7 col-md-7 col-12 m-0 p-0">
+                <div class="row m-0 p-0">
+                    <div class="col-4 m-0 p-0 text-departure pl-2">
+                        {{section.departureTimeShow}}
+                    </div>
+                    <div class="col-4 m-0 p-0 pr-5">
+                        <div class="row m-0 p-0">
+                            <div *ngIf="lSegmentGroupsLength===1" class="col-12 m-0 p-0 text-center text-tipovuelo">
+                                Directo
+                            </div>
+                            <div *ngIf="lSegmentGroupsLength===1" class="col-12 m-0 p-0 text-center img-tipovuelo">
+                                <img class="img-fluid" src="/assets/Images/flight/directo.png" alt="">
+                            </div>
+                            <div *ngIf="lSegmentGroupsLength>1" class="col-12 m-0 p-0 pb-2 text-center text-tipovuelo">
+                                {{lSegmentGroupsLength - 1}} escala(s)
+                            </div>
+                            <div *ngIf="lSegmentGroupsLength>1" class="col-12 m-0 p-0 text-center img-tipovuelo">
+                                <img class="img-fluid" src="/assets/Images/flight/escala.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4 m-0 p-0 text-arrival pl-2">
+                        {{section.arrivalTimeShow}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-5 col-12 m-0 p-0">
+                <div class="row m-0 p-0">
+                    <div class="col-lg-5 col-md-5 col-12 m-0 p-0 text-totaltime pt-1">
+                        {{section.oschedule.durationShow}}
+                    </div>
+                    <div *ngIf="section.oschedule.obaggage != null" class="col-lg-7 col-md-7 col-12 m-0 p-0 div-bag">
+                      <span pTooltip="Permite mochila" class="pr-3"><img  style="width: 22px;margin-top: 7px;margin-bottom: 7px;" src="assets/Images/flight/mochila.svg" alt=""></span>
+                        <span *ngIf="section.oschedule.obaggage.hasCarryOn" pTooltip="Incluye maleta en cabina." class="pr-3"><img style="width: 22px;" src="/assets/Images/flight/bolsodemano-1.svg" alt=""></span>
+                        <span *ngIf="!section.oschedule.obaggage.hasCarryOn" pTooltip="No incluye maleta en cabina." class="pr-3"><img  style="width: 22px;" src="/assets/Images/flight/sinmaleta.png" alt=""></span>
+                        <span> <img style="width: 22px;" pTooltip="Incluye equipaje para documentar. {{section.oschedule.obaggage.quantity}} maleta(s) por adulto." *ngIf="section.oschedule.obaggage.hasBagagge" src="/assets/Images/flight/maleta-si.svg" alt="">
+                            <img style="width: 22px;" pTooltip="No incluye maleta." *ngIf="!section.oschedule.obaggage.hasBagagge" src="/assets/Images/flight/maleta-no.svg" alt=""></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

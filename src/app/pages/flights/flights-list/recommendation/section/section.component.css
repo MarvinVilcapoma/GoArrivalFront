@@ -1,0 +1,74 @@
+.scet {
+    border-right: 1px solid rgba(219, 223, 227, 0.303017) !important;
+    background-color: #FDFDFD !important;
+}
+
+
+.s-text-1 {
+    font-size: 24px;
+    font-family: Omnes-med;
+    color: #676767;
+}
+
+.lineh {
+    line-height: 4;
+}
+
+.s-text-2 {
+    font-size: 15px;
+    font-family: Omnes-med;
+    color: #898989;
+}
+
+.s-text-3 {
+    font-size: 17px;
+    font-family: Omnes-med;
+    color: #676767;
+}
+
+.text-vuelo {
+    font-size: 18px;
+    font-family: Omnes-med;
+    color: #676767;
+}
+
+.s-date {
+    font-size: 25px;
+    font-family: Omnes-med;
+    color: #898989;
+}
+
+.s-airport {
+    font-size: 18px;
+    font-family: Omnes-med;
+    color: #898989;
+}
+
+.s-iata {
+    font-size: 30px;
+    font-family: Omnes-med;
+    color: #676767;
+}
+
+#textPho{
+    display: none;
+}
+
+
+@media screen and (max-width:500px) {
+    #textPho{
+        display: initial;
+    }
+
+    #deletePhone, #textWeb{
+        display: none;
+    }
+
+    .border-b{
+        border-bottom: 1px solid #BABABA;
+        padding-bottom: 20px !important;
+    }
+
+  
+    
+}

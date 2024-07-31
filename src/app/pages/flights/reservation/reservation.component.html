@@ -1,0 +1,47 @@
+<div class="row m-0 p-0">
+    <div *ngIf="isReservation" class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+        <app-generate-reservation (isReservation)="showInfoReservation($event)"></app-generate-reservation>
+    </div>
+<!--     <div *ngIf="!isReservation" class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+        <app-successful-reservation [data]="pnrInformation" [datosuser]="datosuser"></app-successful-reservation>
+    </div> -->
+</div>
+
+
+<!-- <ng-template #modalconfirmacion let-c="close" let-d="dismiss">
+    <div class="modal-header m-0 p-0" style="border: none;">
+        <button type="button" class="close pull-right" aria-label="Close"
+            (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body m-0 p-0">
+        <div class="row m-0 p-0 text-center pt-4 pb-4 pl-2 pr-2">
+            <div class="col-12 m-0 p-0 text-1">
+                {{messageReservation}}
+            </div>
+        </div>
+    </div>
+    <div class="row m-0 p-0 pb-5">
+        <div class="col-12 m-0 p-0 text-center">
+            <button (click)="regresarB();modalRef.hide()" class="btn btn-emitir">Ok</button>
+        </div>
+    </div>
+</ng-template> -->
+
+<p-dialog header="Alerta" [modal]="true" [(visible)]="visibleDialog" [draggable]="false" [closable]="false" [resizable]="false" [position]="'top'"  [style]="{ width: '50vw' }" >
+
+    <div class="flex align-items-center gap-3 mb-3">
+        <div class="row m-0 p-0 text-center pt-4 pb-4 pl-2 pr-2">
+            <div class="col-12 m-0 p-0 text-1">
+                {{messageReservation}}
+            </div>
+        </div>
+        <div class="row m-0 p-0 pb-5">
+            <div class="col-12 m-0 p-0 text-center">
+                <button (click)="regresarB()" class="btn btn-emitir">Ok</button>
+            </div>
+        </div>
+    </div>
+
+</p-dialog>

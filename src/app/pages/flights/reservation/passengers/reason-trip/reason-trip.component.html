@@ -1,0 +1,16 @@
+<div id="borderspace" class="row m-0 p-0">
+
+            <div class="col-12 m-0 p-0 webDropDown webInformation">
+                <div class="row m-0 p-0 mb-3">
+                    <div class="col-12 div-info text-left pt-3 pb-3">
+                        <p-dropdown [options]="lsReasonflight" (focusout)="onInputChange1('cbomotivo')"  inputId="cbomotivo" [(ngModel)]="selectedReason"
+                            placeholder="Seleccionar" optionLabel="description" autocomplete="off" optionValue="id" />
+                    </div>
+                    <div *ngIf="ifExtraReason" class="col-12">
+                        <textarea rows="5" cols="30" id="reason" (focusout)="onInputChange1('reason')"  placeholder="Ingrese el motivo" pInputTextarea
+                            [autoResize]="true" [(ngModel)]="valorExtra"></textarea>
+                    </div>
+                </div>
+            </div>
+
+</div>

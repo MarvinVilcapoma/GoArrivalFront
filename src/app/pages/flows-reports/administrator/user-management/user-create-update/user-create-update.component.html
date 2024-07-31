@@ -1,0 +1,208 @@
+<div [formGroup]="form" class="webDropDown webInformation webMultiSelect">
+
+    <div class="row m-0 p-0 mt-4 mb-4">
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12">
+
+            <p-floatLabel>
+                <input pInputText id="username" formControlName="name" />
+                <label for="username">Nombres</label>
+            </p-floatLabel>
+
+        </div>
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12">
+
+            <p-floatLabel>
+                <input pInputText id="lastname" formControlName="lastName" />
+                <label for="lastname">Apellidos</label>
+            </p-floatLabel>
+
+        </div>
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12">
+            <p-floatLabel>
+                <p-dropdown [options]="genders" [scrollHeight]="'150px'" formControlName="gender" inputId="genero"
+                    optionLabel="name" optionValue="id"></p-dropdown>
+                <label for="genero">Género</label>
+            </p-floatLabel>
+        </div>
+    </div>
+    <div class="row m-0 p-0 mt-1 mb-4">
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12">
+
+
+            <p-floatLabel>
+                <input pInputText id="correo" formControlName="email" />
+                <label for="correo">Correo Electronico</label>
+            </p-floatLabel>
+
+
+        </div>
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12">
+
+
+            <p-floatLabel>
+                <input pInputText id="frequent" formControlName="frequentFlyer" />
+                <label for="frequent">Pasajero Frecuente</label>
+            </p-floatLabel>
+
+
+        </div>
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12">
+
+
+            <p-floatLabel>
+                <input pInputText id="telefono" formControlName="phone" />
+                <label for="telefono">Teléfono</label>
+            </p-floatLabel>
+
+
+        </div>
+    </div>
+
+    <div class="row m-0 p-0 mt-1 mb-4">
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12">
+
+            <p-floatLabel>
+                <p-calendar formControlName="birthDate" dateFormat="dd/mm/yy" inputId="fecha_naci" [minDate]="adultMinDate"
+                    [maxDate]="adultMaxDate" [readonlyInput]="true" />
+                <label for="fecha_naci">Fecha de Nacimiento</label>
+            </p-floatLabel>
+
+        </div>
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12">
+
+            <p-floatLabel>
+
+                <p-dropdown [options]="lstCountries" [filter]="true" [scrollHeight]="'150px'" filterBy="name"
+                    formControlName="countryOrigin" inputId="pais" optionLabel="name"
+                    optionValue="iataCode"></p-dropdown>
+
+                <label for="pais">País</label>
+            </p-floatLabel>
+        </div>
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12">
+
+            <p-floatLabel>
+
+                <p-dropdown [options]="lstRoles" [scrollHeight]="'150px'" inputId="rol" formControlName="orole"
+                    optionLabel="name" optionValue="id"></p-dropdown>
+
+                <label for="rol">Roles</label>
+            </p-floatLabel>
+        </div>
+    </div>
+
+
+
+    <div class="row m-0 p-0 mt-1 mb-4">
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12" *ngIf="validacces">
+
+
+            <p-floatLabel>
+                <p-multiSelect inputId="centro_costo" [options]="lstCostCenter" selectedItemsLabel="{0} seleccionados"
+                    formControlName="lcostCenter" filterBy="description" [filter]="true" [scrollHeight]="'150px'"
+                    optionLabel="description" optionValue="id" />
+                <label for="centro_costo">Centro de costo</label>
+            </p-floatLabel>
+
+
+
+        </div>
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12" *ngIf="validacces">
+
+            <p-floatLabel>
+
+                <p-multiSelect [options]="lstProfile" inputId="lista_profile" selectedItemsLabel="{0} seleccionados"
+                    filterBy="code" [filter]="true" formControlName="lpersonProfile" [scrollHeight]="'150px'"
+                    optionLabel="code" optionValue="id" />
+                <label for="lista_profile">Lista de perfiles</label>
+            </p-floatLabel>
+        </div>
+
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12" *ngIf="validacces">
+
+            <p-floatLabel>
+                <input pInputText id="codigoViaje" formControlName="travelerCode" />
+                <label for="codigoViaje">Código de Viajero</label>
+            </p-floatLabel>
+
+        </div>
+
+
+    </div>
+
+    
+
+</div>
+
+<div class="row m-0 p-0 mt-1 mb-4">
+
+    <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-6 col-sm-12 col-12 ">
+
+       
+        <p-floatLabel>
+            <p-treeSelect inputId="float-label-menu" [options]="files" [(ngModel)]="selectedFiles"
+            selectionMode="checkbox" />
+            <label for="float-label-menu">Selecciona un Menú</label>
+        </p-floatLabel>
+
+
+
+
+    </div>
+
+    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 text-center">
+        <button (click)="manageDocument()" mat-raised-button color="primary">Documentos</button>
+    </div>
+
+</div>
+
+
+
+<div class="row m-0 p-0 mt-1 mb-4">
+    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12 text-center">
+        <p-checkbox [(ngModel)]="access" [binary]="true" inputId="access"></p-checkbox>
+        <span for="access" class="pl-2">Acceso al sistema</span>
+    </div>
+    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12 text-center">
+        <p-checkbox [(ngModel)]="userActive" [binary]="true" inputId="userActive"></p-checkbox>
+        <span for="userActive" class="pl-2">Usuario activo</span>
+    </div>
+    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12 text-center">
+        <p-checkbox [(ngModel)]="userVip" [binary]="true" inputId="userVip"></p-checkbox>
+        <span for="userVip" class="pl-2">Usuario VIP</span>
+    </div>
+</div>
+
+
+
+
+<div class="row m-0 p-0 mt-5 mb-2">
+    <div class="col text-center">
+        <mat-dialog-actions align="end">
+
+
+
+
+            <button (click)="createUser()" [disabled]="form.invalid" color="primary" mat-flat-button type="submit">
+                {{isRegister ? 'Registrar usuario' : 'Modificar usuario'}}
+            </button>
+
+        </mat-dialog-actions>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<p-dialog header="Gestionar documentos" [(visible)]="visible" [blockScroll]="true" [closeOnEscape]="false"
+    [modal]="true" [style]="{ width: 'auto', height: '900px' }" [maximizable]="true" [draggable]="false"
+    [resizable]="false">
+    <div class="container">
+        <app-manage-document *ngIf="visible" (select)="validDocument($event)" [defaults]="data"></app-manage-document>
+    </div>
+</p-dialog>

@@ -1,0 +1,76 @@
+<div [formGroup]="form">
+
+    <div class="row m-0 p-0">
+
+       
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-2">
+        
+
+            <p-dropdown [options]="lstMenu" [showClear]="true" [filter]="true" [scrollHeight]="'150px'" 
+            filterBy="name" formControlName="mainMenu" placeholder="Lista"
+            optionLabel="name" optionValue="id"></p-dropdown>
+            
+        </div>
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-2">
+        
+
+            <p-dropdown [options]="typeMenu"   [scrollHeight]="'150px'" 
+            filterBy="name" formControlName="type" placeholder="Lista"
+            optionLabel="name" optionValue="id"></p-dropdown>
+            
+        </div>
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-2">
+            <mat-form-field appearance="outline">
+                <mat-label>Nombre</mat-label>
+                <input cdkFocusInitial formControlName="name" matInput />
+            </mat-form-field>
+
+        </div>
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-2">
+            <mat-form-field appearance="outline">
+                <mat-label>URL</mat-label>
+                <input cdkFocusInitial formControlName="url" matInput />
+            </mat-form-field>
+
+        </div>
+        
+        
+    </div>
+    
+    <div class="row m-0 p-0">
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 mt-2 mb-2">
+            <p-checkbox formControlName="isForAllAgencies" [binary]="true" inputId="isForAllAgencies"></p-checkbox>
+            <span for="isForAllAgencies" class="pl-2">Agencias</span>
+        </div>
+
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 mt-2 mb-2">
+            <p-checkbox formControlName="isForAllCompanies" [binary]="true" inputId="isForAllCompanies"></p-checkbox>
+            <span for="isForAllCompanies" class="pl-2">Compañias</span>
+        </div>
+
+
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 mt-2 mb-2">
+            <p-checkbox formControlName="isActive" [binary]="true" inputId="isActive"></p-checkbox>
+            <span for="isActive" class="pl-2">Estado</span>
+        </div>
+    </div>
+
+  
+
+
+
+
+    <div class="row m-0 p-0 ">
+        <div class="col mt-4 mb-2 text-center">
+            <mat-dialog-actions align="end">
+                <button color="primary" (click)="manageMenu()" [disabled]="form.invalid"  mat-flat-button type="submit">
+                    {{textbtn}}
+                </button>
+            </mat-dialog-actions>
+        </div>
+    </div>
+</div>

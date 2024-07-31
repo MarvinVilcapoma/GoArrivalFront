@@ -1,0 +1,5 @@
+<div class="col-12 m-0 p-0">
+    <app-modal-segment-group [tipo]='tipo' *ngFor="let segmentgroup of lsegments; let i=index"
+     [segmentGroup]="segmentgroup" [lSegmentGroupsLength]="lsegments.length" [totalFlightTimeShow]="segmentgroup.durationShow"
+      [lSegmentGroupsIndex]="i+1"></app-modal-segment-group>
+</div>

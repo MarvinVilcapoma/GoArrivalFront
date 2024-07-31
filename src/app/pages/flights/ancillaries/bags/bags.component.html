@@ -1,0 +1,151 @@
+<div class="container pt-5 asientoWeb">
+    <div class="row pt-5 pb-5"
+        style="border: 1px solid #cccccc;line-height: 0px;border-radius: 10px 0px 10px 0px;">
+        <div class="col">
+            <div class="row">
+                <div *ngFor="let colum of destinos; let i = index" class="col text-center"
+                    (click)="changeFlight(i)" style="cursor: pointer;line-height: 20px;">
+                    <span style="font-size: 20px;color:#000000;">{{colum.oorigin.cityName}} -
+                        {{colum.odestination.cityName}}</span><br />
+                    <span style="font-size: 15px;font-weight: 400;color: 898989;">Tramo {{i+1}} </span><br>
+                    <div id="imgFlight_{{i}}"
+                        style="background: -webkit-linear-gradient(left, #ed1c23 0%, #b01738 36%, #3c4749 100%)">
+                    </div>
+                </div>
+
+                <div class="col text-center">
+                    <span (click)="other()" class="otherMoment">En otro momento</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div *ngIf="mostrar" class="row mt-4 pb-4">
+        <div class="col-8 pb-5" style="border: 1px solid #cccccc;justify-content: center;">
+            <div class="row" style="padding: 15px;margin: 30px;background-color: #F1F1F1;">
+                <div  *ngFor="let pass of lstPass; let j = index" (click)="selectAsiento(j)" class="col text-center"
+                    style="cursor: pointer;line-height: 20px;">
+                    <span style="font-size: 20px;color:#000000;">Adulto {{j+1}}</span>
+                    <div *ngIf="pass.stilo"
+                        style="height: 5px;background: -webkit-linear-gradient(left, #ed1c23 0%, #b01738 36%, #3c4749 100%)">
+                    </div>
+                </div>
+
+     
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-1 p-0">
+                    <img (click)="moverIzq('div_container')" style="width: 30px;margin: 14px;cursor: pointer"
+                        src="assets/Images/flight/izquierda.png" alt="">
+                </div>
+                <div class="col-10 ">
+                    <div id="div_container" class="maleta">
+                        <div *ngFor="let dest of maletasAngular; let j = index"  class="col-6"
+                            style="margin-right: 20px;border: 1px solid #cccccc;border-radius: 12px 0px;background-color: #F8F8F8;">
+                            <div class="row" [ngClass]="{'passLeft': !this.objeto[this.numSegment].pasajeros[this.numPasajero].maletas[j].disabled}">
+                                <div class="col-2 p-0">
+                                    <img style="margin: 14px;" src="assets/Images/flight/select-maleta.svg" alt="">
+                                </div>
+                                <div class="col-10">
+                                    <div class="row">
+                                        <div class="col">
+                                            <span style="font-weight: 650;">Equipaje <label
+                                                    style="color: #ED1C24;"> </label></span><br />
+                                            <div
+                                                style="width: 100%;;height: 3px;background: -webkit-linear-gradient(left, #ed1c23 0%, #b01738 36%, #3c4749 100%)">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <span style="font-size: 12px;">{{dest.description}}</span><br />
+
+                                        </div>
+
+                                    </div>
+                                    <div class="row" style="line-height: 50px;">
+                                        <div class="col">
+
+                                            <span style="font-weight: 650;">{{dest.currency}} <label
+                                                    style="color: #ED1C24;"> {{dest.amount}}</label> </span>
+                                        </div>
+                                        <div class="col">
+                                            <img (click)="lessBaggage(dest,j)"
+                                                style="margin: 14px;cursor: pointer;"
+                                                src="assets/Images/flight/menos.svg" alt="">
+
+                                            <span >{{this.objeto[this.numSegment].pasajeros[this.numPasajero].maletas[j].count }}</span>
+                                            
+                                            <img (click)="addBaggage(dest,j)"
+                                                style="margin: 14px;cursor: pointer;"
+                                                src="assets/Images/flight/mas.svg" alt="">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1">
+                    <img (click)="moverDer('div_container')" style="width: 30px;margin: 14px;cursor: pointer"
+                        src="assets/Images/flight/derecha.png" alt="">
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="col filaPass">
+            <div class="row">
+                <div class="col">
+                    <img style="width: 14px;margin: 14px;" src="assets/Images/flight/personita.svg"
+                        alt=""><span style="font-weight: 600;">Equipajes adicionales</span>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-8"
+                        style="padding: 8px;border: 1px solid #cccccc;border-radius: 12px 0px;background-color: #F8F8F8;">
+                        <div class="row">
+                            <div class="col-5 text-center">
+                                <span class="countmal">{{contMal}}</span>
+                            </div>
+                            <div class="col-7">
+                                <span style="font-weight: 600;">Equipajes</span><br />
+                                <span>Adicionales</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4" style="text-align: center;line-height: 64px;">
+                        <span style="font-weight: 650;">{{currency}} <label style="color: #ED1C24;font-size: 24px;">
+                                {{total | number:'1.0-1'}}</label></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row mt-4">
+                <div class="container">
+                    <div (click)="confirmar()" class="col otherMoment2">
+                        Confirmar
+                    </div>
+                  
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col" style="line-height: 20px;">
+                    <span style="font-size: 17px;color: #454545;">El cobro de este servicio deberá ser pagado con una tarjeta de crédito/debito personal del pasajero.</span>
+                </div>
+            </div>
+          
+        </div>
+    </div>
+
+
+</div>

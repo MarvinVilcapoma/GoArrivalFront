@@ -1,0 +1,153 @@
+input[type="checkbox"].switch_1 {
+    font-size: 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 3.5em;
+    height: 1.5em;
+    background: #ddd;
+    border-radius: 3em;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+input[type="checkbox"].switch_1:checked {
+    background: #0ebeff;
+}
+
+input[type="checkbox"].switch_1:after {
+    position: absolute;
+    content: "";
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    background: #fff;
+    -webkit-tabla: 0 0 0.25em rgba(0, 0, 0, 0.3);
+    tabla: 0 0 0.25em rgba(0, 0, 0, 0.3);
+    -webkit-transform: scale(0.7);
+    transform: scale(0.7);
+    left: 0;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+input[type="checkbox"].switch_1:checked:after {
+    left: calc(100% - 1.5em);
+}
+
+
+.pass {
+    background-color: #6B253C;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    color: white;
+    border-radius: 10px 0px;
+    width: 15%;
+}
+
+.filaPass {
+    border: 1px solid #cccccc;
+    padding-bottom: 25px;
+    max-height: max-content;
+    height: fit-content;
+    margin: 0px 3px 0px 18px;
+    border-radius: 10px 0px;
+}
+
+.filaPass1 {
+    border: 1px solid #cccccc;
+    padding-bottom: 25px;
+    max-height: max-content;
+    height: fit-content;
+    margin: 15px 15px 0px 0px;
+    border-radius: 10px 0px;
+}
+
+.classpass {
+    background-color: #F8F8F8;
+    border-left: 5px solid #6B253C !important;
+    border: 1px solid #cccccc;
+    border-radius: 10px 0px;
+    padding: 10px 25px;
+}
+
+.countmal {
+    color: white;
+    padding: 8px;
+    background: #6B253C;
+    line-height: 50px;
+    border-radius: 5px 0px;
+}
+
+.classpass1 {
+    background-color: #F8F8F8;
+    border: 1px solid #cccccc;
+    border-radius: 10px 0px;
+    padding: 10px 25px;
+}
+
+.maleta {
+    margin-right: -15px;
+    margin-left: -15px;
+    display: flex;
+    white-space: nowrap;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.maletase {
+    margin-right: -15px;
+    margin-left: 10px;
+    display: flex;
+    white-space: nowrap;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+div.scrollmenu {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+div.scrollmenu div {
+    display: inline-flex;
+    text-align: center;
+    text-decoration: none;
+}
+
+.asientoPhone {
+    display: none;
+}
+
+.otherMoment2 {
+    background-color: #6B253C;
+    height: 50px;
+    text-align: center;
+    cursor: pointer;
+    line-height: 30px;
+    padding: 10px;
+    color: white;
+    border-radius: 10px 0px;
+}
+
+.passLeft {
+    pointer-events: none;
+    background-color: #ccc;
+}
+
+
+.otherMoment {
+    background-color: #ED1C24;
+    height: 40px;
+    text-align: center;
+    cursor: pointer;
+    line-height: 40px;
+    padding: 10px;
+    color: white;
+    border-radius: 10px 0px;
+}

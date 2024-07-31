@@ -1,0 +1,75 @@
+
+<p-accordion [activeIndex]="0" (onOpen)="textCalendar='Ocultar Calendario'" (onClose)="textCalendar='Mostrar Calendario'">
+        <p-accordionTab header="{{textCalendar}}">
+                <div class="col-12 p-0 mt-3 padreDiv-price-days">
+                <div class="div-price-days">
+                        <span>Precio </span>
+                        <span> +/- </span>
+                        <span> 3 Días</span>
+                </div>
+        
+        </div>
+        <div class="animationhotels">
+                <div class="col-12 p-0 padreDiv-ida-vuelta">
+                        <div class="div-ida-vuelta">
+                                <div class="trianglediv">
+                                        <span class="triangletext">VUELTA</span>
+                                        <span class="triangletext2">IDA</span>
+                                </div>
+                        </div>
+                        <div style="display: flex; flex-direction: row; width: 87%;">
+                                <div *ngFor="let horizontal of formatfechasfin" class="div-horizontal-days">
+                                        <span class="textday">{{ horizontal.dia }}</span>
+                                        <span class="textmonth">{{ horizontal.fecha }}</span>
+                                </div>
+                        </div>
+                </div>
+                <div class="col-12 p-0"
+                        style="display: flex; text-align: center; align-items: center; justify-content: center; flex-direction: row;">
+        
+                        <div class="div-ida-vuelta">
+                                <div *ngFor="let vertical of formatfechasini" class="div-vertical-days">
+                                        <span class="textday">{{ vertical.dia }}</span>
+                                        <span class="textmonth">{{ vertical.fecha }}</span>
+                                </div>
+                        </div>
+                        <div style="display: flex; flex-direction: column; width: 87%;">
+                                <div *ngFor="let matris of calendarMatrix"
+                                        style="display: flex; flex-direction: row; width: 100%; height: 35px;">
+                                        <div *ngFor="let array of matris" class="div-matrix">
+                                                <div>
+                                                        <div *ngFor="let date of array"
+                                                                style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                                                                <div style="display: flex; flex-direction: row; align-items: center; justify-content: center; cursor: pointer;"
+                                                                        (click)="searchFlight(date)">
+                                                                        <img src="./assets/Images/airlines/{{date.ocarrier.code}}.png"
+                                                                                class="imgcalendar">
+                                                                        <div class="pricecalendar">
+                                                                                <span class="usd">
+                                                                                        {{date.oprice.currency}}
+                                                                                </span>
+                                                                                <span class="precio">
+                                                                                        {{date.oprice.totalAmount |
+                                                                                        number:'1.0-0'}}
+                                                                                </span>
+                                                                        </div>
+                                                                </div>
+                                                                <div *ngIf="date.centralDate" class="row m-0 p-0 central-day">
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <div>
+        
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+        </div>
+        </p-accordionTab>
+
+
+</p-accordion>
+
+
+

@@ -1,0 +1,48 @@
+<!-- <div class="containerss">
+    <div *ngIf="!validFlights" class="row m-0 p-0">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+            <div class="row m-0 p-0">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+                    <span (click)="back()" class="back">Volver</span>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+                    <span class="text1">Elige qué vuelo quieres cambiar</span>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+                    <span class="text2">Número de Orden: <strong
+                            style="color: black;">{{reserva.pnr}}</strong></span>
+                </div>
+            </div>
+
+            <div class="row m-0 p-0 mt-4">
+                <div *ngFor="let item of reserva.litineraryRebookings;let i = index;"
+                    class="col-lg-6 col-md-6 col-sm-6 col-10 ml-2 mt-3 border-secc"
+                    [ngClass]="{'disabled-cursor': item.disable}" (click)="escoger(item)">
+                    <div class="row m-0 p-3">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+                            <input  [checked]="item.disable" type="radio"
+                                name="chkSelect">
+                            <label class="text1 ml-2" for="chkSelect_{{i}}">{{item.cityOrigin}} a
+                                {{item.cityDestination}}</label><br/>
+                                <label class="text3">Tu vuelo original es el {{item.departureMail}} a las {{item.departureTime}}</label>
+             
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mt-2">
+                            <input type="text" [isDisabled]="!item.disable"
+                                [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-red',  isAnimated: true }"
+                                 (blur)="onInputBlur(item,$event.target.value)"
+                                [minDate]="item.minDate"  [bsValue]="item.showDate" placeholder="DD/MM/YYYY" (bsValueChange)="verFec($event,item,reserva.litineraryRebookings[i+1])" class="form-control"
+                                bsDatepicker (click)="stopEventPropagation($event)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-0 p-0">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mt-4 text-center">
+                    <span (click)="searchOptions(modalAnulacionNDC)" class="btnContinuar">Continuar</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-options-flights *ngIf="validFlights" [token]="token" (retro)="retroce($event)" (search)="newSearch($event)" [originsFlight]="reserva" [recommendations]="recomendatios"></app-options-flights>
+</div> -->

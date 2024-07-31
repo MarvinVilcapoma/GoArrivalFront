@@ -1,0 +1,96 @@
+<p-card header="Alquiler de autos para tu viaje">
+    <div class="row m-0 p-0">
+        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+            <div class="row m-0 p-0 align-items-end webDropDown">
+                <div [ngClass]="{'col-12': style, 'col-xxl col-xl col-lg col-md col-sm col-12': !style}" >
+                    <label for="disabled-input">Lugar de Recojo</label><br />
+                    <p-autoComplete [(ngModel)]="selectedItem" [class]="classAutocomplete"  [showClear]="true" [suggestions]="filteredItems"
+                        emptyMessage="No se encontraron resultados" [virtualScroll]="true" [virtualScrollItemSize]="59"
+                        [panelStyleClass]="'items-panel'" (completeMethod)="filterItems($event)"
+                        (onSelect)="probarEvento($event)" field="name">
+
+                        <ng-template let-country pTemplate="item">
+                            <div class="row m-0 p-0">
+                                <div class="col-1 m-0 p-0">
+                                    <img
+                                        src="assets/Images/seeker/{{country.categoryName === 'A' ? 'Aeropuerto' : 'Ciudad'}}.png" />
+                                </div>
+                                <div class="col text-truncate">
+                                    <span>{{ country.name }}</span>
+                                </div>
+
+
+                            </div>
+                        </ng-template>
+
+
+                    </p-autoComplete>
+                </div>
+                <div *ngIf="validChk" [ngClass]="{'col-12': style, 'col-xxl col-xl col-lg col-md col-sm col-12': !style}" >
+                    <label for="disabled-input">Lugar de Devolución</label><br />
+                    <p-autoComplete [(ngModel)]="selectedItemDevo" [class]="classAutocompleteDevo" [showClear]="true"  [suggestions]="filteredItems"
+                        emptyMessage="No se encontraron resultados" [virtualScroll]="true" [virtualScrollItemSize]="59"
+                        [panelStyleClass]="'items-panel'" (completeMethod)="filterItems($event)"
+                        (onSelect)="selectDevo()" field="name">
+
+                        <ng-template let-country pTemplate="item">
+                            <div class="row m-0 p-0">
+                                <div class="col-1 m-0 p-0">
+                                    <img
+                                        src="assets/Images/seeker/{{country.categoryName === 'A' ? 'Aeropuerto' : 'Ciudad'}}.png" />
+                                </div>
+                                <div class="col text-truncate">
+                                    <span>{{ country.name }}</span>
+                                </div>
+
+
+                            </div>
+                        </ng-template>
+
+
+                    </p-autoComplete>
+                </div>
+                <div [ngClass]="{'col-12 webDropDown': style, 'col-xxl col-xl col-lg col-md col-sm col-12 webDropDown': !style}" >
+                    <label for="disabled-input">Fecha de Recojo</label><br />
+                    <p-calendar #myStartCalendar #dateFilter inputId="txtFechaRecojo" [hideOnDateTimeSelect]="false" [minDate]="minDateSalida"
+                        dateFormat="dd/mm/yy" selectionMode="single" (onSelect)="selectDate(1)" [class]="classFechaIda" [(ngModel)]="bsValue"  [readonlyInput]="true">
+                        <ng-template pTemplate="footer">
+                            <div class="row m-0 p-0">
+                                <div class="col-12">
+                                    <p-dropdown [options]="lstHours" [(ngModel)]="selectedHour" (onChange)="selectDate(0)"  placeholder="Selecciona hora"></p-dropdown>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </p-calendar>
+                </div>
+                <div [ngClass]="{'col-12 webDropDown': style, 'col-xxl col-xl col-lg col-md col-sm col-12 webDropDown': !style}">
+                    <label for="disabled-input">Fecha de Devolución</label><br />
+                    <p-calendar #myStartCalendarReturn #dateFilter  inputId="txtFechaRecojo" (onSelect)="selectDateReturn(1)" [class]="classFechaVuelta" [minDate]="bsValue" [hideOnDateTimeSelect]="false" [minDate]="minDateSalida"
+                        dateFormat="dd/mm/yy" selectionMode="single" [(ngModel)]="bsValueDevo"  [readonlyInput]="true">
+                        <ng-template pTemplate="footer">
+                            <div class="row m-0 p-0">
+                                <div class="col-12 ">
+                                    <p-dropdown [options]="lstHours" [(ngModel)]="selectedHourDevo" (onChange)="selectDateReturn(0)"  placeholder="Selecciona hora"></p-dropdown>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </p-calendar>
+                </div>
+
+            </div>
+            <div class="row m-0 p-0 mt-3 align-items-end">
+                <div [ngClass]="{'col-12': style, 'col-xxl-3 col-xl-3 col-lg-3 col-md-4 col-sm-4 col-12': !style}">
+                    <div class="flex align-items-center gap-1" style="line-height: 5px;">
+                        <p-checkbox [binary]="true"  [(ngModel)]="validChk"
+                            inputId="ny"></p-checkbox>
+                        <label for="ny" class="ml-3">Devolver en otro destino </label>
+                    </div>
+                </div>
+                <div [ngClass]="{'col-12 mt-4': style, 'col-xxl-3 col-xl-3 col-lg-3 col-md-4 col-sm-4 col-12': !style}" class="btn-search-module">
+                    <p-button label="Buscar" (onClick)="validSearch()"  [raised]="true" severity="danger"></p-button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</p-card>

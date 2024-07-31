@@ -1,0 +1,57 @@
+<ng-container>
+    <div class="card-management-container">
+        <div>
+            <h3>Asignar menú por empresa</h3>
+        </div>
+   
+        <div class="card-management-form">
+
+     
+
+
+            <p-treeTable #tt [value]="files" [columns]="cols"  [globalFilterFields]="['Name']" [paginator]="true" [totalRecords]="totalRecords" selectionMode="checkbox" [rows]="6"
+             [(selection)]="selectedNodes" [scrollable]="true" [tableStyle]="{'min-width':'50rem'}">
+                <ng-template pTemplate="caption">
+                 
+                    <div class="flex">
+                        <p-treeTableHeaderCheckbox ></p-treeTableHeaderCheckbox>
+                        <span class="ml-2">Seleccionar todos</span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th *ngFor="let col of cols">
+                            <input pInputText type="text" (click)="$event.stopPropagation()" placeholder="Nombre" (input)="tt.filter($any($event.target).value, col.field, col.filterMatchMode)" />
+                        </th>
+                    </tr>
+                    <tr>
+                        <th *ngFor="let col of columns">
+                            {{ col.header }}
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowNode let-rowData="rowData" let-columns="columns">
+                    <tr [ttRow]="rowNode" [ttSelectableRow]="rowNode">
+                        <td *ngFor="let col of columns; let i = index">
+     
+                            <p-treeTableCheckbox [value]="rowNode" *ngIf="i === 0"></p-treeTableCheckbox>
+                            {{ rowData[col.field] }}
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-treeTable>
+
+            
+        </div>
+       
+    </div>
+    <div class="row m-0 p-0 ">
+        <div class="col mt-4 mb-2 text-center">
+            <mat-dialog-actions align="end">
+                <button color="primary" (click)="assignEnterpriseMenu()" [disabled]="selectedNodes == undefined || selectedNodes?.length == 0" mat-flat-button type="submit">
+                    Asignar Menú
+                </button>
+            </mat-dialog-actions>
+        </div>
+    </div>
+</ng-container>

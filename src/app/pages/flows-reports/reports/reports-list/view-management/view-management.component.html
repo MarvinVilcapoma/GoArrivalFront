@@ -1,0 +1,36 @@
+<div class="row m-0 p-0">
+   <div (click)="$event.stopPropagation()" class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-2">
+      <mat-form-field (click)="$event.stopPropagation()" appearance="outline">
+          <mat-label>Nombre de vista</mat-label>
+          <input (click)="$event.stopPropagation()" cdkFocusInitial [(ngModel)]="nameView" matInput />
+      </mat-form-field>
+  </div>
+</div>
+
+<div cdkDropListGroup class="row m-0 p-0">
+  <div class="col">
+    <h3>Selección de campos:</h3>
+
+    <div cdkDropList [cdkDropListData]="todo" class="example-list" (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item.description}}</div>
+    </div>
+  </div>
+
+  <div class="col">
+    <h3>A mostrar en reporte:</h3>
+
+    <div cdkDropList [cdkDropListData]="done" class="example-list" (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of done" cdkDrag>{{item.description}}</div>
+    </div>
+  </div>
+</div>
+
+<div class="row m-0 p-0 ">
+  <div class="col mt-4 mb-2 text-center">
+      <mat-dialog-actions align="end">
+          <button color="primary" (click)="insertUpdateCompanyReport()" [disabled]="done.length === 0 || nameView === ''"  mat-flat-button type="submit">
+              Gestionar vista
+          </button>
+      </mat-dialog-actions>
+  </div>
+</div>

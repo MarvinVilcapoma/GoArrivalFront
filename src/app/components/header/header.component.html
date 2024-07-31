@@ -1,0 +1,175 @@
+<div class="row m-0 p-0 barra">
+    <div *ngIf="validInfo" class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 subBarra">
+        <div class="row m-0 p-0 web">
+            <div class="col-xxl-2 col-xl-3 col-lg-2 col-md-2 col-sm-1 col-6 delete-img">
+                <img width="240" class="clickable" (click)="routeHome()" src="assets/Images/login/logoblanco.png">
+            </div>
+            <div class="col-xxl-3 col-xl-2 col-md-1 col-lg-1 col-sm-2 borrar">
+
+            </div>
+            <div id="hola" class="col-xxl-7 col-xl-7 col-lg-9 col-md-10 col-sm-12 col-6 datos text-end">
+                <span class="text-bienv mr-2">{{cookieValue.oenterprise.name}}</span>
+                <span *ngIf="cookieValue.oenterprise.oinfoCredit != null" class="text-bienv mr-2">
+                    Crédito disponible: {{cookieValue.oenterprise.oinfoCredit.currency}}  {{cookieValue.oenterprise.oinfoCredit.amount}}
+                </span>
+                <img class="point" (click)="op.toggle($event)" width="40" src="assets/Images/header/userHeader.png">
+                <span (click)="op.toggle($event)" class="text-bienv ml-2"
+                    style="cursor: pointer;">{{cookieValue.name}}</span>
+                <img (click)="op.toggle($event)" class="ml-2" style="cursor: pointer;"
+                    src="assets/Images/header/zicHeader.png">
+                <img class="ml-3" src="assets/Images/header/rayita.png">
+                <img class="point ml-2 mr-1" src="assets/Images/header/carrito.png" (click)="sidebarVisible2 = true">
+                <p-badge [value]="'0'" severity="danger"></p-badge>
+                <!--  <span class="carrito">0</span> -->
+                <p-overlayPanel #op>
+                    <div class="popRoom">
+                        <div class="row m-0 p-0">
+                            <div *ngIf="cookieValue != null" class="col-12 text-center">
+                                <span class="name">{{cookieValue.name}}</span><br />
+                                <span class="job">{{cookieValue.orole.name}}</span><br />
+                                <span *ngIf="cookieValue.isVIP === true" class="job">Pasajero Vip</span><br
+                                    *ngIf="cookieValue.isVIP === true" />
+                                <span class="name">{{empresa}}</span>
+                            </div>
+                        </div>
+                        <div class="row m-0 p-0 mt-4 mb-4">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <span class="btn" style="cursor: pointer" [routerLink]="['flows/profile']">Mi
+                                    perfil</span>
+                                <span *ngIf="cookieValue.orole.isConsolidatorAdvisor" class="btn"
+                                    style="cursor: pointer" (click)="changeCompanie()">Cambiar
+                                    empresa</span>
+                                <span class="btn" style="cursor: pointer" (click)="cerrarSesion()">Cerrar Sesión</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </p-overlayPanel>
+
+            </div>
+        </div>
+        <div class="row m-0 p-0 phone">
+            <div (click)="op1.toggle($event)" class="col-3 m-0 p-0 pl-4 text-center">
+                <img width="20" src="assets/Images/header/tres.png">
+            </div>
+            <div class="col-5 m-0 p-0 text-center">
+                <img class="logoblan" src="assets/Images/login/logoblanco.png">
+            </div>
+            <div class="col-4 m-0 p-0 pl-3 text-center">
+
+                <img class="point" (click)="op.toggle($event)" width="40" src="assets/Images/header/userHeader.png">
+            </div>
+        </div>
+        <div class="row m-0 p-0 web">
+            <div (click)="op1.toggle($event)" class="col-lg-2 col-md-2 col-sm-2  m-0 p-0 text-center">
+                <img class="optionRayas" src="assets/Images/header/menu.png">
+
+                <p-overlayPanel #op1>
+                    <div class="popRoom">
+
+                        <div *ngFor="let item of lmenu" (click)="redirect(item);op1.hide()"
+                            class="col-12 pt-3 pb-3 text-center btn-sidenav">
+                            <span class="text-name-menu">{{item.name}}</span>
+                        </div>
+
+
+                    </div>
+
+                </p-overlayPanel>
+
+
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9 m-0 p-0 blanco">
+                <div class="row m-0 p-0" style="height: 100px;">
+
+                    <div class="col-lg-2 col-md-2 col-sm-2 m-0 p-0 pr-2 pl-2 linear" (click)="changeOption1(1)">
+                        <img
+                            [src]="selectedOption === 1 ? 'assets/Images/header/airplane_rojo.svg' : 'assets/Images/header/airplane.svg'">
+                        <span [ngClass]="selectedOption === 1 ? 'text-panel-active' : 'text-panel'">Vuelos</span><br />
+                        <img class="imgLine ocultar" [id]="'option' + 1" src="assets/Images/header/directo.png">
+                    </div>
+
+                    <div class="col-lg-2 col-md-2 col-sm-2 m-0 p-0 pr-2 pl-2 linear" (click)="changeOption1(2)">
+                        <img
+                            [src]="selectedOption === 2 ? 'assets/Images/header/hotel_rojo.svg' : 'assets/Images/header/hotel.svg'">
+                        <span   [ngClass]="selectedOption === 2 ? 'text-panel-active' : 'text-panel'">Hoteles</span><br />
+                        <img class="imgLine ocultar" [id]="'option' + 2" src="assets/Images/header/directo.png">
+                    </div>
+
+                    <div class="col-lg-2 col-md-2 col-sm-2 m-0 p-0 pr-2 pl-2 linear" (click)="changeOption1(3)">
+                        <img
+                            [src]="selectedOption === 3 ? 'assets/Images/header/menu_auto_rojo.svg' : 'assets/Images/header/menu_auto_gris.svg'">
+                        <span [ngClass]="selectedOption === 3 ? 'text-panel-active' : 'text-panel'">Autos</span><br />
+                        <img class="imgLine ocultar" [id]="'option' + 3" src="assets/Images/header/directo.png">
+                    </div>
+
+                    <div class="col-lg-2 col-md-2 col-sm-2 m-0 p-0 pr-2 pl-2 linear" (click)="changeOption1(4)">
+                        <img
+                            [src]="selectedOption === 4 ? 'assets/Images/header/cora-rojo.svg' : 'assets/Images/header/cora.svg'">
+                        <span [ngClass]="selectedOption === 4 ? 'text-panel-active' : 'text-panel'">Seguros</span><br />
+                        <img class="imgLine ocultar" [id]="'option' + 4" src="assets/Images/header/directo.png">
+                    </div>
+
+                    <div class="col-lg-2 col-md-2 col-sm-2 m-0 p-0 pr-2 pl-2 linear" >
+                        <img
+                            [src]="selectedOption === 5 ? 'assets/Images/header/camion-rojo.svg' : 'assets/Images/header/camion.svg'">
+                        <span [ngClass]="selectedOption === 5 ? 'text-panel-active' : 'text-panel'">Buses</span><br />
+                        <img class="imgLine ocultar" [id]="'option' + 5" src="assets/Images/header/directo.png">
+                    </div>
+
+                    <div class="col-lg-2 col-md-2 col-sm-2 m-0 p-0 pr-2 pl-2 linear" >
+                        <img
+                            [src]="selectedOption === 6 ? 'assets/Images/header/island-rojo.svg' : 'assets/Images/header/island.svg'">
+                        <span [ngClass]="selectedOption === 6 ? 'text-panel-active' : 'text-panel'">Paquetes</span><br />
+                        <img class="imgLine ocultar" [id]="'option' + 6" src="assets/Images/header/directo.png">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row m-0 p-0 phone">
+            <div [@collapseAnimation]="isCollapsed ? 'collapsed' : 'expanded'" id="text-colaq"
+                class="collapsible-content">
+                <div class="container m-0">
+                    <div *ngFor="let item of lmenu" (click)="redirect(item);" class="col-12 pt-3 pb-3 box-shadow-nav">
+                        <span class="text-name-menu">{{item.name}}</span>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-2 m-0 p-0 text-center" (click)="change('vuelosOn','vuelosOff',1)">
+                <img id="vuelosOn" class="optionsPhone" src="assets/Images/header/Vuelo-On.svg">
+                <img id="vuelosOff" class="optionsPhone none" src="assets/Images/header/Vuelo-Off.svg">
+            </div>
+            <div class="col-2 m-0 p-0 text-center" (click)="change('hotelOn','hotelOff',2)">
+                <img id="hotelOn" class="optionsPhone none" src="assets/Images/header/Hotel-On.svg">
+                <img id="hotelOff" class="optionsPhone" src="assets/Images/header/Hotel-Off.svg">
+            </div>
+            <div class="col-2 m-0 p-0 text-center" (click)="change('autosOn','autosOff',3)">
+                <img id="autosOn" class="optionsPhone none" src="assets/Images/header/Autos-On.svg">
+                <img id="autosOff" class="optionsPhone" src="assets/Images/header/Autos-Off.svg">
+            </div>
+            <div class="col-2 m-0 p-0 text-center" (click)="change('segurosOn','segurosOff',4)">
+                <img id="segurosOn" class="optionsPhone none" src="assets/Images/header/Seguros-On.svg">
+                <img id="segurosOff" class="optionsPhone" src="assets/Images/header/Seguros-Off.svg">
+            </div>
+            <div class="col-2 m-0 p-0 text-center" (click)="change('busesOn','busesOff',5)">
+                <img id="busesOn" class="optionsPhone none" src="assets/Images/header/Buses-On.svg">
+                <img id="busesOff" class="optionsPhone" src="assets/Images/header/Buses-Off.svg">
+            </div>
+            <div class="col-2 m-0 p-0 text-center" routerLink="/404" routerLinkActive="active"
+                ariaCurrentWhenActive="page">
+                <img id="paquetesOn" class="optionsPhone none" src="assets/Images/header/Paquetes-On.svg">
+                <img id="paquetesOff" class="optionsPhone" src="assets/Images/header/Paquetes.svg">
+            </div>
+        </div>
+    </div>
+</div>
+
+<p-sidebar [(visible)]="sidebarVisible2" position="right">
+    <ng-template pTemplate="header">Header Content</ng-template>
+    <ng-template pTemplate="content"><img class="ml-3" src="assets/Images/header/carrovacio.png"></ng-template>
+    <ng-template pTemplate="footer">Footer Content</ng-template>
+
+</p-sidebar>

@@ -1,0 +1,189 @@
+<div class="row m-0 p-0">
+  <div class="col-lg-6 col-md-6 col-sm-5 col-6 r-div-pxa text-center">
+    <span class="">Precio Final</span>
+  </div>
+  <div class="col-lg-6 col-md-6 col-sm-7 col-6 text-center">
+    <img (click)="visibleDescuento = true" class="medal pr-2" tooltip="Vuelo con descuento corporativo."
+      *ngIf="lsections[0].lschedule[0].lsegment[0].fareType==='RB'" src="assets/Images/flight/medalla.svg" alt="">
+
+    <span tooltip="Vuelo con infracción de políticas." (click)="visiblePoliticas = true"
+      *ngIf="lpolicies != null" class="circulo-politica pl-1 r-span-1"></span>
+    <span tooltip="El vuelo cumple las políticas de viaje de la empresa."
+      *ngIf="lpolicies === null" class="circulo-politica1 pl-1 r-span-2"></span>
+  </div>
+</div>
+<div id="priceWeb" class="section">
+  <div class="row m-0 p-0">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-6 text-end">
+      <span  class="text-currency pr-1">{{recomen.oprice.currency}}</span>
+      <span class="text-currency-monto">{{recomen.oprice.totalAmountWithCharges}}</span>
+      <img *ngIf="recomen.oprice.oconvertionPrice != null" class="aster"
+        tooltip="Todos los precios están sujetos a posibles modificaciones." src="assets/Images/flight/asterisco.svg">
+
+    </div>
+  </div>
+
+  <div class="row m-0 p-0">
+    <div *ngFor="let pricePassenger of recomen.oprice.lpassengerPrice" class="col-lg-12 col-md-12 col-sm-12 col-6 text-end">
+      <span class="text-per-person pr-4">Precio por {{pricePassenger.type === 'ADT' ? 'Adulto' : pricePassenger.type === 'INF' ? 'Infante' : 'Niño'}} ({{pricePassenger.quantity}})</span>
+      <span  class="text-currency-2 pr-1">{{currency}}</span>
+      <span  class="text-currency-monto-2">{{pricePassenger.individualPrice}}</span>
+    </div>
+  </div>
+
+
+
+  <div *ngIf="recomen.oprice.totalCharges > 0" class="row m-0 p-0">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-6 text-end">
+      <span class="text-per-person pr-4">Cargos Admin.</span>
+      <span class="text-currency-2 pr-1">{{currency}}</span>
+      <span class="text-currency-monto-2">{{recomen.oprice.totalCharges}}</span>
+    </div>
+  </div>
+
+  <div *ngIf="recomen.oprice.oconvertionPrice != null" class="row m-0 p-0 mt-3">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+      <img tooltip="Todos los precios están sujetos a posibles modificaciones." src="assets/Images/flight/asterisco.svg"
+        style="width: 13px; cursor:pointer;">
+      <span class="text-currency-detalle">
+        La tarifa se confirmará al momento de la selección.</span>
+    </div>
+  </div>
+
+  <div *ngIf="recomen.oprice.oconvertionPrice != null" class="row m-0 p-0 mt-3">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+      <img tooltip="Todos los precios están sujetos a posibles modificaciones." src="assets/Images/flight/asterisco.svg"
+        style="width: 13px; cursor:pointer;">
+      <span class="text-currency-detalle">
+        Precio referencial en {{internationalPrice.currencyConvertion}} {{internationalPrice.referencePrice}}"</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="row m-0 p-0 mt-4">
+  <div id="pricePhone" class="col-lg-12 col-md-12 col-sm-12 col-7 m-0 p-0">
+    <div class="row m-0 p-0">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+        <span *ngIf="internationalPrice != null" class="text-currency pr-1">{{internationalPrice.currency}}</span>
+        <span *ngIf="internationalPrice != null" class="text-currency-monto">{{internationalPrice.finalAmount}}</span>
+        <img *ngIf="internationalPrice != null" class="aster"
+          tooltip="Todos los precios están sujetos a posibles modificaciones." src="assets/Images/flight/asterisco.svg">
+        <span *ngIf="internationalPrice === null" class="text-currency pr-1">{{currency}}</span>
+        <span *ngIf="recomen.oprice.lpriceByPayments === null;else finalTemplate" class="text-currency-monto"
+          style="color: #898989">{{totalFareAmount}}</span>
+        <ng-template  #finalTemplate>
+          <span *ngIf="recomen.oprice.lpriceByPayments != null && recomen.oprice.lpriceByPayments != undefined" class="text-currency-monto">{{recomen.oprice.lpriceByPayments[0].finalAmount}}</span>
+        </ng-template>
+
+      </div>
+    </div>
+
+    <div class="row m-0 p-0">
+      <div *ngFor="let pricePassenger of recomen.oprice.lpassengerPrice" class="col-lg-12 col-md-12 col-sm-12 col-12">
+        <span class="text-per-person pr-1">Precio por {{pricePassenger.type === 'ADT' ? 'Adulto' : pricePassenger.type === 'INF' ? 'Infante' : 'Niño'}}</span>
+        <span *ngIf="internationalPrice != null" class="text-currency-2 pr-1">{{internationalPrice.currency}}</span>
+        <span *ngIf="internationalPrice != null" class="text-currency-monto-2">{{internationalPrice.priceByPassenger}}</span>
+        <span *ngIf="internationalPrice === null" class="text-currency-2 pr-1">{{currency}}</span>
+        <span *ngIf="internationalPrice === null" class="text-currency-monto-2">{{pricePassenger.individualPrice}}</span>
+      </div>
+    </div>
+
+    <div *ngIf="internationalPrice != null" class="row m-0 p-0">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+        <span class="text-per-person pr-4">Cargos Admin.</span>
+        <span class="text-currency-2 pr-1">{{internationalPrice.currency}}</span>
+        <span class="text-currency-monto-2">{{internationalPrice.chargesAmount}}</span>
+      </div>
+    </div>
+
+    <div *ngIf="internationalPrice === null && recomen.oprice.lpriceByPayments != null" class="row m-0 p-0">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+        <span class="text-per-person pr-4">Cargos Admin.</span>
+        <span class="text-currency-2 pr-1">{{currency}}</span>
+        <span class="text-currency-monto-2">{{recomen.oprice.lpriceByPayments[0].chargesAmount}}</span>
+      </div>
+    </div>
+
+
+  </div>
+  <div class="col-lg-12 col-md-12 col-sm-12 col-5">
+    <div class="row m-0 p-0">
+      <div *ngIf="gds === 'Amadeus'" (click)="openModal()"
+        class="col-lg-12 col-md-12 col-sm-12 col-12 text-center family">
+        Ver familias
+      </div>
+      <div (click)="next()"
+        class="col-lg-12 col-md-12 col-sm-12 col-12 mt-2 mb-4 text-center select">
+        Seleccionar
+      </div>
+    </div>
+  </div>
+
+  <div id="pricePhone" class="col-12">
+    <div *ngIf="internationalPrice != null" class="row m-0 p-0 mt-3">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+        <img tooltip="Todos los precios están sujetos a posibles modificaciones."
+          src="assets/Images/flight/asterisco.svg" style="width: 13px; cursor:pointer;">
+        <span class="text-currency-detalle">
+          La tarifa se confirmará al momento de la selección.</span>
+      </div>
+    </div>
+
+    <div *ngIf="internationalPrice != null" class="row m-0 p-0 mt-3">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+        <img tooltip="Todos los precios están sujetos a posibles modificaciones."
+          src="assets/Images/flight/asterisco.svg" style="width: 13px; cursor:pointer;">
+        <span class="text-currency-detalle">
+          Precio referencial en {{internationalPrice.currencyConvertion}} {{internationalPrice.referencePrice}}"</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="priceWeb" class="row m-0 p-0 mt-5">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-12 text-end">
+    <span class="num-vuelo">{{index}}</span>
+  </div>
+</div>
+<div id="priceWeb" class="rowm m-0 p-0 mt-4 mb-5">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-12 text-end">
+    <span class="namegds">{{gds}}</span>
+
+  </div>
+</div>
+
+
+
+<p-dialog header="Infracción de Políticas de Viaje" [(visible)]="visiblePoliticas" [modal]="true" [breakpoints]="{ '960px': '75vw' }" [position]="'top'" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+  <div class="row m-0 p-0">
+    <app-policies 
+    [politicaslength]="lpolicies.length"
+    *ngFor="let politica of lpolicies; let i=index" [politica]="politica" [politicaIndex]="i+1"></app-policies>
+  </div>
+
+</p-dialog>
+
+<p-dialog header="Información" [(visible)]="visibleDescuento" [modal]="true" position="top"
+  [breakpoints]="{ '960px': '75vw','500px' : '95vw' }" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+
+    <div class="row m-0 p-0 pb-3">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12 text-center textModalPol">
+            <u>Convenio Corporativo</u>
+        </div>
+    </div>
+
+    <div class="row m-0 p-0">
+
+      <p>
+        La medalla indica que el vuelo tiene un descuento especial para su empresa, el cual no encontrará en vuelos
+        publicados.
+      </p>
+  
+      <p>
+        Comunmente son los acuerdos iniciales que se realizan con cada aerolínea.
+      </p>
+
+    </div>
+
+</p-dialog>

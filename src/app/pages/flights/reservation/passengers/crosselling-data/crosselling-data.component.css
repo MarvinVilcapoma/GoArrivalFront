@@ -1,0 +1,273 @@
+.txtPoliticas {
+    font-family: Omnes-med;
+    background: transparent linear-gradient(99deg, #ED1C24 0%, #D51A2C 34%, #3C4749 100%) 0% 0% no-repeat padding-box;
+    border-radius: 0px 23px 23px 0px;
+    color: #FFFFFF;
+    padding: 7px 90px 7px 30px
+}
+
+.title-form {
+    color: #676767;
+    background: #FBF6F6 0% 0% no-repeat padding-box;
+    font-family: Omnes-med;
+    border-radius: 20px 20px
+}
+
+.borrar {
+    cursor: pointer;
+    font-size: 15px;
+    color: red;
+    font-weight: 800;
+    top: 0px;
+    right: 12px;
+    position: absolute
+}
+
+
+
+
+.title-modal {
+    position: absolute;
+    top: 20px;
+    left: 50px;
+    font-size: 30px;
+    font-family: Omnes-med
+}
+
+.btn-close {
+    position: absolute;
+    right: 30px;
+    top: 5px;
+    font-size: 30px;
+    cursor: pointer
+}
+
+.tooltipBagDiv {
+    width: 650px;
+    height: 500px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    text-align: center;
+    border-radius: 6px;
+    padding: 70px 45px;
+    position: absolute;
+    z-index: 1;
+    top: 25%;
+    left: 40%;
+    margin-left: -170px;
+    display: block
+}
+
+.PopupContainer {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: none
+}
+
+
+.viewMap {
+    color: white;
+    cursor: pointer;
+    background: #E2231A;
+    padding: 1px 30px 1px 30px;
+    border-radius: 5px 0px
+}
+
+.spanAutorizador {
+    font-family: Omnes-med;
+    background: transparent linear-gradient(99deg, #ED1C24 0%, #D51A2C 34%, #3C4749 100%) 0% 0% no-repeat padding-box;
+    border-radius: 0px 23px 23px 0px;
+    color: #FFFFFF;
+    padding: 7px 90px 7px 30px
+}
+
+.txtDias {
+    text-align: left;
+    font-family: Omnes-med;
+    letter-spacing: 0;
+    color: #555555;
+    opacity: 1;
+    font-size: 20px
+}
+
+.txtInfraccion {
+    text-align: left;
+    font-family: Omnes-med;
+    letter-spacing: 0;
+    color: #4A4A4A;
+    font-size: 17px
+}
+
+.txtCurrency {
+    text-align: center;
+    font-family: Omnes-med;
+    letter-spacing: 0;
+    color: #3D3D3D;
+    font-size: 25px
+}
+
+.txtAmount {
+    text-align: center;
+    font-family: Omnes-med;
+    letter-spacing: 0;
+    color: #3D3D3D;
+    font-size: 38px
+}
+
+.txtImpacto {
+    font-family: Omnes-med;
+    color: #3D3D3D
+}
+
+.txtDescripcion {
+    text-align: center;
+    font-family: Omnes-med;
+    letter-spacing: 0;
+    color: #676767;
+    font-size: 17px
+}
+
+.txtInput {
+    width: 100% !important;
+    padding: 5px;
+    border: 1px solid #bdb6b6;
+    border-radius: 3px;
+    opacity: 1;
+    background: #FFFFFF 0% 0% no-repeat padding-box
+}
+
+.txtLabel {
+    outline: none;
+    border: 0
+}
+
+
+.txtArea {
+    background: #FDFDFD 0% 0% no-repeat padding-box;
+    box-shadow: -1px 2px 6px #00000029;
+    opacity: 1;
+    width: 100%
+}
+
+.area {
+    width: 100%;
+    height: 70px;
+    outline: none;
+    border: 0;
+    resize: none
+}
+
+.txtAnti {
+    text-align: center;
+    font-family: Omnes-med;
+    letter-spacing: 0;
+    color: #6B253C;
+    font-size: 20px
+}
+
+.txtApro {
+    text-align: left;
+    font-family: Omnes-med;
+    letter-spacing: 0;
+    color: #3D3D3D;
+    font-size: 15px
+}
+
+.btnEnviar {
+    font-family: Omnes-med;
+    font-size: 15px;
+    color: white;
+    background-color: #ED1C24
+}
+
+.btnVolver {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 2px solid #ED1C24;
+    color: #ED1C24;
+    font-family: Omnes-med;
+    font-size: 15px;
+    width: 146px
+}
+
+.input-pasajero {
+    width: 100% !important;
+    padding: 5px;
+    border: 1px solid #707070;
+    border-radius: 5px;
+    font-family: Omnes-med;
+    color: #898989
+}
+
+.cajitas {
+    width: 100%;
+    height: 38px;
+    padding: 0px 30px;
+    text-align: center;
+    border: 1px solid #cccccc;
+    border-radius: 5px 5px 5px 5px;
+    background-color: #ffffff
+}
+
+.tabla {
+    border-collapse: collapse;
+    width: 100%
+}
+
+.tabla,
+td,
+th {
+    border: 1px solid #ddd;
+    text-align: center
+}
+
+.cabecera-tabla {
+    font-family: Omnes-med;
+    color: #3D3D3D;
+    background: #FBF6F6 0% 0% no-repeat padding-box;
+    font-size: 14px
+}
+
+.body-table {
+    font-family: Omnes-med;
+    color: #3D3D3D;
+    font-size: 14px;
+}
+
+.subText {
+    font-family: Omnes-med;
+    font-size: 14px;
+    color: black;
+}
+
+.subText1 {
+    font-family: Omnes-med;
+    font-size: 14px;
+    color: #E2231A;
+}
+
+.subText2 {
+    font-family: Omnes-med;
+    font-size: 25px;
+    color: #E2231A;
+}
+
+.img {
+    border-radius: 10px 0px 0px 0px;
+    width: 280px;
+    height: 280px !important;
+    cursor: pointer;
+  }
+
+.base {
+    background: #FFFFFF;
+    border-radius: 10px 0px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}

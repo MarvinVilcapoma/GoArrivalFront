@@ -1,0 +1,44 @@
+<div *ngIf="isVisible===true" class="row m-0 p-0  mt-5">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 box-shadow recomendatio">
+    <div class="row m-0 p-0">
+      <div class="col-lg-9 col-md-9 col-sm-12 col-12 m-0 p-0 box-shadow-important">
+        <app-section [sectionLength]="lsectionLength" [posicion]="i + 1" [recommendationId]="recommendationId"
+          [recommendationIndex]="i + 1" [pseudoRepeat]="pseudoRepeat" [tipoVuelo]="tipoVuelo"
+          (outSegmentCheck)="setearRadioId($event)" [section]="section" *ngFor="let section of lsections; let i = index"
+          [index]="i"></app-section>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-12 col-12 mt-3 p-0">
+        <app-final-price [request]="request" [recomendacion]="recomen" [gds]="gds" [index]="index"
+          [lstRadioCheck]="lstRadioCheck" [lpolicies]="lpolicies" [recomen]="recomen" [lsections]="lsections"
+          [currency]="recomen.oprice.currency" [tipoVuelo]="tipoVuelo" [totalFareAmount]="totalFareAmount"
+          [finalAmount]="recomen.oprice?.totalAmountWithCharges  ?? defaultValue"
+          (mapAvailability)="setAvailability($event)" [fareTaxAmountByPassenger]="fareTaxAmountByPassenger"
+          [chargesAmount]="recomen.oprice?.totalCharges ?? defaultValue" [internationalPrice]="internationalPrice">
+        </app-final-price>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-dialog header="Lo siento" [(visible)]="visible" [modal]="true" [breakpoints]="{ '960px': '75vw' }" [position]="'top'"
+  [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+  <div class="row m-0 p-0">
+    <div class="col p-0">
+      <span class="text-500">{{messageError}}</span>
+    </div>
+  </div>
+  <div class="row m-0 p-0">
+    <div class="col p-0 mt-4 text-center">
+      <button class="btn r-btn-sinfam-1" (click)="visible = false">
+        <img src="assets/Images/flight/buscador-musical.svg" alt="" style="width: 15px">
+        Continuar con mi busqueda
+      </button>
+    </div>
+  </div>
+</p-dialog>
+
+
+<p-dialog header="Selecciona tu tarifa y mejora tu vuelo" [(visible)]="visibleFamily" [modal]="true"
+  [breakpoints]="{ '1440px': '85vw', '960px': '90vw','500px' : '95vw' }" [style]="{ width: '80vw' }" [draggable]="false" [resizable]="false" [maximizable]="true">
+  <app-family-rate *ngIf="visibleFamily"  [lstSection]="rptaFamily" [request]="request" (select)="setDataFamily($event)"></app-family-rate>
+</p-dialog>

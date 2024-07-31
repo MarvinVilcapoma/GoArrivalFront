@@ -1,0 +1,29 @@
+.price{
+    font-family: Omnes-med;
+    letter-spacing: 0;
+    color: #828282;
+    opacity: 1;
+    font-size: 28px;
+}
+
+.currency{
+    font-family: Omnes-med;
+    letter-spacing: 0;
+    color: #e32121;
+    opacity: 1;
+    font-size: 20px;
+}
+
+.text-info-price{
+    font-family: Omnes-med;
+    letter-spacing: 0;
+    color: #828282;
+    opacity: 1;
+    font-size: 18px;
+}
+
+.term{
+    text-decoration: underline;
+    cursor: pointer;
+    color: #0664e0;
+}

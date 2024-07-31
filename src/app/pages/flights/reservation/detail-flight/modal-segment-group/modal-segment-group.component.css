@@ -1,0 +1,169 @@
+.texto-1 {
+    color: #898989;
+    font-size: 12px;
+}
+
+.texto-2 {
+    color: #676767;
+    font-size: 25px;
+}
+
+.texto-3 {
+    color: #898989;
+    font-size: 15px;
+}
+
+.texto-4 {
+    color: #898989;
+    font-size: 12px;
+}
+
+.texto-5 {
+    color: #898989;
+    font-size: 11px;
+}
+
+.texto1-1 {
+    color: #898989;
+    font-size: 16px;
+}
+
+.texto2-1 {
+    color: #676767;
+    font-size: 35px;
+}
+
+.texto3-1 {
+    color: #898989;
+    font-size: 25px;
+}
+
+.texto4-1 {
+    color: #898989;
+    font-size: 17px;
+}
+
+.texto5-1 {
+    color: #898989;
+    font-size: 15px;
+}
+
+.text-duracion {
+    font-family: Omnes-med;
+    color: #898989;
+    font-size: 13px;
+}
+
+.text-duracion1 {
+    font-family: Omnes-med;
+    color: #898989;
+    font-size: 17px;
+}
+
+.text-timetotal {
+    color: #676767;
+    font-family: Omnes-med;
+    font-size: 12px;
+}
+
+.text-timetotal1 {
+    color: #676767;
+    font-family: Omnes-med;
+    font-size: 16px;
+}
+
+.div-city1 {
+    font-family: Omnes-med;
+}
+
+.div-separator2 {
+    height: 5px;
+    border-radius: 0 10px 10px 0;
+}
+
+.div-separator1 {
+    height: 5px;
+    border-radius: 0 10px 10px 0;
+}
+
+.txt-clase {
+    color: #898989;
+    font-size: 13px;
+    font-family: Omnes-med;
+}
+
+.txt-clase1 {
+    color: #898989;
+    font-size: 16px;
+    font-family: Omnes-med;
+}
+
+.txt-desclase {
+    color: #676767;
+    font-family: Omnes-med;
+    font-size: 12px;
+}
+
+.txt-desclase1 {
+    color: #676767;
+    font-family: Omnes-med;
+    font-size: 16px;
+}
+
+.div-air {
+    border-bottom: 1px solid #b0acac;
+}
+
+.text-airlane {
+    font-family: Omnes-med;
+    color: #676767;
+    font-size: 12px;
+}
+
+.text-airlane-2 {
+    font-family: Omnes-med;
+    color: #676767;
+    font-size: 20px;
+}
+
+.text-plane {
+    color: #898989;
+    font-family: Omnes-med;
+    font-size: 16px;
+}
+
+.g-text-5 {
+    font-family: Omnes-med;
+    font-size: 15px;
+    color: white;
+}
+
+.img-airlane {
+    width: 80px;
+}
+
+.nombrefamilia {
+    background: #FFCD01;
+    color: #FFFFFF;
+    font-size: 17px;
+    font-family: Omnes-med;
+    padding: 0 16px;
+    border-radius: 5px;
+    border: 1px solid #8A7979;
+    width: 250px;
+    display: block;
+    text-align: center;
+}
+
+.nombrefamilia2 {
+    background: #FFCD01;
+    color: #FFFFFF;
+    font-size: 17px;
+    font-family: Omnes-med;
+    padding: 0 16px;
+    border-radius: 5px;
+    border: 1px solid #8A7979;
+    width: 250px;
+    display: block;
+    text-align: center;
+}

@@ -1,0 +1,171 @@
+.r-div-pxa {
+    background: -webkit-linear-gradient(left, rgba(237, 28, 35, 1) 0%, rgba(176, 23, 56, 1) 36%, rgba(60, 71, 73, 1) 100%);
+    color: white;
+    font-family: Omnes-med;
+    font-size: 13px;
+    border-radius: 0 20px 20px 0;
+    line-height: 30px;
+}
+
+.medal {
+    width: 30px;
+    cursor: pointer;
+}
+
+.circulo-politica {
+    padding: 0px 17px 0px 0px;
+    background: transparent linear-gradient(56deg, #ED1C24 0%, #D51A2C 31%, #3C4749 100%) 0% 0% no-repeat padding-box;
+    border-radius: 50px;
+    cursor: pointer
+}
+
+.btnFares{
+    color: white;
+     background-color: #ED1C24;
+      font-family: Omnes-med;
+       font-size: 16px;
+}
+
+.text-pol{
+    font-family: Omnes-med;
+     font-size: 16px;
+      text-align: justify
+}
+
+.btn-alert-pol{
+    float: left;
+    color: white;
+     background-color: #ED1C24;
+      font-family: Omnes-med;
+       font-size: 16px;
+}
+
+.circulo-politica1 {
+    padding: 0px 17px 0px 0px;
+    background: transparent linear-gradient(54deg, #1CED31 0%, #40B23D 32%, #0C5711 100%) 0% 0% no-repeat padding-box;
+    border-radius: 50px;
+}
+
+.r-span-1 {
+    color: rgba(176, 23, 56, 1);
+}
+
+
+.r-span-2 {
+    color: forestgreen;
+}
+
+.text-per-person {
+    font-family: Omnes-med;
+    font-size: 14px;
+    color: #676767;
+}
+
+.namegds {
+    border-radius: 20px 20px 20px 20px;
+    background: transparent linear-gradient(99deg, #ED1C24 0%, #D51A2C 34%, #3C4749 100%) 0% 0% no-repeat padding-box;
+    padding: 5px 15px 7px 15px;
+    color: white;
+}
+
+.num-vuelo {
+ border: 2px solid #6B253C;
+ border-radius: 155px;
+ padding: 7px 13px 7px 14px;
+ color: #6B253C;
+}
+
+.family {
+    color: #6b253c;
+    height: 32px;
+    line-height: 30px;
+    border: 1px solid #6b253c;
+    border-radius: 6px;
+    font-family: Omnes-med;
+    cursor: pointer;
+}
+
+.select {
+    color: white;
+    background-color: #6b253c;
+    height: 32px;
+    line-height: 30px;
+    border-radius: 6px;
+    font-family: Omnes-med;
+    cursor: pointer;
+}
+
+.text-currency-2 {
+    font-family: Omnes-med;
+    font-size: 12px;
+}
+
+.text-currency-monto-2 {
+    font-family: Omnes-med;
+    font-size: 14px;
+    color: #898989;
+}
+
+.text-currency-detalle {
+    font-family: Omnes-med;
+    font-size: 16px;
+    color: #898989;
+}
+
+.text-currency {
+    font-family: Omnes-med;
+    font-size: 20px;
+    color: #6B253C;
+}
+
+.aster {
+    width: 13px;
+    cursor: pointer;
+    bottom: 25px;
+    position: relative;
+}
+
+.btn {
+    color: white;
+    background-color: #ED1C24;
+    font-family: Omnes-med;
+    font-size: 16px;
+}
+
+.imgDesCorp {
+    width: 30px;
+    margin-right: 10px;
+}
+
+#pricePhone{
+    display: none;
+}
+
+.textCorp {
+    font-family: Omnes-med;
+    font-size: 16px;
+    text-align: justify
+}
+
+.text-currency-monto {
+    font-family: Omnes-med;
+    font-size: 45px;
+    color: #898989;
+}
+
+.textModalPol {
+    font-family: Omnes-med;
+    font-size: 22px;
+    color: #6B253C
+}
+
+@media screen and (max-width:400px) {
+    #priceWeb {
+        display: none;
+    }
+
+    #pricePhone{
+        display: initial;
+        line-height: 1;
+    }
+}

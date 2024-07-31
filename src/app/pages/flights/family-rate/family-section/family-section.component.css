@@ -1,0 +1,115 @@
+
+
+.text-city {
+    color: #676767;
+    font-size: 23px;
+    font-family: Omnes-med;
+    text-decoration: underline;
+    text-decoration-thickness: 7px;
+}
+
+.list-services{
+    height: 250px;
+    overflow: auto;
+}
+
+
+.text-price-card {
+    color: #676767;
+    font-size: 35px;
+    font-family: Omnes-med;
+}
+
+.text-currency {
+    color: #898989;
+    font-size: 25px;
+    font-family: Omnes-med;
+    text-transform: capitalize;
+}
+
+.btn-select{
+    padding: 10px 10px;
+    cursor: pointer;
+    border-radius: 8px;
+    color: white;
+}
+
+.text-airport {
+    color: #898989;
+    font-size: 16px;
+    font-family: Omnes-med;
+}
+
+.arrow{
+    cursor: pointer;
+    width: 50px;
+}
+
+.fondo {
+    background: white;
+    border-radius: 8px;
+}
+
+.content {
+    padding: 10px;
+    display: none;
+}
+
+.content.open {
+    display: block;
+    animation: fadeIn 1s;
+}
+
+/* Estilo general del scroll */
+::-webkit-scrollbar {
+    width: 10px; /* Ancho del scroll */
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color del fondo del track */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888; /* Color del thumb (la parte que se mueve) */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color del thumb cuando se pasa el mouse por encima */
+}
+
+/* Estilo específico para un contenedor con clase .my-scroll-container */
+.my-scroll-container {
+    overflow-y: scroll;
+}
+
+.my-scroll-container::-webkit-scrollbar {
+    width: 12px;
+}
+
+.my-scroll-container::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 10px;
+}
+
+.my-scroll-container::-webkit-scrollbar-thumb {
+    background: #3498db;
+    border-radius: 10px;
+}
+
+.my-scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #2980b9;
+}
+
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

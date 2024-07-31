@@ -1,0 +1,79 @@
+
+        <div class="row m-0 p-0 mb-3">
+
+            <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+                <div class="row m-0 p-0 justify-content-center">
+                    <div *ngFor="let section of lstSection; let i = index"[style.border]="section.isDefault ? '2px solid' + colorsFare[i] : ''"
+                      class="{{lstSection.length > 3 ? 'col' : 'col-xl-3'}} m-3 boxTarifa-shadow-not" id="family_{{i}}">
+                        <app-family-section  [section]="section" [indexSection]="i" (select)="changeColor($event)"></app-family-section>
+                    </div>
+                    
+                </div>
+
+                <div class="row m-0 p-0 mt-3">
+                    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <span>Los beneficios y penalidades de la tarifa aplican a los cargos de la aerolínea y no incluyen los cargos por servicio.</span>
+                    </div>
+                    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <p-divider type="dashed" />
+                    </div>
+                    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3">
+                        <div class="row m-0 p-0 align-items-center">
+                            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 m-0 p-0 text-price-end">
+                                Precio final del vuelo
+                            </div>
+                            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 m-0 p-0 text-center">
+                                <span class="text-currency mr-1">{{currency}} </span><span
+                                class="text-price-card">{{price}}</span>
+                            </div>
+                            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 m-0 p-0">
+                                <div class="btn-select text-center" (click)="continuar()"  [style.background]="colorsFare[selectionColor]">
+                                    <span>Continuar</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+   <!--  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12">
+        <div class="row m-0 p-3 fondo-price align-items-center">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-8 col-10 m-0 p-0 r-div-pxa">
+                <span>Precio final</span>
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 text-center">
+                <span class="currency">{{priceFinal?.currency}}</span>
+                <span class="price">{{priceFinal?.totalAmount}}</span>
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 text-center">
+                <alert type="warning" class="text-center">
+                    ¡Lo sentimos! La combinación realizada no está disponible por la línea aérea
+                </alert>
+            </div>
+
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 text-center">
+                <img src="assets/Images/flight/logo-familia.png" width="60">
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mt-2 text-center">
+                <span class="text-desc">Las tarifas que te mostraremos en las familias corresponden a 1 pasajero y no
+                    incluye tasas de
+                    embargue. Estas están incluídas dentro al momento de seleccionar la combinación requerida en el
+                    Precio Base</span>
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+                <div class="row m-0 p-0">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mt-4 text-center">
+                        <div class="btnSelect" (click)="continuar()" id="btn_seleccionar">Seleccionar</div>
+                    </div>
+                    <div (click)="ocultar()" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mt-3 mb-2 text-center">
+                        <div class="btnCerrar">Cerrar</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->

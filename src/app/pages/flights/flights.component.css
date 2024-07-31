@@ -1,0 +1,11 @@
+.section {
+    margin-right: 8% !important;
+    margin-left: 16% !important;
+  }
+
+  @media screen and (max-width:576px) {
+    .section {
+        margin-right: 0% !important;
+        margin-left: 0% !important;
+    }
+  }

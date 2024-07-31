@@ -1,0 +1,251 @@
+<div *ngIf="segment.isVisible" class="row m-0 p-0 pt-2 pb-2">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+        <div class="row m-0 p-0">
+            <div id="imgPhone" class="col-12">
+                <img pTooltip="{{marketingName}}" style="width: 100px !important;"
+                    src="assets/Images/airlines/{{marketingCarrier}}" alt=""><br />
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-1 col-1 m-0 p-0 checkI">
+                <input [checked]="indexSegment===1" class="" type="radio"
+                    [id]="radioButtonName + '_' + recommendationId + '_' + sectionId + '_' + segment.id + '_' + indexSegment"
+                    [name]="radioButtonName+recommendationId+sectionId"
+                    (click)="selectRadioButton(radioButtonName + '_' + recommendationId + '_' + sectionId + '_' + segment.id + '_' + indexSegment)" value="male">
+
+                   <!--  <p-radioButton [inputId]="recommendationId + sectionId + segment.segmentId"
+                     name="checkbox_{{recommendationId}}_{{sectionId}}_{{segment.segmentId}}" [value]="recommendationId + sectionId + segment.segmentId" 
+                     [(ngModel)]="selectedCategory"></p-radioButton> -->
+     
+            </div>
+            <div id="imgWeb" class="col-lg-2 col-md-2 col-sm-3 m-0 p-0 text-center">
+                <img pTooltip="{{marketingName}}" style="width: 100px !important;" class="pl-1"
+                    src="assets/Images/airlines/{{marketingCarrier}}" alt=""><br />
+                <div class="row m-0 p-0">
+                    <div *ngIf="segment.lsegment[0].familyName != null"
+                        class="col-lg-10 col-md-10 col-sm-10 col-10 div-familia">
+
+                        {{segment.lsegment[0].familyName}}
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-5 col-6 m-0 p-0 divhe">
+                <div class="row m-0 p-0">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-4 text-center">
+                        <span id="imgPhone">{{section.oorigin.iataCode}}</span><br />
+                        <span class="sm-text-1"> {{timeOfDepartureShow}}</span>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-4 col-sm-3">
+                        <div class="row m-0 p-0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 m-0 p-0 sacles">
+                                <div class="row m-0 p-0">
+                                    <div *ngIf="lSegmentGroupsLength===1"
+                                        class="col-lg-12 col-md-12 col-sm-12 m-0 p-0 text-center sm-text-2">
+                                        Directo
+                                    </div>
+                                    <div *ngIf="lSegmentGroupsLength===1"
+                                        class="col-lg-12 col-md-12 col-sm-12 m-0 p-0 text-center">
+                                        <img src="assets/Images/flight/directo.png" class="directo" alt="">
+                                    </div>
+                                    <div *ngIf="lSegmentGroupsLength>1"
+                                        class="col-lg-12 col-md-12 col-sm-12 m-0 p-0 text-center sm-text-2 tooltipEscalas">
+                                        {{lSegmentGroupsLength - 1}} escalas
+                                        <div class="m-0 p-0 tooltipBagDivEsc">
+                                            <div *ngFor="let segmentgroup of segment.lsegment"
+                                                class="col-lg-12 col-md-12 col-sm-12 m-0 p-0 box-shadow pl-2 pt-2 pr-2 pb-2">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 m-0 p-0 pb-2">
+                                                    <div class="row m-0 p-0 tramo">
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 m-0 p-0">
+                                                            <span class="pr-2">{{segmentgroup.oorigin.iataCode}}</span>
+                                                            <span><i class="fas fa-chevron-right"></i></span><span
+                                                                class="pl-2">{{segmentgroup.odestination.iataCode}}</span>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 m-0 p-0">
+                                                            <span>{{segmentgroup.durationShow}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div *ngIf="segmentgroup.timeWaitAirport !== null"
+                                                    class="col-lg-12 col-md-12 col-sm-12 m-0 p-0">
+
+                                                    <div class="row m-0 p-0 escala">
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 m-0 p-0">
+                                                            Espera en {{segmentgroup.odestination.cityName}}
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 m-0 p-0">
+                                                            {{segmentgroup.timeWaitAirport | formattimeairport}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="lSegmentGroupsLength>1"
+                                        class="col-lg-12 col-md-12 col-sm-12 m-0 p-0 text-center">
+                                        <img class="scaleImg" src="assets/Images/flight/escala.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-4 col-sm-3 text-center">
+                        <span id="imgPhone">{{section.odestination.iataCode}}</span><br />
+                        <span class="sm-text-1"> {{timeOfArrivalShow}}</span><span *ngIf="segment.dateVariation>0"
+                            class="datevar">+ {{segment.dateVariation}}</span>
+                    </div>
+                    <div id="timeShow" class="col-lg-3 col-md-3 col-12 col-sm-3 text-center">
+                        <span class="sm-text-1"><label class="sm-text-1" id="text-durac">Duracion:</label>
+                            {{totalFlightTimeShow}}</span>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-5 bord">
+                <img class="imgBaggage" src="assets/Images/flight/mochila.svg" pTooltip="Permite mochila">
+
+                <img *ngIf="hasCarryOn" class="imgBaggage" pTooltip="Incluye maleta en cabina."
+                    src="assets/Images/flight/bolsodemano-1.svg" alt="">
+                <img *ngIf="!hasCarryOn" src="assets/Images/flight/accessory.svg" pTooltip="No incluye maleta en cabina"
+                    style="filter: grayscale(1) !important;" class="imgBaggage">
+
+                <img class="imgBaggage"
+                pTooltip="Incluye equipaje para documentar. {{bagQuantity}} maleta(s) por adulto." *ngIf="bagAllowed"
+                    src="assets/Images/flight/maleta-si.svg" alt="">
+                <img class="imgBaggage" pTooltip="No incluye maleta." *ngIf="!bagAllowed"
+                    src="assets/Images/flight/maleta-no.svg" alt="">
+
+                <img *ngIf="lSegmentGroups.length === 0" class="arrows"
+                    (click)="listSegmentGroups(flagSegmentId, segment.lsegment)"
+                    src="assets/Images/flight/arrow-down.svg" alt="">
+                <img *ngIf="lSegmentGroups.length > 0" class="arrows" (click)="hideSegmentGroups(flagSegmentId)"
+                    src="assets/Images/flight/arrow-up.svg" alt="">
+
+
+            </div>
+        </div>
+        <div class="row m-0 p-0 pb-5 animated fadeIn fast bordear" [id]="flagSegmentId"
+            *ngIf="lSegmentGroups.length > 0">
+            <div class="col-lg-12 col-md-12 col-sm-12 mt-3">
+                <app-segment-group [lSegmentGroupsLength]="segment.lsegment.length"
+                    [totalFlightTimeShow]="segment.durationShow" [segmentGroup]="segmentGroup"
+                    [lSegmentGroupsIndex]="i+1" [sectionGroup]="lSectionGroups[i]"
+                    *ngFor="let segmentGroup of lSegmentGroups; let i=index"></app-segment-group>
+            </div>
+            
+            <div id="baggageWeb" class="col-lg-12 col-md-12 col-sm-12 m-0 p-0 p-4">
+                <div class="row m-0 p-0 box-shadow p-3">
+                    <div class="col-lg-2 col-md-2 col-sm-2 m-0 p-0 s-texto-4" style="border-right: 1px solid #898989;">
+                        Equipaje
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-sm-10 m-0 p-0">
+                        <div class="row m-0 p-0">
+                          <div class="col-12 col-md-12 col-sm-12 m-0 p-0 pt-3">
+                            <div class="row m-0 p-0">
+                                <div class="col-lg-2 col-md-2 col-sm-2 m-0 p-0 d-flex justify-content-center align-items-center">
+                                  <img  style="width: 33px" src="assets/Images/flight/mochila.svg" >
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-10 m-0 p-0">
+                                    <div class="row m-0 p-0">
+                                        <div  class="col-lg-12 col-md-12 col-sm-12 m-0 p-0 s-texto-5">
+                                            <span class="text-baggages-phone">Incluye una mochila o cartera</span><br />
+                        <span class="sm-text-2">Debe caber bajo el asiento delantero.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 m-0 p-0 pt-3">
+                                <div class="row m-0 p-0">
+                                    <div class="col-lg-2 col-md-2 col-sm-2 m-0 p-0 d-flex justify-content-center align-items-center">
+                                        <img *ngIf="hasCarryOn" style="width: 33px;" src="assets/Images/flight/bolsodemano-1.svg" alt="">
+                                        <img *ngIf="!hasCarryOn" style="width: 30px;" src="assets/Images/flight/sinmaleta.png">
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-10 m-0 p-0">
+                                        <div class="row m-0 p-0">
+                                            <div *ngIf="hasCarryOn" class="col-lg-12 col-md-12 col-sm-12 m-0 p-0 text-baggages-phone">
+                                                Incluye maleta en cabina
+                                            </div>
+                                            <div *ngIf="bagAllowed" class="col-lg-12 col-md-12 col-sm-12 m-0 p-0 sm-text-2">
+                                                Debe caber en el compartimiento superior del avión.
+                                            </div>
+                                            <div *ngIf="!hasCarryOn" class="col-lg-12 col-md-12 col-sm-12 m-0 p-0 sm-text-2">
+                                              No incluye maleta en cabina
+                                          </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="col-lg-12 col-md-12 col-sm-12 m-0 p-0 pt-3">
+                                <div class="row m-0 p-0">
+                                    <div class="col-lg-2 col-md-2 col-sm-2 m-0 p-0 d-flex justify-content-center align-items-center">
+                                        <img style="width: 33px;" *ngIf="bagAllowed" src="assets/Images/flight/maleta-si.svg" alt="">
+                                        <img style="width: 33px;" *ngIf="!bagAllowed" src="assets/Images/flight/maleta-no.svg" alt="">
+                                    </div>
+                                    <div *ngIf="bagQuantity > 0" class="col-lg-10 col-md-10 col-sm-10 m-0 p-0">
+                                        <div class="row m-0 p-0">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 m-0 p-0  text-baggages-phone">
+                                                Incluye equipaje para documentar
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 m-0 p-0 sm-text-2">
+                                                {{bagQuantity}} maleta(s) por adulto.
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 m-0 p-0 sm-text-2">
+                                                Se documenta en el aeropuerto durante el Check-in.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="bagQuantity == 0" class="col-lg-10 col-md-10 col-sm-10 m-0 p-0">
+                                        <div class="row m-0 p-0">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 m-0 p-0  text-baggages-phone">
+                                                No incluye maleta
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+
+            <div id="baggagePhone" class="col-12">
+                <div class="row m-0 p-0 mt-4">
+                    <div class="col-2 text-center" style="line-height: 2;">
+                        <img class="imgBaggage" style="width: 100% !important;" src="assets/Images/flight/mochila.svg"
+                        pTooltip="Permite mochila">
+                    </div>
+                    <div class="col-10" style="line-height: 1;">
+                        <span class="text-baggages-phone">Incluye una mochila o cartera</span><br />
+                        <span class="sm-text-2">Debe caber bajo el asiento delantero.</span>
+                    </div>
+                </div>
+                <div *ngIf="bagAllowed" class="row m-0 p-0 mt-4">
+                    <div class="col-2 text-center" style="line-height: 2;">
+                        <img  style="width: 100% !important;" class="imgBaggage" pTooltip="Incluye maleta en cabina."
+                            src="assets/Images/flight/bolsodemano-1.svg" alt="">
+                    </div>
+                    <div class="col-10" style="line-height: 1;">
+                        <span class="text-baggages-phone">Incluye equipaje de mano</span><br />
+                        <span class="sm-text-2">Debe caber en el compartimiento superior del avión.</span>
+                    </div>
+                </div>
+                <div *ngIf="bagAllowed" class="row m-0 p-0 mt-4">
+                    <div class="col-2 text-center" style="line-height: 2;">
+                        <img class="imgBaggage" style="width: 100% !important;"
+                        pTooltip="Incluye equipaje para documentar. {{bagQuantity}} maleta(s) por adulto." 
+                    src="assets/Images/flight/maleta-si.svg" alt="">
+                    </div>
+                    <div class="col-10" style="line-height: 1;">
+                        <span class="text-baggages-phone">Incluye equipaje para documentar</span><br />
+                        <span class="sm-text-2">Incluye equipaje para documentar. {{bagQuantity}} maleta(s) por adulto.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

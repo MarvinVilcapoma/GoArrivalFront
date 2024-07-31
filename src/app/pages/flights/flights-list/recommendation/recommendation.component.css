@@ -1,0 +1,18 @@
+.recomendatio{
+    width: 100%; 
+    border-radius:  0 0 20px 0; 
+    background-color: #FDFDFD !important;
+}
+
+.text-500 {
+    font-family: Omnes-med;
+    font-size: 19px;
+    color: #898989;
+}
+
+.r-btn-sinfam-1 {
+    font-family: Omnes-med;
+    font-size: 16px;
+    color: white;
+    background-color: #ED1C24;
+}

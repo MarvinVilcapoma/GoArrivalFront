@@ -1,0 +1,95 @@
+<!-- <div class="row m-0 p-0 mb-4">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 fondo">
+        <div class="row m-0 p-0">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mt-3 pb-3" 
+                >
+                <div class="row m-0 p-0">
+                    <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 m-0 p-0">
+                        <span class="text1" *ngIf="section.sectionId === 1"><img
+                                src="assets/Images/flight/airplane_ida.svg"> Ida</span><br
+                            *ngIf="section.sectionId === 1">
+                        <span class="text1" *ngIf="section.sectionId === 2"><img
+                                src="assets/Images/flight/airplane_vuelta.svg"> Vuelta</span><br
+                            *ngIf="section.sectionId === 2">
+                        <span class="text1 ml-2">{{section.departureDateShow}}</span>
+                    </div>
+                    <div class="col-xl col-lg col-md col-sm col text-center">
+                        <span class="text-city">{{section.oorigin.cityName}}</span><br />
+                        <span class="text-airport">{{section.oorigin.airportName}}</span>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md col-sm col text-center">
+                        <span class="text-airport" *ngIf="section.numberScales > 0">{{section.numberScales}}
+                            escala(s)</span><br />
+                            <span class="text-airport" *ngIf="section.numberScales === 0">Directo</span><br />
+                        <img *ngIf="section.numberScales > 0" src="assets/Images/flight/escala.png">
+                        <img *ngIf="section.numberScales === 0" src="assets/Images/flight/directo.png" class="directo" alt="">
+                    </div>
+                    <div class="col-xl col-lg col-md col-sm col text-center">
+                        <span class="text-city">{{section.odestination.cityName}}</span><br />
+                        <span class="text-airport">{{section.odestination.airportName}}</span>
+                    </div>
+                    <img class="arrow" *ngIf="!isAccordionOpen"   (click)="toggleAccordion()"  src="assets/Images/flight/arrow-down.svg">
+                    <img class="arrow" *ngIf="isAccordionOpen"   (click)="toggleAccordion()"  src="assets/Images/flight/arrow-up.svg">
+                </div>
+            </div>
+            <div  [ngClass]="{'open': isAccordionOpen}"  class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mt-3 pb-3 content"
+                >
+                <app-family-segment *ngFor="let segment of section.lsegments;let i = index" [lfamilyCombinations]="lfamilyCombinations" [lstComi]="lstComi" [sectionId]="section.sectionId" (change)="changeFamiliy($event)" (select)="enviarFamiliy($event)" [indexSegment]="i" [indexSec]="indexSection" [segment]="segment"></app-family-segment>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+
+
+<div class="container"  (click)="selectFamily()" >
+
+    <div class="row mt-3 align-items-start">
+        <div class="col-12 text-center">
+            <span [style.text-decoration-color]="colorsFare[indexSection]" class="text-city">{{section.name}}</span>
+        </div>
+        <div *ngIf="section.obaggage != null" class="col-12 mt-4 mb-3 text-center">
+            <img class="mr-3" pTooltip="Incluye articulo personal" src="assets/Images/flight/serv1.png">
+            <img *ngIf="section.obaggage.hasCarryOn" pTooltip="Incluye equipaje de mano" class="mr-3" src="assets/Images/flight/serv2.png">
+            <img *ngIf="!section.obaggage.hasCarryOn" pTooltip="No incluye equipaje de mano" class="mr-3" src="assets/Images/flight/serv2-gris.png">
+            <img *ngIf="section.obaggage.hasBagagge" pTooltip="Incluye equipaje en bodega" class="mr-3" src="assets/Images/flight/serv3.png">
+            <img *ngIf="!section.obaggage.hasBagagge" pTooltip="No incluye equipaje en bodega" class="mr-3" src="assets/Images/flight/serv3-gris.png">
+        </div>
+
+    </div>
+
+    <div class="row mt-3 align-items-center list-services my-scroll-container">
+        <div *ngFor="let incluye of lstIncluye" class="col-12">
+            <img class="mr-3" src="assets/Images/flight/item.png">
+            <span class="text-airport">{{incluye}}</span>
+        </div>
+        <div *ngFor="let noIncluye of lstNoIncluye" class="col-12">
+            <img class="mr-3" src="assets/Images/flight/item-gris.png">
+            <span class="text-airport">{{noIncluye}}</span>
+
+        </div>
+        <div *ngFor="let pago of lstPago" class="col-12">
+            <img class="mr-3" src="assets/Images/flight/dolar.png">
+            <span class="text-airport">{{pago}}</span>
+        </div>
+    </div>
+
+
+
+
+    <div class="row mt-auto">
+        <div class="col-12 text-center">
+            <span class="text-currency mr-3">{{section.oprice.currency}} </span><span
+                class="text-price-card">{{section.oprice.totalAmountWithCharges}}</span>
+        </div>
+
+        <div class="col-12 mt-4 mb-2 text-center">
+            <div class="btn-select"  [style.background]="colorsFare[indexSection]">
+                <span>{{indexSection === 0 ? 'Continuar con el plan' : 'Elegir'}}</span>
+            </div>
+            
+        </div>
+
+    </div>
+</div>

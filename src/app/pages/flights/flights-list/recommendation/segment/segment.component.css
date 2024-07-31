@@ -1,0 +1,159 @@
+.div-familia {
+    font-size: 12px;
+    border-radius: 14px;
+    text-align: center;
+    background: #5CB5AB 0% 0% no-repeat padding-box;
+    color: #FFFFFF;
+}
+
+.checkI {
+    text-align: center;
+    line-height: 4;
+}
+
+.datevar {
+    color: #ED1C24 !important;
+    padding-left: 5px !important;
+    font-size: 14px
+}
+
+.imgBaggage {
+    width: 33px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.bord {
+    border-left: 1px solid #898989;
+}
+
+.sacles {
+    cursor: pointer;
+    line-height: 23px;
+}
+
+.sm-text-1 {
+    font-size: 17px;
+    font-family: Omnes-med;
+    color: #898989;
+}
+
+.directo {
+    width: 100%;
+}
+
+.sm-text-2 {
+    font-size: 13px;
+    font-family: Omnes-med;
+    color: #898989;
+}
+
+.text-baggages-phone {
+    font-size: 16px;
+    font-family: Omnes-med;
+    color: #6B253C;
+}
+
+.s-texto-4{
+  font-family: Omnes-med;
+  font-size: 22px;
+  color: #676767;
+}
+
+
+#imgPhone,
+#text-durac {
+    display: none;
+}
+
+.divhe {
+    line-height: normal;
+}
+
+.arrows {
+    width: 40px;
+    cursor: pointer
+}
+
+#baggagePhone{
+    display: none;
+}
+
+@media screen and (max-width:500px) {
+    .directo {
+        width: 10%;
+    }
+
+    #baggagePhone{
+        display: initial;
+    }
+
+    #baggageWeb{
+        display: none;
+    }
+
+    .bordear{
+        border-bottom: 1px solid #BABABA;
+    }
+
+    #imgWeb {
+        display: none;
+    }
+
+    #imgPhone,
+    #text-durac {
+        display: initial;
+        margin-bottom: 15px;
+    }
+
+    .checkI {
+        text-align: center;
+        line-height: normal;
+    }
+
+    .scaleImg {
+        width: 45px;
+    }
+
+    .directo {
+        width: 45px;
+        height: 4px;
+    }
+
+    .divhe {
+        line-height: normal;
+    }
+
+    .sacles {
+        cursor: pointer;
+        line-height: 15px;
+    }
+
+    .bord {
+        border: none;
+        padding: 0px 0px 0px 15px;
+    }
+
+    #timeShow {
+        text-align: initial !important;
+    }
+
+    .imgBaggage {
+        width: 25px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .sm-text-1 {
+        font-size: 14px;
+        font-family: Omnes-med;
+        color: #0a0808;
+    }
+
+    .arrows {
+        width: 20px;
+        cursor: pointer
+    }
+
+
+}

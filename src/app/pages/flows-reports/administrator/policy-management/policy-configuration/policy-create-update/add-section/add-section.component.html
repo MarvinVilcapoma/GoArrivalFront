@@ -1,0 +1,88 @@
+<div class="row m-0 p-0">
+    <div *ngFor="let item of lstMulti; let i = index;"
+        class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mt-2 mb-2 pb-4"
+        [ngClass]="{'borderes': i+1 !== lstMulti.length}">
+        <div class="row m-0 p-0">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mt-2 mb-2">
+                <span class="textramo">Tramo {{i+1}}</span>
+            </div>
+        </div>
+        <div class="row m-0 p-0">
+            <div class="{{textOne}}">
+                <span class="titles">Origen</span>
+                <div id="searchOriginInit_{{i}}">
+                    <ng-autocomplete [(ngModel)]="item.origen" triggers="" style="color: #898989 !important;"
+                        [data]="item.data" [searchKeyword]="item.keyword" (selected)='selectEvent($event,item)'
+                        (inputChanged)='onChangeSearch($event,item)' [itemTemplate]="itemTemplate"
+                        [notFoundTemplate]="notFoundTemplate">
+                    </ng-autocomplete>
+
+                    <ng-template #itemTemplate let-item>
+
+                        <div class="" style="width: 100%">
+                            <div class="row m-0 p-0 mt-1">
+                                <div class="col-lg-1 col-md-2 col-sm-2 col-1">
+                                    <img *ngIf="item.categoryId===2;" style="width: 25px; padding-right: 5px;"
+                                        src="assets/Images/seeker/ciudad1.png" alt="">
+                                    <img *ngIf="item.categoryId===1" style="width: 25px; padding-right: 5px;"
+                                        suggestions-container src="assets/Images/seeker/aeropuerto2.jpeg" alt="">
+                                </div>
+                                <div class="col-lg-11 col-md-10 col-sm-10 col-9">
+                                    <span [innerHTML]="item.name"></span>
+                                    <!-- <a class="m-0 p-0" ></a> -->
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+
+                    <ng-template #notFoundTemplate let-notFound>
+                    </ng-template>
+                </div>
+            </div>
+            <div class="{{textOne}}">
+                <span class="titles">Destino</span>
+                <div id="searchDestinoInit_{{i}}">
+                    <ng-autocomplete [(ngModel)]="item.destino" style="color: #898989 !important;"
+                        [data]="item.data1" [searchKeyword]="item.keyword" (selected)='selectEventDestino($event,i,item)'
+                        (inputChanged)='onChangeSearchDestino($event,item)' [itemTemplate]="itemTemplate2"
+                        [notFoundTemplate]="notFoundTemplate2">
+                    </ng-autocomplete>
+
+                    <ng-template #itemTemplate2 let-item>
+                        <div class="" style="width: 100%">
+                            <div class="row">
+                                <div class="col-1">
+                                    <img *ngIf="item.categoryId===2" style="width: 25px; padding-right: 5px;"
+                                        src="assets/Images/seeker/ciudad1.png" alt="">
+                                    <img *ngIf="item.categoryId===1" style="width: 25px; padding-right: 5px;"
+                                        src="assets/Images/seeker/aeropuerto2.jpeg" alt="">
+                                </div>
+                                <div class="col-11">
+                                    <a class="m-0 p-0" [innerHTML]="item.name"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+
+                    <ng-template #notFoundTemplate let-notFound>
+
+                    </ng-template>
+
+                    <ng-template #notFoundTemplate2 let-notFound>
+
+                    </ng-template>
+                </div>
+            </div>
+   
+            <div class="{{textThree}}">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mt-2 mb-2">
+                    <span (click)="deleteTramo()" *ngIf="i >= 1 && i+1 === lstMulti.length" class="textDelTramo">- Eliminar tramo</span><br *ngIf="i >= 2 && i+1 === lstMulti.length" />
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mt-2 mb-2">
+                    <span (click)="addTramo()" *ngIf="i+1 === lstMulti.length && lstMulti.length != 6" class="textAddTramo">+ Agregar tramo</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

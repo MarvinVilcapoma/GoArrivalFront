@@ -1,0 +1,85 @@
+<app-modal-section [tipo]="2" *ngFor="let section of LSection" [section]="section"></app-modal-section>
+<div class="col-12 m-0 p-0 p-4">
+    <div class="row m-0 p-0 box-shadow p-3">
+        <div class="col-lg-2 col-md-2 col-12 m-0 p-0 s-texto-4" style="border-right: 1px solid #898989;">
+            Equipaje
+        </div>
+
+        <div class="col-lg-10 col-md-10 col-12   m-0 p-0">
+
+            <div class="row m-0 p-0 pl-3">
+                <div class="col-12 m-0 p-0 pt-3">
+                    <div class="row m-0 p-0">
+                        <div class="col-2 m-0 p-0 d-flex justify-content-center align-items-center">
+                            <img style="width: 33px;" src="/assets/Images/flight/mochila.svg" alt="">
+                        </div>
+                        <div class="col-10 m-0 p-0">
+                            <div class="row m-0 p-0">
+                                <div class="col-12 m-0 p-0 s-texto-5">
+                                    Incluye mochila
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 m-0 p-0 pt-3">
+                    <div class="row m-0 p-0">
+                        <div class="col-2 m-0 p-0 d-flex justify-content-center align-items-center">
+                            <img *ngIf="sect.oschedule.obaggage?.hasCarryOn" style="width: 33px;" src="/assets/Images/flight/bolsodemano-1.svg" alt="">
+                            <img *ngIf="!sect.oschedule.obaggage?.hasCarryOn" src="/assets/Images/flight/accessory.svg"  style="width: 33px;filter: grayscale(1);">
+                    
+                        </div>
+                        <div class="col-10 m-0 p-0">
+                            <div class="row m-0 p-0">
+                                <div *ngIf="sect.oschedule.obaggage?.hasBagagge" class="col-12 m-0 p-0 s-texto-5">
+                                    Incluye equipaje de mano
+                                </div>
+                                <div *ngIf="sect.oschedule.obaggage?.hasBagagge" class="col-12 m-0 p-0 s-texto-6">
+                                    Debe caber en el compartimiento superior del avión.
+                                </div>
+                                <div *ngIf="!sect.oschedule.obaggage?.hasCarryOn" class="col-12 m-0 p-0 s-texto-5">
+                                    No incluye maleta en cabina
+                                </div>
+                                <div *ngIf="sect.oschedule.obaggage?.hasCarryOn" class="col-12 m-0 p-0 s-texto-5">
+                                    Incluye maleta en cabina
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+     
+                <div class="col-12 m-0 p-0 pt-3">
+                    <div class="row m-0 p-0">
+                        <div class="col-2 m-0 p-0 d-flex justify-content-center align-items-center">
+                            <img style="width: 33px;" *ngIf="sect.oschedule.obaggage?.hasBagagge === true" src="/assets/Images/flight/maleta-si.svg" alt="">
+                            <img style="width: 33px;" *ngIf="sect.oschedule.obaggage?.hasBagagge === false" src="/assets/Images/flight/maleta-no.svg" alt="">
+                        </div>
+                        <div *ngIf="sect.oschedule.obaggage?.quantity > 0" class="col-10 m-0 p-0">
+                            <div class="row m-0 p-0">
+                                <div class="col-12 m-0 p-0 s-texto-5">
+                                    Incluye equipaje para documentar
+                                </div>
+                                <div class="col-12 m-0 p-0 s-texto-6">
+                                    {{sect.oschedule.obaggage?.quantity}} maleta(s) por adulto.
+                                </div>
+                                <div class="col-12 m-0 p-0 s-texto-6">
+                                    Se documenta en el aeropuerto durante el Check-in.
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div *ngIf="sect.oschedule.obaggage?.quantity == 0" class="col-10 m-0 p-0">
+                            <div class="row m-0 p-0">
+                                <div class="col-12 m-0 p-0 s-texto-5">
+                                    No incluye maleta
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

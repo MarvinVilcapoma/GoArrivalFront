@@ -1,0 +1,148 @@
+<div class="row m-0 p-0">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+        <div class="row m-0 p-0">
+            <div class="col-lg-3 col-md-12 col-sm-12 col-12 m-0 paddphone">
+                <div class="row m-0 p-0">
+                    <p-accordion *ngIf="validTypeFlight && headService.validPhone()" class="w-full todoLower">
+                        <p-accordionTab>
+                            <ng-template pTemplate="header">
+                                <span class="flex align-items-center gap-2 w-full">
+                                    <span class="text-city">{{lstFlights[0].lsection[0].oorigin.cityName}} >
+                                        {{lstFlights[0].lsection[lstFlights[0].lsection.length -
+                                        1].oorigin.cityName}}</span><br />
+                                    <span  class="text-date">{{lstFlights[0].lsection[0].arrivalDateShow}} a
+                                        {{lstFlights[0].lsection[lstFlights[0].lsection.length -
+                                        1].arrivalDateShow}}</span>
+                                </span>
+                            </ng-template>
+                            <app-search-flight (click)="$event.stopPropagation()"  (select)="getData($event)" [dataRQ]="requestLower" [style]="true"></app-search-flight>
+                            <!-- <app-search-flight-lower [passengers]="lstFlights[0].oprice.lpassengerPrice"
+                                (ocultar)="ocultarComponentes($event)" [lsection]="lstFlights[0].lsection"
+                                [lstMultidestino]="lstMultidestino" [tipoVuelo]="tipoVuelo"
+                                (enviarData)="validShowFlights($event)"></app-search-flight-lower> -->
+                            <app-order-price [searchFlight]="lstFlights"
+                                (searchFlightFilter)="busquedaFiltros($event)"></app-order-price>
+                            <app-filter-hour (searchFilter)="busquedaFiltros($event)" [tipoVuelo]="tipoVuelo"
+                                [request]="request" [indexTramo]="indexTramo"></app-filter-hour>
+                            <app-filter-airline [lstAerolineas]="aerolineas"
+                                [searchFlight]="lstFlights"></app-filter-airline>
+                        </p-accordionTab>
+
+                    </p-accordion>
+
+                    <div class="p-0 m-0 mt-5">
+                        <app-search-flight *ngIf="validTypeFlight && !headService.validPhone()" (click)="$event.stopPropagation()" (noShow)="busquedaFiltros($event)" (select)="getData($event)" [dataRQ]="requestLower" [style]="true"></app-search-flight>
+                    </div>
+                    
+
+                    <!-- <app-search-flight-lower *ngIf="validTypeFlight && !headService.validPhone()"
+                        [passengers]="lstFlights[0].oprice.lpassengerPrice" (ocultar)="ocultarComponentes($event)"
+                        [lsection]="lstFlights[0].lsection" [lstMultidestino]="lstMultidestino" [tipoVuelo]="tipoVuelo"
+                        (enviarData)="validShowFlights($event)"></app-search-flight-lower> -->
+                </div>
+                <div *ngIf="validFlights && !headService.validPhone()" class="row m-0 p-0">
+                    <app-order-price [searchFlight]="lstFlights" (searchFlightFilter)="busquedaFiltros($event)"></app-order-price>
+                </div>
+<!--                 <div *ngIf="validFlights && !headService.validPhone()" class="row m-0 p-0 mt-3">
+                    <app-filter-hour (searchFilter)="busquedaFiltros($event)" [tipoVuelo]="tipoVuelo"
+                        [request]="request" [indexTramo]="indexTramo"></app-filter-hour>
+                </div> -->
+                <div *ngIf="validFlights && !headService.validPhone()" class="row m-0 p-0 mt-3">
+                    <app-filter-airline [lstAerolineas]="aerolineas"  [searchFlight]="lstFlights" (searchFlightFilter)="busquedaFiltros($event)"></app-filter-airline>
+                </div>
+                <div *ngIf="validFlights && !headService.validPhone() && !headService.getProduction()" class="row m-0 p-0 mt-3">
+                    <app-filter-globalizer [lstGlobalizer]="globalizer" [filterClean]="globalizerClean" [searchFlight]="lstFlights" (searchFlightFilter)="busquedaFiltros($event)"></app-filter-globalizer>
+                </div>
+            </div>
+
+            <div *ngIf="validFlights" class="col-lg-9 col-md-12 col-sm-12 col-12 m-0">
+
+                <div  class="row m-0 p-0 mt-4">
+                    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+                        <p-stepper [linear]="true">
+                            <p-stepperPanel header="Selecciona tu vuelo">
+                                <ng-template pTemplate="content" let-nextCallback="nextCallback" let-index="index">
+    
+                                </ng-template>
+                            </p-stepperPanel>
+                            <p-stepperPanel header="Completa tus datos">
+                                <ng-template pTemplate="content" let-prevCallback="prevCallback" let-index="index">
+                                 
+                                </ng-template>
+                            </p-stepperPanel>
+                            <p-stepperPanel header="Confirma tu vuelo">
+                                <ng-template pTemplate="content" let-prevCallback="prevCallback"
+                                    let-nextCallback="nextCallback" let-index="index">
+        
+                                </ng-template>
+                            </p-stepperPanel>
+                            <p-stepperPanel header="Reserva finalizada">
+                                <ng-template pTemplate="content" let-prevCallback="prevCallback" let-index="index">
+                                 
+                                </ng-template>
+                            </p-stepperPanel>
+                        </p-stepper>
+                    </div>
+                </div>
+
+              
+
+
+                <div *ngIf="pseudos?.length > 0" class="row m-0 p-0 mt-2">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 box-shadow-important">
+                        <app-pseudos [pseudoRepeat]="pseudos"></app-pseudos>
+                    </div>
+                </div>
+                <div  id="calendar" class="row m-0 p-0">
+                    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div *ngIf="!validCalendar && !flagDinData2" class="mt-5">
+                            <p-skeleton   height="8rem" borderRadius="16px"></p-skeleton>
+                        </div>
+                       
+                        <app-calendar-flights *ngIf="validCalendar && lstCalendar.length > 0" [lstMultidestino]="lstMultidestino"
+                            (fechas)="searchFlight($event)" (ocultar)="ocultarLower($event)" [buscador]="request"
+                            [calendar]="lstCalendar" [tipoVuelo]="tipoVuelo"
+                            [salida]="llowCostAirlines"></app-calendar-flights>
+                    </div>
+                </div>
+                <div class="row m-0 p-0">
+                    <div *ngIf="lstFlights.length > 0" class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+                        <app-filter-time [searchFlight]="lstFlights" [request]="request" [tipoEscala]="request.Scales"
+                            (refreshdata)="Datafiltrosuperior($event)"
+                            (searchFilter)="busquedaFiltros($event)"></app-filter-time>
+                    </div>
+                    <div *ngIf="flagDinData2" class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mt-3">
+
+                        <div class="row m-0 p-0">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 text-center">
+                                <alert type="warning" class="text-center">
+                                    No se encontraron itinerarios para esta búsqueda
+                                </alert>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mt-3">
+                        <app-recommendation *ngFor="let recomendacion of lstFlights; let i = index" [request]="request"
+                            [isVisible]="recomendacion.isVisible" [currency]="recomendacion.oprice.currency"
+                            [totalFareAmount]="recomendacion.oprice.totalAmountWithCharges"
+                            [totalTaxAmount]="recomendacion.oprice.totalTaxWithCharges"
+                            [fareAmountByPassenger]="recomendacion.oprice.baseAmount" [recomen]="recomendacion"
+                            [fareTaxAmountByPassenger]="recomendacion.oprice.lpassengerPrice[0].baseAmount"
+                            [marketingCode]="recomendacion.ocarrier.marketingCode"
+                            [numberPassengers]="recomendacion.oprice.lpassengerPrice[0].quantity"
+                            [pseudo]="recomendacion.pseudo" [gds]="recomendacion.gds" [stateFlighList]="cookieValue"
+                            [flightNational]="recomendacion.isFlightNational" [lsections]="recomendacion.lsection"
+                            [lsectionLength]="recomendacion.lsection.length" [lpolicies]="recomendacion.lpolicy"
+                            
+                            [recommendationId]="recomendacion.id" [tipoVuelo]="tipoVuelo"
+                            [pseudoRepeat]="recomendacion.lpseudo" [index]='i + 1'>
+                        </app-recommendation>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

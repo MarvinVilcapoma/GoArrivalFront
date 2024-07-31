@@ -1,0 +1,111 @@
+<div [formGroup]="form">
+
+    <div class="row m-0 p-0 mt-3 webInformation webDropDown">
+
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-2">
+
+            <p-floatLabel *ngIf="isRegister">
+                <p-dropdown  [options]="lstUIDNotUsed" inputId="code" formControlName="code" [scrollHeight]="'150px'"
+                    filterBy="description" placeholder="UID" optionLabel="description" optionValue="code" />
+                <label for="code">UID</label>
+            </p-floatLabel>
+
+            <p-floatLabel *ngIf="!isRegister">
+                <input pInputText id="code" formControlName="code" />
+                <label for="code">UID</label>
+            </p-floatLabel>
+
+            <!--   <mat-form-field  *ngIf="!isRegister" appearance="outline">
+                <mat-label>UID</mat-label>
+                <input readonly cdkFocusInitial   formControlName="code" matInput />
+            </mat-form-field> -->
+
+        </div>
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-2">
+
+            <p-floatLabel>
+                <input pInputText id="EntryCode" formControlName="EntryCode" />
+                <label for="EntryCode">Entrada</label>
+            </p-floatLabel>
+
+
+          <!--   <mat-form-field appearance="outline">
+                <mat-label>Entrada</mat-label>
+                <input cdkFocusInitial formControlName="EntryCode" matInput />
+            </mat-form-field> -->
+
+        </div>
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+            <p-floatLabel>
+                <input pInputText id="Title" formControlName="Title" />
+                <label for="Title">Título</label>
+            </p-floatLabel>
+
+
+           <!--  <mat-form-field appearance="outline">
+                <mat-label>Título</mat-label>
+                <input cdkFocusInitial formControlName="Title" matInput />
+            </mat-form-field> -->
+
+        </div>
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+            <p-floatLabel>
+                <input pInputText id="Regex" formControlName="Regex" />
+                <label for="Regex">Regex</label>
+            </p-floatLabel>
+
+
+         <!--    <mat-form-field appearance="outline">
+                <mat-label>Regex</mat-label>
+                <input cdkFocusInitial formControlName="Regex" matInput />
+            </mat-form-field> -->
+
+        </div>
+
+
+    </div>
+
+    <div class="row m-0 p-0">
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 mt-2 mb-2">
+
+            <p-checkbox formControlName="IsList" [binary]="true" inputId="IsList"></p-checkbox>
+            <span for="IsList" class="pl-2">Es lista</span>
+        </div>
+
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 mt-2 mb-2">
+
+            <p-checkbox formControlName="IsEditable" [binary]="true" inputId="IsEditable"></p-checkbox>
+            <span for="IsEditable" class="pl-2">Es editable</span>
+        </div>
+
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 mt-2 mb-2">
+
+            <p-checkbox formControlName="IsMandatory" [binary]="true" inputId="IsMandatory"></p-checkbox>
+            <span for="IsMandatory" class="pl-2">Es mandatorio</span>
+        </div>
+
+
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 mt-2 mb-2">
+            <p-checkbox formControlName="IsActive" [binary]="true" inputId="IsActive"></p-checkbox>
+            <span for="IsActive" class="pl-2">Estado</span>
+        </div>
+
+    </div>
+
+
+    <div class="row m-0 p-0 ">
+        <div class="col mt-4 mb-2 text-center">
+            <mat-dialog-actions align="end">
+                <button color="primary" (click)="manageCompanyAccessUid()" mat-flat-button type="submit">
+                    {{textbtn}}
+                </button>
+            </mat-dialog-actions>
+        </div>
+    </div>
+</div>

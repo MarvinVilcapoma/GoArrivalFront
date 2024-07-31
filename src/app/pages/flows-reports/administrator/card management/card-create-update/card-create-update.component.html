@@ -1,0 +1,106 @@
+<div [formGroup]="form">
+  <div class="row m-0 p-0 mt-5 webDropDown webInformation">
+    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+      <p-floatLabel>
+        <input pInputText id="card" formControlName="card" />
+        <label for="card">Número Tarjeta</label>
+      </p-floatLabel>
+
+
+      <!--  <mat-form-field appearance="outline" style="width: 100%;">
+          <mat-label>Número Tarjeta</mat-label>
+          <input matInput formControlName="card" autocomplete="off">
+          <mat-error *ngIf="form.controls['card'].invalid">Valor incorrecto</mat-error>
+        </mat-form-field> -->
+
+    </div>
+
+    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3 web-calendar-card">
+      <p-floatLabel>
+        <p-calendar formControlName="dueDate" dateFormat="dd/mm/yy" [minDate]="minDate"
+          inputId="dateExpired" class="custom-calendar"></p-calendar>
+        <label for="dateExpired">Fecha Expiración</label>
+      </p-floatLabel>
+    </div>
+
+    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+      <p-floatLabel>
+        <input pInputText id="code" formControlName="code" />
+        <label for="code">CVV o Código</label>
+      </p-floatLabel>
+
+
+      <!--  <mat-form-field appearance="outline">
+          <mat-label>CVV o Código</mat-label>
+          <input matInput formControlName="code" type="password" autocomplete="off" maxlength="4">
+          <mat-error *ngIf="form.controls['code'].invalid">Valor incorrecto</mat-error>
+        </mat-form-field> -->
+    </div>
+
+
+
+    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+      <p-floatLabel>
+        <input pInputText id="alias" formControlName="alias" />
+        <label for="alias">Alias </label>
+      </p-floatLabel>
+
+
+      <!--   <mat-form-field appearance="outline">
+          <mat-label>Alias</mat-label>
+          <input matInput formControlName="alias" autocomplete="off">
+          <mat-error *ngIf="form.controls['alias'].invalid">Valor incorrecto</mat-error>
+        </mat-form-field> -->
+
+
+    </div>
+
+    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+      <p-floatLabel>
+        <input pInputText id="holdername" formControlName="holdername" />
+        <label for="holdername">Nombre del titular</label>
+      </p-floatLabel>
+
+
+
+
+      <!--     <mat-form-field appearance="outline">
+          <mat-label>Nombre del titular</mat-label>
+          <input matInput formControlName="holdername" autocomplete="off">
+          <mat-error *ngIf="form.controls['holdername'].invalid">Valor incorrecto</mat-error>
+        </mat-form-field> -->
+
+
+    </div>
+
+    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+      <p-floatLabel>
+        <p-dropdown [options]="types" formControlName="brandcode" inputId="brandcode" optionLabel="name"
+          optionValue="code" />
+        <label for="brandcode">Tipo tarjeta</label>
+      </p-floatLabel>
+    </div>
+
+    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+      <p-checkbox formControlName="status" [binary]="true" inputId="status"></p-checkbox>
+      <span for="status" class="pl-2">Tarjeta Activa</span>
+    </div>
+  </div>
+
+
+  <div class="row m-0 p-0 ">
+    <div class="col mt-4 mb-2 text-center">
+      <mat-dialog-actions align="end">
+        <button color="primary" (click)="onSubmit()" [disabled]="form.invalid" mat-flat-button type="submit">
+          {{textbtn}}
+        </button>
+      </mat-dialog-actions>
+    </div>
+  </div>
+
+
+</div>

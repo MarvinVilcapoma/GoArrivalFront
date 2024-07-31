@@ -1,0 +1,58 @@
+.div-separator2 {
+    height: 5px;
+    border-radius: 0 10px 10px 0;
+}
+
+.div-separator1 {
+    height: 5px;
+    border-radius: 0 10px 10px 0;
+}
+
+.text-airlane {
+    font-family: Omnes-med;
+    color: #676767;
+    font-size: 20px;
+}
+
+.text-plane {
+    color: #898989;
+    font-family: Omnes-med;
+    font-size: 16px;
+}
+
+.text-duracion {
+    font-family: Omnes-med;
+    color: #898989;
+    font-size: 13px;
+}
+
+.texto-1 {
+    color: #898989;
+    font-size: 12px;
+}
+
+.texto-2 {
+    color: #676767;
+    font-size: 25px;
+}
+
+.texto-3 {
+    color: #898989;
+    font-size: 15px;
+}
+
+.texto-4 {
+    color: #898989;
+    font-size: 12px;
+}
+
+.texto-5 {
+    color: #898989;
+    font-size: 11px;
+}
+
+.g-text-5 {
+    font-family: Omnes-med;
+    font-size: 15px;
+    color: white;
+}

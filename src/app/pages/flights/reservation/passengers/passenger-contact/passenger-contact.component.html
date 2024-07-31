@@ -1,0 +1,143 @@
+<div id="borderspace" class="row m-0 p-0">
+    <div class="col-12 m-0 p-0">
+        <div class="row m-0 p-0 webDropDown webInformation">
+            <div class="col-12 m-0 p-0 pt-3">
+                <div class="row m-0 p-0 pb-3">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                        <span class="label-pasajero">Nombre(s):</span><br />
+                        <input type="text" pInputText [(ngModel)]="nombre" (focusout)="onInputChange('nombrecontacto')"
+                            id="nombrecontacto" maxlength="20" />
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+
+                        <span class="label-pasajero">Telefono:</span><br />
+                        <div class="row m-0 p-0">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-12 pl-0">
+                                <p-dropdown [options]="lstpaises" [filter]="true" filterBy="fullName"
+                                    [(ngModel)]="prefixContact" optionLabel="fullName" optionValue="phonePrefix" />
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-12 m-0 p-0">
+                                <input type="text" pInputText [(ngModel)]="telefono"
+                                    (focusout)="onInputChange('contactotelefono')" id="contactotelefono"
+                                    maxlength="20" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0 p-0 pb-4">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+
+                        <span class="label-pasajero">Correo:</span><br />
+
+                        <input type="text" pInputText [(ngModel)]="correo" (focusout)="onInputChange('nombrecontacto')"
+                            id="contactocorreo" maxlength="70" />
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div *ngIf="validConsolidar" id="borderspace" class="m-0 p-0 pt-5 webDropDown webInformation">
+    <div class="col-12 m-0 p-0">
+        <div class="row m-0 p-0 ">
+            <div class="col-12 title-form pt-3 pb-3 pl-3">
+                ¿Desea incluir RUC en su reserva?
+            </div>
+        </div>
+        <div class="row m-0 p-0 mt-3 mb-3">
+
+          
+                <div class="col">
+                    <p-radioButton 
+                        name="docs" 
+                        value="R" 
+                        [(ngModel)]="valueCheck" 
+                        inputId="ingredient1" />
+                    <label for="ingredient1" class="ml-2" style="line-height: 0;">
+                        RUC de Agencia
+                    </label>
+                </div>
+                
+                <div class="col">
+                    <p-radioButton 
+                        name="docs" 
+                        value="D" 
+                        [(ngModel)]="valueCheck" 
+                        inputId="ingredient2" />
+                    <label for="ingredient2" class="ml-2" style="line-height: 0;">
+                        Documento Pasajero
+                    </label>
+                </div>
+           
+
+
+           <!--  <div class="col">
+                <label class="container">
+                    <input (click)="cip('B')" type="radio" id="boletaCheck" checked name="radio"> <label
+                        style="margin: 10px;font-weight: 600;">RUC de Agencia</label>
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <div class="col">
+                <label class="container">
+                    <input (click)="cip('F')" type="radio" id="facturaCheck" name="radio"> <label
+                        style="margin: 10px;font-weight: 600;">Documento Pasajero</label>
+                    <span class="checkmark"></span>
+                </label>
+            </div> -->
+        </div>
+<!-- 
+        <div *ngIf="validCampos" class="row m-0 p-0">
+            <div class="col">
+                <label for="">Tipo Documento:</label>
+            </div>
+            <div class="col">
+                <label for="">Número Documento:</label>
+            </div>
+        </div>
+        <div *ngIf="validCampos" class="row m-0 p-0 pb-5">
+            <div class="col">
+
+
+                <select id="documentoContacto" [ngClass]="{'input-pasajero-select': isPhone === true}"
+                    class="input-pasajero" type="text" #t (change)="setValor(t);">
+                    <option *ngFor="let item of this.document" value="{{item.id}}">{{item.name}}</option>
+                </select>
+            </div>
+
+            <div class="col">
+                <input *ngIf="validNumberDoc" (keydown)="ValidarSoloNumero($event)" (keypress)="ValidarCampos(4)"
+                    (keyup)="ValidarCampos(4)" class="input-pasajero" type="text" id="nroDocumentBoleta" maxlength="30">
+                <input *ngIf="!validNumberDoc" (keypress)="ValidarCampos(4)" (keyup)="ValidarCampos(4)"
+                    class="input-pasajero" type="text" id="nroDocumentBoleta" maxlength="30">
+            </div>
+
+        </div> -->
+
+        <div *ngIf="valueCheck === 'D'" class="row m-0 p-0 mt-3 mb-4">
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                <span class="label-pasajero">Tipo de Documento:</span><br />
+
+                <p-dropdown [options]="document" inputId="documentoContacto" 
+                placeholder="Seleccionar" autocomplete="off" [(ngModel)]="selectDoc" (focusout)="onInputChange('documentoContacto')" optionLabel="name" optionValue="code" />
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                <span class="label-pasajero">Numero de Documento:</span><br />
+                <input type="text" pInputText autocomplete="off" id="nroDocumentBoleta" (focusout)="onInputChange('nroDocumentBoleta')" [(ngModel)]="numberDoc" />
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>

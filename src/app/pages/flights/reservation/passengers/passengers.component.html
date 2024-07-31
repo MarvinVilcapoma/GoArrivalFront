@@ -1,0 +1,161 @@
+<div class="seccion">
+    <div class="row m-0 p-0 mt-5">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+            <span (click)="volver()" class="back">Volver</span>
+        </div>
+    </div>
+
+    <div  class="row m-0 p-0 mt-4">
+        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+            <p-stepper [activeStep]="1" [linear]="true">
+                <p-stepperPanel header="Selecciona tu vuelo">
+                    <ng-template pTemplate="content" let-nextCallback="nextCallback" let-index="index">
+
+                    </ng-template>
+                </p-stepperPanel>
+                <p-stepperPanel header="Completa tus datos">
+                    <ng-template pTemplate="content" let-prevCallback="prevCallback" let-index="index">
+                     
+                    </ng-template>
+                </p-stepperPanel>
+                <p-stepperPanel header="Confirma tu vuelo">
+                    <ng-template pTemplate="content" let-prevCallback="prevCallback"
+                        let-nextCallback="nextCallback" let-index="index">
+
+                    </ng-template>
+                </p-stepperPanel>
+                <p-stepperPanel header="Reserva finalizada">
+                    <ng-template pTemplate="content" let-prevCallback="prevCallback" let-index="index">
+                     
+                    </ng-template>
+                </p-stepperPanel>
+            </p-stepper>
+        </div>
+    </div>
+    
+    <div class="row m-0 p-0 mt-4">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+            <div class="row m-0 p-0">
+                <div class="col-lg-8 col-md-7 col-sm-7 col-12 m-0 p-0">
+                    <div class="row m-0 p-0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12 banner">
+                            <span class="title-form">DATOS DEL PASAJERO</span>
+                        </div>
+                    </div>
+                    <div *ngIf="validPassenger" class="row m-0 p-0">
+                        <div *ngIf="showPassengers" class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mb-4 banner-data">
+                            <app-passenger-data *ngFor="let user of datosuser; let i = index;" [user]="user" [gds]="gds" [index]="i + 1"
+                            [lstpaises]="lstpaises" [lcompanyUids]="uids" [lstCostCenter]="lstCostCenter" [lstDocument]="lstDocument"></app-passenger-data>
+                        </div>
+                    </div>
+                    <div class="row m-0 p-0 mt-3">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12 banner">
+                            <span class="title-form">PERSONA DE CONTACTO</span>
+                        </div>
+                    </div>
+                    <div *ngIf="validPassenger" class="row m-0 p-0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mb-4 banner-data">
+                            <app-passenger-contact [lstpaises]="lstpaises" [bolet]="bolet" [document]="lstDocumentAdmin" [contacto]="contacoVal"></app-passenger-contact>
+                        </div>
+                    </div>
+                    <div *ngIf="flight?.lreason?.length > 0" class="row m-0 p-0 mt-3">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12 banner">
+                            <span class="title-form">MOTIVO DE VIAJE</span>
+                        </div>
+                    </div>
+                    <div *ngIf="validPassenger" class="row m-0 p-0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mb-4 banner-data">
+                            <app-reason-trip *ngIf="flight.lreason?.length > 0" [ifExtraReason]="ifExtraReason" [lsReasonflight]="flight.lreason" ></app-reason-trip>
+                        </div>
+                    </div>
+                    <div *ngIf="lextraProfiles?.length > 0" class="row m-0 p-0 mt-3">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12 banner">
+                            <span class="title-form">SELECCIONAR TARJETA PRECARGADA</span>
+                        </div>
+                    </div>
+                    <div *ngIf="validPassenger" class="row m-0 p-0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mb-4 banner-data">
+                            <app-extra-profile *ngIf="lextraProfiles?.length > 0" [lextraProfiles]="lextraProfiles" ></app-extra-profile>
+                        </div>
+                    </div>
+                    <div *ngIf="validSeat && priceSeat != 0 || validBag" class="row m-0 p-0 mt-3">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12 banner">
+                            <span class="title-form">ASIENTOS Y/O MALETAS</span>
+                        </div>
+                    </div>
+                    <div *ngIf="validSeat && priceSeat != 0 || validBag" class="row m-0 p-0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mb-4 banner-data">
+                            <div class="row m-0 p-0">
+                                <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <app-seat-data [data]="dataSeats" [maletas]="maletas" [borrar]="true" (select)="recibirPrice($event)"></app-seat-data>
+                                </div>
+                         
+                            </div>
+                           
+                        </div>
+                    </div>
+
+                    <div *ngIf="validHotel" class="row m-0 p-0 mt-3">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12 banner">
+                            <span class="title-form">HOTELES</span>
+                        </div>
+                    </div>
+                    <div *ngIf="validHotel" class="row m-0 p-0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mb-4 banner-data">
+                            <div class="row m-0 p-0">
+                                <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <app-crosselling-data [hotel]="dataHotel"  [borrar]="true"></app-crosselling-data>
+                                </div>
+                         
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-5 col-sm-5 col-12">
+                    <div class="row m-0 p-0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12 banner">
+                            <span class="title-form">DETALLE PRECIO</span>
+                        </div>
+                    </div>
+                    <div *ngIf="validPassenger" class="row m-0 p-0">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 banner-data">
+                            <app-detail-price [flight]="flight" [priceSeat]="priceSeat" [priceHotel]="dataHotel?.oprice?.pricePerAllNights"></app-detail-price>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+                            
+                            <app-detail-flight [lstBag]="null" [tipovuelo]="typevuelo" [LSection]="flight.lsection"></app-detail-flight>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-0 p-0">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 mt-3 mb-3 text-center">
+                    <span (click)="obtenerValoresInputHijos()"  class="next">Continuar</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p-dialog header="Alerta" [modal]="true" [(visible)]="visibleModal" [draggable]="false" [resizable]="false" [position]="'top'"  [style]="{ width: '50vw' }" >
+
+    <div class="flex align-items-center gap-3 mb-3">
+        <div *ngFor="let item of mensajeDuplicate"
+            class="col-12 m-0 p-0 r-text-sinfam-2">
+            <p-messages severity="info">
+                <ng-template pTemplate>
+       
+                    <div class="ml-2"> {{item}}</div>
+                </ng-template>
+            </p-messages>
+           
+        </div>
+    </div>
+
+</p-dialog>
+
+
+
+
+

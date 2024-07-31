@@ -1,0 +1,67 @@
+<div [formGroup]="form" >
+
+    <div class="row m-0 p-0 mt-4 webDropDown webInformation">
+
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-2">
+            <p-floatLabel>
+            <p-dropdown  [options]="lstGds"  formControlName="gdsID" inputId="gds" [scrollHeight]="'150px'" filterBy="name"  
+            optionLabel="name" optionValue="id"></p-dropdown>
+
+            <label for="gds">GDS</label>
+        </p-floatLabel>
+
+        </div>
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-2">
+
+            <p-floatLabel>
+                <input pInputText id="code" autocomplete="off" formControlName="code" />
+                <label for="code">Código</label>
+            </p-floatLabel>
+
+
+
+        </div>
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-4 mb-2">
+
+            <p-floatLabel>
+                <input pInputText id="name" autocomplete="off" formControlName="name" />
+                <label for="name">Nombre</label>
+            </p-floatLabel>
+
+
+   
+
+        </div>
+
+        <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 mt-4 mb-2">
+            <p-checkbox formControlName="isDefault" [binary]="true" 
+            inputId="isDefault"></p-checkbox>
+        <span for="isDefault" class="pl-2">Por defecto</span>
+        </div>
+
+        <div class="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 mt-4 mb-2">
+            <p-checkbox formControlName="isActive" [binary]="true" 
+            inputId="isActive"></p-checkbox>
+        <span for="isActive" class="pl-2">GDS Activo</span>
+        </div>
+
+       
+    </div>
+
+
+
+
+    <div class="row m-0 p-0 ">
+        <div class="col mt-4 mb-2 text-center">
+            <mat-dialog-actions align="end">
+                <button color="primary" (click)="manageCompanyProfile()" [disabled]="form.invalid"  mat-flat-button type="submit">
+                    {{textbtn}}
+                </button>
+            </mat-dialog-actions>
+        </div>
+    </div>
+</div>
+

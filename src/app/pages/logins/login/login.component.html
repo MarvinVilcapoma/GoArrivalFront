@@ -1,0 +1,207 @@
+<section class="todo">
+    <div tabindex="0" (keydown)="loginUserEnter($event)" class="log">
+        <div class="row m-0 p-0" id="alinear">
+            <div class="col-lg-3 col-md-6 col-sm-8 m-0 p-0" id="imgPhone">
+                <img class="img" src="assets/Images/login/logoblanco.png">
+            </div>
+        </div>
+        <div class="row m-0 p-0 mt-5" id="centrar">
+            <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-5 col-sm-7 col-11 m-0 p-0 padre">
+                <div class="row m-0 p-0 color-login">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+                        <div class="row m-2 p-2">
+                            <div class="col m-0 p-0 text-center">
+                                <span class="text-bienv">Bienvenido a Go Arrival</span>
+                            </div>
+                        </div>
+                        <div class="row m-2 p-2 align-items-center">
+                            <div class="col-lg-4 col-md-5 col-sm-12 col-12">
+                                <span class="subtext">Usuario</span>
+                            </div>
+                            <div class="col-lg-8 col-md-7 col-sm-12 col-12">
+                                <input type="text" pInputText [(ngModel)]="usuario" />
+                                <div class="raya"></div>
+                            </div>
+                        </div>
+                        <div class="row m-2 p-2 align-items-center" id="password-login">
+                            <div class="col-lg-4 col-md-5 col-sm-12 col-12">
+                                <span class="subtext">Contraseña</span>
+                            </div>
+                            <div class="col-lg-8 col-md-7 col-sm-12 col-12">
+                                <p-password [(ngModel)]="password" [toggleMask]="true" [feedback]="false" />
+                                <div class="raya"></div>
+                            </div>
+                        </div>
+                        <div class="row m-2 p-2">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-12 text-end">
+                                <span class="subtextClick" (click)="visiblePassword = true">Olvidé mi contraseña</span>
+                            </div>
+                        </div>
+                        <div class="row m-2 p-2">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-3 mt-2 text-center">
+                                <span (click)="loginUser()" class="btnIngresar">Ingresar</span>
+                            </div>
+                        </div>
+                        <div class="row m-0 p-0 mt-2 mb-4">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-12" style="text-align: center;">
+                                <span class="text-error" *ngIf="validError">{{messageError}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0 p-0">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0 pt-3 pb-3 text-center">
+                        <span class="subtextDere">2020 - {{numberyear}} © Todos los derechos reservados. Domiruth
+                            Bussines Travel</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- <div class="background-container">
+   
+  </div> -->
+
+<p-dialog header="Header" [(visible)]="visible" [modal]="true" [closeOnEscape]="false" [closable]="false"
+    [breakpoints]="{ '2600px': '25vw','1440px': '40vw', '960px': '75vw','500px': '85vw' }" [draggable]="false"
+    [resizable]="false">
+
+    <ng-template pTemplate="header">
+        <div class="inline-flex align-items-center justify-content-center gap-2">
+            <h4>Cambia tu contraseña</h4>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="content">
+        <div class="row m-0 p-0">
+            <div class="col-lg col-md col-sm col m-0 p-0 text-center" id="password-login-change">
+                <span>Nueva Contraseña</span><br />
+
+
+
+                <p-password class="{{classError}}" [feedback]="true" (focusout)="onInputChange1()" [(ngModel)]="value"
+                    [toggleMask]="true" promptLabel="Nueva contraseña" weakLabel="Demasiado simple"
+                    mediumLabel="Complejidad media" strongLabel="Contraseña compleja">
+
+                    <ng-template pTemplate="footer">
+                        <p-divider></p-divider>
+                        <p class="mt-2">Sugerencias</p>
+                        <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+                            <li>Al menos una minúscula</li>
+                            <li>Al menos una mayuscula</li>
+                            <li>Al menos un número</li>
+                            <li>Minimo 8 caracteres</li>
+                        </ul>
+                    </ng-template>
+                </p-password>
+            </div>
+
+
+        </div>
+        <div class="row m-0 p-0 mt-5">
+            <div class="col-lg col-md col-sm col m-0 p-0 text-center" id="password-login-change">
+                <span>Confirmar Contraseña</span><br />
+                <span class="p-float-label">
+                    <p-password class="{{classError}}" (focusout)="onInputChange1()"
+                        promptLabel="Confirma tu contraseña" [(ngModel)]="value1" [toggleMask]="true"
+                        weakLabel="Demasiado simple" mediumLabel="Complejidad media"
+                        strongLabel="Contraseña compleja"></p-password>
+
+                </span>
+            </div>
+
+
+        </div>
+        <div *ngIf="validErrorPassword" class="row m-0 p-0">
+            <div class="col-lg col-md col-sm col m-0 p-0 text-center">
+                <span class="texto-error">{{textError}}</span>
+            </div>
+        </div>
+        <div class="row m-0 p-0 mt-3 pt-5">
+            <div class="col-lg col-md col-sm col m-0 p-0 mt-5 text-center">
+                <span (click)="updatePassword()" class="btnEmit">Cambiar Contraseña</span>
+            </div>
+
+        </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+
+    </ng-template>
+</p-dialog>
+
+<p-dialog header="Header" [(visible)]="visiblePassword" [modal]="true" [closeOnEscape]="false" [closable]="true"
+    [breakpoints]="{ '2600px': '25vw','1440px': '40vw', '960px': '75vw','500px': '85vw' }" [draggable]="false"
+    [resizable]="false">
+
+    <ng-template pTemplate="header">
+        <div class="inline-flex align-items-center justify-content-center gap-2">
+            <h4>Olvidé contraseña</h4>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="content">
+        <div class="row m-0 p-0 webInformation">
+            <div class="col-lg col-md col-sm col m-0 p-0 text-center">
+                <span>Usuario</span><br />
+                <input type="text" pInputText [(ngModel)]="userForget" />
+            </div>
+
+
+        </div>
+        <div class="row m-0 p-0 mt-5">
+            <div class="col-lg col-md col-sm col m-0 p-0 text-center">
+                <span>Correo Electrónico</span><br />
+
+                <input type="text" pInputText [(ngModel)]="emailForget" />
+
+
+            </div>
+
+
+        </div>
+
+        <div class="row m-0 p-0 mt-3 pt-5">
+            <div class="col-lg col-md col-sm col m-0 p-0  text-center">
+                <p-button label="Recuperar clave" [disabled]="userForget === '' || emailForget === ''" (click)="forgetPassword()" [outlined]="true" severity="danger" />
+              <!--   <span (click)="forgetPassword()" disa class="btnEmit">Olvidé Contraseña</span> -->
+            </div>
+
+        </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+
+    </ng-template>
+</p-dialog>
+
+<p-dialog header="Header" [(visible)]="visibleCode" [modal]="true" [closeOnEscape]="false" [closable]="true"
+    [breakpoints]="{ '2600px': '25vw','1440px': '40vw', '960px': '75vw','500px': '85vw' }" [draggable]="false"
+    [resizable]="false">
+
+    <ng-template pTemplate="header">
+        <div class="inline-flex align-items-center justify-content-center gap-2">
+            <h4>Confirmar Código</h4>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="content">
+        <div class="row m-0 p-0 webInformation">
+            <div class="col-lg col-md col-sm col m-0 p-0 text-center">
+              
+                <p-inputOtp [(ngModel)]="code"  [length]="7" />
+            </div>
+
+
+        </div>
+   
+
+        <div class="row m-0 p-0 mt-3 pt-5">
+            <div class="col-lg col-md col-sm col m-0 p-0  text-center">
+                <p-button label="Validar Código" [disabled]="code.length < 7" (click)="confirmCode()" [outlined]="true" severity="danger" />
+              <!--   <span (click)="forgetPassword()" disa class="btnEmit">Olvidé Contraseña</span> -->
+            </div>
+
+        </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+
+    </ng-template>
+</p-dialog>

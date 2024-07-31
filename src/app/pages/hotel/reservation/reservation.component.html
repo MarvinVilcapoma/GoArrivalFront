@@ -1,0 +1,90 @@
+<div class="row m-0 p-5">
+    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+        <p-stepper [activeStep]="2" [linear]="true">
+            <p-stepperPanel header="Selecciona tu hotel">
+                <ng-template pTemplate="content" let-nextCallback="nextCallback" let-index="index">
+
+                </ng-template>
+            </p-stepperPanel>
+            <p-stepperPanel header="Selecciona tu habitación">
+                <ng-template pTemplate="content" let-prevCallback="prevCallback"
+                    let-nextCallback="nextCallback" let-index="index">
+
+                </ng-template>
+            </p-stepperPanel>
+            <p-stepperPanel header="Completa tus datos">
+                <ng-template pTemplate="content" let-prevCallback="prevCallback" let-nextCallback="nextCallback" let-index="index">
+                 
+                </ng-template>
+            </p-stepperPanel>
+            <p-stepperPanel header="Reserva finalizada">
+                <ng-template pTemplate="content" let-prevCallback="prevCallback" let-index="index">
+                 
+                </ng-template>
+            </p-stepperPanel>
+        </p-stepper>
+    </div>
+    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-3 p-0">
+        <div class="row m-0 p-0">
+            <span class="text-1">!Estás a <span class="text-2">un solo paso!</span></span>
+        </div>
+        <div class="row m-0 p-0">
+            <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-7 col-sm-7 col-12 m-0 p-0">
+                <div class="row m-0 p-0 align-items-center justify-content-center ">
+                    <div  class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-3 border">
+                        <app-passenger-data [lstPerson]="lstPerson" [lstCountries]="lstCountries" [lstDocument]="lstDocument" [lstGender]="lstGender"></app-passenger-data>
+                    </div>
+                    <div  class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-3 mt-3 border">
+                        <app-contact-information [lstCountries]="lstCountries"></app-contact-information>
+                    </div>
+                    <div  class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-3 mt-3 border">
+                        <app-pay ></app-pay>
+                    </div>
+                    <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-4 col-12 m-0 p-3 mt-4 align-self-center">
+                        <p-button label="Completar reserva" (onClick)="reservation();"   [raised]="true" severity="danger"></p-button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-5 col-sm-5 col-12">
+                <div class="row m-0 p-0">
+                    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-3 border">
+                        <div class="row m-0 p-0">
+                            <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+                                <img src="assets/Images/hotel/tarjetas.png"> 
+                                <span class="text-pago ml-3">Detalle del depósito </span>
+                            </div>
+                        </div>
+                        <div class="row m-0 p-0 mt-3">
+                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 m-0 p-0">
+                                
+                                <span class="text-detail-price ml-3">Pago total </span>
+                            </div>
+                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 m-0 p-0">
+                                <span class="text-detail-price ml-1">{{dataHotel.oprice.currency}} </span>
+                                <span class="text-detail-price ml-1">{{dataHotel.oprice.pricePerAllNights}} </span>
+                            </div>
+                        </div>
+                        <div *ngIf="dataRoom.oprice.totalTax != 0" class="row m-0 p-0 mt-1">
+                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 m-0 p-0">
+                                
+                                <span class="text-detail-price ml-3">Valor de impuestos </span>
+                            </div>
+                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 m-0 p-0">
+                                <span class="text-detail-price ml-1">{{dataRoom.oprice.currency}} </span>
+                                <span class="text-detail-price ml-1">{{dataRoom.oprice.totalTax}} </span>
+                            </div>
+                        </div>
+                        <div class="row m-0 p-0 mt-1">
+                            <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-0">
+                                <span class="text-detail-price ml-3">Precio con impuestos incluidos</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-3 mt-3 border">
+                        <app-detail-reservation [data]="data.odata"></app-detail-reservation>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

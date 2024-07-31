@@ -1,0 +1,81 @@
+.main-card {
+    box-shadow: 0px 4px 4px 0px #00000040;
+    border-radius: 20px 0px;
+}
+
+
+.text-filtros {
+    font-family: Omnes-med;
+    font-size: 18px;
+    color: #3D3D3D;
+}
+
+.list-star {
+    list-style: none;
+    display: block;
+    line-height: 35px;
+    color: #3D3D3D;
+    font-family: Omnes-med;
+}
+
+
+.checkbox {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 0px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding-top: 16px;
+}
+
+.checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.check {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 19px;
+    width: 20px;
+    background-color: #eee;
+    border: 1px solid #ccc;
+}
+
+.checkbox:hover input~.check {
+    border: 1px solid darkred;
+}
+
+.checkbox input:checked~.check {
+    background: -webkit-linear-gradient(left, rgba(237, 28, 35, 1) 0%, rgba(176, 23, 56, 1) 36%, rgba(60, 71, 73, 1) 100%);
+    border: none;
+}
+
+.check:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox input:checked~.check:after {
+    display: block;
+}
+
+.checkbox .check:after {
+    left: 7px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+

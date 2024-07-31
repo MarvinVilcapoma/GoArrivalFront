@@ -1,0 +1,147 @@
+<p-card header="Busqueda de hoteles">
+
+
+
+<div class="row m-0 p-0">
+    <div class="{{general}}" style="background-color: #FDFDFD;">
+        <div class="row m-0 p-0 mt-3 webDropDown">
+            <div [ngClass]="{'col-12': style, 'col-xxl col-xl col-lg col-md col-sm col-12': !style}" >
+                <label for="disabled-input">Destino</label><br />
+                <p-autoComplete [showClear]="true"  [class]="classAutocomplete" [(ngModel)]="selectedItem"  [suggestions]="filteredItems"
+                    emptyMessage="No se encontraron resultados" [virtualScroll]="true" [virtualScrollItemSize]="59"
+                    [panelStyleClass]="'items-panel'" (completeMethod)="filterItems($event)" field="name">
+
+                    <ng-template let-country pTemplate="item">
+                        <div class="row m-0 p-0">
+                            <div class="col-1 m-0 p-0">
+                                <img
+                                    src="assets/Images/seeker/{{country.categoryName === 'A' ? 'Aeropuerto' : 'Ciudad'}}.png" />
+                            </div>
+                            <div class="col text-truncate">
+                                <span>{{ country.name }}</span>
+                            </div>
+
+
+                        </div>
+                    </ng-template>
+
+
+                </p-autoComplete>
+            </div>
+            <div [ngClass]="{'col-12': style, 'col-xxl col-xl col-lg col-md col-sm col-12 webDropDown': !style}" >
+                <label for="disabled-input">Fechas</label><br />
+                <p-calendar #myStartCalendarHotel #dateFilter [class]="classFechas" (onSelect)="selectDates()" (click)="$event.stopPropagation()" inputId="txtFechaDestino" [minDate]="minDateSalida"
+                    dateFormat="dd/mm/yy" selectionMode="range" [(ngModel)]="bsValue" [readonlyInput]="true"
+                    [numberOfMonths]="2">
+                    <ng-template pTemplate="footer">
+                    </ng-template>
+                </p-calendar>
+            </div>
+            <div [ngClass]="{'col-12': style, 'col-xxl col-xl col-lg col-md col-sm col-12 webDropDown': !style}" >
+                <label for="disabled-input">Habitaciones</label><br />
+
+                <div *ngIf="objetoDesencriptado.orole.roleDescription == 'Centralizador'; else elseTemplate"
+                    class="row m-0 p-0" >
+                    <div class="col-6 p-0" (click)="op.toggle($event)" id="habitacion">
+                        <label for="" class="d-inline-flex fechas dates">
+                            <input type="image" src="assets/Images/seeker/cama.svg" width="15">
+                            <input readonly (keypress)="validarNumeros($event)" type="text" id="txthabitacion"
+                                class="input-text2" value="1">
+                        </label>
+                    </div>
+                    <div class="col-6 p-0" (click)="op.toggle($event)" id="habitacion">
+
+                        <label for="" class="d-inline-flex col-6 fechas dates">
+                            <input type="image" src="assets/Images/seeker/pasajero.svg" width="8">
+                            <input readonly (keypress)="validarNumeros($event)" type="text" id="txtpersonas"
+                                class="input-text2" value="1">
+                        </label>
+                    </div>
+                </div>
+                <ng-template #elseTemplate class="row m-0 p-0">
+                    <div class="row m-0 p-0">
+                        <div class="col-6 p-0" (click)="op.toggle($event)" id="habitacion">
+                            <label for="" class="d-inline-flex  dates">
+                                <input readonly type="image" src="assets/Images/seeker/cama.svg" width="15">
+                                <input readonly (keypress)="validarNumerosN($event)" type="text" id="txthabitacion"
+                                    class="input-text2" [(ngModel)]="totalRoom">
+                            </label>
+
+                        </div>
+                        <div class="col-6 p-0" (click)="op.toggle($event)" id="habitacion">
+
+                            <label for="" class="d-inline-flex  dates">
+                                <input readonly type="image" src="assets/Images/seeker/pasajero.svg" width="8">
+                                <input readonly (keypress)="validarNumerosN($event)" type="text" id="txtpersonas"
+                                    class="input-text2" [(ngModel)]="total">
+                            </label>
+                        </div>
+                    </div>
+
+                </ng-template>
+            </div>
+        </div>
+        <div class="row m-0 p-0 mt-3 mb-4 align-items-end seekerDropDown">
+            <div [ngClass]="{'col-12': style, 'col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 top ': !style}" >
+                <label for="disabled-input">Estrellas</label><br />
+                <p-dropdown [options]="stars" [(ngModel)]="selectedStar" optionLabel="name" optionValue="code" 
+                    placeholder="Todas las estrellas">
+
+                    <ng-template let-country pTemplate="item">
+                        <div class="flex align-items-center gap-2">
+                            <app-stars [value]="country.code"></app-stars>
+                        </div>
+                    </ng-template>
+                </p-dropdown>
+
+            </div>
+            <div [ngClass]="{'col-12 m-0 mt-3': style, 'col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12  top': !style}" class="btn-search-module">
+                <p-button label="Buscar" (onClick)="validSearch()" [raised]="true" severity="danger"></p-button>
+
+            </div>
+        </div>
+    </div>
+</div>
+</p-card>
+<p-overlayPanel #op>
+    <div class="popRoom">
+        <div *ngFor="let item of lstPerson; let i = index" class="row m-0 p-0">
+            <div class="row m-0 p-0 mt-3">
+                <div class="col-6">
+                    <h5>Habitación #{{i+1}}</h5>
+                </div>
+                <div *ngIf="i != 0 && i+1 === lstPerson.length" class="col-6 text-end">
+                    <button class="btn btn-danger text-btn"
+                        (click)="deleteRoom();$event.stopPropagation()">Eliminar</button>
+                </div>
+            </div>
+            <p-divider></p-divider>
+            <div class="row m-0 p-0 align-items-center">
+                <div class="col-5">
+                    <h6>Adultos</h6>
+                </div>
+                <div class="col-7">
+                    <span (click)="delPassenger(i)" class="input-group-btn">
+                        <button class="btn btn-danger" data-dir="dwn"><i class="fas fa-minus"></i></button>
+                    </span>
+                    <input type="text" [disabled]="true" pInputText [(ngModel)]="item.person" />
+                    <span (click)="addPassenger(i)" class="input-group-btn">
+                        <button class="btn btn-danger" id="btnUp_1" data-dir="up"><i class="fas fa-plus"></i></button>
+                    </span>
+                </div>
+            </div>
+            <p-divider></p-divider>
+
+        </div>
+        <div class="row m-0 p-0 ">
+            <div class="col">
+                <button class="btn btn-danger text-btn" [disabled]="validAddRoom" (click)="addRoom()">Añadir
+                    habitación</button>
+            </div>
+            <div class="col text-end">
+                <button class="btn btn-danger añadir">Aplicar</button>
+            </div>
+        </div>
+    </div>
+
+</p-overlayPanel>

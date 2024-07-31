@@ -1,0 +1,19 @@
+<div id="borderspace" class="row m-0 p-0">
+    <div class="col-12 m-0 p-0 contenedor-form">
+        <div class="row m-0 p-0">
+            <div class="col-12 m-0 p-0">
+                <div class="row m-0 p-0">
+                    <div class="col-12 div-info text-left pt-3 pb-3  webDropDown webInformation">
+                        <p-dropdown [options]="lextraProfiles" (focusout)="onInputChange1('cbomotivo')"
+                            inputId="cbomotivo" [(ngModel)]="valor" placeholder="Seleccionar"
+                            optionLabel="description" autocomplete="off" optionValue="code" />
+
+                    <!--     <select id="cbomotivo" class="input-pasajero" [(ngModel)]="valor">
+                            <option value="{{item.profile}}" *ngFor="let item of lextraProfiles">{{item.name}}</option>
+                        </select> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

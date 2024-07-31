@@ -1,0 +1,52 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-pasajero {
+  outline: none;
+  width: 95%;
+  padding: 5px;
+  border: 2px solid #DFD9D8;
+  border-radius: 5px;
+  font-family: Omnes-med;
+  color: #676767;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.clock {
+  position: relative;
+  float: right;
+  margin-right: 40px !important;
+}
+
+
+
+.form-control {
+  width: 95% !important;
+}
+
+@media screen and (max-width:576px) {
+  .menu-mobile {
+    position: relative;
+    z-index: 1000;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+
+  .content-mobile {
+    position: relative;
+    z-index: 1;
+    margin-top: 20px;
+  }
+
+}

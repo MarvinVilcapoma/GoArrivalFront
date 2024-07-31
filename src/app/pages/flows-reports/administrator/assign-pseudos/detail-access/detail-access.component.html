@@ -1,0 +1,180 @@
+<div [formGroup]="form" class="webDropDown webInformation">
+
+    <div class="row m-0 p-0">
+        <h4>Acceso Empresa</h4>
+        <!--    <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+            <mat-form-field appearance="outline">
+                <mat-label>Pseudo Booking</mat-label>
+                <input cdkFocusInitial formControlName="booking" matInput />
+            </mat-form-field>
+        </div> -->
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+            <p-floatLabel>
+                <p-dropdown [options]="lstCurrency" inputId="CurrencyCode" formControlName="CurrencyCode"
+                    [scrollHeight]="'150px'" filterBy="description" placeholder="Moneda" optionLabel="description"
+                    optionValue="code"></p-dropdown>
+                <label for="CurrencyCode">Moneda</label>
+            </p-floatLabel>
+
+        </div>
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+            <p-floatLabel>
+                <p-dropdown [options]="lstPayments" inputId="MethodOfPaymentID" formControlName="MethodOfPaymentID"
+                    [scrollHeight]="'150px'" filterBy="name" optionLabel="name" optionValue="id"></p-dropdown>
+                <label for="MethodOfPaymentID">Forma de Pago</label>
+            </p-floatLabel>
+
+        </div>
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+            <p-floatLabel>
+                <p-dropdown [options]="lstCredentials" [filter]="true" formControlName="PseudoCredentialID"
+                    [scrollHeight]="'150px'" filterBy="description" inputId="PseudoCredentialID"
+                    optionLabel="description" optionValue="id"></p-dropdown>
+                <label for="PseudoCredentialID">Credencial</label>
+            </p-floatLabel>
+        </div>
+
+        <div *ngIf="nameSource === 'Pseudo'" class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+            <p-floatLabel *ngIf="isRegister">
+            <p-dropdown  inputId="Company" [options]="lstCompany" [filter]="true" formControlName="Company"
+                [scrollHeight]="'150px'" filterBy="name"  optionLabel="name"
+                optionValue="id"/>
+                <label for="Company">Empresa</label>
+            </p-floatLabel>
+
+            <div *ngIf="!isRegister">
+                <p-floatLabel >
+                    <input pInputText id="CompanyName" formControlName="CompanyName" />
+                    <label for="CompanyName">Compañia</label>
+                </p-floatLabel>
+            </div>
+
+           
+
+          <!--   <mat-form-field *ngIf="!isRegister" appearance="outline">
+                <mat-label>Compañia</mat-label>
+                <input readonly cdkFocusInitial formControlName="CompanyName" matInput />
+            </mat-form-field> -->
+
+        </div>
+    </div>
+
+    <div class="row m-0 p-0">
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 mt-3 mb-3">
+
+            <p-checkbox formControlName="DisablePurchase" [binary]="true" inputId="DisablePurchase"></p-checkbox>
+            <span for="DisablePurchase" class="pl-2">Habilitar compra</span>
+        </div>
+
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 mt-3 mb-3">
+
+            <p-checkbox formControlName="ExtraReason" [binary]="true" inputId="ExtraReason"></p-checkbox>
+            <span for="ExtraReason" class="pl-2">Motivo Extra</span>
+        </div>
+
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 mt-3 mb-3">
+
+            <p-checkbox formControlName="UseAirplus" [binary]="true" inputId="UseAirplus"></p-checkbox>
+            <span for="UseAirplus" class="pl-2">Usa Airplus</span>
+        </div>
+
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 mt-3 mb-3">
+            <p-checkbox formControlName="UseRva" [binary]="true" inputId="UseRva"></p-checkbox>
+            <span for="UseRva" class="pl-2">Usa RVA</span>
+        </div>
+
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 mt-3 mb-3">
+            <p-checkbox formControlName="CopyApprovers" [binary]="true" inputId="CopyApprovers"></p-checkbox>
+            <span for="CopyApprovers" class="pl-2">Reenviar Ticket Aprob.</span>
+        </div>
+
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 mt-3 mb-3">
+            <p-checkbox formControlName="PolicyAlert" [binary]="true" inputId="PolicyAlert"></p-checkbox>
+            <span for="PolicyAlert" class="pl-2">Alerta Políticas</span>
+        </div>
+
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 mt-3 mb-3">
+            <p-checkbox formControlName="UpdateApprovers" [binary]="true" inputId="UpdateApprovers"></p-checkbox>
+            <span for="UpdateApprovers" class="pl-2">Actualizar Aprobadores</span>
+        </div>
+
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 mt-3 mb-3">
+            <p-checkbox formControlName="BudgetByCostCenter" [binary]="true" inputId="BudgetByCostCenter"></p-checkbox>
+            <span for="BudgetByCostCenter" class="pl-2">Presupuesto Centro Costo</span>
+        </div>
+
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 mt-3 mb-3">
+            <p-checkbox formControlName="ConsolidatePayment" [binary]="true" inputId="ConsolidatePayment"></p-checkbox>
+            <span for="ConsolidatePayment" class="pl-2">Pago Consolidado</span>
+        </div>
+
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 mt-3 mb-3">
+            <p-checkbox formControlName="IncludeBaggage" [binary]="true" inputId="IncludeBaggage"></p-checkbox>
+            <span for="IncludeBaggage" class="pl-2">Incluye Maleta Bodega</span>
+        </div>
+
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 mt-3 mb-3">
+            <p-checkbox formControlName="GroupedReport" [binary]="true" inputId="GroupedReport"></p-checkbox>
+            <span for="GroupedReport" class="pl-2">Reportes Agrupados</span>
+        </div>
+
+
+
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 mt-3 mb-3">
+            <p-checkbox formControlName="IsActive" [binary]="true" inputId="IsActive"></p-checkbox>
+            <span for="IsActive" class="pl-2">Estado</span>
+        </div>
+
+    </div>
+
+    <div class="row m-0 p-0 mt-3">
+        <h4>Correos a copiar (separar correos por coma)</h4>
+        <div class=" p-fluid">
+            <p-chips formControlName="CopyTicket" separator=","
+                placeholder="example@gmail.com,example2@gmail.com"></p-chips>
+        </div>
+    </div>
+
+    <div class="row m-0 p-0 mt-3">
+        <h4>Mensaje de alerta</h4>
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+            <textarea rows="5" cols="30" pInputTextarea formControlName="WarningMessage"></textarea>
+        </div>
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+            <p-floatLabel>
+                <input pInputText id="TypePassenger" formControlName="TypePassenger" />
+                <label for="TypePassenger">Tipo Pasajero</label>
+            </p-floatLabel>
+
+
+            <!--      <mat-form-field appearance="outline">
+                <mat-label>Tipo Pasajero</mat-label>
+                <input matInput maxlength="3" formControlName="TypePassenger" class="example-right-align" >
+            </mat-form-field> -->
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="row m-0 p-0 ">
+        <div class="col mt-4 mb-2 text-center">
+            <mat-dialog-actions align="end">
+                <button color="primary" (click)="manageAccess()" [disabled]="form.invalid" mat-flat-button
+                    type="submit">
+                    {{textbtn}}
+                </button>
+            </mat-dialog-actions>
+        </div>
+    </div>
+</div>

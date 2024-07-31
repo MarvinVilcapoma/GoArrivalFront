@@ -1,0 +1,122 @@
+<div [formGroup]="form">
+
+    <div class="row m-0 p-0 mt-2 webInformation webDropDown webMultiSelect">
+
+       
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+            <p-floatLabel>
+            <p-multiSelect [options]="lstServices" formControlName="ServiceID" inputId="ServiceID" [scrollHeight]="'150px'"  optionLabel="name" optionValue="id" placeholder="Servicios"></p-multiSelect>
+            <label for="ServiceID">Servicios</label>
+        </p-floatLabel>
+            
+        </div>
+
+
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+
+            <p-floatLabel>
+                <input pInputText id="Code" formControlName="Code" />
+                <label for="Code">Código</label>
+            </p-floatLabel>
+
+      <!--       <mat-form-field appearance="outline">
+                <mat-label>Código</mat-label>
+                <input cdkFocusInitial formControlName="Code" matInput />
+            </mat-form-field> -->
+
+        </div>
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+            <p-floatLabel>
+            <p-dropdown [options]="lstCurrency" inputId="CurrencyCode"  formControlName="CurrencyCode" [scrollHeight]="'150px'" filterBy="description" 
+            optionLabel="description" optionValue="code"></p-dropdown>
+            <label for="CurrencyCode">Moneda</label>
+        </p-floatLabel>
+        </div>
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+            <p-floatLabel>
+                <input pInputText id="Amount" formControlName="Amount" />
+                <label for="Amount">Monto</label>
+            </p-floatLabel>
+
+
+     <!--        <mat-form-field appearance="outline">
+                <mat-label>Monto</mat-label>
+                <input matInput type="number" formControlName="Amount" class="example-right-align"
+                    placeholder="0">
+
+            </mat-form-field> -->
+        </div>
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+            <p-floatLabel>
+                <input pInputText id="MinimunAmount" formControlName="MinimunAmount" />
+                <label for="MinimunAmount">Monto Minimo</label>
+            </p-floatLabel>
+
+
+         <!--    <mat-form-field appearance="outline">
+                <mat-label>Monto Minimo</mat-label>
+                <input matInput type="number" formControlName="MinimunAmount" class="example-right-align"
+                    placeholder="0">
+
+            </mat-form-field> -->
+        </div>
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+            <p-floatLabel>
+                <p-calendar formControlName="ExpirationDate" 
+                    inputId="expirationDate"></p-calendar>
+                <label for="expirationDate">Fecha Expiración</label>
+            </p-floatLabel>
+
+        </div>
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+            <p-floatLabel>
+            <textarea rows="5" cols="30" id="Description"  pInputTextarea formControlName="Description"></textarea>
+            <label for="Description">Descripción</label>
+            </p-floatLabel>
+        </div>
+
+        
+        
+
+        
+    </div>
+
+    <div class="row m-0 p-0">
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mt-3 mb-3">
+            <p-checkbox formControlName="IsGlobal" [binary]="true" inputId="IsGlobal"></p-checkbox>
+            <span for="IsGlobal" class="pl-2">Es global</span>
+        </div>
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mt-3 mb-3">
+            <p-checkbox formControlName="IsPercentage" [binary]="true" inputId="IsPercentage"></p-checkbox>
+            <span for="IsPercentage" class="pl-2">Es porcentaje</span>
+        </div>
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mt-3 mb-3">
+            <p-checkbox formControlName="IsActive" [binary]="true" inputId="IsActive"></p-checkbox>
+            <span for="IsActive" class="pl-2">Estado</span>
+        </div>
+    </div>
+
+
+
+
+    <div class="row m-0 p-0 ">
+        <div class="col mt-4 mb-2 text-center">
+            <mat-dialog-actions align="end">
+                <button color="primary" (click)="manageCoupon()" [disabled]="form.invalid"  mat-flat-button type="submit">
+                    {{textbtn}}
+                </button>
+            </mat-dialog-actions>
+        </div>
+    </div>
+</div>

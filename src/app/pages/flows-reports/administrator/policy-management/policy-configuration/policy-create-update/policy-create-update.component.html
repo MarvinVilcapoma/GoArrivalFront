@@ -1,0 +1,701 @@
+<form >
+
+    <div [ngSwitch]="codePolicy">
+        <div [formGroup]="form" *ngSwitchCase="'P1'">
+            <div class="row m-0 p-0">
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-4">
+                    <mat-label>Días para vuelos nacionales activo :</mat-label>
+                    <p-selectButton [options]="stateOptions" formControlName="activoN" optionLabel="label"
+                        optionValue="value"></p-selectButton>
+                </div>
+
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-4 mb-2">
+                    <!--   <span class="txt-titulo">Configuración para:</span><br/> -->
+                    <p-dropdown tooltipPosition="top" formControlName="option" (onChange)="setOption($event)"
+                        [options]="options" optionLabel="name" optionValue="code"
+                        placeholder="Configuración para"></p-dropdown>
+
+                </div>
+
+
+
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-4">
+                    <mat-label>Días para vuelos internacionales activo :</mat-label>
+                    <p-selectButton [options]="stateOptions" formControlName="activoI" optionLabel="label"
+                        optionValue="value"></p-selectButton>
+                </div>
+
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-4 mb-2">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Dias para vuelos Internacionales</mat-label>
+                        <input cdkFocusInitial formControlName="diasI" matInput />
+                    </mat-form-field>
+                </div>
+
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-4">
+                    <mat-label>Estado :</mat-label>
+                    <p-selectButton [options]="stateOptions" formControlName="isActive" optionLabel="label"
+                        optionValue="value"></p-selectButton>
+                </div>
+
+
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-4 mb-2">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Dias para vuelos nacionales</mat-label>
+                        <input cdkFocusInitial formControlName="diasN" matInput />
+                    </mat-form-field>
+                </div>
+
+
+                <div [ngSwitch]="this.form.controls.option.value" class="example-sidenav-content">
+
+                    <div *ngSwitchCase="1" class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-5">
+                        <span class="txt-titulo">Elija un rol</span><br />
+                        <p-dropdown formControlName="selected" [filter]="true" filterBy="name" optionValue="id"
+                            [options]="usersData.firstResponse?.ldata" optionLabel="name"
+                            placeholder="Elija un Rol"></p-dropdown>
+                    </div>
+                    <div *ngSwitchCase="3" class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-5">
+                        <span class="txt-titulo">Elija un usuario</span><br />
+                        <p-dropdown formControlName="selected" [filter]="true" filterBy="name" optionValue="id"
+                            [options]="usersData.secondResponse?.ldata" optionLabel="name"
+                            placeholder="Elija un Usuario"></p-dropdown>
+                    </div>
+                    <div *ngSwitchCase="2" class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-5">
+                        <span class="txt-titulo">Elija un centro de costo</span><br />
+                        <p-dropdown formControlName="selected" [filter]="true" filterBy="code" optionValue="id"
+                            [options]="usersData.threeResponse?.ldata" optionLabel="code"
+                            placeholder="Elija un Centro de Costo"></p-dropdown>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+
+            <div class="row m-0 p-0 ">
+                <div class="col mt-5 mb-2 text-center">
+                    <mat-dialog-actions align="end">
+                        <button color="primary" (click)="createPolicy()" mat-flat-button type="submit">
+                            {{textbtn}}
+                        </button>
+                    </mat-dialog-actions>
+                </div>
+            </div>
+        </div>
+        <div [formGroup]="form" *ngSwitchCase="'P2'">
+            <div class="row m-0 p-0">
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-4">
+                    <mat-label>Monto para vuelos nacionales activo :</mat-label>
+                    <p-selectButton [options]="stateOptions" formControlName="activoN" optionLabel="label"
+                        optionValue="value"></p-selectButton>
+                </div>
+
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-4 mb-2">
+                    <!--   <span class="txt-titulo">Configuración para:</span><br/> -->
+                    <p-dropdown tooltipPosition="top" formControlName="option" (onChange)="setOption($event)"
+                        [options]="options" optionLabel="name" optionValue="code"
+                        placeholder="Configuración para"></p-dropdown>
+
+                </div>
+
+
+
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-4">
+                    <mat-label>Monto para vuelos internacionales activo :</mat-label>
+                    <p-selectButton [options]="stateOptions" formControlName="activoI" optionLabel="label"
+                        optionValue="value"></p-selectButton>
+                </div>
+
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-4 mb-2">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Monto para vuelos Internacionales</mat-label>
+                        <input cdkFocusInitial formControlName="diasI" matInput />
+                    </mat-form-field>
+                </div>
+
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-4">
+                    <mat-label>Estado :</mat-label>
+                    <p-selectButton [options]="stateOptions" formControlName="isActive" optionLabel="label"
+                        optionValue="value"></p-selectButton>
+                </div>
+
+
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-4 mb-2">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Monto para vuelos nacionales</mat-label>
+                        <input cdkFocusInitial formControlName="diasN" matInput />
+                    </mat-form-field>
+                </div>
+
+
+                <div [ngSwitch]="this.form.controls.option.value" class="example-sidenav-content">
+
+                    <div *ngSwitchCase="1" class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-5">
+                        <span class="txt-titulo">Elija un rol</span><br />
+                        <p-dropdown formControlName="selected" [filter]="true" filterBy="name" optionValue="id"
+                            [options]="usersData.firstResponse?.ldata" optionLabel="name"
+                            placeholder="Elija un Rol"></p-dropdown>
+                    </div>
+                    <div *ngSwitchCase="3" class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-5">
+                        <span class="txt-titulo">Elija un usuario</span><br />
+                        <p-dropdown formControlName="selected" [filter]="true" filterBy="name" optionValue="id"
+                            [options]="usersData.secondResponse?.ldata" optionLabel="name"
+                            placeholder="Elija un Usuario"></p-dropdown>
+                    </div>
+                    <div *ngSwitchCase="2" class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-5">
+                        <span class="txt-titulo">Elija un centro de costo</span><br />
+                        <p-dropdown formControlName="selected" [filter]="true" filterBy="code" optionValue="id"
+                            [options]="usersData.threeResponse?.ldata" optionLabel="code"
+                            placeholder="Elija un Centro de Costo"></p-dropdown>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+
+            <div class="row m-0 p-0 ">
+                <div class="col mt-5 mb-2 text-center">
+                    <mat-dialog-actions align="end">
+
+
+
+
+                        <button color="primary" (click)="createPolicy()" mat-flat-button type="submit">
+                            {{textbtn}}
+                        </button>
+
+                    </mat-dialog-actions>
+                </div>
+            </div>
+        </div>
+        <div [formGroup]="form" *ngSwitchCase="'P3'">
+            <div class="row m-0 p-0">
+                <div (click)="$event.stopPropagation()"
+                    class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-4">
+                    <div class="row m-0 p-0">
+                        <div class="col">
+
+                            <mat-label>Hora Inicial :</mat-label><br />
+                            <p-inputNumber formControlName="horaI" (click)="$event.stopPropagation()"
+                                [style]="{'width': '4rem'}" [showButtons]="true" buttonLayout="vertical"
+                                spinnerMode="vertical" inputId="vertical" decrementButtonClass="p-button-secondary"
+                                incrementButtonClass="p-button-secondary" incrementButtonIcon="pi pi-plus"
+                                decrementButtonIcon="pi pi-minus" [min]="0" [max]="23"></p-inputNumber>
+                        </div>
+                        <div class="col">
+                            <mat-label>Hora Final :</mat-label><br />
+                            <p-inputNumber formControlName="horaF" (click)="$event.stopPropagation()"
+                                [style]="{'width': '4rem'}" [showButtons]="true" buttonLayout="vertical"
+                                spinnerMode="vertical" inputId="vertical" decrementButtonClass="p-button-secondary"
+                                incrementButtonClass="p-button-secondary" incrementButtonIcon="pi pi-plus"
+                                decrementButtonIcon="pi pi-minus" [min]="0" [max]="23"></p-inputNumber>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-4">
+                    <mat-label>Escalas activo :</mat-label>
+                    <p-selectButton [options]="stateOptions" formControlName="escalasA" optionLabel="label"
+                        optionValue="value"></p-selectButton>
+                </div>
+
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-4 mb-2">
+                    <mat-label>Tiempo Espera Aeropuerto :</mat-label>
+                    <p-selectButton [options]="stateOptions" formControlName="tiempoAir" optionLabel="label"
+                        optionValue="value"></p-selectButton>
+
+                </div>
+
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-4">
+                    <mat-label>Estado :</mat-label>
+                    <p-selectButton [options]="stateOptions" formControlName="isActive" optionLabel="label"
+                        optionValue="value"></p-selectButton>
+                </div>
+
+
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-4 mb-2">
+                    <!--   <span class="txt-titulo">Configuración para:</span><br/> -->
+                    <p-dropdown tooltipPosition="top" formControlName="option" (onChange)="setOption($event)"
+                        [options]="options" optionLabel="name" optionValue="code"
+                        placeholder="Configuración para"></p-dropdown>
+
+                </div>
+
+
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-4 mb-2">
+                    <!--   <span class="txt-titulo">Configuración para:</span><br/> -->
+                    <p-dropdown tooltipPosition="top" formControlName="cabina" (onChange)="setOptionCabin($event)"
+                        [options]="optionsCabin" optionLabel="name" optionValue="code"
+                        placeholder="Cabina"></p-dropdown>
+
+                </div>
+
+
+
+
+
+
+
+                <div [ngSwitch]="this.form.controls.option.value" class="example-sidenav-content">
+
+                    <div *ngSwitchCase="1" class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-5 pl-0">
+                        <span class="txt-titulo">Elija un rol</span><br />
+                        <p-dropdown formControlName="selected" [filter]="true" [scrollHeight]="'150px'" filterBy="name"
+                            optionValue="id" [options]="usersData.firstResponse?.ldata" optionLabel="name"
+                            placeholder="Elija un Rol"></p-dropdown>
+                    </div>
+                    <div *ngSwitchCase="3" class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-5 pl-0">
+                        <span class="txt-titulo">Elija un usuario</span><br />
+                        <p-dropdown formControlName="selected" [filter]="true" [scrollHeight]="'150px'" filterBy="name"
+                            optionValue="id" [options]="usersData.secondResponse?.ldata" optionLabel="name"
+                            placeholder="Elija un Usuario"></p-dropdown>
+                    </div>
+                    <div *ngSwitchCase="2" class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-5 pl-0">
+                        <span class="txt-titulo">Elija un centro de costo</span><br />
+                        <p-dropdown formControlName="selected" [filter]="true" [scrollHeight]="'150px'" filterBy="code"
+                            optionValue="id" [options]="usersData.threeResponse?.ldata" optionLabel="code"
+                            placeholder="Elija un Centro de Costo"></p-dropdown>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+
+            <div class="row m-0 p-0 ">
+                <div class="col mt-5 mb-2 text-center">
+                    <mat-dialog-actions align="end">
+
+
+
+
+                        <button color="primary" (click)="createPolicy()" mat-flat-button type="submit">
+                            {{textbtn}}
+                        </button>
+
+                    </mat-dialog-actions>
+                </div>
+            </div>
+        </div>
+
+        <div [formGroup]="form" *ngSwitchCase="'P4'">
+            <div class="row m-0 p-0">
+
+
+
+
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-4">
+                    <mat-label>Estado :</mat-label>
+                    <p-selectButton [options]="stateOptions" formControlName="isActive" optionLabel="label"
+                        optionValue="value"></p-selectButton>
+                </div>
+
+
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-4 mb-2">
+                    <!--   <span class="txt-titulo">Configuración para:</span><br/> -->
+                    <p-dropdown tooltipPosition="top" formControlName="option" (onChange)="setOption($event)"
+                        [options]="options" optionLabel="name" optionValue="code"
+                        placeholder="Configuración para"></p-dropdown>
+
+                </div>
+
+
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-4 mb-2">
+                    <!--   <span class="txt-titulo">Configuración para:</span><br/> -->
+                    <p-dropdown tooltipPosition="top" formControlName="cabina" (onChange)="setOptionCabin($event)"
+                        [options]="optionsCabin" optionLabel="name" optionValue="code"
+                        placeholder="Cabina"></p-dropdown>
+
+                </div>
+
+
+
+
+
+
+
+                <div [ngSwitch]="this.form.controls.option.value" class="example-sidenav-content">
+
+                    <div *ngSwitchCase="1" class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-5 pl-0">
+                        <span class="txt-titulo">Elija un rol</span><br />
+                        <p-dropdown formControlName="selected" [filter]="true" [scrollHeight]="'150px'" filterBy="name"
+                            optionValue="id" [options]="usersData.firstResponse?.ldata" optionLabel="name"
+                            placeholder="Elija un Rol"></p-dropdown>
+                    </div>
+                    <div *ngSwitchCase="3" class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-5 pl-0">
+                        <span class="txt-titulo">Elija un usuario</span><br />
+                        <p-dropdown formControlName="selected" [filter]="true" [scrollHeight]="'150px'" filterBy="name"
+                            optionValue="id" [options]="usersData.secondResponse?.ldata" optionLabel="name"
+                            placeholder="Elija un Usuario"></p-dropdown>
+                    </div>
+                    <div *ngSwitchCase="2" class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-5 pl-0">
+                        <span class="txt-titulo">Elija un centro de costo</span><br />
+                        <p-dropdown formControlName="selected" [filter]="true" [scrollHeight]="'150px'" filterBy="code"
+                            optionValue="id" [options]="usersData.threeResponse?.ldata" optionLabel="code"
+                            placeholder="Elija un Centro de Costo"></p-dropdown>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+
+            <div class="row m-0 p-0 ">
+                <div class="col mt-5 mb-2 text-center">
+                    <mat-dialog-actions align="end">
+
+
+
+
+                        <button color="primary" (click)="createPolicy()" mat-flat-button type="submit">
+                            {{textbtn}}
+                        </button>
+
+                    </mat-dialog-actions>
+                </div>
+            </div>
+        </div>
+
+        <div *ngSwitchCase="'P5'">
+            
+            <div [formGroup]="form" class="row m-0 p-0">
+
+                
+
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-4 mb-2">
+                    <p-dropdown tooltipPosition="top" formControlName="option" (onChange)="setOption($event)"
+                        [options]="options" optionLabel="name" optionValue="code"
+                        placeholder="Configuración para"></p-dropdown>
+                </div>
+
+               
+
+                <div [ngSwitch]="this.form.controls.option.value" class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mb-5 pl-0">
+
+                    <div *ngSwitchCase="1" class="">
+                        <span class="txt-titulo">Elija un rol</span><br />
+                        <p-dropdown formControlName="selected" [filter]="true" [scrollHeight]="'150px'" filterBy="name"
+                            optionValue="id" [options]="usersData.firstResponse?.ldata" optionLabel="name"
+                            placeholder="Elija un Rol"></p-dropdown>
+                    </div>
+                    <div *ngSwitchCase="3" class="">
+                        <span class="txt-titulo">Elija un usuario</span><br />
+                        <p-dropdown formControlName="selected" [filter]="true" [scrollHeight]="'150px'" filterBy="name"
+                            optionValue="id" [options]="usersData.secondResponse?.ldata" optionLabel="name"
+                            placeholder="Elija un Usuario"></p-dropdown>
+                    </div>
+                    <div *ngSwitchCase="2" class="">
+                        <span class="txt-titulo">Elija un centro de costo</span><br />
+                        <p-dropdown formControlName="selected" [filter]="true" [scrollHeight]="'150px'" filterBy="code"
+                            optionValue="id" [options]="usersData.threeResponse?.ldata" optionLabel="code"
+                            placeholder="Elija un Centro de Costo"></p-dropdown>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row m-0 p-0">
+                <div *ngFor="let item of lstRutes;let i = index" class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-4 mb-2">
+                    <p-card header="Ruta {{i+1}}">
+                        
+                        <app-add-section [validDate]="false" [lstMulti]="item.lstMulti"></app-add-section>
+                        <div class="row m-0 p-0">
+                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-4 mb-2">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Precio Maximo </mat-label>
+                                    <input cdkFocusInitial [(ngModel)]="item.amount"  [ngModelOptions]="{standalone: true}"  matInput />
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-4 mb-2">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Porcentaje Adicional</mat-label>
+                                    <input cdkFocusInitial  [(ngModel)]="item.additionalPercentage"  [ngModelOptions]="{standalone: true}" matInput />
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-4">
+                                <mat-label>Estado :</mat-label>
+                                <p-selectButton [options]="stateOptions"  [(ngModel)]="item.isActive"  [ngModelOptions]="{standalone: true}"
+                                    optionLabel="label" optionValue="value"></p-selectButton>
+                            </div>
+                        
+                        </div>
+                    </p-card>
+                </div>
+            </div>
+
+            <div class="row m-0 p-0">
+                <div class="col mt-5 mb-2 text-center">
+                    <mat-dialog-actions align="end">
+
+
+
+
+                        <button color="primary" (click)="createPolicy()" mat-flat-button type="submit">
+                            {{textbtn}}
+                        </button>
+
+                    </mat-dialog-actions>
+                </div>
+                <div class="col mt-5 mb-2 text-end">
+                    <mat-dialog-actions align="end">
+
+                        <button *ngIf="indexRute > 1 && indexRute === lstRutes.length" color="warn" (click)="deleteRute()" mat-flat-button >
+                            Eliminar Ruta
+                        </button>
+
+
+                        <button color="primary" (click)="llenarMulti()" mat-flat-button type="submit">
+                            Agregar Ruta
+                        </button>
+
+                    </mat-dialog-actions>
+                </div>
+            </div>
+        </div>
+
+        <div [formGroup]="form" *ngSwitchCase="'P6'">
+            <div class="row m-0 p-0">
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-4">
+                    <mat-label>Porcentaje para vuelos nacionales activo :</mat-label>
+                    <p-selectButton [options]="stateOptions" formControlName="porjeActivoN" optionLabel="label"
+                        optionValue="value"></p-selectButton>
+                </div>
+
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-4 mb-2">
+                    <!--   <span class="txt-titulo">Configuración para:</span><br/> -->
+                    <p-dropdown tooltipPosition="top" formControlName="option" (onChange)="setOption($event)"
+                        [options]="options" optionLabel="name" optionValue="code"
+                        placeholder="Configuración para"></p-dropdown>
+
+                </div>
+
+
+
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-4">
+                    <mat-label>Porcentaje para vuelos internacionales activo :</mat-label>
+                    <p-selectButton [options]="stateOptions" formControlName="porActivoI" optionLabel="label"
+                        optionValue="value"></p-selectButton>
+                </div>
+
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-4 mb-2">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Porcentaje para vuelos Internacionales</mat-label>
+                        <input cdkFocusInitial formControlName="porcentajeI" matInput />
+                    </mat-form-field>
+                </div>
+
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-4">
+                    <mat-label>Estado :</mat-label>
+                    <p-selectButton [options]="stateOptions" formControlName="isActive" optionLabel="label"
+                        optionValue="value"></p-selectButton>
+                </div>
+
+
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-4 mb-2">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Porcentaje para vuelos nacionales</mat-label>
+                        <input cdkFocusInitial formControlName="porcentajeN" matInput />
+                    </mat-form-field>
+                </div>
+
+
+                <div [ngSwitch]="this.form.controls.option.value" class="example-sidenav-content">
+
+                    <div *ngSwitchCase="1" class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-5">
+                        <span class="txt-titulo">Elija un rol</span><br />
+                        <p-dropdown formControlName="selected" [filter]="true" filterBy="name" optionValue="id"
+                            [options]="usersData.firstResponse?.ldata" optionLabel="name"
+                            placeholder="Elija un Rol"></p-dropdown>
+                    </div>
+                    <div *ngSwitchCase="3" class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-5">
+                        <span class="txt-titulo">Elija un usuario</span><br />
+                        <p-dropdown formControlName="selected" [filter]="true" filterBy="name" optionValue="id"
+                            [options]="usersData.secondResponse?.ldata" optionLabel="name"
+                            placeholder="Elija un Usuario"></p-dropdown>
+                    </div>
+                    <div *ngSwitchCase="2" class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-5">
+                        <span class="txt-titulo">Elija un centro de costo</span><br />
+                        <p-dropdown formControlName="selected" [filter]="true" filterBy="code" optionValue="id"
+                            [options]="usersData.threeResponse?.ldata" optionLabel="code"
+                            placeholder="Elija un Centro de Costo"></p-dropdown>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+
+            <div class="row m-0 p-0 ">
+                <div class="col mt-5 mb-2 text-center">
+                    <mat-dialog-actions align="end">
+
+
+
+
+                        <button color="primary" (click)="createPolicy()" mat-flat-button type="submit">
+                            {{textbtn}}
+                        </button>
+
+                    </mat-dialog-actions>
+                </div>
+            </div>
+        </div>
+
+        <div [formGroup]="form" *ngSwitchCase="'P7'">
+            <div class="row m-0 p-0">
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-4">
+                    <mat-label>Monto excendente para vuelos nacionales activo :</mat-label>
+                    <p-selectButton [options]="stateOptions" formControlName="montoExcActivoN" optionLabel="label"
+                        optionValue="value"></p-selectButton>
+                </div>
+
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-4 mb-2">
+                    <!--   <span class="txt-titulo">Configuración para:</span><br/> -->
+                    <p-dropdown tooltipPosition="top" formControlName="option" (onChange)="setOption($event)"
+                        [options]="options" optionLabel="name" optionValue="code"
+                        placeholder="Configuración para"></p-dropdown>
+
+                </div>
+
+
+
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-4">
+                    <mat-label>Monto excendente para vuelos internacionales activo :</mat-label>
+                    <p-selectButton [options]="stateOptions" formControlName="montoExcActivoI" optionLabel="label"
+                        optionValue="value"></p-selectButton>
+                </div>
+
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-4 mb-2">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Monto excendente para vuelos Internacionales</mat-label>
+                        <input cdkFocusInitial formControlName="montoExcI" matInput />
+                    </mat-form-field>
+                </div>
+
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-4">
+                    <mat-label>Estado :</mat-label>
+                    <p-selectButton [options]="stateOptions" formControlName="isActive" optionLabel="label"
+                        optionValue="value"></p-selectButton>
+                </div>
+
+
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-4 mb-2">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Monto excendente para vuelos nacionales</mat-label>
+                        <input cdkFocusInitial formControlName="montoExcN" matInput />
+                    </mat-form-field>
+                </div>
+
+
+                <div [ngSwitch]="this.form.controls.option.value" class="example-sidenav-content">
+
+                    <div *ngSwitchCase="1" class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-5">
+                        <span class="txt-titulo">Elija un rol</span><br />
+                        <p-dropdown formControlName="selected" [filter]="true" filterBy="name" optionValue="id"
+                            [options]="usersData.firstResponse?.ldata" optionLabel="name"
+                            placeholder="Elija un Rol"></p-dropdown>
+                    </div>
+                    <div *ngSwitchCase="3" class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-5">
+                        <span class="txt-titulo">Elija un usuario</span><br />
+                        <p-dropdown formControlName="selected" [filter]="true" filterBy="name" optionValue="id"
+                            [options]="usersData.secondResponse?.ldata" optionLabel="name"
+                            placeholder="Elija un Usuario"></p-dropdown>
+                    </div>
+                    <div *ngSwitchCase="2" class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-5">
+                        <span class="txt-titulo">Elija un centro de costo</span><br />
+                        <p-dropdown formControlName="selected" [filter]="true" filterBy="code" optionValue="id"
+                            [options]="usersData.threeResponse?.ldata" optionLabel="code"
+                            placeholder="Elija un Centro de Costo"></p-dropdown>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+
+            <div class="row m-0 p-0 ">
+                <div class="col mt-5 mb-2 text-center">
+                    <mat-dialog-actions align="end">
+
+
+
+
+                        <button color="primary" (click)="createPolicy()" mat-flat-button type="submit">
+                            {{textbtn}}
+                        </button>
+
+                    </mat-dialog-actions>
+                </div>
+            </div>
+        </div>
+
+        <div [formGroup]="form" *ngSwitchCase="'P0'">
+            <div class="row m-0 p-0">
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-2 mb-4">
+                    <mat-label>Ruta Adicional :</mat-label>
+                    <p-selectButton [options]="stateOptions" formControlName="isActive" optionLabel="label"
+                        optionValue="value"></p-selectButton>
+                </div>
+
+                <div *ngIf="this.form.controls.isActive.value === 'on'"
+                    class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-4 mb-2">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Precio Maximo Nacional</mat-label>
+                        <input cdkFocusInitial formControlName="precioNatMaX" matInput />
+                    </mat-form-field>
+                </div>
+
+              
+
+                <div *ngIf="this.form.controls.isActive.value === 'on'"
+                    class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-4 mb-2">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Precio Maximo Internacional</mat-label>
+                        <input cdkFocusInitial formControlName="precioIntMax" matInput />
+                    </mat-form-field>
+                </div>
+
+
+
+
+            </div>
+
+            <div class="row m-0 p-0 ">
+                <div class="col mt-5 mb-2 text-center">
+                    <mat-dialog-actions align="end">
+
+
+
+
+                        <button color="primary" (click)="createPolicy()" mat-flat-button type="submit">
+                            Actualizar Ruta
+                        </button>
+
+                    </mat-dialog-actions>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</form>
