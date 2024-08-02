@@ -696,7 +696,7 @@ export class SearchFlightComponent implements OnInit {
       tipoVuelo: this.tipoVuelo,
       cabina: this.selectedCabin,
       scale: this.selectedScale,
-      passenger: this.passengerList,
+      passenger: this.passengerList ?? [],
       chkCabina: this.maleta,
       chkBodega: this.bodega
     }

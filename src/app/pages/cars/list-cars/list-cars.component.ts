@@ -420,46 +420,57 @@ export class ListCarsComponent implements OnInit {
     this.sideScroll(container, "right", 5, 200, 10);
   }
 
+  //Validar carros
+
   verDetalle(recomendacion: any, categoriaDescription: any) {
-    this.head.mostrarSpinner();
-    let datos = this.head.getDataLogin();
-    const fechaIni = this.carsSearchRequest.fechaIda.substring(0,10) + "T" + this.carsSearchRequest.horaIda + ":00.000";
-    const fechaFin = this.carsSearchRequest.fechaVuelta.substring(0,10) + "T" + this.carsSearchRequest.horaVuelta + ":00.000";
-    const data = {
-      CompanyCode: recomendacion.ocompany?.code,
-      SippCode: recomendacion.sippCode,
-      CountryIataCode: this.carsSearchRequest.countryIataCode,
-      PickUpIataCode: recomendacion.olocation.pickUpLocation,
-      DropOffIataCode: recomendacion.olocation.dropOffLocation,
-      PickUpDate: fechaIni,
-      DropOffDate: fechaFin,
-      Ccrc: recomendacion.ccrc,
-      RateId: recomendacion.orate.rateId,
-      oprice: recomendacion.oprice,
-      PromotionalCode: "",
-      PaymentType: "",
-      Language: "es",
-      SearchType: "C",
-      Ocompany: {
-        companyDK: datos.oenterprise.codeDK,
-        companyId: datos.oenterprise.id
-      },
-    };
-
-
-    this.carsService.selectCar(data).subscribe(
-      (result) => {
-        sessionStorage.setItem("ss_sel_car_result", JSON.stringify(result));
-      },
-      (error) => {
-        this.head.ocultarSpinner();
-      },
-      () => {
-        this.head.ocultarSpinner();
-        sessionStorage.setItem("ss_recomendacion_alq", JSON.stringify(recomendacion));
-        sessionStorage.setItem("ss_categoriaDescription_alq", JSON.stringify(categoriaDescription));
-        this.router.navigate(["cars/car-detail"]);
-      }
-    );
+    console.log("llega acá recomendación:",recomendacion);
+    console.log("categoriaDescription:",categoriaDescription);
+    if((recomendacion != null || recomendacion != undefined) && (recomendacion.oinformation != null && recomendacion.lextraRates != null)){
+      console.log("Entra en el detalle");
+      this.head.mostrarSpinner();
+      let datos = this.head.getDataLogin();
+      const fechaIni = this.carsSearchRequest.fechaIda.substring(0,10) + "T" + this.carsSearchRequest.horaIda + ":00.000";
+      const fechaFin = this.carsSearchRequest.fechaVuelta.substring(0,10) + "T" + this.carsSearchRequest.horaVuelta + ":00.000";
+      const data = {
+        CompanyCode: recomendacion.ocompany?.code,
+        SippCode: recomendacion.sippCode,
+        CountryIataCode: this.carsSearchRequest.countryIataCode,
+        PickUpIataCode: recomendacion.olocation.pickUpLocation,
+        DropOffIataCode: recomendacion.olocation.dropOffLocation,
+        PickUpDate: fechaIni,
+        DropOffDate: fechaFin,
+        Ccrc: recomendacion.ccrc,
+        RateId: recomendacion.orate.rateId,
+        oprice: recomendacion.oprice,
+        PromotionalCode: "",
+        PaymentType: "",
+        Language: "es",
+        SearchType: "C",
+        Ocompany: {
+          companyDK: datos.oenterprise.codeDK,
+          companyId: datos.oenterprise.id
+        },
+      };
+  
+  
+      this.carsService.selectCar(data).subscribe(
+        (result) => {
+          sessionStorage.setItem("ss_sel_car_result", JSON.stringify(result));
+        },
+        (error) => {
+          this.head.ocultarSpinner();
+        },
+        () => {
+          this.head.ocultarSpinner();
+          sessionStorage.setItem("ss_recomendacion_alq", JSON.stringify(recomendacion));
+          sessionStorage.setItem("ss_categoriaDescription_alq", JSON.stringify(categoriaDescription));
+          this.router.navigate(["cars/car-detail"]);
+        }
+      );
+    }
+    else{
+      console.log("No entra en el detalle");
+      this.head.setErrorToastr(`${"No se encuentra detalle sobre este vehículo:"} ${recomendacion.model}`);
+    }
   }
 }

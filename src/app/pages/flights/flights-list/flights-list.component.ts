@@ -42,14 +42,11 @@ export class FlightsListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-
     this.objetoDesencriptado = this.cookieServices.get('cookieLogin');
     this.objetoDesencriptado = this.headService.desencriptar(this.objetoDesencriptado);
     let datos = history.state.data;
     this.getData(datos)
-
   }
-
 
   ngOnDestroy(): void {
     if(this.subscription) {
@@ -113,10 +110,6 @@ export class FlightsListComponent implements OnInit, OnDestroy {
     this.validTypeFlight = $event;
     this.validCalendar = false;
   }
-
-
-
-
 
   Datafiltrosuperior($event: any) {
     this.setLstAerolineas($event);
@@ -239,9 +232,6 @@ export class FlightsListComponent implements OnInit, OnDestroy {
     )
   }
 
-
-
-
   setFlights() {
     this.lstCalendar = [];
     this.request = this.cookieValue.request;
@@ -282,3 +272,4 @@ export class FlightsListComponent implements OnInit, OnDestroy {
   }
 
 }
+
