@@ -36,6 +36,10 @@ export class RoleCentralizerComponent implements OnInit {
   displayedList: any[] = [];
   itemsPerPage = 10; // Número de elementos por página
   currentPage = 1; // Página actual inicial
+
+  listPerfil: any[] = [];
+  selectedPerfil: string  = "";
+
   @Output() flagCentralizado = new EventEmitter<any>();
   searchTerm = '';
   constructor(private service: FlightService,private head: HeaderService,private cookie: CookieService,private modalService: BsModalService) { 
@@ -43,18 +47,11 @@ export class RoleCentralizerComponent implements OnInit {
     this.name = "";
     this.document = "";
   }
-
   ngOnInit(): void {
-
-   
     this.objetoDesencriptado = this.cookie.get('cookieLogin');
     this.objetoDesencriptado = this.head.desencriptar(this.objetoDesencriptado);
     this.search();
   }
-
-  
-
-  
 
   eliminarPasajero(pasajero: any) {
     let flagIndex = 0;
@@ -73,7 +70,6 @@ export class RoleCentralizerComponent implements OnInit {
  
 
   filterItemsDoc(): void {
-
 
     this.displayedList = this.filteredList.filter(item => {
       const fullName = `${item.lpersonDocuments[0].docNumber}`;
@@ -99,6 +95,34 @@ export class RoleCentralizerComponent implements OnInit {
       }
       this.flagCentralizado.emit(obj);
     }
+  }
+
+  extractUniqueRoles(personList: any[]): void {
+    const roles = new Set<string>();
+    personList.forEach(person => {
+      if (person.orole && person.orole.name) {
+        roles.add(person.orole.name);
+      }
+    });
+
+    this.listPerfil = [{ id: 0, perfil: 'Todos los perfiles', code: '' }, ...Array.from(roles).map((role, index) => ({
+      id: index + 1,
+      perfil: role,
+      code: role
+    }))];
+  }
+
+
+  filterPerfil(): void {
+    if (!this.selectedPerfil || this.selectedPerfil === 'Todos los perfiles') {
+      // Si no se ha seleccionado un perfil o se selecciona 'Todos los perfiles', mostrar toda la lista
+      this.displayedList = this.filteredList;
+    } else {
+      this.displayedList = this.filteredList.filter(item => {
+        return item.orole && item.orole.name.toLowerCase() === this.selectedPerfil.toLowerCase();
+      });
+    }
+    this.currentPage = 1;
   }
 
   filterItems(): void {
@@ -179,8 +203,35 @@ export class RoleCentralizerComponent implements OnInit {
     return Math.ceil(this.displayedList.length / this.itemsPerPage);
   }
 
+  // search(){
+  //   if(this.filteredList.length != 0){
+  //     return;
+  //   }
+  //   this.head.mostrarSpinner();
+  //   let freeText = '';
+  //   const datos = {
+  //     Oenterprise: this.objetoDesencriptado.oenterprise,
+  //     FreeText: freeText,
+  //     UserId: this.objetoDesencriptado.userID
+  //   };
+  //   this.service.getUserByCompany(datos).subscribe(
+  //     result => {
+  //       this.lstPerson = result;
+  //       this.filteredList = result;
+  //       this.displayedList = this.filteredList;
+  //       this.head.ocultarSpinner();
+  //       console.log(this.displayedList);
+  //     },
+  //     error => {
+  //       error.status === 404 ? this.head.setErrorToastr("Servicio no encontrado") : this.head.error500(); 
+  //     }
+  //   );
+
+  // }
+
+
   search(){
-    if(this.filteredList.length != 0){
+    if(this.filteredList.length !== 0){
       return;
     }
     this.head.mostrarSpinner();
@@ -193,15 +244,18 @@ export class RoleCentralizerComponent implements OnInit {
     this.service.getUserByCompany(datos).subscribe(
       result => {
         this.lstPerson = result;
-        this.filteredList = result;
+        this.filteredList = result; 
         this.displayedList = this.filteredList;
+
+        this.extractUniqueRoles(result);
+
         this.head.ocultarSpinner();
+        console.log(this.displayedList);
       },
       error => {
         error.status === 404 ? this.head.setErrorToastr("Servicio no encontrado") : this.head.error500(); 
       }
     );
-
   }
 
   typeSearch(valor: any) {

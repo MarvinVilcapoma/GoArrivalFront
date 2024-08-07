@@ -4,31 +4,44 @@
     </div>
 </div>
 <div class="row m-0 p-0 mt-2 namelast">
-    <div class="col-lg-6 col-md-6 col-sm-6 col-12 m-0 p-0">
-        <div class="row m-0 p-0">
+    <!-- Columna para Nombre/Apellido -->
+    <div class="col-lg-4 col-md-4 col-sm-6 col-12 m-0 p-0">
+        <div class="row m-0 p-0 align-items-center">
             <div class="col-lg-5 col-md-6 col-sm-6 col-12 m-0 p-0">
-              
-                <span class="text-bienv">Nombre/Apellido</span>
+                <span class="text-bienv text-bienv-small">Nombre/Apellido</span>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-12 m-0 p-0">
-                <input (input)="filterItems()" [(ngModel)]="name" class="form-control box-shadow" type="text">
+            <div class="col-lg-7 col-md-6 col-sm-6 col-12 m-0 p-0">
+                <input (input)="filterItems()" [(ngModel)]="name" class="form-control box-shadow input-smaller" type="text">
             </div>
         </div>
-
-
     </div>
-    <div class="col-lg-6 col-md-6 col-sm-6 col-12 m-0 p-0">
-        <div class="row m-0 p-0">
-            <div class="col-lg-4 col-md-5 col-sm-5 col-12 m-0 p-0">
-              
-                <span class="text-bienv">DNI/Matrícula</span>
+
+    <!-- Columna para Perfil -->
+    <div class="col-lg-4  seekerDropDown-role-centralizer col-md-4 col-sm-6 col-12 m-0 p-0">
+        <div class="row m-0 p-0 align-items-center">
+            <div class="col-lg-5 col-md-5 col-sm-5 col-12 m-0 p-0">
+                <span class="text-bienv">Perfil</span>
+            </div>
+            <div class="col-lg-7 col-md-7 col-sm-7 col-12 m-0 p-0">
+                <!-- <p-dropdown [options]="listPerfil" (onChange)="filterPerfil" [(ngModel)]="selectedPerfil" placeholder="Todos los perfiles" optionLabel="perfil" optionValue="perfil" [style]="{'width': '100%'}" class="dropdown-lg"></p-dropdown> -->
+                <p-dropdown [options]="listPerfil" (onChange)="filterPerfil()" [(ngModel)]="selectedPerfil" placeholder="Todos los perfiles" optionLabel="perfil" optionValue="perfil" [style]="{'width': '100%'}" class="dropdown-lg"></p-dropdown>
+            </div>
+        </div>
+    </div>
+
+    <!-- Columna para DNI/Matrícula -->
+    <div class="col-lg-4 col-md-4 col-sm-6 col-12 m-0 p-0">
+        <div class="row m-0 p-0 align-items-center">
+            <div class="col-lg-5 col-md-5 col-sm-5 col-12 m-0 p-0">
+                <span class="text-bienv text-bienv-smaller">DNI/Matrícula</span>
             </div>
             <div class="col-lg-5 col-md-5 col-sm-5 col-12 m-0 p-0">
-                <input (input)="filterItemsDoc()" [(ngModel)]="document" class="form-control box-shadow" type="text">
+                <input (input)="filterItemsDoc()" [(ngModel)]="document" class="form-control box-shadow input-smaller" type="text">
             </div>
-            <div class="col-lg-3 col-md-2 col-sm-2 col-12">
-              
-                <div class="buscar" (click)="search()"><img src="assets/Images/seeker/buscador-musical.svg" alt="" style="width: 15px">Buscar</div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-12 d-flex align-items-center justify-content-center">
+                <div class="buscar" (click)="search()">
+                    <img src="assets/Images/seeker/buscador-musical.svg" alt="" style="width: 15px"> Buscar
+                </div>
             </div>
         </div>
     </div>
