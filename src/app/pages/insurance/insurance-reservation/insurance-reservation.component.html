@@ -115,12 +115,26 @@
                                 <label htmlFor="countryContact">País de residencia</label>
                             </span>
                         </div>
-                        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+                        <!-- <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
                             <span class="p-float-label">
-                                <input pInputText id="phoneContact" [(ngModel)]="phoneContact" />
+                                <label for="">{{phonePrefix}}</label>
+                                <input pInputText id="phoneContact" [(ngModel)]="phoneContact"/>
+                                <label htmlFor="phoneContact">Teléfono</label>
+                            </span>
+                        </div>  -->
+                        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+                            <span class="p-float-label phone-input-container">
+                                <input 
+                                    pInputText 
+                                    id="phoneContact" 
+                                    [(ngModel)]="phoneContact" 
+                                    (input)="onPhoneNumberChange($event)"
+                                    class="phone-input" 
+                                />
                                 <label htmlFor="phoneContact">Teléfono</label>
                             </span>
                         </div>
+                        
                         <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
                             <span class="p-float-label">
                                 <input pInputText id="emailContact" [(ngModel)]="emailContact" />

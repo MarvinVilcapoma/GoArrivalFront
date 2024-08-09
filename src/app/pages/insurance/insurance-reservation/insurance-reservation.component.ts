@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Message } from 'primeng/api';
 import { FlightService } from 'src/app/services/flight/flight.service';
@@ -16,8 +16,6 @@ interface Documento {
   styleUrls: ['./insurance-reservation.component.css']
 })
 export class InsuranceReservationComponent implements OnInit {
-
-
   messages1: Message[] | any;
   messages2: Message[] | any;
   messages3: Message[] | any;
@@ -27,7 +25,7 @@ export class InsuranceReservationComponent implements OnInit {
   selectedType: Documento | any;
   card: any;
   lstPassenger: any[] = [];
-  classChk : string = "";
+  classChk: string = "";
   transaction: string = "B";
   request: any;
   nameContact: string = "";
@@ -45,10 +43,10 @@ export class InsuranceReservationComponent implements OnInit {
   disabledBtn: boolean | any = true;
   idRuc: string = "50FC2C8B-9304-4CEC-AE6A-D88739071B7A";
   validInput: boolean = true;
-  constructor(private flightService: FlightService, private service: InsuranceService, private router: Router, private head: HeaderService) {
-
-
-  }
+  
+  phonePrefix: string = "";
+  phoneNumberWithoutPrefix : string = "";
+  constructor(private flightService: FlightService, private service: InsuranceService, private router: Router, private head: HeaderService) { }
 
   ngOnInit(): void {
     const data = history.state.data;
@@ -58,7 +56,7 @@ export class InsuranceReservationComponent implements OnInit {
   setData(data: any) {
     this.card = data.card;
     this.request = data.request;
-    this.assemblePassenger(data.request.Lpassenger)
+    this.assemblePassenger(data.request.Lpassenger);
     this.getPaises();
     this.getDocument();
     this.documents = [
@@ -85,7 +83,6 @@ export class InsuranceReservationComponent implements OnInit {
   }
 
   validInputs() {
-
     this.lstPassenger.forEach((element: any, index: number) => {
       if (element.name === "") this.setBorder('name_' + index, "#ED1C24");
       if (element.lastName === "") this.setBorder('lastname_' + index, "#ED1C24");
@@ -98,13 +95,11 @@ export class InsuranceReservationComponent implements OnInit {
       if (element.gender === "") this.setBorder('gender_' + index, "#ED1C24");
     });
 
-
     if (this.nameContact === "") this.setBorder('nameContact', "#ED1C24");
     if (this.lastNameContact === "") this.setBorder('lastNameContact', "#ED1C24");
-    /* !this.checked ? this.chkRequired() : this.classChk = ""; */
   }
 
-  chkRequired(){
+  chkRequired() {
     this.classChk = "ng-invalid ng-dirty";
     this.validInput = false;
   }
@@ -116,38 +111,38 @@ export class InsuranceReservationComponent implements OnInit {
         console.log(this.lstpaises);
       },
       error => {
-        error.status === 404 ? this.head.setErrorToastr("Servicio no encontrado") : this.head.error500(); 
+        error.status === 404 ? this.head.setErrorToastr("Servicio no encontrado") : this.head.error500();
       }
     )
   }
 
-  // onCountryChange(event: any) {
-  //   const selectedCountryCode = event.value;
-  //   this.phoneContact = "";
-  //   console.log(selectedCountryCode);
-  //   const selectedCountry = this.lstpaises.find((country) => country.iataCode === selectedCountryCode);
-  //   if (selectedCountry) {
-  //     const phonePrefix = selectedCountry.phonePrefix;
-  //     if (!this.phoneContact.startsWith(phonePrefix)) {
-  //       // this.phoneContact = `${phonePrefix} ${this.phoneContact.trim()}`;
-  //       this.phoneContact = `${phonePrefix} ${this.phoneContact.replace(/^\+\d+\s*/, '')}`;
-  //     }
-  //   }
-  // }
-
   onCountryChange(event: any) {
     const selectedCountryCode = event.value;
-    console.log(selectedCountryCode);
     const selectedCountry = this.lstpaises.find((country) => country.iataCode === selectedCountryCode);
-  
     if (selectedCountry) {
-      const phonePrefix = selectedCountry.phonePrefix;
-      const phoneNumberWithoutPrefix = this.phoneContact.replace(/^\+\d+\s*/, '').trim();
-      this.phoneContact = `${phonePrefix} ${phoneNumberWithoutPrefix}`;
+      this.phonePrefix = selectedCountry.phonePrefix;
+      this.updatePhoneContact();
     }
   }
-  
-  
+
+  onPhoneNumberChange(event: any) {
+    const inputValue = event.target.value;
+    // Actualiza solo la parte del número sin prefijo
+    this.phoneNumberWithoutPrefix = inputValue.replace(new RegExp(`^\\(${this.phonePrefix}\\)\\s*`), '').trim();
+    // Aplica el prefijo al número sin prefijo
+    this.updatePhoneContact();
+}
+
+updatePhoneContact() {
+    // Verifica si hay un prefijo y actualiza el teléfono completo
+    // if (this.phonePrefix) {
+         this.phoneContact = `(${this.phonePrefix}) `;
+    // } else {
+    //     this.phoneContact = this.phoneNumberWithoutPrefix; // Si no hay prefijo, solo el número
+    // }
+    // // Asegura que el campo de entrada refleje el teléfono completo
+    //this.phoneNumberWithoutPrefix = this.phoneContact.replace(/^\(\+\d+\)\s*/, '').trim();
+}
 
   onValueChangeSalida(value: Date | any) {
     if (value != null) {
@@ -199,7 +194,7 @@ export class InsuranceReservationComponent implements OnInit {
         this.lstDocument = x.ldata;
       },
       error => {
-        error.status === 404 ? this.head.setErrorToastr("Servicio no encontrado") : this.head.error500(); 
+        error.status === 404 ? this.head.setErrorToastr("Servicio no encontrado") : this.head.error500();
       }
     );
   }
@@ -246,7 +241,7 @@ export class InsuranceReservationComponent implements OnInit {
         result.lpassengers?.length > 0 ? this.router.navigate(["insurance/insurance-successful"], { state: { data: datos } }) : this.head.error500();
       },
       error => {
-        error.status === 404 ? this.head.setErrorToastr("Servicio no encontrado") : this.head.error500(); 
+        error.status === 404 ? this.head.setErrorToastr("Servicio no encontrado") : this.head.error500();
       }
     )
   }
@@ -257,13 +252,10 @@ export class InsuranceReservationComponent implements OnInit {
     !this.validInput ? null : this.serviceReservation();
   }
 
-
   assemblePassenger(lst: any[]) {
-
     lst.forEach(element => {
       let item = { name: "", lastName: "", odocument: { documentType: "", documentNumber: "" }, country: "", phone: "", email: "", birthDate: "", gender: "", type: "ADT" };
       this.lstPassenger.push(item);
     });
   }
-
 }

@@ -27,3 +27,26 @@
     cursor: pointer;
     color: #0664e0;
 }
+
+.phone-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
+}
+
+.phone-prefix {
+    position: absolute;
+    left: 0; /* Coloca el prefijo en el borde izquierdo del contenedor */
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    white-space: nowrap; /* Evita que el prefijo se ajuste en varias líneas */
+    pointer-events: none; /* Evita que el prefijo sea clickeable o editable */
+}
+
+.phone-input {
+    margin-left: 0; /* Inicialmente sin margen */
+    width: 100%; /* El campo de entrada ocupa todo el ancho disponible del contenedor */
+    box-sizing: border-box; /* Incluye el border y el padding en el ancho total del input */
+}
