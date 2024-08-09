@@ -8,6 +8,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class FilterAirlineComponent implements OnInit {
   @Input() lstAerolineas: any[] = [];
   @Input() searchFlight: any[] = [];
+  @Input() clearFilter: any[] = [];
+
 
   @Output() searchFlightFilter = new EventEmitter<any[]>();
   resultFilter: any[] = [];
@@ -34,6 +36,20 @@ export class FilterAirlineComponent implements OnInit {
       });
     }
     this.searchFlightFilter.emit(this.searchFlight);
+  }
+
+  // filtrarAerolineas(){
+  //   if (this.selectedAirline.length === 0){
+  //     this.searchFlight.forEach(element =>{
+  //       element.isVisible = false;
+  //     });
+  //   }else{
+
+  //   }
+  // }
+
+  toogleCheckBox(){
+    this.checkAll = !this.checkAll;
   }
 
 }

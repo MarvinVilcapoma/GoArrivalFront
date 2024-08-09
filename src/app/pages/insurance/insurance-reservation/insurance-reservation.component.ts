@@ -109,20 +109,45 @@ export class InsuranceReservationComponent implements OnInit {
     this.validInput = false;
   }
 
- 
-
-
   getPaises() {
     this.flightService.getCountries().subscribe(
       x => {
         this.lstpaises = x;
-
+        console.log(this.lstpaises);
       },
       error => {
         error.status === 404 ? this.head.setErrorToastr("Servicio no encontrado") : this.head.error500(); 
       }
     )
   }
+
+  // onCountryChange(event: any) {
+  //   const selectedCountryCode = event.value;
+  //   this.phoneContact = "";
+  //   console.log(selectedCountryCode);
+  //   const selectedCountry = this.lstpaises.find((country) => country.iataCode === selectedCountryCode);
+  //   if (selectedCountry) {
+  //     const phonePrefix = selectedCountry.phonePrefix;
+  //     if (!this.phoneContact.startsWith(phonePrefix)) {
+  //       // this.phoneContact = `${phonePrefix} ${this.phoneContact.trim()}`;
+  //       this.phoneContact = `${phonePrefix} ${this.phoneContact.replace(/^\+\d+\s*/, '')}`;
+  //     }
+  //   }
+  // }
+
+  onCountryChange(event: any) {
+    const selectedCountryCode = event.value;
+    console.log(selectedCountryCode);
+    const selectedCountry = this.lstpaises.find((country) => country.iataCode === selectedCountryCode);
+  
+    if (selectedCountry) {
+      const phonePrefix = selectedCountry.phonePrefix;
+      const phoneNumberWithoutPrefix = this.phoneContact.replace(/^\+\d+\s*/, '').trim();
+      this.phoneContact = `${phonePrefix} ${phoneNumberWithoutPrefix}`;
+    }
+  }
+  
+  
 
   onValueChangeSalida(value: Date | any) {
     if (value != null) {

@@ -111,7 +111,7 @@
                         <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
                             <span class="p-float-label">
                                 <p-dropdown [options]="lstpaises" id="countryContact" [filter]="true" filterBy="name"
-                                    [(ngModel)]="countryContact" optionValue="iataCode" optionLabel="name"></p-dropdown>
+                                (onChange)="onCountryChange($event)" [(ngModel)]="countryContact" optionValue="iataCode" optionLabel="name"></p-dropdown>
                                 <label htmlFor="countryContact">País de residencia</label>
                             </span>
                         </div>

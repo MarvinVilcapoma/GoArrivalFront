@@ -5,7 +5,10 @@
    
     <div class="col-lg-12 col-md-12 col-sm-12 m-0 p-0 mt-2 mb-2" *ngFor="let aerolinea of lstAerolineas;let i = index">
 
-        <p-checkbox [label]="aerolinea.marketingName" name="group" [inputId]="'{{i}}_check'" (onChange)="filtrarAerolinea($event)" [value]="aerolinea.marketingCode"
+        <!-- <p-checkbox [label]="aerolinea.marketingName" name="group" [inputId]="'{{i}}_check'" (onChange)="filtrarAerolinea($event)" [value]="aerolinea.marketingCode"
+            [(ngModel)]="selectedAirline" [clearFilter]="true"></p-checkbox> -->
+            <p-checkbox [label]="aerolinea.marketingName" name="group" [inputId]="'{{i}}_check'" (onChange)="filtrarAerolinea($event)" [value]="aerolinea.marketingCode"
             [(ngModel)]="selectedAirline"></p-checkbox>
+
     </div>
 </div>
