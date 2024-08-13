@@ -49,13 +49,50 @@
                                         <label htmlFor="country_{{i}}">País de residencia</label>
                                     </span>
                                 </div>
-                                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+                                <!-- OPCIÓN 1 DE TELÉFONO-->
+                                <!-- <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
                                     <span class="p-float-label">
                                         <input (focusout)="setBorder('phone_'+i,'#ced4da')" pInputText id="phone_{{i}}"
                                             [(ngModel)]="item.phone" />
                                         <label htmlFor="phone_{{i}}">Teléfono</label>
                                     </span>
+                                </div> -->
+
+                                <!-- OPCIÓN 2 DE TELÉFONO-->
+                                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+                                    <div class="row m-0 p-0">
+                                        <div class="col-lg-5 col-md-4 col-sm-4 col-12 pl-0">
+                                            <p-dropdown [disabled]="true" [options]="lstpaises" [filter]="true" filterBy="fullName" id="countryContact" autocomplete="off"
+                                                        [(ngModel)]="item.country" optionLabel="phonePrefix" optionValue="iataCode"></p-dropdown>
+                                        </div>
+                                        <div class="col-lg-7 col-md-8 col-sm-8 col-12 m-0 p-0">
+                                            <span class="p-float-label">
+                                                <input (focusout)="setBorder('phone_'+i,'#ced4da')" pInputText id="phone_{{i}}"
+                                                    [(ngModel)]="item.phone" />
+                                                <label htmlFor="phone_{{i}}">Teléfono</label>
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
+
+                                <!-- OPCIÓN 3 DE TELÉFONO -->
+                                <!-- <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+                                    <div class="row m-0 p-0">
+                                        <div class="col-lg-5 col-md-4 col-sm-4 col-12 pl-0">
+                                            <span>
+                                                <p-dropdown   [options]="lstpaises" [filter]="true" filterBy="fullName" id="countryContact" autocomplete="off"
+                                                optionLabel="phonePrefix" optionValue="iataCode" placeholder="Código de País"></p-dropdown>
+                                            </span>
+                                        </div>
+                                        <div class="col-lg-7 col-md-8 col-sm-8 col-12 m-0 p-0">
+                                            <span class="p-float-label">
+                                                <input (focusout)="setBorder('phone_'+i,'#ced4da')" pInputText id="phone_{{i}}"
+                                                    [(ngModel)]="item.phone" />
+                                                <label htmlFor="phone_{{i}}">Teléfono</label>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div> -->
                                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
                                     <span class="p-float-label">
                                         <input (focusout)="setBorder('email_'+i,'#ced4da')" pInputText id="email_{{i}}"
@@ -111,30 +148,37 @@
                         <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
                             <span class="p-float-label">
                                 <p-dropdown [options]="lstpaises" id="countryContact" [filter]="true" filterBy="name"
-                                (onChange)="onCountryChange($event)" [(ngModel)]="countryContact" optionValue="iataCode" optionLabel="name"></p-dropdown>
+                                [(ngModel)]="countryContact" optionValue="iataCode" optionLabel="name"></p-dropdown>
                                 <label htmlFor="countryContact">País de residencia</label>
                             </span>
                         </div>
                         <!-- <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
                             <span class="p-float-label">
-                                <label for="">{{phonePrefix}}</label>
+                                <p-dropdown [options]="lstpaises" id="countryContact" [filter]="true" filterBy="name"
+                                (onChange)="onCountryChange($event)" [(ngModel)]="countryContact" optionValue="iataCode" optionLabel="name"></p-dropdown>
+                                <label htmlFor="countryContact">País de residencia</label>
+                            </span>
+                        </div> -->
+                        <!-- <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+                            <span class="p-float-label">
                                 <input pInputText id="phoneContact" [(ngModel)]="phoneContact"/>
                                 <label htmlFor="phoneContact">Teléfono</label>
                             </span>
                         </div>  -->
                         <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
-                            <span class="p-float-label phone-input-container">
-                                <input 
-                                    pInputText 
-                                    id="phoneContact" 
-                                    [(ngModel)]="phoneContact" 
-                                    (input)="onPhoneNumberChange($event)"
-                                    class="phone-input" 
-                                />
-                                <label htmlFor="phoneContact">Teléfono</label>
-                            </span>
+                            <div class="row m-0 p-0">
+                                <div class="col-lg-5 col-md-4 col-sm-4 col-12 pl-0">
+                                    <p-dropdown [disabled]="true" [options]="lstpaises" [filter]="true" filterBy="fullName" id="countryContact" autocomplete="off"
+                                                [(ngModel)]="countryContact" optionLabel="phonePrefix" optionValue="iataCode"></p-dropdown>
+                                </div>
+                                <div class="col-lg-7 col-md-8 col-sm-8 col-12 m-0 p-0">
+                                    <span class="p-float-label">
+                                        <input type="text" pInputText [(ngModel)]="phoneContact" autocomplete="off" maxlength="20"/>
+                                        <label htmlFor="phoneContact">Teléfono</label>
+                                    </span>
+                                </div>
+                            </div>
                         </div>
-                        
                         <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
                             <span class="p-float-label">
                                 <input pInputText id="emailContact" [(ngModel)]="emailContact" />

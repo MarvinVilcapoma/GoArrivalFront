@@ -116,33 +116,14 @@ export class InsuranceReservationComponent implements OnInit {
     )
   }
 
-  onCountryChange(event: any) {
-    const selectedCountryCode = event.value;
-    const selectedCountry = this.lstpaises.find((country) => country.iataCode === selectedCountryCode);
-    if (selectedCountry) {
-      this.phonePrefix = selectedCountry.phonePrefix;
-      this.updatePhoneContact();
-    }
-  }
+  // onCountryChange(event: any) {
+  //   const selectedCountryCode = event.value;
+  //   const selectedCountry = this.lstpaises.find((country) => country.iataCode === selectedCountryCode);
+  //   if (selectedCountry) {
+  //     this.phonePrefix = selectedCountry.phonePrefix;
+  //   }
+  // }
 
-  onPhoneNumberChange(event: any) {
-    const inputValue = event.target.value;
-    // Actualiza solo la parte del número sin prefijo
-    this.phoneNumberWithoutPrefix = inputValue.replace(new RegExp(`^\\(${this.phonePrefix}\\)\\s*`), '').trim();
-    // Aplica el prefijo al número sin prefijo
-    this.updatePhoneContact();
-}
-
-updatePhoneContact() {
-    // Verifica si hay un prefijo y actualiza el teléfono completo
-    // if (this.phonePrefix) {
-         this.phoneContact = `(${this.phonePrefix}) `;
-    // } else {
-    //     this.phoneContact = this.phoneNumberWithoutPrefix; // Si no hay prefijo, solo el número
-    // }
-    // // Asegura que el campo de entrada refleje el teléfono completo
-    //this.phoneNumberWithoutPrefix = this.phoneContact.replace(/^\(\+\d+\)\s*/, '').trim();
-}
 
   onValueChangeSalida(value: Date | any) {
     if (value != null) {

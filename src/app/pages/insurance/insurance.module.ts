@@ -20,7 +20,6 @@ import { InsuranceSuccessfulComponent } from './insurance-successful/insurance-s
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { CheckboxModule } from 'primeng/checkbox';
 
-
 const routes: Routes = [
   {
     path: '',
