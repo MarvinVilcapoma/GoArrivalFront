@@ -116,15 +116,6 @@ export class InsuranceReservationComponent implements OnInit {
     )
   }
 
-  // onCountryChange(event: any) {
-  //   const selectedCountryCode = event.value;
-  //   const selectedCountry = this.lstpaises.find((country) => country.iataCode === selectedCountryCode);
-  //   if (selectedCountry) {
-  //     this.phonePrefix = selectedCountry.phonePrefix;
-  //   }
-  // }
-
-
   onValueChangeSalida(value: Date | any) {
     if (value != null) {
       let mes = "";

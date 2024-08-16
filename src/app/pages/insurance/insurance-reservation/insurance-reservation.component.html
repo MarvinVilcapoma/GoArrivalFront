@@ -59,7 +59,7 @@
                                 </div> -->
 
                                 <!-- OPCIÓN 2 DE TELÉFONO-->
-                                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+                                <!-- <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
                                     <div class="row m-0 p-0">
                                         <div class="col-lg-5 col-md-4 col-sm-4 col-12 pl-0">
                                             <p-dropdown [disabled]="true" [options]="lstpaises" [filter]="true" filterBy="fullName" id="countryContact" autocomplete="off"
@@ -73,7 +73,7 @@
                                             </span>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <!-- OPCIÓN 3 DE TELÉFONO -->
                                 <!-- <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
@@ -93,6 +93,24 @@
                                         </div>
                                     </div>
                                 </div> -->
+
+                                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+                                    <div class="row m-0 p-0">
+                                        <div class="col-lg-5 col-md-4 col-sm-4 col-12 pl-0">
+                                            <span>
+                                                <p-dropdown [options]="lstpaises" [filter]="true" filterBy="fullName" id="countryContact" autocomplete="off"
+                                                optionLabel="phonePrefix" optionValue="iataCode countryCode" placeholder="Código de País"></p-dropdown>
+                                            </span>
+                                        </div>
+                                        <div class="col-lg-7 col-md-8 col-sm-8 col-12 m-0 p-0"> 
+                                            <span class="p-float-label">
+                                                <input pInputText type="text">
+                                                <label htmlFor="phone_{{i}}">Teléfono</label>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
                                     <span class="p-float-label">
                                         <input (focusout)="setBorder('email_'+i,'#ced4da')" pInputText id="email_{{i}}"
@@ -169,7 +187,7 @@
                             <div class="row m-0 p-0">
                                 <div class="col-lg-5 col-md-4 col-sm-4 col-12 pl-0">
                                     <p-dropdown [disabled]="true" [options]="lstpaises" [filter]="true" filterBy="fullName" id="countryContact" autocomplete="off"
-                                                [(ngModel)]="countryContact" optionLabel="phonePrefix" optionValue="iataCode"></p-dropdown>
+                                    [(ngModel)]="countryContact" optionLabel="phonePrefix" optionValue="iataCode"></p-dropdown>
                                 </div>
                                 <div class="col-lg-7 col-md-8 col-sm-8 col-12 m-0 p-0">
                                     <span class="p-float-label">
