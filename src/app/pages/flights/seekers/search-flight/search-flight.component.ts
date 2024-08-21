@@ -59,7 +59,6 @@ export class SearchFlightComponent implements OnInit {
   }
   ]
 
-
   indexTramo: number = 2;
   lstAutocomplete: any[] = [];
   airportlist: any;
