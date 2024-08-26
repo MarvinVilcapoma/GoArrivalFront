@@ -265,6 +265,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     
     this.subscription =  this.service.login(obj).subscribe(
       rpta => {
+        console.log(rpta);
         if (rpta.status != 200) {
 
           this.headerService.ocultarSpinner();

@@ -105,7 +105,7 @@ export class GenerateReservationComponent implements OnInit {
       this.validPassenger = true;
       this.headService.ocultarSpinner();
 
-
+      console.log(this.company);
    
   }
 

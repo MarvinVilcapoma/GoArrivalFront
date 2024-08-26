@@ -96,7 +96,6 @@ export class PassengersComponent implements OnInit {
     this.traerData();
     this.getPaises();
 
- 
   }
 
 
@@ -126,6 +125,9 @@ export class PassengersComponent implements OnInit {
     this.typevuelo = datos.typeFlight;
     this.flight = datos.rpta;
     this.validPassenger = true;
+
+    console.log(datos);
+    console.log(this.loginData);
   }
 
   obtenerValoresInputHijos() {
