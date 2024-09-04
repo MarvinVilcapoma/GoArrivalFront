@@ -24,8 +24,10 @@ export const environment = {
   //   url_customer: 'https://prd-api.goarrival.com/customer/v1/'
 
    production: false,
-    url: "https://uat-api.goarrival.com/security/v1/",
-    url_2: "https://uat-api.goarrival.com/flight/v1/",
+    // url: "https://uat-api.goarrival.com/security/v1/",
+    // url_2: "https://uat-api.goarrival.com/flight/v1/",
+    url: "http://localhost:1630/api/",
+    url_2:"http://localhost:43620/api/",
     url_5: 'https://uat-api.goarrival.com/customer/v1/',
     url_6: 'https://uat-api.goarrival.com/notification/v1/',
     url_reports: "http://reports-api.domiruth.com/api/",
