@@ -26,7 +26,7 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { SidebarModule } from 'primeng/sidebar';
 import { BadgeModule } from 'primeng/badge';
 import { DialogModule } from 'primeng/dialog';
-
+import { CardModule } from 'primeng/card';
 
 
 import {MatProgressBarModule} from '@angular/material/progress-bar';
@@ -78,6 +78,7 @@ import { InputOtpModule } from 'primeng/inputotp';
     BrowserAnimationsModule,
     FormsModule,
     BadgeModule,
+    CardModule,
     MatProgressBarModule,
     PasswordModule,
     DividerModule,

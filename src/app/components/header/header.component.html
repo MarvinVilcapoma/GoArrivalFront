@@ -17,10 +17,50 @@
                     style="cursor: pointer;">{{cookieValue.name}}</span>
                 <img (click)="op.toggle($event)" class="ml-2" style="cursor: pointer;"
                     src="assets/Images/header/zicHeader.png">
+                <!-- <img class="ml-3" src="assets/Images/header/bell.png"> -->
+                <span (click)="not.toggle($event)" class="ml-3">
+                    <i class="pi pi-bell mr-4 white-icon" pBadge value="2" severity="danger"></i>
+                </span>
+                <p-overlayPanel #not>
+                    <div class="popRoom">
+                        <div>
+                            <span class="font-medium text-900 block mb-2">Notificaciones</span>
+                            <hr>
+                            <!-- <div>
+                                <h3>Title</h3>
+                                <hr>
+                                <p>Texto de prueba para notificación.</p>
+                            </div> -->
+                            <div class="bordered-div">
+                                <span class="notification-title">Titulo de Notificación</span>
+                                <p>Texto de prueba</p>
+                            </div>
+                            <p-card class="compact-card">
+                                <ng-template pTemplate="header">
+                                    <div class="card-header">
+                                        <div class="card-title">item.title</div>
+                                    </div>
+                                </ng-template>
+                                <ng-template pTemplate="content">
+                                    <div class="card-content">
+                                        <p class="card-description">item.description</p>
+                                    </div>
+                                </ng-template>
+                                <ng-template pTemplate="footer">
+                                    <div class="card-footer">
+                                        <span class="date">item.date </span>
+                                    </div>
+                                </ng-template>
+                            </p-card>
+                            
+                            
+                            
+                        </div>
+                    </div>
+                </p-overlayPanel>
                 <img class="ml-3" src="assets/Images/header/rayita.png">
                 <img class="point ml-2 mr-1" src="assets/Images/header/carrito.png" (click)="sidebarVisible2 = true">
                 <p-badge [value]="'0'" severity="danger"></p-badge>
-                <!--  <span class="carrito">0</span> -->
                 <p-overlayPanel #op>
                     <div class="popRoom">
                         <div class="row m-0 p-0">
@@ -43,9 +83,8 @@
                             </div>
                         </div>
                     </div>
-
+                
                 </p-overlayPanel>
-
             </div>
         </div>
         <div class="row m-0 p-0 phone">

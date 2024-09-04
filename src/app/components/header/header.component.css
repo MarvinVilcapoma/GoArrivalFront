@@ -313,3 +313,35 @@
         position: relative;
     }
 }
+
+/* .white-icon {
+    color: white;
+    border: 2px solid white;
+    border-radius: 50%;
+    padding: 5px;
+  } */
+
+  .white-icon {
+    color: white; 
+    font-size: 20px;
+    background-color: transparent; 
+    padding: 0.5em; 
+    border-radius: 50%;
+  }
+
+  .bordered-div {
+    /* border: 0.5px solid #212529; */
+    border: 0.5px solid #ccc;
+    box-shadow: inset #ccc;
+    border-radius: 4px;
+    padding: 0.5em;
+    margin-bottom: 1em;
+}
+
+.notification-title {
+    display: block;
+    font-size: 1em; /* Tamaño de fuente del título */
+    font-weight: bold; /* Negrita para el título */
+    color: #333; /* Color del texto */
+    text-align: left; /* Alinea el texto a la izquierda */
+}
