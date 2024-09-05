@@ -55,6 +55,7 @@ export class HeaderComponent implements OnInit {
   cargar = false;
   currentModuleName: string = "";
   validCompanie = false;
+  isActive = false;
   @ViewChild('userBox') userBox!: ElementRef;
   constructor(private router: Router, private cookieServices: CookieService, private headService: HeaderService, private _ActivatedRoute: ActivatedRoute, private flowService: FlowReportsService) {
     this.numero = 1;
@@ -79,6 +80,9 @@ export class HeaderComponent implements OnInit {
     this.setNumber();
   }
 
+  toggle(){
+    this.isActive = !this.isActive;
+  }
 
 
   setNumber() {

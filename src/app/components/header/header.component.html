@@ -26,35 +26,20 @@
                         <div>
                             <span class="font-medium text-900 block mb-2">Notificaciones</span>
                             <hr>
-                            <!-- <div>
-                                <h3>Title</h3>
-                                <hr>
-                                <p>Texto de prueba para notificación.</p>
-                            </div> -->
-                            <div class="bordered-div">
-                                <span class="notification-title">Titulo de Notificación</span>
-                                <p>Texto de prueba</p>
+                            <div class="notification-wrapper">
+                                <div class="bordered-div">
+                                    <div class="p-card-body">
+                                        <span class="notification-title">Titulo de Notificación</span>
+                                        <p>Texto de prueba</p>
+                                        <span class="notification-time">12 de Agosto 12:30 am</span>
+                                    </div>
+                                </div>
+                                <button title="Marcar como leído"
+                                    class="circle-button" 
+                                    [ngClass]="{ 'active': isActive }"
+                                    (click)="toggle()">
+                                </button> 
                             </div>
-                            <p-card class="compact-card">
-                                <ng-template pTemplate="header">
-                                    <div class="card-header">
-                                        <div class="card-title">item.title</div>
-                                    </div>
-                                </ng-template>
-                                <ng-template pTemplate="content">
-                                    <div class="card-content">
-                                        <p class="card-description">item.description</p>
-                                    </div>
-                                </ng-template>
-                                <ng-template pTemplate="footer">
-                                    <div class="card-footer">
-                                        <span class="date">item.date </span>
-                                    </div>
-                                </ng-template>
-                            </p-card>
-                            
-                            
-                            
                         </div>
                     </div>
                 </p-overlayPanel>
