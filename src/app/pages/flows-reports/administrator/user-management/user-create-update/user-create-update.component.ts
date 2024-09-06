@@ -1,23 +1,15 @@
 import { Component, EventEmitter, OnInit, Input, Output, ViewChild } from '@angular/core';
-import { Observable, map, startWith } from 'rxjs';
+import { Observable } from 'rxjs';
 import { FlightService } from 'src/app/services/flight/flight.service';
-import { FormBuilder, ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { FormBuilder, Validators } from '@angular/forms';
 import { HeaderService } from 'src/app/services/head.service';
 import { FlowReportsService } from 'src/app/services/flows-reports/flow-reports.service';
-import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-import { BehaviorSubject } from 'rxjs';
-import { FlatTreeControl, NestedTreeControl } from '@angular/cdk/tree';
-import { MatTreeFlatDataSource, MatTreeFlattener, MatTreeNestedDataSource } from '@angular/material/tree';
-import { SelectionModel } from '@angular/cdk/collections';
-import { MatChip } from '@angular/material/chips';
-import { ManageDocumentComponent } from './manage-document/manage-document.component';
-import { ActivatedRoute, Router } from '@angular/router';
-import { UserManagementComponent } from '../user-management.component';
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { user } from 'src/models/flows-reports/user.model';
 import { TreeSelect } from 'primeng/treeselect';
-import { SubMenu, TransformedMenu } from 'src/models/flows-reports/administrator';
+
+import { ManageDocumentComponent } from './manage-document/manage-document.component';
 
 
 
@@ -28,6 +20,8 @@ import { SubMenu, TransformedMenu } from 'src/models/flows-reports/administrator
   providers: [FlightService, FlowReportsService]
 })
 export class UserCreateUpdateComponent implements OnInit {
+
+  @ViewChild(ManageDocumentComponent) manageDocumentComponent!: ManageDocumentComponent;
 
   @Input() isRegister!: boolean;
   @Output() select = new EventEmitter<any>();
@@ -71,8 +65,8 @@ export class UserCreateUpdateComponent implements OnInit {
   dataUpdate: any;
 
 
-  access = false;
-  userActive = false;
+  access = true;
+  userActive = true;
   userVip = false;
 
 
@@ -91,7 +85,7 @@ export class UserCreateUpdateComponent implements OnInit {
 
 
   constructor(
-     private fb: FormBuilder, private head: HeaderService, private service: FlowReportsService, private router: Router,
+    private fb: FormBuilder, private head: HeaderService, private service: FlowReportsService, private router: Router,
     private cookie: CookieService) {
     this.head.ocultarEncabezado();
     const currentYear = new Date().getFullYear();
@@ -128,9 +122,24 @@ export class UserCreateUpdateComponent implements OnInit {
     this.selectedFiles.forEach(element => {
       const data = { menuID: element.id, IsActive: true }
       lstMenu.push(data);
+      if (element.parent != undefined) {
+        const datos = { menuID: element.parent.id, IsActive: true }
+        lstMenu.push(datos);
+        if (element.parent.parent != undefined) {
+          const datosParent = { menuID: element.parent.parent.id, IsActive: true }
+          lstMenu.push(datosParent);
+        }
+      }
     });
-
-    return lstMenu;
+    
+    let uniqueMenus = lstMenu.reduce((acc, current) => {
+      const x = acc.find((item: any) => item.menuID === current.menuID);
+      if (!x) {
+        acc.push(current);
+      }
+      return acc;
+    }, []);
+    return uniqueMenus;
   }
 
   createUser() {
@@ -146,18 +155,22 @@ export class UserCreateUpdateComponent implements OnInit {
     }
     this.head.mostrarSpinner();
     let valor = this.head.getCompany();
-
+    let reason = this.lstCountries.find(x => x.iataCode == this.form.controls.countryOrigin.value);
+    let prefix: string = reason.phonePrefix.substring(1);
 
     let data: user = {
       IsRegister: this.isRegister ? true : false,
       ID: this.isRegister ? "" : this.dataUpdate.personID,
       Name: this.form.controls.name.value,
       LastName: this.form.controls.lastName.value,
-      CorporatePhone: this.form.controls.phone.value || "",
-      CorporateEmail: this.form.controls.email.value,
+      CorporatePhone: !this.head.getIsAgency() ? prefix + this.form.controls.phone.value : "",
+      CorporateEmail: !this.head.getIsAgency() ? this.form.controls.email.value : "",
+      PersonalPhone: this.head.getIsAgency() ? prefix + this.form.controls.phone.value : "",
+      PersonalEmail: this.head.getIsAgency() ? this.form.controls.email.value : "",
       BirthDate: this.form.controls.birthDate.value,
       Gender: this.form.controls.gender.value,
       CountryOrigin: this.form.controls.countryOrigin.value,
+      IsVacational: this.head.getIsAgency(),
       IsVIP: this.userVip,
       LpersonDocuments: this.docsCreados,
       Ouser: {
@@ -165,7 +178,10 @@ export class UserCreateUpdateComponent implements OnInit {
         AccessGranted: this.access,
         RoleID: this.form.controls.orole.value,
         AllCostCenters: false,
-        FrequentFlyer: this.form.controls.frequentFlyer.value || "",
+        OfrequentFlyer: {
+          AirlineCode: "",
+          FrequentFlyer: this.form.controls.frequentFlyer.value || "",
+        },
         TravelerCode: this.form.controls.travelerCode.value === null ? "" : this.form.controls.travelerCode.value,
         Signature: "",
         IsActive: this.userActive,
@@ -207,21 +223,23 @@ export class UserCreateUpdateComponent implements OnInit {
       id: [UserCreateUpdateComponent.id],
       name: [this.isRegister ? '' : this.dataLoad.name, Validators.required],
       lastName: [this.isRegister ? '' : this.dataLoad.lastName, Validators.required],
-      phone: [this.isRegister ? '' : this.dataLoad.phone],
+      phone: [this.isRegister ? '' : this.dataLoad.phone, Validators.required],
       email: [this.isRegister ? '' : this.dataLoad.email, [Validators.required, Validators.email]],
       gender: [this.isRegister ? '' : this.dataLoad.gender, Validators.required],
       frequentFlyer: [this.isRegister ? '' : this.dataLoad.frequentFlyer],
-      access: [this.isRegister ? false : this.dataLoad.accessGranted],
-      userActive: [this.isRegister ? false : this.dataLoad.isActive],
-      userVip: [this.isRegister ? false : this.dataLoad.isVIP],
       orole: [this.isRegister ? '' : this.dataLoad.orole.roleID, Validators.required],
       birthDate: [this.isRegister ? '' : new Date(this.dataLoad.birthDate), Validators.required],
       countryOrigin: [this.isRegister ? '' : this.dataLoad.countryOrigin, Validators.required],
       travelerCode: [this.isRegister ? '' : this.dataLoad.travelerCode],
       lcostCenter: [this.isRegister ? [] : this.dataLoad.lcostCenter],
       lpersonProfile: [this.isRegister ? [] : this.dataLoad.lpersonProfile],
+    })
+    if (!this.isRegister) {
+      this.userActive = this.dataLoad.isActive;
+      this.access = this.dataLoad.accessGranted;
+      this.userVip = this.dataLoad.userVip;
+    }
 
-    });
   }
 
 
@@ -231,7 +249,7 @@ export class UserCreateUpdateComponent implements OnInit {
     if (!this.isRegister && this.dataUpdate.lpersonDocument?.length > 0) {
       this.writeDocuments();
     }
-  
+
   }
 
   writeDocuments() {
@@ -241,6 +259,7 @@ export class UserCreateUpdateComponent implements OnInit {
       obj.DocumentID = element.documentID;
       obj.Number = element.documentNumber;
       obj.isActive = true;
+      obj.expirationDate = element.expirationDate;
       this.docsCreados.push(obj);
     });
   }
@@ -282,14 +301,17 @@ export class UserCreateUpdateComponent implements OnInit {
   }
 
   validDocument(valor: any) {
-    this.docsCreados = valor;
-    this.visible = false;
+    if (valor.length != undefined) {
+      this.docsCreados = valor;
+      this.visible = false;
+    }
+
   }
 
   manageDocument() {
 
     const obj = {
-      user: this.dataUpdate?.lpersonDocument,
+      user: this.isRegister ? [] : this.dataUpdate?.lpersonDocument,
       document: this.lstDocument,
       lstCreateDoc: this.docsCreados
     }

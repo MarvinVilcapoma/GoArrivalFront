@@ -190,6 +190,12 @@ export interface EnterprisePersonRQ {
     IsAdministrator: boolean;
 }
 
+export interface EnterpriseNotificationRQ{
+    EnterpriseCode: string | "";
+    IsAgency: boolean;
+    IsAdministrator: boolean;
+}
+
 export interface EnterprisePerson{
     email: string | "";
     id: number;

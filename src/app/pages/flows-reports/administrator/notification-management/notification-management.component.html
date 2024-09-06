@@ -25,9 +25,9 @@
             </ng-template>
         </p-toolbar>
 
-        <p-table  [columns]="selectedColumns" #dt1 [paginator]="true" [rows]="10"
+        <p-table [value]="lstNotification" [columns]="selectedColumns" #dt1 [paginator]="true" [rows]="10"
             [tableStyle]="{ 'min-width': '50rem' }" [rowsPerPageOptions]="[5, 10, 20]" styleClass="p-datatable-sm"
-            [globalFilterFields]="['name', 'lastName', 'email','profileGds','documentNumber','orole.roleName']">
+            [globalFilterFields]="['title', 'description', 'creationDate']">
             <ng-template pTemplate="caption">
 
                 <div class="row m-0 p-0 ">
@@ -41,11 +41,9 @@
                     </div>
                 </div>
 
-
             </ng-template>
             <ng-template pTemplate="header" let-columns>
                 <tr >
-
                     <th *ngFor="let col of columns" pSortableColumn="{{col.field}}">
                         {{col.header}} <p-sortIcon field="{{col.field}}" />
                     </th>
@@ -54,13 +52,13 @@
             </ng-template>
             <ng-template pTemplate="body" let-product let-columns="columns">
                 <tr>
-
                     <td *ngFor="let col of columns">
                         <ng-container *ngIf="col.field === 'isActive'; else defaultField">
                             {{ product.isActive ? 'Activado' : 'Desactivado' }}
                         </ng-container>
                         <ng-template #defaultField>
-                            Valor por defecto.
+                            {{ getFieldValue(product, col.field) }}
+                            <!-- Valor por defecto. -->
                         </ng-template>
                     </td>
                     <td>
@@ -76,3 +74,16 @@
     </div>
 
 </mat-sidenav-container> 
+<!-- <div class="notification-content">
+    <p-dialog header="Registrar usuario" [(visible)]="visible"
+    [blockScroll]="true" [modal]="true" [closeOnEscape]="false" [focusOnShow]="false"
+    [style]="{ width: '50vw', height: '900px' }" [breakpoints]="{ '960px': '75vw','500px' : '95vw' }"
+    [maximizable]="true">
+        <div class="container">
+            <app-user-create-update *ngIf="visible" (select)="validManage($event)" [lstMenu]="lstMenu"
+                [lstCountries]="lstCountries" [lstRoles]="lstRoles" [lstCostCenter]="lstCostCenter"
+                [lstProfile]="lstProfile" [lstDocument]="lstDocument" [dataLoad]="data"
+                [isRegister]="isRegister"></app-user-create-update>
+        </div>
+    </p-dialog>
+</div> -->

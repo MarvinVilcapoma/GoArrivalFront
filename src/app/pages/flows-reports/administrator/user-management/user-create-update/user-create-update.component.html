@@ -4,7 +4,7 @@
         <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12">
 
             <p-floatLabel>
-                <input pInputText id="username" formControlName="name" />
+                <input pInputText id="username" autocomplete="off" formControlName="name" />
                 <label for="username">Nombres</label>
             </p-floatLabel>
 
@@ -12,7 +12,7 @@
         <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12">
 
             <p-floatLabel>
-                <input pInputText id="lastname" formControlName="lastName" />
+                <input pInputText id="lastname" autocomplete="off" formControlName="lastName" />
                 <label for="lastname">Apellidos</label>
             </p-floatLabel>
 
@@ -30,8 +30,8 @@
 
 
             <p-floatLabel>
-                <input pInputText id="correo" formControlName="email" />
-                <label for="correo">Correo Electronico</label>
+                <input pInputText id="correo" autocomplete="off" formControlName="email" />
+                <label for="correo">Correo Electrnico</label>
             </p-floatLabel>
 
 
@@ -40,7 +40,7 @@
 
 
             <p-floatLabel>
-                <input pInputText id="frequent" formControlName="frequentFlyer" />
+                <input pInputText id="frequent" autocomplete="off" formControlName="frequentFlyer" />
                 <label for="frequent">Pasajero Frecuente</label>
             </p-floatLabel>
 
@@ -50,7 +50,7 @@
 
 
             <p-floatLabel>
-                <input pInputText id="telefono" formControlName="phone" />
+                <input pInputText id="telefono" autocomplete="off" formControlName="phone" />
                 <label for="telefono">Teléfono</label>
             </p-floatLabel>
 
@@ -59,7 +59,7 @@
     </div>
 
     <div class="row m-0 p-0 mt-1 mb-4">
-        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12">
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-5 col-12 web-calendar-card">
 
             <p-floatLabel>
                 <p-calendar formControlName="birthDate" dateFormat="dd/mm/yy" inputId="fecha_naci" [minDate]="adultMinDate"
@@ -72,8 +72,8 @@
 
             <p-floatLabel>
 
-                <p-dropdown [options]="lstCountries" [filter]="true" [scrollHeight]="'150px'" filterBy="name"
-                    formControlName="countryOrigin" inputId="pais" optionLabel="name"
+                <p-dropdown [options]="lstCountries" [filter]="true" [scrollHeight]="'150px'" filterBy="fullName"
+                    formControlName="countryOrigin" inputId="pais" optionLabel="fullName"
                     optionValue="iataCode"></p-dropdown>
 
                 <label for="pais">País</label>
@@ -151,7 +151,10 @@
     </div>
 
     <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 text-center">
-        <button (click)="manageDocument()" mat-raised-button color="primary">Documentos</button>
+
+        <p-button label="Gestionar documento(s)" severity="help" (click)="manageDocument()" icon="pi pi-plus" class="custom-small-button" [raised]="true"  />
+
+        <!-- <button (click)="manageDocument()" mat-raised-button color="primary">Documentos</button> -->
     </div>
 
 </div>
@@ -178,16 +181,15 @@
 
 <div class="row m-0 p-0 mt-5 mb-2">
     <div class="col text-center">
-        <mat-dialog-actions align="end">
 
+        <p-button label="{{isRegister ? 'Registrar usuario' : 'Modificar usuario'}}" (click)="createUser()" [disabled]="form.invalid" class="custom-small-button" [raised]="true"  />
 
-
-
+      <!--   <mat-dialog-actions align="end">
             <button (click)="createUser()" [disabled]="form.invalid" color="primary" mat-flat-button type="submit">
                 {{isRegister ? 'Registrar usuario' : 'Modificar usuario'}}
             </button>
 
-        </mat-dialog-actions>
+        </mat-dialog-actions> -->
     </div>
 </div>
 

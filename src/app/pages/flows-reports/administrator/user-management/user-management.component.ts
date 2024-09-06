@@ -127,12 +127,8 @@ export class UserManagementComponent implements OnInit {
           documentNumber: element.lpersonDocument.length > 0 ? element.lpersonDocument[0].documentNumber : ""
         }));
       }
-
-
-
       this.visible = false;
     }
-
   }
 
   updateCreateCost(valor_: boolean, cost: any) {
@@ -154,8 +150,6 @@ export class UserManagementComponent implements OnInit {
       x => {
         if (x.status === 200) {
           this.setDocumentShow(x);
-
-
           this.head.setSuccessToastr(x.message);
         } else {
           this.head.setErrorToastr(x.message);
