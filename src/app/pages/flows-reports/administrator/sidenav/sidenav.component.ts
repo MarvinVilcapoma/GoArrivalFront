@@ -140,6 +140,7 @@ ngOnInit(): void {
       'Gestión de grupos': () => this.router.navigate(['flows/group-management']),
       'Roles de empresa': () => this.router.navigate(['flows/business-roles']),
       'Gestión de Usuarios': () => this.router.navigate(['flows/user-management']),
+      'Gestión de Notificaciones': () => this.router.navigate(['flows/notification-management']),
       'Gestión de Tarjetas': () => this.router.navigate(['flows/card-management']),
       'Gestión SMTP': () => this.router.navigate(['flows/smtp-management']),
     };

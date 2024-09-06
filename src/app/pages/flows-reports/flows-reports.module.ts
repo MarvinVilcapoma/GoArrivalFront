@@ -76,6 +76,7 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { DateFormatBookingPipe } from 'src/app/pipes/date-format-booking.pipe';
 import { ApproveDetailBookingComponent } from './booking-management/approve-detail-booking/approve-detail-booking.component';
 import { DetailBookingFlightComponent } from './booking-management/approve-detail-booking/detail-booking-flight/detail-booking-flight.component';
+import { ToolbarModule } from 'primeng/toolbar';
 
 import { DividerModule } from 'primeng/divider';
 import { ListAuthorizersComponent } from './booking-management/approve-detail-booking/list-authorizers/list-authorizers.component';
@@ -153,6 +154,7 @@ import { UserManagementTravelAgentComponent } from './administrator/user-managem
 import { CreateUpdateUserAgentComponent } from './administrator/user-management-travel-agent/create-update-user-agent/create-update-user-agent.component';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { NotificationManagementComponent } from './administrator/notification-management/notification-management.component';
 
 
 
@@ -198,7 +200,8 @@ const routes: Routes = [
   {path: 'smtp-management', component: SmtpManagementComponent},
   {path: 'reports-list',component: ReportsListComponent},
   {path: 'user-management-agent', component: UserManagementTravelAgentComponent},
-  {path: 'card-create-update/:id', component: CardCreateUpdateComponent}
+  {path: 'card-create-update/:id', component: CardCreateUpdateComponent},
+  {path: 'notification-management', component: NotificationManagementComponent}
 ];
 
 
@@ -215,6 +218,7 @@ const routes: Routes = [
     CostCenterComponent,
     CostCreateUpdateComponent,
     UserManagementComponent,
+    NotificationManagementComponent,
     UserCreateUpdateComponent,
     ManageDocumentComponent,
     ApprovalFlowsComponent,
@@ -343,6 +347,7 @@ const routes: Routes = [
     MatDialogModule,
     MatExpansionModule,
     MatAutocompleteModule,
+    ToolbarModule,
     MatSidenavModule, NgIf, MatButtonModule, MatToolbarModule,MatIconModule,MatListModule,FormsModule,NgClass,MatFormFieldModule,MatSelectModule,
     RouterModule.forChild(routes)
   ],
