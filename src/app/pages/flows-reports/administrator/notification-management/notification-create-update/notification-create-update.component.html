@@ -1,1 +1,40 @@
-<p>notification-create-update works!</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-container row m-0 p-0 mt-4 mb-4">
+      <div class="form-group">
+        <p-floatLabel>
+          <input pInputText id="title" maxlength="100" formControlName="title" />
+          <label for="title">Título</label>
+          <small *ngIf="form.get('title')?.hasError('maxlength')">El título no puede exceder los 100 caracteres.</small>
+        </p-floatLabel>
+      </div>
+      <div class="form-group">
+        <p-floatLabel>
+          <textarea pInputTextarea class="expandable-textarea" id="description" formControlName="description" rows="6" autoResize="true" maxlength="2500"></textarea>
+          <label for="description">Descripción</label>
+          <small *ngIf="form.get('description')?.hasError('maxlength')">La descripción no puede exceder los 2500 caracteres.</small>
+        </p-floatLabel>
+      </div>
+      <div *ngIf="isRegister">
+        <div class="form-group">
+            <p-checkbox [(ngModel)]="notificationGeneral"  formControlName="isGeneral" id="isGeneral" [binary]="true"></p-checkbox>
+            <span for="isGeneral" class="pl-2">Notificación General</span>
+        </div>
+      </div>
+      <!-- <div class="form-group">
+        <p-listbox 
+            [options]="lstPerson" 
+            [(ngModel)]="selectedUser"
+            optionLabel="name" 
+            [style]="{ width: '15rem' }" 
+            [listStyle]="{'max-height': '220px'}" />
+      </div> -->
+      <div *ngIf="!isRegister">
+        <div class="form-group">
+            <p-checkbox [(ngModel)]="notificationActive"  formControlName="isActive" id="isActive" [binary]="true"></p-checkbox>
+            <span for="isActive" class="pl-2">Notificatión activa</span>
+          </div>
+      </div>
+      <button type="submit" pButton label="{{isRegister ? 'Registrar' : 'Modificar'}}" [disabled]="form.invalid"></button>
+    </div>
+  </form>
+  

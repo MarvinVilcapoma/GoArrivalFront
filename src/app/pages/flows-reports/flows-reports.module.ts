@@ -155,7 +155,8 @@ import { CreateUpdateUserAgentComponent } from './administrator/user-management-
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { NotificationManagementComponent } from './administrator/notification-management/notification-management.component';
-
+import { NotificationCreateUpdateComponent } from './administrator/notification-management/notification-create-update/notification-create-update.component';
+import { ListboxModule } from 'primeng/listbox';
 
 
 
@@ -278,7 +279,8 @@ const routes: Routes = [
     OptionsFlightsComponent,
     PaymentsCancellationsComponent,
     UserManagementTravelAgentComponent,
-    CreateUpdateUserAgentComponent
+    CreateUpdateUserAgentComponent,
+    NotificationCreateUpdateComponent
   ],
   imports: [
     CommonModule,

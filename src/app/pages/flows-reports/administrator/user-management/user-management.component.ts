@@ -17,9 +17,6 @@ import { SortEvent } from 'primeng/api';
 export class UserManagementComponent implements OnInit {
   @ViewChild('dt1') dt1!: Table;
 
-
-
-
   lstMenu: any[] = [];
   lstCountries: any[] = [];
   lstCostCenter: any[] = [];
@@ -179,6 +176,7 @@ export class UserManagementComponent implements OnInit {
     this.head.mostrarSpinner();
     this.service.getPersonDetail(id.userID).subscribe(
       x => {
+        console.log(x);
         this.data = x.odata;
         this.isRegister = false;
         this.visible = true;
@@ -238,7 +236,6 @@ export class UserManagementComponent implements OnInit {
         if (x.status === 200) {
           this.setDocumentShow(x);
           this.head.ocultarSpinner();
-
         }
       },
       error => {

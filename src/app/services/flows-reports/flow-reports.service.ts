@@ -117,7 +117,7 @@ export class FlowReportsService {
 
   private urlgetApprovalType: string = environment.url + 'Approval/GetApprovalType';
   private urlGetEnterprisePerson: string = environment.url + 'Person/GetEnterprisePerson';
-  private urlGetNotificationsByUserID: string = environment.url + 'Notification/GetNotificationsByUserID';
+  private urlGetNotification: string = environment.url + 'Notification/GetNotification';
   private urlGetPersonDetail: string = environment.url + 'Person/GetPersonDetail';
   private urlManagePerson: string = environment.url + 'Person/ManagePerson';
   private urlUpdatePerson: string = environment.url + 'Person/UpdatePerson';
@@ -378,8 +378,8 @@ export class FlowReportsService {
     return this.http.post<any>(`${this.urlGetEnterprisePerson}`, data, httpOptions);
   }
 
-  getNotificationsByUserID(data:any) : Observable<any>{
-    const url = `${this.urlGetNotificationsByUserID}?${'userID='+data}`;
+  geturlGetNotification(data:any, data1: boolean) : Observable<any>{
+    const url = `${this.urlGetNotification}?${'userID='+data + '&isAdministrator=' + data} `;
     return this.http.get<any>(url, httpOptions);
   }
 

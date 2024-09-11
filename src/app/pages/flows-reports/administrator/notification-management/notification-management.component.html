@@ -20,14 +20,14 @@
 
         <p-toolbar styleClass="mb-4 gap-2">
             <ng-template pTemplate="left">
-                <p-button severity="success" size="small" label="Agregar Notificación"
+                <p-button severity="success" size="small" label="Agregar Notificación" (onClick)="createNotification()"
                     icon="pi pi-plus" class="mr-2" />
             </ng-template>
         </p-toolbar>
 
         <p-table [value]="lstNotification" [columns]="selectedColumns" #dt1 [paginator]="true" [rows]="10"
             [tableStyle]="{ 'min-width': '50rem' }" [rowsPerPageOptions]="[5, 10, 20]" styleClass="p-datatable-sm"
-            [globalFilterFields]="['title', 'description', 'creationDate']">
+            [globalFilterFields]="['title', 'description']">
             <ng-template pTemplate="caption">
 
                 <div class="row m-0 p-0 ">
@@ -62,28 +62,23 @@
                         </ng-template>
                     </td>
                     <td>
-                        <button type="button" pButton pRipple icon="pi pi-user-edit"
+                        <button type="button" (click)="updateNotfication(product)" pButton pRipple icon="pi pi-pencil"
                             class="custom-small-button">
                         </button>
                     </td>
                 </tr>
             </ng-template>
-
         </p-table>
-
     </div>
 
 </mat-sidenav-container> 
-<!-- <div class="notification-content">
-    <p-dialog header="Registrar usuario" [(visible)]="visible"
+<div class="notification-content">
+    <p-dialog header="{{isRegister ? 'Registrar notificación' : 'Modificar notificación'}}" [(visible)]="visible"
     [blockScroll]="true" [modal]="true" [closeOnEscape]="false" [focusOnShow]="false"
     [style]="{ width: '50vw', height: '900px' }" [breakpoints]="{ '960px': '75vw','500px' : '95vw' }"
     [maximizable]="true">
         <div class="container">
-            <app-user-create-update *ngIf="visible" (select)="validManage($event)" [lstMenu]="lstMenu"
-                [lstCountries]="lstCountries" [lstRoles]="lstRoles" [lstCostCenter]="lstCostCenter"
-                [lstProfile]="lstProfile" [lstDocument]="lstDocument" [dataLoad]="data"
-                [isRegister]="isRegister"></app-user-create-update>
+            <app-notification-create-update *ngIf="visible" [lstPerson]="lstPerson" [dataLoad]="data" [isRegister]="isRegister"></app-notification-create-update>
         </div>
     </p-dialog>
-</div> -->
+</div>
