@@ -101,7 +101,7 @@ export class ChargeInternationalManagementComponent implements OnInit, AfterView
   getCompany() {
     this.loading = true;
     let valor = this.head.getCompany();
-    this.service.getCompanyAgency(valor.id).subscribe(
+    this.service.getCompanyAgency(valor.id,true).subscribe(
       result => {
         if (result.status === 200) {
           this.lstCompany = result.ldata;

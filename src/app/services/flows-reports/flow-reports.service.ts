@@ -118,6 +118,7 @@ export class FlowReportsService {
   private urlgetApprovalType: string = environment.url + 'Approval/GetApprovalType';
   private urlGetEnterprisePerson: string = environment.url + 'Person/GetEnterprisePerson';
   private urlGetNotification: string = environment.url + 'Notification/GetNotification';
+  private urlManageNotification: string = environment.url + 'Notification/ManageNotification'
   private urlGetPersonDetail: string = environment.url + 'Person/GetPersonDetail';
   private urlManagePerson: string = environment.url + 'Person/ManagePerson';
   private urlUpdatePerson: string = environment.url + 'Person/UpdatePerson';
@@ -139,6 +140,7 @@ export class FlowReportsService {
   private urlGetMethodOfPayment: string = environment.url + "MethodOfPayment/GetMethodOfPayment";
   private urlGetCurrency: string = environment.url + 'Currency/GetCurrency';
   private urlUpdatePassword: string = environment.url + 'User/UpdatePassword';
+  private urlGetUser: string = environment.url + 'User/GetUser'; 
 
 
   key: string;
@@ -172,6 +174,10 @@ export class FlowReportsService {
 
   assignEnterpriseMenu(data: any): Observable<any> {
     return this.http.post<any>(`${this.urlAssignEnterpriseMenu}`, data, httpOptions);
+  }
+
+  manageNotification(data: any): Observable<any>{
+    return this.http.post<any>(`${this.urlManageNotification}` , data, httpOptions);
   }
 
   manageCostCenter(data: any): Observable<any> {
@@ -379,7 +385,8 @@ export class FlowReportsService {
   }
 
   geturlGetNotification(data:any, data1: boolean) : Observable<any>{
-    const url = `${this.urlGetNotification}?${'userID='+data + '&isAdministrator=' + data} `;
+    const url = `${this.urlGetNotification}?${'userID='+data + '&isAdministrator=' + data1} `;
+    console.log(url);
     return this.http.get<any>(url, httpOptions);
   }
 
@@ -451,8 +458,8 @@ export class FlowReportsService {
     return this.http.get<any>(url, httpOptions);
   }
 
-  getCompanyAgency(data: any): Observable<any> {
-    const url = `${this.urlGetCompanyAgency}?${'agencyID=' + data}`;
+  getCompanyAgency(data: any, data1: boolean): Observable<any> {
+    const url = `${this.urlGetCompanyAgency}?${'agencyID=' + data +'&isAdministrator=' +data1}`;
     return this.http.get<any>(url, httpOptions);
   }
 
@@ -543,6 +550,10 @@ export class FlowReportsService {
 
   updatePassword(data: any): Observable<any> {
     return this.http.post<any>(`${this.urlUpdatePassword}`, data, httpOptions);
+  }
+
+  getUsers(): Observable<any>{
+    return this.http.get<any>(this.urlGetUser, httpOptions);
   }
 
   approve(data: any): Observable<any> {

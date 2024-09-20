@@ -173,7 +173,7 @@ export class CardManagementComponent implements OnInit, AfterViewInit {
   loadCompanies() {
     this.loading = true;
     let valor = this.head.getCompany();
-    this.companyService.getCompanyAgency(valor.id).subscribe(
+    this.companyService.getCompanyAgency(valor.id,true).subscribe(
       (result) => {
         if (result && result.status === 200 && result.ldata) {
           this.companies = result.ldata

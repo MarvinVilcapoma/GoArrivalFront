@@ -3,7 +3,6 @@ import { SortEvent } from 'primeng/api';
 import { Table } from 'primeng/table';
 import { FlowReportsService } from 'src/app/services/flows-reports/flow-reports.service';
 import { HeaderService } from 'src/app/services/head.service';
-import { EnterpriseNotificationRQ, EnterprisePersonRQ } from 'src/models/flows-reports/administrator';
 
 @Component({
   selector: 'app-notification-management',
@@ -18,7 +17,7 @@ export class NotificationManagementComponent implements OnInit{
   cols: any[] = [];
   _selectedColumns: any[] = [];
   lstNotification: any;
-  lstPerson: any;
+  lstCompany: any;
   isSorted: any = null;
   initialValue: any[] = [];
   notification: any;
@@ -33,6 +32,7 @@ export class NotificationManagementComponent implements OnInit{
     this.cols = [
       { field: 'title', header: 'Título' },
       { field: 'description', header: 'Descripción' },
+      { field: 'ouser.fullName', header: 'Usuario'},
       { field: 'creationDateShow', header: 'Fecha de Creación' },
       { field: 'isActive', header: 'Estado' }
     ];
@@ -62,31 +62,16 @@ export class NotificationManagementComponent implements OnInit{
 
   getEnterpriseNotification(){
     this.head.mostrarSpinner();
-    let valor = this.head.getCompany();
-    const isAgency = this.head.getIsAgency();
-
-    const data: EnterpriseNotificationRQ = {
-      EnterpriseCode: valor.id,
-      IsAgency: isAgency,
-      IsAdministrator : true,
-    }
-
-    const dataPerson: EnterprisePersonRQ = {
-      EnterpriseCode: valor.id,
-      IsAgency: isAgency,
-      IsAdministrator : true,
-    }
-
-    console.log(dataPerson);
-    this.service.geturlGetNotification(null, data.IsAdministrator).subscribe(
+    const isAdministrator = true;
+    this.service.geturlGetNotification(null, isAdministrator).subscribe(
       x => {
         if (x.status === 200) {
           this.chargeNotifications(x);  
-          this.service.getEnterprisePerson(dataPerson).subscribe(x => {
-            if (x.status === 200) {
-              this.lstPerson = x.ldata;
+          this.service.getCompanyAgency("", true).subscribe(x=> {
+            if(x.status === 200){
+              this.lstCompany = x.ldata;
             }
-          });           
+          });    
           this.head.ocultarSpinner();
         }
       },
@@ -97,7 +82,6 @@ export class NotificationManagementComponent implements OnInit{
   }
 
   updateNotfication(notification: any){
-    console.log("Esta es la notificación: ",notification);
     this.head.mostrarSpinner();
     if(notification.id != null && notification.id != undefined){
       this.data = notification;
@@ -110,13 +94,30 @@ export class NotificationManagementComponent implements OnInit{
   }
 
   chargeNotifications(valor_ : any ){
-    this.lstNotification = valor_.ldata;
+    this.lstNotification = valor_.ldata || [];
     this.lstNotification = this.lstNotification.map((element: any) => ({
       ...element,
       title: element.title
     }));
     this.initialValue = [...this.lstNotification];
   }
+
+  validManage(valor_: any) {
+    if (valor_ === null || valor_?.length != undefined) {
+      if (this.head.getIsAgency()) {
+        this.getEnterpriseNotification();
+      } else {
+        this.lstNotification = valor_;
+        this.lstNotification = this.lstNotification.map((element: any) => ({
+          ...element,
+          title: element.title
+        }));
+      }
+      this.visible = false;
+      this.dt1.reset(); 
+    }
+  }
+  
 
   customSort(event: SortEvent) {
     if (this.isSorted == null || this.isSorted === undefined) {

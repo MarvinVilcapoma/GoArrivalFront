@@ -257,7 +257,7 @@ export class UserManagementTravelAgentComponent implements OnInit {
     this.showPassengers = false;
     this.head.mostrarSpinner();
     let valor = this.head.getCompany();
-    this.service.getCompanyAgency(valor.id).subscribe(
+    this.service.getCompanyAgency(valor.id,true).subscribe(
       x => {
         if (x.status === 200) {
           this.lstAgencys = x.ldata;

@@ -15,9 +15,7 @@
             </div>
         </div>
     </div>
-
     <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-0 p-3 webMultiSelect">
-
         <p-toolbar styleClass="mb-4 gap-2">
             <ng-template pTemplate="left">
                 <p-button severity="success" size="small" label="Agregar Notificación" (onClick)="createNotification()"
@@ -27,9 +25,8 @@
 
         <p-table [value]="lstNotification" [columns]="selectedColumns" #dt1 [paginator]="true" [rows]="10"
             [tableStyle]="{ 'min-width': '50rem' }" [rowsPerPageOptions]="[5, 10, 20]" styleClass="p-datatable-sm"
-            [globalFilterFields]="['title', 'description']">
+            [globalFilterFields]="['title', 'description','ouser.fullName']">
             <ng-template pTemplate="caption">
-
                 <div class="row m-0 p-0 ">
                     <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12 m-0 p-0">
                         <span class="p-input-icon-left">
@@ -43,7 +40,7 @@
 
             </ng-template>
             <ng-template pTemplate="header" let-columns>
-                <tr >
+                <tr>
                     <th *ngFor="let col of columns" pSortableColumn="{{col.field}}">
                         {{col.header}} <p-sortIcon field="{{col.field}}" />
                     </th>
@@ -57,8 +54,12 @@
                             {{ product.isActive ? 'Activado' : 'Desactivado' }}
                         </ng-container>
                         <ng-template #defaultField>
-                            {{ getFieldValue(product, col.field) }}
-                            <!-- Valor por defecto. -->
+                            <ng-container *ngIf="col.field === 'ouser.fullName'; else fallbackValue">
+                                {{ product.ouser ? product.ouser.fullName : '' }}
+                            </ng-container>
+                            <ng-template #fallbackValue>
+                                {{ getFieldValue(product, col.field) }}
+                            </ng-template>
                         </ng-template>
                     </td>
                     <td>
@@ -78,7 +79,7 @@
     [style]="{ width: '50vw', height: '900px' }" [breakpoints]="{ '960px': '75vw','500px' : '95vw' }"
     [maximizable]="true">
         <div class="container">
-            <app-notification-create-update *ngIf="visible" [lstPerson]="lstPerson" [dataLoad]="data" [isRegister]="isRegister"></app-notification-create-update>
+            <app-notification-create-update *ngIf="visible" (select)="validManage($event)" [lstCompany]="lstCompany" [dataLoad]="data" [isRegister]="isRegister"></app-notification-create-update>
         </div>
     </p-dialog>
 </div>

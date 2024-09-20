@@ -141,7 +141,7 @@ export class AdministratorAgencyComponent implements OnInit , AfterViewInit {
   getAgency(){
     this.loading = true;
     let valor = this.head.getCompany();
-    this.service.getCompanyAgency(valor.id).subscribe(
+    this.service.getCompanyAgency(valor.id,true).subscribe(
       x=>{
         if(x.status === 200){
           this.lstAgencys = x.ldata;
