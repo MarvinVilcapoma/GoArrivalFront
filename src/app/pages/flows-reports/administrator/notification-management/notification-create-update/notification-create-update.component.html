@@ -14,13 +14,13 @@
         <small *ngIf="form.get('description')?.hasError('maxlength')">La descripción no puede exceder los 2500 caracteres.</small>
       </p-floatLabel>
     </div>
-    <div *ngIf="isRegister">
+    <div>
       <div class="form-group">
-        <p-checkbox formControlName="isGeneral" id="isGeneral" [binary]="true"></p-checkbox>
+        <p-checkbox [(ngModel)]="notificationGeneral" formControlName="isGeneral" (click)="changeIsGeneral()"  id="isGeneral" [binary]="true"></p-checkbox>
         <span for="isGeneral" class="pl-2">Notificación General</span>
       </div>
     </div>
-    <div class="form-group" *ngIf="!isRegister || !notificationGeneral">
+    <div class="form-group" *ngIf="!notificationGeneral">
       <p-floatLabel>
         <p-dropdown 
           [options]="lstCompany"
@@ -31,27 +31,31 @@
           filterBy="name" 
           formControlName="companyID"
           inputId="companyID"
-          [showClear]="true"
           placeholder="Seleccionar Empresa">
         </p-dropdown>
         <label for="companyID">Seleccionar Empresa</label>
+        <small *ngIf="form.get('companyID')?.hasError('required') && form.get('companyID')?.touched">
+          La selección de la empresa es obligatoria cuando se desmarca "Notificación General".
+        </small>
       </p-floatLabel>
     </div> 
     <div class="form-group" *ngIf="(!isRegister || !notificationGeneral) && form.get('companyID').value">
       <p-floatLabel>
         <p-dropdown 
           [options]="lstUser"
-          optionLabel="name"
-          optionValue="id"
+          [optionLabel]="'fullName'"
+          optionValue="userID"
           inputId="userID"
           [filter]="true"
           [scrollHeight]="'150px'"
-          filterBy="name" 
+          filterBy="fullName" 
           formControlName="userID"
-          [showClear]="true"
           placeholder="Seleccionar Usuario">
         </p-dropdown>
         <label for="userID">Seleccionar Usuario</label>
+        <small *ngIf="form.get('companyID')?.hasError('required') && form.get('companyID')?.touched">
+          La selección del usuario es obligatoria cuando se desmarca "Notificación General".
+        </small>
       </p-floatLabel>
     </div>
     <div *ngIf="!isRegister">

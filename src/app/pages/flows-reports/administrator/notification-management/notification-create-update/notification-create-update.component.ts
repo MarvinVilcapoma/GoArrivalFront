@@ -4,9 +4,6 @@ import { FlowReportsService } from 'src/app/services/flows-reports/flow-reports.
 import { HeaderService } from 'src/app/services/head.service';
 import { EnterprisePersonRQ } from 'src/models/flows-reports/administrator';
 import { ChangeDetectorRef } from '@angular/core';
-
-
-
 @Component({
   selector: 'app-notification-create-update',
   templateUrl: './notification-create-update.component.html',
@@ -39,30 +36,37 @@ export class NotificationCreateUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.isGeneral = this.isRegister ? true : false;
     this.initForm();
-    this.dataUpdate = this.dataLoad;
+
+    const descriptionField = this.form.get('description');
+    if (descriptionField && descriptionField.value) {
+      setTimeout(() => {
+        const textarea = document.getElementById('description') as HTMLTextAreaElement;
+        textarea.style.height = 'auto';
+        textarea.style.height = `${textarea.scrollHeight}px`; 
+      });
+    }
   }
 
   initForm() {
-    const companyID = this.isRegister ? '' : this.dataLoad?.ocompany?.id || '';
     this.form = this.fb.group({
       id: [NotificationCreateUpdateComponent.id],
       title: [this.isRegister ? '' : this.dataLoad?.title, Validators.required],
       description: [this.isRegister ? '' : this.dataLoad?.description],
       isGeneral: [this.isRegister ? '' : this.dataLoad?.isGeneral],
-      isActive: [this.isRegister ? '' : this.dataLoad?.isActive],
-      userID: [this.isRegister ? [] : this.dataLoad?.ouser?.id],
-      companyID: [this.isRegister ? [] : this.dataLoad?.ocompany?.id]
+      isActive: [this.isRegister === true ? true : this.dataLoad?.isActive],
+      userID: [this.isRegister ? '' : this.dataLoad?.ouser?.id],
+      companyID: [this.isRegister ? '' : this.dataLoad?.ocompany?.id]
     });
-
-
     this.cd.detectChanges();
 
     if (!this.isRegister) {
       this.notificationActive = this.dataLoad.isActive;
       this.notificationGeneral = this.dataLoad.isGeneral;
-      this.head.mostrarSpinner();
-
-      this.loadUsersforCompany(companyID);
+      const companyID = this.form.get('companyID')?.value;
+      if (companyID) {
+        this.head.mostrarSpinner();
+        this.loadUsersforCompany(companyID);
+      }
     }
 
     this.form.get('companyID')?.valueChanges.subscribe((selectedCompanyID: any) => {
@@ -82,22 +86,31 @@ export class NotificationCreateUpdateComponent implements OnInit {
       IsAgency: false,
       IsAdministrator: true,
     };
-
-    this.service.getEnterprisePerson(dataPerson).subscribe(x => {
-      this.lstUser = x.ldata || [];
-      this.form.get('userID')?.setValue(null);
-    });
-    this.head.ocultarSpinner();
-
+    this.service.getEnterprisePerson(dataPerson).subscribe(
+      x => {
+        this.lstUser = (x.ldata || []).map((user: any) => ({
+          userID: user.userID,
+          fullName: `${user.name} ${user.lastName}`
+        }));
+        if (!this.isRegister && this.dataLoad?.ouser?.id) {
+          this.form.get('userID')?.setValue(this.dataLoad.ouser.id);
+        } else {
+          this.form.get('userID')?.setValue(null);
+        }
+        this.head.ocultarSpinner();
+      },
+      error => {
+        error.status === 400 ? this.head.setErrorToastr("Error al cargar los usuarios") : this.head.error500();
+        this.head.ocultarSpinner();
+      }
+    );
   }
 
   createUpdateNotification() {
     if (this.form.invalid) {
       return;
     }
-
     this.head.mostrarSpinner();
-
     let obj: any = {
       isRegister: this.isRegister,
       Title: this.form.controls.title.value,
@@ -106,12 +119,11 @@ export class NotificationCreateUpdateComponent implements OnInit {
       IsActive: this.form.controls.isActive.value,
       UserID: this.form.controls.userID.value,
     };
-
     if (!this.isRegister) {
       obj.ID = this.dataLoad.id;
+      obj.isRegister = false;
     }
-    if (this.isGeneral) obj.UserID = "";
-
+    if (this.notificationGeneral) obj.UserID = "";
     this.service.manageNotification(obj).subscribe(
       x => {
         if (x === null) {
@@ -128,7 +140,15 @@ export class NotificationCreateUpdateComponent implements OnInit {
       },
       error => {
         error.status === 404 ? this.head.setErrorToastr("Servicio no encontrado") : this.head.error500();
+        this.head.ocultarSpinner();
       }
     );
+  }
+
+  changeIsGeneral() {
+    if (this.notificationGeneral) {
+      this.form.controls.companyID.setValue(null);
+      this.form.controls.userID.setValue(null);
+    }
   }
 }

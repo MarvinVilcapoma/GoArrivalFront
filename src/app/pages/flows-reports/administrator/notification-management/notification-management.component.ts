@@ -117,7 +117,6 @@ export class NotificationManagementComponent implements OnInit{
       this.dt1.reset(); 
     }
   }
-  
 
   customSort(event: SortEvent) {
     if (this.isSorted == null || this.isSorted === undefined) {
